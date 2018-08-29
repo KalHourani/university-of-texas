@@ -1,0 +1,99 @@
+\documentclass[12pt,leqno]{article}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Algebra II\\\large Homework 6}
+\date{February 28, 2011}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\w}{\omega}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\+}{\oplus}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+
+\section*{Section 14.2}
+  \begin{enumerate}
+   \item [1.] Determine the minimal polynomial over $\Q$ for the element $\sqrt{2}+\sqrt{5}$.
+    \begin{Solution}
+     We leave it to the reader to verify that $\Q(\sqrt{2}+\sqrt{5})=\Q(\sqrt{2},\sqrt{5})$. From this, we see that $\sqrt{2}+\sqrt{5}$ has a minimal polynomial of degree 4. Setting $\alpha=\sqrt{2}+\sqrt{5}$, we see \[\alpha^2=7+2\sqrt{2}\sqrt{5}\] hence $(\alpha^2-7)^2=40$. By expanding $(\alpha^2-7)^2$, we have \[\alpha^4-14\alpha^2+9=0\] hence the minimal polynomial of $\sqrt{2}+\sqrt{5}$ is $x^4-14x^2+9$. 
+    \end{Solution}
+   \item [3.] Determine the Galois group of $(x^2-2)(x^2-3)(x^2-5)$. Determine all subfields of the splitting field of this polynomial.
+    \begin{Solution}
+     The splitting field of this polynomial is clearly $\Q(\sqrt{2},\sqrt{3},\sqrt{5})$. We see that, for any element $\phi$ of this Galois group, $\phi(\sqrt{2})^2=\phi(\sqrt{2}^2)=\phi(2)=2$. Similar logic can be applied to $\sqrt{3}$ and $\sqrt{5}$, yielding the following possibilities for the value of $\phi$ on $\sqrt{2}$, $\sqrt{3}$ and $\sqrt{5}$. \begin{align*}\sqrt{2}&\mapsto\pm\sqrt{2}\\\sqrt{3}&\mapsto\pm\sqrt{3}\\\sqrt{5}&\mapsto\pm\sqrt{5}\end{align*} In particular, this yields 8 automorphisms, $\phi_{(i,j,k)}$: if $i=0$, $\phi_{(i,j,k)}(\sqrt{2})=\sqrt{2}$; if $i=1$, $\phi_{(i,j,k)}(\sqrt{2})=-\sqrt{2}$, and so on. Then the map \[\phi_{(i,j,k)}\mapsto(i,j,k)\] describes an isomorphism from this Galois group to $\Z_2\+\Z_2\+\Z_2$, Moreover, the subfields of the splitting field of this polynomial are simply the fixed fields corresponding to subgroups of its Galois group, specifically: \begin{align*}\mathbf{0}=\{(0,0,0)\}&\text{ which fixes }\Q(\sqrt{2},\sqrt{3},\sqrt{5})\\\Z_2\+\mathbf{0}\+\mathbf{0}&\text{ which fixes }\Q(\sqrt{3},\sqrt{5})\\\mathbf{0}\+\Z_2\+\mathbf{0}&\text{ which fixes }\Q(\sqrt{2},\sqrt{5})\\\mathbf{0}\+\mathbf{0}\+\Z_2&\text{ which fixes }\Q(\sqrt{2},\sqrt{3})\\\Z_2\+\Z_2\+\mathbf{0}&\text{ which fixes }\Q(\sqrt{5})\\\mathbf{0}\+\Z_2\+\Z_2&\text{ which fixes }\Q(\sqrt{2})\\\Z_2\+\mathbf{0}\+\Z_2&\text{ which fixes }\Q(\sqrt{3})\\\Z_2\+\Z_2\+\Z_2&\text{ which fixes }\Q\end{align*}
+    \end{Solution}
+   \item [6.] Let $K=\Q(\sqrt[8]{2},i)$ and let $F_1=\Q(i)$, $F_2=\Q(\sqrt{2})$, $F_3=\Q(\sqrt{-2})$. Prove that $\Gal(K/F_1)\cong Z_8$, $\Gal(K/F_2)\cong D_8$, $\Gal(K/F_3)\cong Q_8$.
+    \begin{Proof}
+     We see that $\Gal(K/F_1)$ is of order 8, and that the automorphism $\phi(\sqrt{2})=\w\sqrt{2}$, where $\w$ is a primitive $8^{\text{th}}$ root of unity, generates $\Gal(K/F_1)$, since $\left|\langle\phi\rangle\right|=8$. In particular, $\Gal(K/F_1)\cong Z_8$. 
+
+    Similarly, $[K:\Q]=[K:F_2][F_2:\Q]$, hence $[K:F_2]=8$. We see that, for any automorphism $\phi$ of $K/F_2$, $\phi(\sqrt[8]{2})^4=\phi(\sqrt{2})=\sqrt{2}$. This yields an automorphism of order 4 \begin{align*}\phi_1(\sqrt[8]{2})&=i\sqrt[8]{2}\\\phi_1(i)&=i\end{align*} and an automorphism of order 2 \begin{align*}\phi_2(\sqrt[8]{2})&=\sqrt[8]{2}\\\phi_2(i)&=-i\end{align*} We see that $\phi_2\circ\phi_1=\phi_1^{-1}\phi_2$ hence $\Gal(K/F_2)\cong D_8$.
+
+    Finally, since $F_3=\Q(\sqrt{-2})$, we see that $\Gal(K/F_3)$ is generated by the automorphisms $\phi_1,\phi_2,\phi_3$, which map $\w\sqrt[8]{2}$ to the remaining primitive $8^{\text{th}}$ roots of $2$: \begin{align*}\phi_1(\w\sqrt[8]{2})&=\w^3\sqrt[8]{2}\\\phi_2(\w\sqrt[8]{2})&=\w^5\sqrt[8]{2}\\\phi_3(\w\sqrt[8]{2})&=\w^7\sqrt[8]{2}\end{align*} We see that the map \begin{align*}\text{Id}&\mapsto1\\\phi_1&\mapsto i\\\phi_2&\mapsto j\\\phi_3&\mapsto k\end{align*} describes an isomorphism from $\Gal(K/F_3)$ to $Q_8$.
+    \end{Proof}
+   \item [7.] 
+   \item [8.] Suppose $K$ is a Galois extension of $F$ of degree $p^n$ for some prime $p$ and some $n\geq1$. Show there are Galois extensions of $F$ contained in $K$ of degrees $p$ and $p^{n-1}$.
+    \begin{Proof}
+     The Galois extensions of $F$ contained in $K$ correspond to the normal subgroups of the Galois group of $K/F$, hence it suffices to find normal subgroups of this group $P$ (whose order is $p^n$) of order $p$ and of order $p^{n-1}$. Since $P$ is a $p$-group, its center is nontrivial. By Cauchy's Theorem, the center of $P$ has a subgroup of order $p$, which is normal since $Z(P)$ is abelian. By Sylow's Theorem, there is a subgroup of $P$ of order $p^{n-1}$, which has index $p$, the smallest prime dividing the order of $P$, hence is normal. 
+    \end{Proof}
+   \item [10.] Determine the Galois group of the splitting field over $\Q$ of $x^8-3$.
+   \item [11.] Suppose $f(x)\in\Z[x]$ is an irreducible quartic whose splitting field has Galois group $S_4$ over $\Q$. Let $\theta$ be a root of $f(x)$ and set $K=\Q(\theta)$. Prove $K$ is an extension of $\Q$ of degree 4 which has no proper subfields. Are there any Galois extensions of $\Q$ of degree 4 with no proper subfields?
+   \item [12.] Determine the Galois group of the splitting field over $\Q$ of $x^4-14x^2+9$. 
+    \begin{Solution}
+     As shown in problem 1, this is the minimal polynomial of $\sqrt{2}+\sqrt{5}$, hence is the splitting field of $\Q(\sqrt{2},\sqrt{5})$. The automorphisms of this splitting field are simply the automorphisms given by \begin{align*}\sqrt{2}&\mapsto\pm\sqrt{2}\\\sqrt{5}&\mapsto\pm\sqrt{5}\end{align*} This Galois group is clearly isomorphic to $\Z_2\+\Z_2$.
+    \end{Solution}
+   \end{enumerate}
+
+\end{document}

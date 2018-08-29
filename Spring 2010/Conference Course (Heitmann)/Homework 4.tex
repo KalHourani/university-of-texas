@@ -1,0 +1,131 @@
+
+\documentclass[12pt,leqno]{article}
+
+\usepackage{graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\numberwithin{equation}{section}
+\pagestyle{headings}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in} \fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+
+\swapnumbers
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\theoremstyle{definition}
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+
+
+\makeindex
+
+\begin{document}
+
+
+\thispagestyle{plain}
+\begin{flushright}
+\large{\textbf{Khalid Hourani\\
+}}
+\end{flushright}
+
+\question{4}{Prove that there is no rational function in $F(x)$ such that its square is $x$.}
+
+\begin{Thm}
+ Let $F$ be a field. Then there is no rational function in $F(x)$ whose square is $x$.
+\end{Thm}
+
+\begin{proof}
+ By way of contradiction, suppose such a function, say $f(x)$, exists. Then $f(x)=\frac{P(x)}{Q(x)}$ for some polynomials $P(x)$ and $Q(x)$ in $F[x]$, with $Q\not=0$. Without loss of generality, say $x$ does not divide both $P(x)$ and $Q(x)$. Then $x=\frac{P(x)^2}{Q(x)^2}$ and hence $P(x)^2=xQ(x)^2$. So $x$ divides $P(x)$. Hence, we can write $P(x)=xH(x)$ for some polynomial $H$ with coefficients in $F$. Note that this implies that $xH(x)^2=Q(x)^2$, so $x$ divides $Q(x)$. A contradiction.
+\end{proof}
+
+\question{11}{If $K$ is an extension of $F$ prove that the set of elements in $K$ which are separable over $F$ forms a subfield of $K$.}
+
+\begin{Thm}
+ Let $F$ be a field and $K$ an extension of $F$. Then the set of all elements in $K$ which are separable over $F$ forms a subfield of $K$.
+\end{Thm}
+
+\begin{proof}
+
+\end{proof}
+
+
+\question{12}{If $F$ is of characteristic $p\not=0$ and if $K$ is a finite extension of $F$, prove that given $a\in K$ either $a^{p^n}\in F$ for some $n$ or we can find an integer $m$ such that $a^{p^m}\not\in F$ and is separable over $F$.}
+
+\begin{Thm}
+ Let $F$ be a field with characteristic $p\not=0$. If $K$ is a finite extension of $F$, for any $a\in K$, either $a^{p^n}\in F$ for some $n$ or there exists an integer $m$ such that $a^{p^m}\not\in F$ and is separable over $F$.
+\end{Thm}
+
+\begin{proof}
+ If $a^{p^n}\in F$, we are done. Thus, suppose $a^{p^n}\not\in F$ for any $n$. We must show there exists an $m$ such that $a^{p^m}$ is separable.
+\end{proof}
+
+
+\question{7}{Prove that a symmetric polynomial in $x_1,\hdots,x_n$ is a polynomial in the elementary symmetric functions in $x_1,\hdots,x_n$.}
+
+\begin{Thm}
+ Suppose $x_1,x_2,\hdots,x_n$ are elements of some field $F$. Let \begin{align*}y_1&=\sum_{i=1}^nx_i\\y_2&=\sum_{i<j}x_ix_j\\y_3&=\sum_{i<j<k}x_ix_jx_k\\\vdots\\y_n&=x_1x_2\hdots x_n\end{align*} Then any symmetric polynomial in $x_1,x_2,\hdots,x_n$ is a polynomial in $y_1,y_2,\hdots,y_n$.
+\end{Thm}
+
+\begin{proof}
+Let $P(x_1,x_2,\hdots,x_n)$ be a symmetric polynomial of degree $m$. Then for any permutation $\sigma\in S_n$, $P(x_{\sigma(1)},x_{\sigma(2)},\hdots,x_{\sigma(n)})=P(x_1,x_2,\hdots,x_n)$. Thus, if $x_i^k$ is a term in $P(x)$, then $x_1^k,x_2^k,\hdots,x_n^k$ are all terms in $P(x)$. Similarly, if $x_ix_j$ is a term in $P(x)$, so must be all terms of the form $x_ix_j$. Applying this logic, we see that \begin{align*}P(x)&=\sum_{k=1}^n\beta_kx_k^k+\sum_{k_1<k_2}\beta_{k_1k_2}x_{k_1}^{k_1}x_{k_2}^{k_2}+\hdots+\sum_{k_1<k_2<\hdots<k_n}\beta_{k_1k_2\hdots k_n}x_{k_1}^{k_1}x_{k_2}^{k_2}\hdots x_{k_n}^{k_n}\end{align*} for some sequences $\beta_k,\beta_{k_1k_2},\hdots,\beta_{k_1k_2\hdots k_n}$. This is clearly a polynomial in $y_1,y_2,\hdots,y_n$.
+\end{proof}
+
+
+\question{8}{Express the following as polynomials in the elementary symmetric functions in $x_1,x_2,x_3$:}
+\begin{description}
+\item [(a)] $x_1^2+x_2^2+x_3^2$
+\item [(b)] $x_1^3+x_2^3+x_3^3$
+\item [(c)] $(x_1-x_2)^2(x_1-x_3)^2(x_2-x_3)^2$
+\end{description}
+
+\begin{proof}[Solution]
+Let \begin{align*}y_1&=x_1+x_2+x_3\\y_2&=x_1x_2+x_1x_3+x_2x_3\\y_3&=x_1x_2x_3\end{align*}
+ \begin{description}
+  \item [(a)] $y_1^2-2y_2=x_1^2+x_2^2+x_3^2$
+  \item [(b)] $y_1^3-3y_1y_2+3y_3=x_1^3+x_2^3+x_3^3$
+  \item [(c)] $y_1^2y_2^2-4y_2^3-4y_1^3y3+18y_1y_2y_3-27y_3^2=(x_1-x_2)^2(x_1-x_3)^2(x_2-x_3)^2$
+ \end{description}
+
+\end{proof}
+
+
+\question{9}{If $\alpha_1,\alpha_2,\alpha_3$ are the roots of a cubic polynomial $x^3+7x^2-8x+3$, find the cubic polynomial whose roots are}
+\[\textbf{(a) }\alpha_1^2,\alpha_2^2,\alpha_3^2\hskip.5in\textbf{(b) }\frac{1}{\alpha_1},\frac{1}{\alpha_2},\frac{1}{\alpha_3}\hskip.5in\textbf{(c) }\alpha_1^3,\alpha_2^3,\alpha_3^3\]
+
+\question{18}{If the field $F$ contains a primitive $n$th root of unity, prove that the Galois group of $x^n-a$, for $a\in F$, is abelian.}
+
+\begin{Thm}
+ If the field $F$ contains a primitive $n$th root of unity, say $z$, then the Galois group of $x^n-a$, for $a\in F$, is abelian.
+\end{Thm}
+
+\begin{proof}
+ Let $K$ be the splitting field of $x^n-a$. Since $z$ is a primitive $n$th root of unity, we observe that $z,z^2,z^3,\hdots,z^{n-1}\in F$, and that none of $z,z^2,z^3,\hdots,z^{n-1}$ are $1$. The Galois group of $K$, $G(K,F)$ is the set of automorphisms of $K$ which are the identity on $F$. Now, let $\alpha\in K$ be any root of $x^n-a$. Then $\alpha,\alpha z,\alpha z^2,\hdots,\alpha z^{n-1}$ are the roots of $x^n-a$, and so $K=F(\alpha,\alpha z,\alpha z^2,\hdots,\alpha z^n)=F(\alpha)$. Now, take any $\phi\in G(K,F)$. Since $\phi(x)=x$ for all $x\in F$, $\phi$ permutes the roots of $x^n-a$. In other words, $\phi(\alpha)=z^k\alpha$ for some $k$. Now, let $\phi_1,\phi_2\in G(K,F)$ be given by \begin{align*}\phi_1(\alpha)&=z^{k_1}\alpha\\\phi_2(\alpha)&=z^{k_2}\alpha\end{align*} Then \begin{align*}\phi_1\circ\phi_2(\alpha)&=\phi_1(\phi_2(\alpha))\\&=\phi_1(z^{k_2}\alpha)\\&=z^{k_2}\phi_1(\alpha)\\&=z^{k_2}z^{k_1}\alpha\\&=z^{k_1}z^{k_2}\alpha\\&=z^{k_1}\phi_2(\alpha)\\&=\phi_2(z^{k_1}\alpha)\\&=\phi_2(\phi_1(\alpha))\\&=\phi_2\circ\phi_1(\alpha)\end{align*}
+\end{proof}
+
+
+\end{document}

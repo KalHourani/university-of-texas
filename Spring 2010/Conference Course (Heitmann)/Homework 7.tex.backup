@@ -1,0 +1,171 @@
+
+\documentclass[12pt,leqno]{article}
+
+\usepackage{graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\numberwithin{equation}{section}
+\pagestyle{headings}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in} \noindent\fbox{#1} #2 \vspace{.10in}}
+
+\swapnumbers
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+
+
+\makeindex
+
+\begin{document}
+
+
+\thispagestyle{plain}
+\begin{flushright}
+\large{\textbf{Khalid Hourani\\
+Heitmann\\
+Homework 7\\
+}}
+\end{flushright}
+
+\section*{6.2 Characteristic Roots}
+
+\question{1}{If $T\in A(V)$ and if $q(x)\in F[x]$ is such that $q(T)=0$, is it true that every root of $q(x)$ in $F$ is a characteristic root of $T$? Either prove that this is true or give an example to show that it is false.}
+
+\begin{proof}[Solution]
+Take $M=\begin{bmatrix}1&0\\0&1\end{bmatrix}$. Observe that $q(x)=x^3-2x^2+x$ is solved by $M$, but $q$ has roots $1$ and $0$, but $0$ is not a characteristic root of $M$.
+\end{proof}
+
+\question{2}{If $T\in A(V)$ and if $p(x)$ is the minimal polynomial for $T$ over $F$, suppose that $p(x)$ has all its roots in $F$. Prove that every root of $p(x)$ is a characteristic root of $T$.}
+
+\begin{proof}
+Suppose \[p(x)=(x-r_1)(x-r_2)\hdots(x-r_n)\] Then \[(T-r_1)(T-r_2)\hdots(T-r_n)=0\] so, for any $\mathbf{v}\in V$, \[(T-r_1)(T-r_2)\hdots(T-r_n)\mathbf{v}=0\] Take \[\mathbf{w}_1=(T-r_2)(T-r_3)\hdots(T-r_n)\mathbf{v}\] \[\mathbf{w}_2=(T-r_1)(T-r_3)\hdots(T-r_n)\mathbf{v}\] and so on. Then, for all roots $r_i$ of $p(x)$, $(T-r_i)\mathbf{w}_i=0$, so $T(\mathbf{w}_i)=r_i\mathbf{w}_i$. Thus $r_i$ is a characteristic root of $T$. 
+\end{proof}
+
+\question{3}{Let $V$ be two-dimensional over the field $\mathbb{R}$, of real numbers, with a basis $v_1,v_2$. Find the characteristic roots and the corresponding characteristic vectors for $T$ defined by:}
+\begin{description}
+ \item [(a)] $v_1T=v_1+v_2,\hskip.1in v_2T=v_1-v_2$
+ \item [(b)] $v_1T=5v_1+6v_2,\hskip.1in v_2T=-7v_2$
+ \item [(c)] $v_1T=v_1+2v_2,\hskip.1in v_2T=3v_1+6v_2$
+\end{description}
+
+\begin{proof}
+ \begin{description}
+  \item [(a)] Suppose $v=a_1v_1+a_2v_2$ is a characteristic vector with characteristic roots $\lambda$. Then \begin{align*}T(a_1v_1+a_2v_2)=\lambda(a_1v_1+a_2v_2)&=a_1v_1+a_1v_2+a_2v_1-a_2v_2\\&=(a_1+a_2)v_1+(a_1-a_2)v_2\end{align*}
+ \end{description}
+
+\end{proof}
+
+
+\section*{6.3 Matrices}
+\question{5}{Let $V$ be a vector space of polynomials of degree 3 or less over $F$. In $V$ define $T$ by $(\alpha_0+\alpha_1x+\alpha_2x^2+\alpha_3x^3)T=\alpha_0+\alpha_1(x+1)+\alpha_2(x+1)^2+\alpha_3(x+1)^3$. Compute the matrix $T$ in the basis:}
+\begin{description}
+ \item [(a)] $1,x,x^2,x^3$
+ \item [(b)] $1,1+x,1+x^2,1+x^3$
+ \item [(c)] If the matrix in part \textbf{(a)} is $A$ and that in part \textbf{(b)} is $B$, find a matric $C$ so that $B=CAC^{-1}$.
+\end{description}
+
+\begin{proof}[Solution]
+Observe that the mapping $T$ is given by \[T(\alpha_0+\alpha_1x+\alpha_2x^2+\alpha_3x^3)=\alpha_0+\alpha_1+\alpha_2+\alpha_3+(\alpha_1+2\alpha_2+3\alpha_3)x+(\alpha_2+3\alpha_3)x^2+\alpha_3x^3\]
+ \begin{description}
+  \item [(a)] \begin{align*}T(1)&=1\\T(x)&=1+x\\T(x^2)&=1+2x+x^2\\T(x^3)&=1+3x+3x^2+x^3\end{align*} thus the matrix for $T$ under the basis $1,x,x^2,x^3$ is given by \[m(T)=\begin{bmatrix}1&1&1&1\\0&1&2&3\\0&0&1&3\\0&0&0&1\end{bmatrix}\]
+  \item [(b)] \begin{align*}T(1)&=1\\T(1+x)&=2+x=1+(1+x)\\T(1+x^2)&=2+2x+x^2=-1+2(1+x)+(1+x^2)\\T(1+x^3)&=2+3x+3x^2+x^3=-5+3(1+x)+3(1+x^2)+(1+x^3)\end{align*} thus the matrix for $T$ under the basis $1,1+x,1+x^2,1+x^3$ is given by \[m(T)=\begin{bmatrix}1&1&-1&-5\\0&1&2&3\\0&0&1&3\\0&0&0&1\end{bmatrix}\]
+  \item [(c)] Take $C=\begin{bmatrix}1&-1&-1&-1\\0&1&0&0\\0&0&1&0\\0&0&0&1\end{bmatrix}$.
+ \end{description}
+
+\end{proof}
+
+
+\question{6}{Let $V=F^{(3)}$ and suppose that \[\begin{pmatrix}1&1&2\\-1&2&1\\0&1&3\end{pmatrix}\] is the matrix of $T\in A(V)$ in the basis $v_1=(1,0,0)$, $v_2=(0,1,0)$, $v_3=(0,0,1)$. Find the matrix of $T$ in the basis:}
+\begin{description}
+ \item [(a)] $u_1=(1,1,1),\hskip.1in u_2=(0,1,1),\hskip.1in u_3=(0,0,1)$
+ \item [(b)] $u_1=(1,1,0),\hskip.1in u_2=(1,2,0),\hskip.1in u_3=(1,2,1)$
+\end{description}
+
+\begin{proof}[Solution]
+ \begin{description}
+  \item [(a)] \begin{align*}T(1,1,1)&=(4,2,4)=4(1,1,1)-2(0,1,1)+2(0,0,1)\\T(0,1,1)&=(3,3,4)=3(1,1,1)+(0,0,1)\\T(0,0,1)&=(2,1,3)=2(1,1,1)-(0,1,0)+2(0,0,1)\end{align*} thus the matrix of $T$ in this basis is given by \[\begin{bmatrix}4&3&2\\-2&0&-1\\2&1&2\end{bmatrix}\]
+  \item [(b)] \begin{align*}T(1,1,0)&=(2,1,1)=3(1,1,0)-2(1,2,0)+(1,2,1)\\T(1,2,0)&=(3,3,2)=3(1,1,0)-2(1,2,0)+2(1,2,1)\\T(1,2,1)&=(5,4,5)=6(1,1,0)-6(1,2,0)+5(1,2,1)\end{align*} thus the matrix of $T$ in this basis is given by \[\begin{bmatrix}3&3&6\\-2&-2&-6\\1&2&5\end{bmatrix}\]
+ \end{description}
+
+\end{proof}
+
+\question{9}{A matrix $A\in F_n$ is said to be a diagonal matrix if all of the entries off the main diagonal of $A$ are 0, i.e., if $A=(\alpha_{ij})$ and $\alpha_{ij}=0$ for $i\not=j$. If $A$ is a diagonal matrix all of whose entries on the main diagonal are distinct, find all matrices $B\in F_n$ which commute with $A$, that is, all matrices such that $BA=AB$.}
+
+\begin{proof}[Solution]
+ Suppose $A$ is a diagonal matrix all of whose entries on the main diagonal are distinct, and suppose its entries are given by $A_{ii}=d_i$. For any matrix $B\in F_n$ with entries $b_{ij}$, observe that $BA$ has entries $a_jb_{ij}$ and $AB$ has entries $a_ib_{ij}$. In order for $BA$ to equal $AB$, $a_jb_{ij}$ must equal $a_ib_{ij}$. If $b_{ij}\not=0$, for $i\not=j$, then $a_j=a_i$, which contradicts the fact that they are distinct. Thus, $b_{ij}=0$, so $B$ must be diagonal.
+\end{proof}
+
+\question{10}{Using the result of Problem 9, prove that the only matrices in $F_n$ which commute with all matrices in $F_n$ are scalar matrices.}
+
+\begin{proof}
+ Suppose $A$ is a matrix which commutes with all $B\in F_n$. In order for $A$ to commute with all matrices, it must first commute with diagonal matrices. Thus, $A$ is diagonal. Repeating what was seen in question 9, we see that $a_ib_{ij}=a_jb_{ij}$, hence $a_i=a_j$. So $A$ is a scalar matrix.
+\end{proof}
+
+
+\section*{6.4 Canonical Forms: Triangular Form}
+\question{1}{Prove that the relation of similarity is an equiavalence relation in $A(V)$.}
+
+\begin{proof}
+ \begin{description}
+  \item [Reflexivity:] For any $T\in A(V)$, $T=\text{Id}_VT\text{Id}_V^{-1}$.
+  \item [Symmetry:] If $T=CSC^{-1}$, then $S=C^{-1}TC=C^{-1}T(C^{-1})^{-1}$.
+  \item [Transitivity:] If $T=CSC^{-1}$ and $S=XUX^{-1}$ then $T=CXUX^{-1}C^{-1}=(CX)U(CX)^{-1}$.
+ \end{description}
+\end{proof}
+
+\question{9}{Let $\mathfrak{M}$ be a nonempty set of elements in $A(V)$; the subspace $W\subset V$ is said to be \textit{invariant under} $\mathfrak{M}$ if for every $M\in\mathfrak{M}$, $WM\subseteq W$. If $W$ is invariant under $\mathfrak{M}$ and is of dimension $r$ over $F$, prove that there exists a basis of $V$ over $F$ such that every $M\in\mathfrak{M}$ has a matrix, in this basis, of the form \begin{center}$\left(\begin{array}{c|c}M_1&0\\\hline M_{12}&M_2\end{array}\right)$\end{center}where $M_1$ is an $r\times r$ matrix and $M_2$ is an $(n-r)\times(n-r)$ matrix.}
+
+\begin{proof}
+  Let $v_1,v_2,\hdots,v_n$ be a basis of $V$ so that $v_1,v_2,\hdots,v_r$ is a basis of $W$. Since $W$ is invariant under $\mathfrak{M}$, for any $0\leq i\leq r$, $M\in\mathfrak{M}$ \[M(v_i)=a_{1i}v_1+a_{2i}v_2+\hdots+a_{ri}v_r\] for some coefficients $a_{ji}$. Then the matrix for $M$ is given by \[\left[\begin{array}{cccc|cccc}a_{11}&a_{12}&\hdots&a_{1r}&b_{11}&b_{12}&\hdots&b_{1(n-r)}\\a_{21}&a_{22}&\hdots&a_{2r}&b_{21}&b_{22}&\hdots&b_{2(n-r)}\\\vdots&\vdots&\ddots&\vdots&\vdots&\vdots&\ddots&\vdots\\a_{r1}&a_{r2}&\hdots&a_{rr}&b_{r1}&b_{r2}&\hdots&b_{r(n-r)}\\\hline0&0&\hdots&0&c_{11}&c_{12}&\hdots&c_{1(n-r)}\\0&0&\hdots&0&c_{21}&c_{22}&\hdots&c_{2(n-r)}\\\vdots&\vdots&\ddots&\vdots&\vdots&\vdots&\ddots&\vdots\\0&0&\hdots&0&c_{(n-r)1}&c_{(n-r)2}&\hdots&c_{(n-r)(n-r)}\end{array}\right]\] or, equivalently \[\left[\begin{array}{c|c}M_1&M_{12}\\\hline0&M_{2}\end{array}\right]\]
+\end{proof}
+
+\question{16}{A set of linear transformations, $\mathfrak{M}\subset A(V)$, is called \textit{decomposable} if there is a subspace $W\subset V$ such that $V=W\oplus W_1$, $W\not=(0)$, $W\not=V$, and each of $W$ and $W_1$ is invariant under $\mathfrak{M}$. If $\mathfrak{M}$ is not decomposable, it is called \textit{indecomposable}.}
+\begin{description}
+ \item [(a)] If $\mathfrak{M}$ is a decomposable set of linear transformations on $V$, prove that there is a basis of $V$ in which every $M\in\mathfrak{M}$ has a matrix of the form \begin{center}$\left(\begin{array}{c|c}M_1&0\\\hline 0&M_2\end{array}\right)$\end{center} where $M_1$ and $M_2$ are square matrices.
+ \item [(b)] If $V$ is an $n$-dimensional vector space over $F$ and if $T\in A(V)$ satisfies $T^n=0$ but $T^{n-1}\not=0$, prove that the set $\{T\}$ (consisting of $T$) is indecomposable.
+\end{description}
+
+\begin{proof}
+ \begin{description}
+  \item [(a)] Choose two bases of $V$, $v_1,v_2,\hdots,v_n$ and $w_1,w_2,\hdots,w_n$ so that $v_1,v_2,\hdots,v_r,w_{r+1},w_{r+2},\hdots,w_r$ is a basis of $V$, $v_1,v_2,\hdots,v_r$ is a basis of $W$ and $w_{r+1},w_{r+2},\hdots,w_r$ is a basis of $W_1$. Then, by question 9, every $M\in M$ is of the form \[\left[\begin{array}{c|c}M_1&0\\\hline0&M_2\end{array}\right]\]
+  \item [(b)] 
+ \end{description}
+
+\end{proof}
+
+
+\question{19}{If $T\in A(V)$ has only 0 as a characteristic root, prove that $T$ is nilpotent.}
+
+\begin{proof}
+ Since $T$ has only 0 as a characteristic root, $T$ has characteristic polynomial $t^n$. By the Cayley-Hamilton Theorem, $T^n=0$. 
+\end{proof}
+
+
+\end{document}

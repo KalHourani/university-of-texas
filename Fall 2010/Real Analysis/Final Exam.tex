@@ -1,0 +1,88 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Analysis\\Final Exam}
+\date{December 4}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+\begin{titlepage}
+ \maketitle\thispagestyle{empty}
+\end{titlepage}
+\thispagestyle{empty}
+\clearpage\mbox{}\clearpage
+
+\setcounter{page}{1}
+\begin{enumerate}
+ \item A measure $\mu$ defined on the Borel sets of $\R^n$ is called \textbf{metric} if for any Borel set $E$ we have that \[\mu(E)=\inf_{O\text{ open }}\mu(O)\] Show that if $\mu$ is metric and $\mu(\R^n)<+\infty$ then there exists and sequence of functions $\{f_k\}_k$ all in $L^1(\R^n)\cap C(\R^n)$ such that for any Borel set $E$ we have \[\mu(E)=\lim_{k\to\infty}\int_Ef_kdx\] 
+
+\begin{Proof}
+ Notice that, if $\mu\ll m$, where $m$ denotes the standard Lebesgue measure on $\R^n$, then, by the Radon-Nikodym Theorem, there exists a measurable function $f$ such that \[\mu(E)=\int_Efdx\] for all Borel sets $E$. Since the set of continuous functions with compact support is dense in $L^1(\R^n)$, there is a sequence of continuous functions $f_k\to f$, hence \[\mu(E)=\lim_{k\to\infty}\int_Ef_kdx\qedhere\] 
+\end{Proof}
+
+ \item Let $u\in L^2(\R^n)$ be \textbf{supported} in $Q_1$ and $\phi_0(x)\in C_c^{\infty}(\R^n)$ a positive function with $\int\phi_0dx=1$. Suppose that there exists a constant $M>0$ such that if $u_{\epsilon}=u*\phi_{\epsilon}$ ($0<\epsilon<1,\phi_{\epsilon}$ defined as usual) then \[\|\nabla u_{\epsilon}\|_{L^2(\R^n)}\leq M\:\forall\epsilon\] Show that one may construct a vector field $g\in L^2(\R^n)$ such that for almost every $x$ we have \[u(x)=\frac{1}{\alpha_n}\int_{Q_1}\frac{y-x}{|y-x|^n}\cdot g(y)dy\] and such that for \textit{any} scalar function $\phi\in C_c^{\infty}(\R^n)$ we have \[\int\phi gdx=-\int u\nabla\phi dx\] This vector field is called the \textbf{gradient} of $u$, and is also denoted $\nabla u$. Note: $\alpha_n$ denotes the surface area of $\partial B_1$.
+
+ \item Use the Kolmogorov compactness criterion to show the following: Consider the set of all functions $u\in L^2(\R^n)$ with support in $Q_1$ and satisfying the bound (where $\nabla u$ exists in the sense of problem 2)\[\int|\nabla u|^2dx\leq1\] Show that this is a compact set in $L^2(\R^n)$.
+
+\begin{Proof}
+ By the Kolmogorov compactness criterion, we show that the set described above is compact by showing that, for every $\epsilon>0$ there is a $\delta>0$ such that, if $\|h\|<\delta$, then $\|u(x+h)-u(x)\|_2<\epsilon$ (the condition that the set be supported in a fixed ball is given in the statement above).
+
+By the previous problem \[u(x+h)-u(x)=\frac{1}{\alpha_n}\int_{Q_1}\left(\frac{y-x-h}{|y-x-h|^n}-\frac{y-x}{|y-x|^n}\right)\nabla udy\] Applying H\"{o}lder's Inequality, we we have \[\|u(x+h)-u(x)\|_2\leq\frac{1}{\alpha_n}\left(\int_{Q_1}\left(\frac{y-x-h}{|y-x-h|^n}-\frac{y-x}{|y-x|^n}\right)^2dy\right)^{1/2}\] By the appropriate choice of $\delta$, we see that, if $\|h\|<\delta$, then the value above is less than $\epsilon$.
+\end{Proof}
+
+ \item A compact set $E\subseteq\R^n$ is said to have \textbf{capacity zero} if there exists a sequence of functions $u_k\in L^2(\R^n)$ with uniform compact support and each with gradients $\nabla u_k$ (in the sense of exercise 2) such that \[\text{a})u_k|_E\geq1\hskip.5in\text{b})\int_{\R^n}|\nabla u_k|^2dx\to0\] Show that a point in $\R^2$ has capacity zero, but a segment does not.
+\end{enumerate}
+
+
+\end{document}

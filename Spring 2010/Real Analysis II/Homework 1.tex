@@ -1,0 +1,124 @@
+
+\documentclass[12pt,leqno]{article}
+
+\usepackage{graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\numberwithin{equation}{section}
+\pagestyle{plain}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in} \noindent\fbox{#1} #2 \vspace{.10in}}
+
+\swapnumbers
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\theoremstyle{definition}
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+
+
+\makeindex
+
+\begin{document}
+
+
+\thispagestyle{plain}
+\begin{flushright}
+\large{\textbf{Khalid Hourani\\
+Homework \#1\\
+M365D\\
+TTH 2:00-3:30\\
+William Beckner\\}}
+\end{flushright}
+\section{Homework 1}
+\begin{thm}
+Let $E\subseteq\mathbb{R}^n$ be a set with $0<m^*(E)<\infty$ and let $0<\lambda<1$. Then
+there exists a closed ball $Q$ with \[m^*(E\cap Q)|>\lambda\text{vol}(Q)\]
+\end{thm}
+
+
+\begin{proof}
+Let $\{Q_n\}$ be some closed cover of $E$ such that \[m^*(E)\leq\sum_{n=1}^{\infty}\text{vol}(Q_n)<m^*(E)+(1-\lambda)m^*(E)\]In order to reach a contradiction, suppose that, for all $n$, \[m^*(E\cap Q_n)\leq\lambda\text{vol}(Q_n)\]Since $\{Q_n\}$ is a cover of $E$, \[\tag{1}m^*(E)\leq\sum_{n=1}^{\infty}m^*(E\cap Q_n)\leq\lambda\sum_{n=1}^{\infty}\text{vol}(Q_n)\]Further \[\tag{2}(1-\lambda)m^*(E)\leq(1-\lambda)\sum_{n=1}^{\infty}m^*(E\cap Q_n)\leq(1-\lambda)\sum_{n=1}^{\infty}\text{vol}(Q_n)\]Adding (1) and (2) yields\[m^*(E)+(1-\lambda)m^*(E)\leq\sum_{n=1}^{\infty}\text{vol}(Q_n)\] This is a contradiction. Thus, there exists a closed ball $Q$ with \[m^*(E\cap Q)>\lambda\text{vol}(Q)\]
+\end{proof}
+
+\begin{thm}
+ The Cantor set has measure $0$.
+\end{thm}
+
+\begin{proof}
+ Let $C_n$ be the $n$th iteration of the Cantor set $C$. In other words, $C_0=[0,1]$, $C_1=[0,\frac{1}{3}]\cup[\frac{2}{3},1]$, and so on. Then $m^*(C_n)=\frac{2^n}{3^n}$. Further, each $C_n$ is a closed cover of the Cantor set. Hence, for any $\epsilon>0$, there exists an $n\in\mathbb{N}$ such that $m^*(C_n)<\epsilon$. Thus, $m^*(C)=\text{inf}\left(m^*(C_n)\right)=0$.
+\end{proof}
+
+\begin{thm}
+ Let $(E,d)$ be a metric space. Then $\rho(x,y)=\frac{d(x,y)}{1+d(x,y)}$ is a metric on $E$.
+\end{thm}
+
+\begin{proof}
+Let $a=d(x,y)$, $b=d(x,z)$ and $c=d(z,y)$. By the triangle inequality, \begin{align*}a&\leq b+c\\a&\leq b+c+2bc+abc\\a+ab+ac+abc&\leq b+abc+bc+abc+c+bc+ac+abc\\a(1+b)(1+c)&\leq b(1+a)(1+c)+c(1+b)(1+a)\\\frac{a}{1+a}&\leq\frac{b}{1+b}+\frac{c}{1+c}\\\frac{d(x,y)}{1+d(x,y)}&\leq\frac{d(x,z)}{1+d(x,z)}+\frac{d(y,z)}{1+d(z,y)}\\\rho(x,y)&\leq\rho(x,z)+\rho(z,y)\end{align*}
+\end{proof}
+
+\begin{thm}
+ Let $f:[0,1]\to\mathbb{R}$ be continous. Then \[\lim_{p\to\infty}\left(\int_0^1|f(x)|^pdx\right)^{\frac{1}{p}}=||f||_{\infty}\]
+\end{thm}
+
+\begin{proof}
+ We shall divide this proof into two parts. First, we shall show that \[||f||_{\infty}\leq\lim_{p\to\infty}\left(\int_0^1|f(x)|^pdx\right)^{\frac{1}{p}}\]Recall that $||f||_{\infty}=\text{sup}|f(x)|$. Let $|f(x_0)|=||f||_{\infty}$. Then, for every $\epsilon>0$, there exists an interval $I$ such that $||f||_{\infty}\leq|f(x)|$ for all $x\in I$. Then \begin{align*}(||f||_{\infty}-\epsilon)^p\cdot l(E)&\leq\int_I|f|^pdx\leq\int_0^1|f|^pdx\\(||f||_{\infty}-\epsilon)^p&\leq\dfrac{\int_0^1|f|^pdx}{l(E)}\\||f||_{\infty}-\epsilon&\leq\left(\dfrac{\int_0^1|f|^pdx}{l(E)}\right)^{\frac{1}{p}}\end{align*}Since this holds for every $\epsilon>0$\[||f||_{\infty}\leq\dfrac{\left(\int_0^1|f|^pdx\right)^{\frac{1}{p}}}{l(E)^{\frac{1}{p}}}\]Taking the limit as $p$ approaches infinity\[||f||_{\infty}\leq\dfrac{\displaystyle\lim_{p\to\infty}\left(\int_0^1|f|^pdx\right)^{\frac{1}{p}}}{\displaystyle\lim_{p\to\infty}l(E)^{\frac{1}{p}}}=\lim_{p\to\infty}\left(\int_0^1|f|^pdx\right)^{\frac{1}{p}}\]
+
+Now we shall show that \[\lim_{p\to\infty}\left(\int_0^1|f(x)|^pdx\right)^{\frac{1}{p}}\leq||f||_{\infty}\] To see this, observe that \begin{align*}\int_0^1|f|^pdx&=\int_0^1|f||f|^{p-1}dx\\&\int_0^1|f|^pdx\leq\int_0^1|f|dx\left(||f||_{\infty}\right)^{p-1}\\\left(\int_0^1|f|^pdx\right)^{\frac{1}{p}}&\leq\left(\int_0^1|f|dx\right)^{\frac{1}{p}}(||f||_{\infty})^{-\frac{1}{p}}||f||_{\infty}\end{align*}Taking the limit as $p$ approaches infinity\[\lim_{p\to\infty}\left(\int_0^1|f(x)|^pdx\right)^{\frac{1}{p}}\leq||f||_{\infty}\] Thus \[\lim_{p\to\infty}\left(\int_0^1|f(x)|^pdx\right)^{\frac{1}{p}}=||f||_{\infty}\]
+\end{proof}
+
+\begin{thm}
+ Let $C_0(\mathbb{R}^n)$ denote the set of continuous functions that go to $0$ as $|x|\to\infty$. We define the support of $f$ to be $\overline{\{x\in\mathbb{R}^n|f(x)\not=0\}}$ and denote the set of continuous functions with compact support by $C_c(\mathbb{R}^n)$. Then $\overline{C_c(\mathbb{R}^n)}=C_0(\mathbb{R}^n)$.
+\end{thm}
+
+\begin{thm}
+Let $f,g$ be continuous functions with \[\int_{-\infty}^{\infty}f(x)^2dx<\infty\] and \[\int_{-\infty}^{\infty}g(x)^2dx<\infty\] Define \[H(x)=\int_{-\infty}^{\infty}f(x-y)g(y)dy\]
+Then $H$ is bounded, translation-invariant and continuous. Further, \[\displaystyle\lim_{x\to\infty}H(x)=0\]
+\end{thm}
+
+\begin{thm}
+ Suppose \[\phi\left(\frac{x+y}{2}\right)=\frac{1}{2}\phi(x)+\frac{1}{2}\phi(y)\] Then $\phi$ is/is not convex.
+\end{thm}
+
+\begin{thm}
+ Let $\phi:A\to\mathbb{R}$ be a convex function on an open convex subset, $A$, of $\mathbb{R}^n$. Then $\phi$ is continuous.
+\end{thm}
+
+\begin{proof}
+ For any $x\in A$, let $P$ be the parallelpiped centered at $x$, i.e. \[P=\{x+\sum_{i=1}^n\lambda_ie_i|\lambda_i\in[-1,1]\}\] where $e_1,e_2,\hdots,e_n$ are the standard basis elements of $R^n$. Further, let $\partial P$ denote the boundary of $P$, i.e. \[\partial P=\{x+\sum_{i=1}^n\lambda_ie_i|\text{max}|\lambda_i|=1\}\] Since $\phi$ is convex, for any $\lambda\in[0,1]$, \begin{align*}\phi((1-\lambda)x+\lambda y)&\leq(1-\lambda)\phi(x)+\lambda\phi(y)\\&=\phi(x)+\lambda(\phi(y)-\phi(x))\end{align*}
+\end{proof}
+
+
+\begin{thm}
+ Suppose $f$ is a continuous function with \[f(ax+by)=af(x)+bf(y)\] for all $x,y\in\mathbb{R}$. Then $f$ is a line through the origin.
+\end{thm}
+
+\begin{proof}
+
+\end{proof}
+
+\end{document}

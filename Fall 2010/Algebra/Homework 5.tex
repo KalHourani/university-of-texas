@@ -1,0 +1,163 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Algebra\\\large Homework 5}
+\date{October 5, 2010}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+\section*{Section 4.2}
+\begin{enumerate}
+ \item [11.] Let $G$ be a finite group and let $\pi:G\to S_G$ be the left regular representation. Prove that if $x$ is an element of $G$ of order $n$ and $|G|=mn$, then $\pi(x)$ is a product of $m$ $n$-cycles. Deduce that $\pi(x)$ is an odd permutation if and only if $|x|$ is even and $\frac{|G|}{|x|}$ is odd.
+
+\begin{Proof}
+ Let $\pi(x)$ and observe that $\pi(x)(g)=xg$ for all $g\in G$. Since $|x|=n$, we see that, for each $g\in G$, the cycle \[(g\hskip.05in xg\hskip.05inx^2g\hskip.05in\hdots\hskip.05in x^{n-1}g)\] occurs in $\sigma_x$. First, notice that these cycles are disjoint or equal and that they have length $n$. Moreover, there are $mn$ elements of $G$, hence there must be $m$ such cycles in the decomposition of $\pi(x)$.
+
+Now, $\pi(x)$ is an odd permutation if and only if it is the product of an odd number of even cycles. However, $\pi(x)$ is the product of $m$ $n$-cycles, which forces $m=\frac{|G|}{|x|}$ to be odd and $n=|x|$ to be even.
+\end{Proof}
+
+ \item [12.] Let $G$ and $\pi$ be as in the preceding exercise. Prove that if $\pi(G)$ contains an odd permutation then $G$ has a subgroup of index 2.
+
+\begin{Proof}
+Suppose $\omega_1,\omega_2,\hdots,\omega_k$ are the odd permutations in $\pi(G)$. Then $\omega_1^2,\omega_1\omega_2,\hdots,\omega_1\omega_k$ are all even permutations in $\pi(G)$, hence there are at least as many even permutations in $\pi(G)$ as odd permutations.
+
+On the other hand, if $\omega\in\pi(G)$ is an odd permutation, for every even permutation $\sigma$ of $\pi(G)$, $\sigma\omega$ is an odd permutation. Thus, there are at least as many odd permutations as even permutations.
+
+Therefore the number of even permutations and odd permutations in $\pi(G)$ is the same. Clearly then, the group $A_G\cap\pi(G)$ has index 2 in $\pi(G)$. The inverse image of this group is a subgroup of $G$ of index 2. 
+\end{Proof}
+
+\end{enumerate}
+
+\section*{4.5}
+\begin{enumerate}
+ \item [36.] Prove that if $N$ is a normal subgroup of $G$ then $n_p(G/N)\leq n_p(G)$. 
+
+\begin{Proof}
+ Write $|G|=p^am$ and $|N|=p^bn$ with $p$ not dividing $m$ nor $n$. Then $|G/N|=p^{a-b}(m/n)$. However, $|PN/N|=p^{a-b}$ (c.f. section 3.3 exercise 9), hence $PN/N$ is a Sylow $p$-subgroup of $G/N$. Let $\text{Syl}_p(G)$, $\text{Syl}_p(G/N)$ denote the set of Sylow $p$-subgroups of $G$ and $G/N$, respectively. Then the function \[\phi:P\mapsto PN/N\] defines a map from $\text{Syl}_p(G)$ to $\text{Syl}_p(G/N)$. We shall show that this map is surjective, from which $n_p(G/N)\leq n_p(G)$ follows.
+
+Take $Q/N\in\text{Syl}_p(G/N)$. By Lagrange's Theorem, $|Q|=p^an$, thus, for any $P\in\text{Syl}_p(Q)$, the set of Sylow $p$-subgroups of $Q$, $|P|=p^a$, hence $P\in\text{Syl}_p(G)$. Now, $N$ is normal in $Q$, so $PN\leq Q$. However, $|PN|=p^an=|Q|$ (c.f. section 3.3 exercise 9), hence $PN=Q$. Thus, $PN/N=Q/N$, and so the element $P\in\text{Syl}_p(G)$ maps to $Q/N\in\text{Syl}_p(G/N)$. Thus, the map $\phi$ is surjective.
+\end{Proof}
+
+ \item [37.] Let $R$ be a normal $p$-subgroup of $G$ (not necessarily a Sylow subgroup).
+  \begin{enumerate}
+   \item Prove that $R$ is contained in every Sylow $p$-subgroup of $G$.
+   \item If $S$ is another normal $p$-subgroup of $G$, prove that $RS$ is also a normal $p$-subgroup of $G$.
+   \item The subgroup $O_p(G)$ is defined to be the group generated by all normal $p$-subgroups of $G$. Prove that $O_p(G)$ is the unique largest normal $p$-subgroup of $G$ and $O_p(G)$ equals the intersection all Sylow $p$-subgroups of $G$. 
+   \item Let $\overline{G}=G/O_p(G)$. Prove that $O_p(\overline{G})=\overline{1}$ (i.e., $\overline{G}$ has no nontrivial normal $p$-subgroup).
+  \end{enumerate}
+
+\begin{Proof}\indent
+ \begin{enumerate}
+  \item If $P$ is some Sylow $p$-subgroup of $G$, then all Sylow $p$-subgroups of $G$ are of the form $gPg^{-1}$, by Sylow's Theorem. However, $R$ is normal, hence $R=gRg^{-1}\leq gPg^{-1}$.
+  \item Since $R$ is normal, $RS$ is a subgroup. Moreover, since $S$ is normal, $gRSg^{-1}=gRg^{-1}gSg^{-1}=RS$ for all $g\in G$. 
+  \item By induction on the number of normal $p$-subgroups of $G$, we see that $O_p(G)$ is simply the product of all normal $p$-subgroups of $G$, i.e., \[O_p(G)=R_1R_2\hdots R_n\] with $R_1,R_2,\hdots, R_n$ the collection of all normal $p$-subgroups of $G$. This subgroup is certainly a normal $p$-subgroup, and certainly contains all normal $p$-subgroups of $G$, so it is in fact the unique largest normal $p$-subgroup of $G$. However, it is also the intersection of all Sylow $p$-subgroups of $G$, for take $P$ a Sylow $p$-subgroup of $G$. The intersection of all Sylow $p$-subgroups of $G$ is merely \[\bigcap_{g\in G}gPg^{-1}\] which is a normal $p$-subgroup of $G$, hence $O_p(G)$ contains this intersection. On the otherhand, $O_p(G)$ is contained in some Sylow $p$-subgroup of $G$. However, $O_p(G)$ is normal, and is therefore contained in \textit{all} Sylow $p$-subgroups of $G$. In particular, it is contained in the interscetion, which establishes \[O_p(G)=\bigcap_{g\in G}gPg^{-1}\]
+  \item Take $\overline{P}=P/O_p(G)$, a $p$-subgroup in $\overline{G}$. By the Lattice Isomorphism Theorem, $P$ must be normal $p$-subgroup in $G$. However, $O_p(G)\unlhd P$, hence $P=O_p(G)$. Therefore $\overline{P}=P/O_p(G)=\overline{1}$.
+ \end{enumerate}
+
+\end{Proof}
+
+ \item [41.] Prove that $SL_2(\F_4)\cong A_5$. 
+
+\begin{Proof}
+ We first show that $|SL_2(\F_4)|=60$. By definition, $\text{det}:GL_2(\F_4)\to F^{\times}$ has kernel $SL_2(\F_4)$. Thus, by the First Isomorphism Theorem, \begin{align*}|SL_2(\F_4)|&=\frac{|GL_2(\F_4)|}{|F^{\times}}\\&=\frac{(4^2-1)(4^2-4)}{4-1}\\&=60\end{align*} It now suffices to show that there are two Sylow 5-subgroups of $SL_2(\F_4)$, from which we can conclude that $SL_2(\F_4)\cong A_5$. 
+
+Write $\F_4=\{0,1,x,x+1\}$ with $x^2=x+1$, $(x+1)^2=x$ and $x(x+1)=1$. Let \begin{align*}\mathcal{X}_1&=\begin{bmatrix}1&1\\x&x+1\end{bmatrix}\\\mathcal{X}_2&=\begin{bmatrix}1&1\\x+1&x\end{bmatrix}\end{align*} Observe now that \begin{align*}\mathcal{X}_1&=\begin{bmatrix}1&1\\x&x+1\end{bmatrix}\\\mathcal{X}_1^2&=\begin{bmatrix}x+1&x\\x+1&0\end{bmatrix}\\\mathcal{X}_1^3&=\begin{bmatrix}0&x\\x+1&x+1\end{bmatrix}\\\mathcal{X}_1^4&=\begin{bmatrix}x+1&1\\x&1\end{bmatrix}\\\mathcal{X}_1^5&=\begin{bmatrix}1&0\\0&1\end{bmatrix}\end{align*} Thus $\mathcal{X}_1$ has order 5. Similarly, $\mathcal{X}_2$ has order 5, hence we have two Sylow 5-subgroups of $SL_2(\F_4)$. 
+\end{Proof}
+
+\end{enumerate}
+
+\section*{4.6}
+\begin{enumerate}
+ \item [1.] Prove that $A_n$ does not have a proper subgroup of index $<n$ for all $n\geq5$.
+
+\begin{Proof}
+ In order to reach a contradiction, suppose $H$ is a proper subgroup of $A_n$ with $[A_n:H]=m<n$. Let $A_n$ act on the cosets of $H$ by conjugation. This induces a homomorphism $\phi:A_n\to S_m$ which is injective since $A_n$ is simple. However, this forces $\frac{n!}{2}\leq m!$, which is clearly impossible. Thus, $A_n$ does not have a proper subgroup of index $<n$ for $n\geq5$.
+\end{Proof}
+
+ \item [3.] Prove that $A_n$ is the only proper subgroup of index $<n$ in $S_n$ for all $n\geq5$.
+
+\begin{Proof}
+ Take $H$ a proper subgroup of $S_n$ with $[S_n:H]=m<n$. Let $S_n$ act on the cosets of $H$ by conjugation. This induces a homomorphism $\phi:S_n\to S_m$, whose kernel $K$ is the intersection \[\bigcap_{\sigma\in S_n}\sigma H\sigma^{-1}\] By the First Isomorphism Theorme, $K$ is normal, hence $K=A_n$. However, $[S_n:H]\leq[S_n:A_n]=2$ so $H$ has index 2, and is therefore normal in $S_n$. This forces $H=A_n$.
+\end{Proof}
+
+ \item [4.] Prove that $A_n$ is generated by the set of all 3-cycles for each $n\geq3$.
+
+\begin{Proof}
+ Let $H$ be the group generated by 3-cycles in $S_n$. Clearly, $H\leq A_n$, for the product of even cycles is even. Every even permutation $\sigma$ can be written as the product of two transpositions. In particular, either $\sigma=(ab)(cd)=(acb)(acd)$ or $\sigma=(ab)(ac)=(acb)$, so $A_n$ is generated by 3-cycles. Thus, $A_n=H$. 
+\end{Proof}
+
+\end{enumerate}
+
+\section*{Additional Problems}
+\begin{enumerate}
+\item Let $G$ be a group of order $2^mk$, with $k$ odd, and suppose $G$ contains an element of order $2^m$. Show that the set of elements of $G$ of odd order is a normal subgroup. Deduce (using the Feit-Thompson theorem) that a finite non-abelian simple group has order divisible by 4.
+
+\begin{Proof}
+ We proceed by induction on $m$: the base case, $m=0$, is trivially true. Suppose that, for a group of order $2^{m-1}k$ which has an element of order $2^{m-1}$, then the set of elements of odd order forms a normal subgroup. Then take $G$ a group of order $2^mk$ and suppose $a\in G$ has order $2^m$. Let $\pi$ be the left regular representation of $G$. Then $\pi(a)$ is an odd permutation (c.f. section 4.2 exercises 11 and 12), hence there is a subgroup $H\leq G$ of index 2, i.e., $|H|=2^{m-1}k$. By the induction hypothesis, the set of odd order elements in $H$ forms a normal subgroup of $H$. However, this set is just the set of odd order elements of $G$, hence we have that the set of odd order elements of $G$ forms a group. This group must be normal, however, since conjugation takes odd order elements to odd order elements.
+
+By the Feit-Thompson theorem, every group of odd order is solvable. If a group is simple and non-abelian, it is certainly not simple, and therefore has even order. However, if the group's order were not divisible by 4, the group would have order $2k$ with $k$ odd, and would have an element of order 2. Then the set of elements of odd order would form a normal subgroup, which contradicts the group's simplicity. Thus, the group's order is divisible by 4.
+\end{Proof}
+
+\item Show that if $|G|<100$, $|G|$ not 60, then $G$ is solvable. 
+\begin{Proof}
+ Take \[1\unlhd N_1\unlhd\hdots\unlhd N_k\unlhd G\] a composition series of $G$. By definition, $G/N_k$ is simple, hence it must be of prime order less than 100, or must be of order 60. However, if $|G/N_k|=60$, $|G|>100$, which is impossible, so it must be of prime order. Similarly, $N_k/N_{k-1}$ must have prime order for all $k$. However, groups of prime order are cyclic, hence abelian, so the chain\[1\unlhd N_1\unlhd\hdots\unlhd N_k\unlhd G\] describes a chain of normal subgroups of $G$ with abelian quotients. Thus, $G$ is solvable. 
+\end{Proof}
+
+\end{enumerate}
+
+
+\end{document}

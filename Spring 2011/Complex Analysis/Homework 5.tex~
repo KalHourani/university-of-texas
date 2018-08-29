@@ -1,0 +1,95 @@
+\documentclass[12pt,leqno]{article}
+
+\usepackage{graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Complex Analysis\\\large Homework 5}
+\date{February 23, 2011}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\footskip=36pt
+
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\re}{\operatorname{Re}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\w}{\omega}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+\clearpage\mbox{}\clearpage
+
+\setcounter{page}{1}
+\begin{enumerate}
+ \item Let \[f_n(z)=\frac{z^n}{(z+1)(z-1)(z-2)}\] Show that $f_1$ has an antiderivative on $\{z\in\C:|z|>2\}$. Is the same true for $f_2$?
+ \begin{Solution}
+ Let $\gamma$ be a closed curve in $\{z\in\C:|z|>2\}$. We see that $\gamma$ contains either all or none of the poles of $f_1$. In the latter case, we have \[\int_{\gamma}f_1(z)dz=0\] by the Cauchy integral formula. When $\gamma$ contains all three poles of $f_1$, we write \[\frac{z}{(z+1)(z-1)(z-2)}=\frac{-1/6}{z+1}+\frac{-1/2}{z-1}+\frac{2/3}{z-2}\] by partial fractions. Then \begin{align*}\int_{\gamma}f_1(z)dz&=\int_{\gamma}\frac{-1/6}{z+1}dz+\int_{\gamma}\frac{-1/2}{z+1}dz+\int_{\gamma}\frac{2/3}{z-2}dz\\&=2\pi i\left(\frac{-1}{6}+\frac{-1}{2}+\frac{2}{3}\right)\\&=0\end{align*} thus $f_1$ has an antiderviative on $\{z\in\C:|z|>2\}$.
+
+However, \[f_2(z)=\frac{z^2}{(z+1)(z-1)(z-2)}\] does not have an antiderivative. Write \[\frac{z^2}{(z+1)(z-1)(z-2)}=\frac{1/6}{z+1}+\frac{-1/2}{z-1}+\frac{4/3}{z-2}\] Then, for a closed path $\gamma$ in $\{z\in\C:|z|>2\}$, we have \begin{align*}\int_{\gamma}f_2(z)dz&=\int_{\gamma}\frac{1/6}{z+1}dz+\int_{\gamma}\frac{-1/2}{z-1}dz+\int_{\gamma}\frac{4/3}{z-2}dz\\&=2\pi i\left(\frac{1}{6}+\frac{-1}{2}+\frac{4}{3}\right)\\&=2\pi i\not=0\qedhere\end{align*}
+ \end{Solution}
+ \item Let $0<r<R$ and put $A=\{z\in\C:r\leq|z|\leq R\}$. Show that there is a positive real number $\epsilon$ such that for each polynomial $p$, \[\sup_{z\in A}|p(z)-z^{-1}|\geq\epsilon\]
+  \begin{Proof}
+   Take $\gamma$ any closed path in $A$. Then \begin{align*}\sup_{z\in A}|p(z)-z^{-1}|&\geq\frac{1}{\mathcal{L}(\gamma)}\int_{\gamma}|p(z)-z^{-1}|dz\\&\geq\frac{1}{\mathcal{L}(\gamma)}\left|\int_{\gamma}p(z)-z^{-1}dz\right|\\&=\left|\int_{\gamma}p(z)dz-\int_{\gamma}z^{-1}dz\right|\\&=\frac{1}{\mathcal{L}(\gamma)}|0+2\pi i|\\&=\frac{2\pi}{\mathcal{L}(\gamma)}\qedhere\end{align*}
+  \end{Proof}
+ \item Let $D=\{z\in\C:|z|<1\}$. Assume that $f:\overline{D}\to\C$ is continuous, and analytic on $D$. Show that Cauchy's formula \[f(\w)=\frac{1}{2\pi i}\int_{\gamma}\frac{f(z)}{z-\w}dz,\hskip.5in\gamma(t)=Re^{it}\text{ for }0\leq t\leq2\pi\] holds not only for $|\w|<R<1$, but also for $|\w|<R=1$.
+  \begin{Proof}
+   Let \[g(R)=\frac{1}{2\pi i}\int_{Re^{it}}\frac{f(z)}{z-\w}dz=\frac{1}{2\pi i}\int_0^{2\pi}\frac{f(Re^{it}}{Re^{it}-\w}Re^{it}dt\] We shall show that $|g(R)-g(1)|\to0$ as $R\to1$: \begin{align*}|g(R)-g(1)|&=\left|\int_0^{2\pi}\frac{f(Re^{it})}{Re^{it}-\w}Rie^{it}-\frac{f(e^{it})}{e^{it}-\w}ie^{it}dt\right|\\&=\frac{1}{2\pi}\left|\int_0^{2\pi}e^{it}\left(\frac{f(Re^{it})}{Re^{it}-\w}Rie^{it}-\frac{f(e^{it})}{e^{it}-\w}\right)dt\right|\end{align*} which converges to 0 as $R\to1$. Then \[\lim_{R\to1}f(w)=\lim_{R\to1}
+  \end{Proof}
+ \item Assume that $f$ is analytic in a region $0<|z-a|<R$, and that $(z-a)f(z)\to b$ as $z\to a$, with $b\in\C$. Show that for every regular closed curve $\gamma$ in this region, \[\frac{1}{2\pi i}\int_{\gamma}f(z)dz=\eta(\gamma,a)b\] Use this to compute the integrals \[\int_{\gamma}\frac{dz}{e^z-1},\hskip.3in\int_{\gamma}\cot(z)dz,\hskip.3in\gamma(t)=e^{it}\text{ for }0\leq t\leq2\pi\]
+  \begin{Proof}
+   Let $g(z)=(z-a)f(z)$ for all $0<|z-a|<R$, and let $g(a)=b$. Then $g$ is analytic, hence \begin{align*}\frac{1}{2\pi i}\int_{\gamma}f(z)dz&=\frac{1}{2\pi i}\int_{\gamma}\frac{g(z)}{z-a}dz\\&=\eta(\gamma,a)g(a)\\&=\eta(\gamma,a)b\end{align*}
+
+   For the curve $\gamma(t)=e^{it}\text{ for }0\leq t\leq2\pi$ we see that $\eta(\gamma,a)=1$ for all $a$.
+   \begin{itemize}
+    \item For $f(z)=\frac{1}{e^z-1}$, we see that $z\frac{1}{e^z-1}\to1$ as $z\to0$ by L'H\^{o}pital's rule. Hence \[\int_{\gamma}\frac{1}{e^z-1}dz=2\pi i\]
+    \item For $f(z)=\cot(z)$, we have $z\cot(z)\to1$ as $z\to0$ by L'H\^{o}pital's rule. Hence \[\int_{\gamma}\cot(z)dz=2\pi i\qedhere\]
+   \end{itemize}
+  \end{Proof}
+  \item Assume that $f$ is analytic and satisfies the inequality $|f(z)-1|<1$ in a region $\Omega$. Show that \[\int_{\gamma}\frac{f'(z)}{f(z)}dz=0\] for every regular closed curve in $\Omega$. (The continuity of $f'$ is taken for granted).
+  \begin{Proof}
+   Since $|f(z)-1|<1$, $f$ never hits the branch $\arg(z)=\pi$, hence we can write $\frac{d}{dz}\log(f(z))=\frac{f'(z)}{f(z)}$. In particular, since $\frac{f'(z)}{f(z)}$ is the derivative of an analytic function, we have \[\int_{\gamma}\frac{f'(z)}{f(z)}dz=0\qedhere\]
+  \end{Proof}
+\end{enumerate}
+
+
+\end{document}

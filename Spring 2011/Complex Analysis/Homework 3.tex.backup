@@ -1,0 +1,101 @@
+\documentclass[12pt,leqno]{article}
+
+\usepackage{graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Complex Analysis\\\large Homework 3}
+\date{February 9, 2011}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\footskip=36pt
+
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\re}{\operatorname{Re}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\w}{\omega}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+\clearpage\mbox{}\clearpage
+
+\setcounter{page}{1}
+\begin{enumerate}
+ \item If $\mu$ is a measure on $[0,\infty)$, prove that \[f(z)=\int_0^{\infty}e^{-tz}d\mu(t)\] defines an analytic function $f$ in the right half plane $\re(z)>0$.
+  \begin{Proof}
+   Write $z=x+iy$. Then \begin{align*}f(z)&=\int_0^{\infty}e^{-xt}e^{-iyt}d\mu(t)\\&=\int_0^{\infty}e^{-xt}\cos(yt)d\mu(t)-i\int_0^{\infty}e^{-xt}\sin(yt)d\mu(t)\end{align*} From this we see that the function only converges on $\re(z)>0$. We need now show analyticity on this half-plane, by which we apply the Cauchy-Riemann equations: setting \begin{align*}u(x,t)&=\int_0^{\infty}e^{-xt}\cos(yt)d\mu(t)\\v(x,t)&=\int_0^{\infty}e^{-xt}\sin(yt)d\mu(t)\end{align*} we see that $f(z)=u(x,y)+iv(x,y)$, hence $f(z)$ is analytic whenever \begin{align*}\frac{\partial}{\partial x}\int_0^{\infty}e^{-xt}\cos(yt)d\mu(t)&=\frac{\partial}{\partial y}\left(-\int_0^{\infty}e^{-xt}\sin(yt)d\mu(t)\right)\\\frac{\partial}{\partial y}\int_0^{\infty}e^{-xt}\cos(yt)d\mu(t)&=-\frac{\partial}{\partial x}\left(-\int_0^{\infty}e^{-xt}\sin(yt)d\mu(t)\right)\end{align*} It is easily verified, by applying the limit definition of partial derivatives, that we can move the partial derivative inside the integral, i.e., that for analyticity we must in fact have \begin{align*}\int_0^{\infty}\frac{\partial}{\partial x}\left(e^{-xt}\cos(yt)\right)d\mu(t)&=-\int_0^{\infty}\frac{\partial}{\partial y}\left(e^{-xt}\sin(yt)\right)d\mu(t)\\\int_0^{\infty}\frac{\partial}{\partial y}\left(e^{-xt}\cos(yt)\right)d\mu(t)&=-\int_0^{\infty}-\frac{\partial}{\partial x}\left(e^{-xt}\sin(yt)\right)d\mu(t)\end{align*}
+  \end{Proof}
+ \item Expand $\frac{2z+3}{z+1}$ in powers of $z-1$. What is the radius of convergence?
+  \begin{Solution}
+   Write \begin{align*}\frac{2z+3}{z+1}=\frac{2(z-1)+5}{(z-1)+2}&=\frac{(2(z-1)+5)/2}{(1-\frac{z-1}{-2})}\\&=\sum_{n=0}^{\infty}\frac{2(z-1)+5}{2}\left(\frac{z-1}{-2}\right)^n\\&=\frac{5}{2}+\sum_{n=1}^{\infty}\left(\frac{1}{(-2)^{n-1}}+\frac{5}{(-2)^{n+1}}\right)(z-1)^n\end{align*} This series converges whenever $|z-1|<1$. 
+  \end{Solution}
+ \item If $A$ is an $n\times n$ matrix and $I$ is the $n\times n$ identity matrix, show that $z\mapsto\tr[(zI-A)^{-1}]$ is analytic outside some disk $|z|\leq r$.
+  \begin{Proof}
+   We see that the matrix $(zI-A)^{-1}$ has rational functions along the diagonal, hence its trace is a rational function. Thus, it is analytic save at finitely many discontinuities, which in particular are poles. Taking $r$ to be the pole with maximum norm, we see that the map $z\mapsto\tr[(zI-A)^{-1}]$ is analytic outside of $|z|\leq r$.
+  \end{Proof}
+ \item Assume that $f$ is defined by a power series \[f(z)=\sum_{n=1}^{\infty}a_nz^n,\] that has a radius of convergence 1 and converges for $z=1$. Show that \[\frac{f(1)-f(z)}{1-z}=\sum_{n=0}^{\infty}\left(\sum_{m=n+1}^{\infty}a_m\right)z^n,\hskip.5in|z|<1.\] Notice that the terms with $n\geq N$ in this sum are dominated in absolute value by those of a geometric series, so their sum admits a bound of the form $\epsilon/(1-|z|)$. Use this to prove \textit{Abel's Theorem:} Under the given assumptions on $f$, if $z\to1$ from within the open unit disk, in such a way that $|1-z|/(1-|z|)$ remains bounded, then $f(z)\to f(1)$.
+  \begin{Proof}
+   We see that \begin{align*}\frac{f(1)-f(z)}{1-z}&=\sum_{n=1}^{\infty}\frac{a_n(1-z^n)}{1-z}\\&=\sum_{n=1}^{\infty}a_n\left(\sum_{m=0}^nz^m\right)\\&=\sum_{n=0}^{\infty}\left(\sum_{m=n+1}^{\infty}a_m\right)z^n\end{align*}
+  \end{Proof}
+ \item Use Abel's Theorem to prove that $\log(2)=1-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+\hdots$.
+  \begin{Proof}
+   Apply Abel's Theorem to the function \[\log(1+z)=\sum_{n=1}^{\infty}(-1)^{n+1}\frac{z^n}{n}\] By approaching 1 along $\im(z)=0$, we see that $|1-z|/(1-|z|)$ is bounded by 1, hence \[\log(2)=1-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+\hdots\qedhere\]
+  \end{Proof}
+ \item Find the values of $\sin i,\cos i,\tan(1+i)$.
+  \begin{Solution}\indent
+   \begin{itemize}
+    \item Write \[\sin(i)=\frac{\sinh(i^2)}{i}=-i\frac{e^{-1}-e^1}{2}=i\frac{e-\frac{1}{e}}{2}\]
+    \item Write \[\cos(i)=\cosh(i^2)=\frac{e^{-1}+e^1}{2}=\frac{e+\frac{1}{e}}{2}\]
+    \item Write \begin{align*}\tan(1+i)=\frac{\sin(1+i)}{\cos(1+i)}&=\frac{\sin(1)\cos(i)+\cos(1)\sin(i)}{\cos(1)\cos(i)-\sin(1)\sin(i)}\end{align*} which can be simplified by substituting the above expressions for $\sin(i)$ and $\cos(i)$.\qedhere
+   \end{itemize}
+  \end{Solution}
+ \item Determine all complex solutions $z$ of $\sin(z)=0$. Similarly for the equation $\cos(z)=0$. 
+  \begin{Solution}
+   We begin by showing that $\sin(x+iy)=\sin x\cosh y+i\cos x\sinh y$. To see this, write \begin{align*}\sin(z)=\frac{1}{i}\sinh(iz)&=\frac{e^{iz}-e^{-iz}}{2i}\\&=\frac{(\cos x+i\sin x)e^{-y}-(\cos(-x)+i\sin(-x))e^y}{2i}\\&=\frac{\cos xe^{-y}-\cos xe^y}{2i}+\frac{\sin xe^{-y}+\sin xe^y}{2}\\&=\sin x\left(\frac{e^y+e^{-y}}{2}\right)+\cos x\left(\frac{e^y-e^{-y}}{-2i}\right)\\&=\sin x\cosh y+\cos x\sinh iy\\&=\sin x\cosh y+i\cos x\sinh y\end{align*} From this we can solve for the roots of $\sin(z)$ by noting that $z=x+iy$ must satisfy \begin{align*}\sin x\cosh y&=0\tag{1}\\\cos x\sinh y&=0\tag{2}\end{align*} Since $\cosh y\not=0$ for $y\in\R$, we see from (1) that $\sin x=0$, hence $\cos x\not=0$, thus from (2) we deduce that $\sinh y=0$, so $y=0$. Thus, the roots of $\sin(z)$ are $\{z=n\pi:n\in\Z\}$.
+
+In similar fashion, we have $\cos(x+iy)=\cos x\cosh y-i\sin x\sinh y$. Thus, we must have \begin{align*}\tag{1}\cos x\cosh y&=0\\\tag{2}\sin x\sinh y&=0\end{align*} Since $\cosh y\not=0$, we deduce from (1) that $\cos x=0$, hence $\sin x\not=0$, so from (2) we deduce that $\sinh y=0$, hence $y=0$. Thus, the roots of $\cos(z)=0$ are $\{z=n\pi+\frac{\pi}{2}:n\in\Z\}$.
+  \end{Solution}
+\end{enumerate}
+
+
+\end{document}

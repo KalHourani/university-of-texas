@@ -1,0 +1,96 @@
+\documentclass[12pt,leqno]{article}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Algebra II\\\large Homework 11}
+\date{April 11, 2011}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\w}{\omega}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\+}{\oplus}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+
+\section*{Section 14.9}
+  \begin{enumerate}
+   \item [1.] Prove that every purely inseparable extension is normal.
+   \begin{Proof}
+   Suppose $K/F$ is purely inseparable. Then, for all $\alpha\in K$, $m_{\alpha,F}(x)$ has only one distinct root. This forces $m_{\alpha,K}(x)=(x-\alpha)^n$ for some $n$. In fact, $K$ is the splitting field of the family of such polynomials, hence $K$ is normal.
+   \end{Proof}
+   \item [2.] 
+   \item [3.]
+   \item [6.] Show that if $t$ is transcendental over $\Q$ then $\Q(t,\sqrt{t^3-t})$ is not a purely transcendental extension of $\Q$.
+   	\begin{Proof}
+   	Observe that $\Q(t,\sqrt{t^3-t})$ has transcendence degree 1, for $\{t\}$ is algebraically independent, however $\sqrt{t^3-t}^2-t^3+t=0$, so $\{t,\sqrt{t^3-t}\}$ is not. 
+   	\end{Proof}
+   \item [7.] Let $k$ be the field with 4 elements, $t$ a transcendental over $k$, $F=k(t^4+t)$ and $K=k(t)$.
+   	\begin{enumerate}
+			\item Show that $[K:F]=4$. 
+			\item Show that $K$ is separable over $F$.
+			\item Show that $K$ is Galois over $F$.
+			\item Describe the lattice of subgroups of the Galois group and the corresponding lattice of subfields of $K$, giving each subfield in the form $k(r)$, for some rational function $r$.
+\end{enumerate}
+	\begin{Solution}\indent
+	\begin{enumerate}
+	\item Let $k=\F_2[\alpha]/(\alpha^2+\alpha+1)$ and set $f(x)=x^4+x+t^4+t\in F[x]$. Clearly, $f(t)=0$, hence $m_{t,F}(x)|f(x)$. However, over $K$ the polynomial $f(x)$ factors as \[f(x)=(x-t)(x-(t+1))(x-(t+\alpha))(x-(t+1+\alpha))\] It is easily verified that the only monic polynomial $g$ which satisfies $(x-t)|g(x)$ and $g(x)|f(x)$ is $x^4+x+t^4+t$, hence $f(x)$ is the minimal polynomial for $t$ over $F$. Thus, $[K:F]=\text{deg}m_{t,F}=4$.
+	\item In fact, since the polynomial $f(x)=x^4+x+t^4+t\in F[x]$ has splitting field $F(t,t+1,t+\alpha,t+\alpha+1)=K$, $K$ must be separable over $F$.
+	\item Similarly, $K$ is Galois over $F$.
+	\item 
+\end{enumerate}
+	\end{Solution}
+  \end{enumerate}
+\end{document}

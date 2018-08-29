@@ -1,0 +1,96 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Algebra II\\\large Homework 3}
+\date{February 7, 2011}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+
+\section*{Section 13.5}
+  \begin{description}
+   \item [2.] Find all irreducible polynomials of degrees 1,2 and 4 over $\F_2$ and prove that their product is $x^{16}-x$.
+    \begin{Solution}
+     The irreducible polynomials of degrees 1 and 2 over $\F_2$ are $x,x+1,x^2+x+1,x^4+x^3+1,x^4+x+1$ and $x^4+x^3+x^2+x+1$. We see that the product of these polynomials is \begin{align*}x^{16}&+4x^{15}+8x^{14}+12x^{13}+18x^{12}+26x^{11}+32x^{10}\\&+34x^9+34x^8+32x^7+26x^6+18x^5+12x^4\\&+8x^3+4x^2+x\end{align*} which is simply $x^{16}-x$ in $\F_2$.
+    \end{Solution}
+   \item [3.] Prove that $d$ divides $n$ if and only if $x^d-1$ divides $x^n-1$.
+    \begin{Proof}
+     We see that \[x^{dq}-1=(x^d-1)(x^{dq-d}+x^{dq-2d}+\hdots+x^{dq-d}+1)\] Write $n=qd+r$. Then \begin{align*}x^n-1&=(x^{qd+r}-x^r)+(x^r-1)\\&=x^r(x^{qd}-1)+(x^r-1)\\&=x^r(x^d-1)(x^{dq-d}+x^{dq-2d}+\hdots+x^{dq-d}+1)+(x^r-1)\end{align*} We see that $x^d-1$ divides $x^n-1$ if and only if $r=0$, hence if and only if $d$ divides $n$.
+    \end{Proof}
+   \item [5.] For any prime $p$ and any nonzero $a\in\F_p$ prove that $x^p-x+a$ is irreducible and separable over $\F_p$.
+    \begin{Proof}
+     Suppose $\alpha$ is some root of $x^p-x+a$ in some extension of $\F_p$, then $\alpha^p-\alpha+a=0$, hence $(\alpha+1)^p-(\alpha+1)-a=\alpha^p-\alpha-a=0$. In other words, the roots of $x^p-x+a$ are $\alpha,\alpha+1,\hdots,\alpha+p-1$. We can therefore write \[x^p-x+a=(x-\alpha)(x-\alpha-1)\hdots(x-\alpha-p+1)\] We suppose $x^p-x+a$ is reducible over $\F_p$, say $x^p-x+a=p(x)q(x)$, with $q(x)$ a degree $q<p$ polynomial. Then $q(x)$ must be the product of $q$ linear terms from the above factorization of $x^p-x+a$, say \[q(x)=(x-\alpha-j_1)(x-\alpha-j_2)\hdots(x-\alpha-j_q)\]
+    \end{Proof}
+   \item [6.] Prove that $x^{p^n-1}-1=\prod_{\alpha\in\F_{p^n}^{\times}}(x-a)$. Conclude that $\prod_{\alpha\in\F_{p^n}^{\times}}=(-1)p^n$ so the product of the nonzero elements of a finite field $+1$ if $p=2$ and $-1$ if $p$ is odd. For $p$ odd and $n=1$ derive \textit{Wilson's Theorem}: $(p-1)!\equiv1\pmod{p}$.
+    \begin{Proof}
+     In fact, since $|\F_{p^n}^{\times}|=p^n-1$, every non-zero element $a$ of $\F_{p^n}$ satisfies $x^{p^n-1}=1$, hence the roots of $x^{p^n-1}-1$ are exactly the elements of $\F_{p^n}^{\times}$, which yields \[x^{p^n-1}-1=\prod_{\alpha\in\F_{p^n}^{\times}}(x-a)\] Taking $n=1$, we derive Wilson's Theorem: \[x^{p-1}-1=(x-1)(x-2)\hdots(x-(p-1))\] Evaluating at 0, we see that $(p-1)!=1$ in $\F_p$, hence \[(p-1)!\equiv1\pmod{p}\qedhere\]
+    \end{Proof}
+   \item [7.] Suppose $K$ is a field of characteristic $p$ which is not a perfect field: $K\not=K^p$. Prove there exist irreducible inseparable polynomials over $K$. Conclude that there exist inseparable finite extensions of $K$.
+    \begin{Proof}
+     We suppose $g(x)$ is an irreducible polynomial in $K[x]$. Then the polynomial $f(x)=g(x^p)$ is inseparable, since $f'(x)=px^{p-1}g'(x^p)=0$, and moreover is irreducible, since $K$ is not a perfect field. In particular, this implies that there exist inseparable finite extensions of $K$.
+    \end{Proof}
+   \item [11.] Suppose $K[x]$ is a polynomial ring over the field $K$ and $F$ is a subfield of $K$. If $F$ is a perfect field and $f(x)\in F[x]$ has no repeated irreducible factors in $F[x]$, prove that $f(x)$ has no repeated irreducible factors in $K[x]$.
+    \begin{Proof}
+     By way of contradiction, suppose $f(x)$ has a repeated irreducible factor in $K[x]$ but not in $F[x]$, say $f(x)=q(x)^2g(x)$ in $K[x]$ and $f(x)=a_1(x)a_2(x)\hdots a_n(x)$. 
+    \end{Proof}
+  \end{description}
+
+\section*{Miscellaneous}
+\begin{description}
+   \item [1.] Let $F$ be a finite field. Prove that every irreducible polynomial $f(x)$ in $F[x]$ is separable. 
+\end{description}
+\end{document}

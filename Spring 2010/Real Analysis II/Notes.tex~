@@ -1,0 +1,228 @@
+
+\documentclass[12pt,leqno]{article}
+
+\usepackage{graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\numberwithin{equation}{section}
+\pagestyle{headings}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in} \noindent\fbox{#1} #2 \vspace{.10in}}
+
+\swapnumbers
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}\theoremstyle{definition}
+
+\makeindex
+
+\begin{document}
+
+
+\thispagestyle{plain}
+
+{\center\section*{{\huge Real Analysis II}}}
+
+{\center\section{January 19, 2010}}
+beckner@math.utexas.edu
+
+Problem sets
+
+Two exams - midterm March 11
+
+\hskip.95in final
+
+\begin{description}
+ \item [(1)] Davidson and Donsig (covers everything)
+ \item [(2)] Stein and Shakarchi (integration)
+ \item [(3)] Spivak - Calculus on Manifolds
+\end{description}
+
+Background: Rudin - Principles of Mathematical Analysis
+
+Reed - Fundamental Ideas of Analysis
+
+Practical Office - RLM 8.152 (8.100)
+
+Real office - RLM 12.154
+
+\begin{description}
+ \item [(I)] \underline{Geometry} and \underline{topology} of $\mathbb{R}^n$
+ \item [(II)] Taste of Lebesgue Integration
+
+Look carefully at Riemann Integration
+\item[(III)] Functional Analysis and Linear Operator
+\end{description}
+
+$E=\mathbb{Q}\cap[0,1]$ is a countable set.
+
+$[0,1]$ is an uncountable set.
+
+Let $\chi_E=\begin{cases}1&x\in E\\0&x\notin E\end{cases}$ then $\int_0^1\chi_Edx=0$
+
+Upper Riemann Sum for $\chi_E$ on $[0,1]$ is $1$
+
+Lower Riemann Sum for $\chi_E$ on $[0,1]$ is $0$.
+
+For the Riemann Integral, we only consider bounded functions.
+
+Our goal is to characterize the class of all Riemann-Integrable functions as bounded functions whose discontinuities form a set of \underline{measure zero}.
+
+A set $E$ is a set of measure zero if, for every $\epsilon>0$, we can find a sequence of boxes $Q_k$ so that
+\begin{description}
+ \item [(1)] $E\subseteq\cup Q_k$ i.e. the boxes cover $E$
+ \item [(2)] $\sum Q_k\text{Vol}(Q_k)<\epsilon$
+\end{description}
+
+Let $\mathcal{C}$ denote the Cantor set. We expect $\int_0^1 \chi_{\mathcal{C}}dx=0$.
+
+$\mathcal{C}$ is uncountable, for every number in $\mathcal{C}$ can be represented as a sequence of $0$s and $1$s.
+
+$\mathcal{C}$ is a set of measure zero.
+
+We would like to compute $\displaystyle\lim_{n\to\infty}\int f_n(x)dx$. Is it equal to $\displaystyle\int\lim_{n\to\infty}f_n(x)dx$?
+
+\section{January 26, 2010}
+
+Properties of the real numbers extended to Euclidean Space $\mathbb{R}^n$, the simplest normed vector space with a scalar product (a product that maps vectors to scalars)
+
+Integration - what it means to be Riemann integrable (as in, how to characterize)
+
+In analysis of real vector spaces, Integration and Differentiation are basic tools.
+
+\begin{Thm}[Basic Theorem of Riemann Integration]
+ A bounded function is integrable on an $n$-dimensional parallelogram if the set of discontinuities is a set of measure zero.
+\end{Thm}
+
+A set $F\subseteq\mathbb{R}^n$ is a set of \textbf{measure zero} if, for every $\epsilon>0$, there exists a sequence of closed cubes $Q_k$ such that $F\subseteq\bigcup Q_k$ and $\sum\text{vol }Q_k<\epsilon$.
+
+\begin{Thm}[Heine-Borel]
+ A set $E\subseteq\mathbb{R}^n$ is compact if and only if it is both closed and bounded.
+\end{Thm}
+
+If $F$ is a set of measure zero\[\text{inf}\sum_{k=1}^{\infty}\text{vol }Q_k=0\] where the infimum is taken across all infinite sets of almost disjoint\footnote{Two sets are \textbf{almost disjoint} if their intersection is finite. In the case of cubes in $\mathbb{R}^n$, this is when they intersect only at their vertices.} closed cubes whose union forms a cover of $F$.  Then we can define a general size for a set $E\subseteq\mathbb{R}^n$, given by \[m_*(E)=\text{inf}\sum_{k=1}^{\infty}\text{vol }Q_k\] where the infimum is again taken across all infinite sets of almost disjoint closed cubes whose union forms a cover of $E$.
+
+$m_*$ is subadditive: \[m_*(E_1\cup E_2)\leq m_*(E_1)+m_*(E_2)\]
+
+``Measuring'' a set involces covering the set.
+
+Properties of $\mathbb{R}$: By construction, every Cauchy sequence\footnote{A sequence $x_n$ in $\mathbb{R}$ is Cauchy if, for every $\epsilon>0$, there exists an $N\in\mathbb{N}$ such $|x_n-x_m|<\epsilon$ for all $n,m\geq N$.} in $\mathbb{R}$ converges. In other words, $\mathbb{R}$ is complete. In fact, every Cauchy sequence in $\mathbb{R}^n$ converges, so $\mathbb{R}^n$ is complete.
+
+A metric Space $M$ is a set with a function, $d:M\times M\to\mathbb{R}$ which satisfies
+\begin{description}
+ \item [Positivity:] For all $x,y\in M$, $d(x,y)\geq0$. Further, $d(x,y)=0$ if and only if $x=y$.
+ \item [Symmetry:] For all $x,y\in M$, $d(x,y)=d(y,x)$
+ \item [Triangle Inequality:] For all $x,y,z\in M$, $d(x,y)\leq d(x,z)+d(z,y)$
+\end{description}
+
+A metric space is complete if every Cauchy sequence converges in the space. For example, the sequence given by $\{3,3.1,3.14,\hdots\}$ converges to $\pi$, which is not rational. Thus, this sequence, while Cauchy, does not converge in $\mathbb{Q}$. We call $\mathbb{R}$ the \textbf{completion} of $\mathbb{Q}$.
+
+Analysis
+
+Sets of numbers - Vector Spaces
+
+How to measure the size of sets
+
+Tools: convergence
+
+Precursor: $C(K)$, the set of all continuous Real-valued functions defined on a compact set $K$ with metric $d(f,g)=\text{max}|f(x)-g(x)|$.
+
+We denote the set of all continuous functions on $\mathbb{R}^n$ whose limit as infinity is $0$ by $C_0(\mathbb{R}^n)$. Using the sup norm of $C(K)$, $C_0(\mathbb{R}^n)$ is complete.
+
+The functional $d(f,g)=\int_Q|f(x)-g(x)|dx$ is a metric on $C_0(\mathbb{R}^n)$. It should be noted that a Cauchy sequence of functions under this metric is not necessarily Cauchy in the sup norm.
+
+Sets and size of sets - close to understanding integration
+
+\textbf{Lusin's Conjecture:} Let $f$ be a function on $[0,1]$ with Fourier coefficients given by \[C_k=\int_0^1e^{-2\pi ikx}dx\] Notice that \[\int_0^1|f(x)|^2dx<\infty\text{ if and only if }\sum_{k=-\infty}^{\infty}|C_k|^2<\infty\] Let \[f_n(x)=\sum_{k=-n}^nC_ke^{2\pi ikx}\] Then $f_n(x)\to f(x)$ almost everywhere, i.e. on $\mathbb{R}-E$ where $E$ is a set of measure zero.
+
+\begin{Thm}
+ Let $Q$ be a closed box in $\mathbb{R}^n$. Denote by $C(Q)$ the vector space of all continuous Real-valued functions on $Q$ and let $\|f\|=\text{sup}_{x\in Q}|f(x)|$ be a norm on $C(Q)$. Then $d(f,g)=\|f-g\|$ is a metric, and the space $(C(Q),d)$ is complete.
+\end{Thm}
+
+\begin{proof}
+ We leave the verification that $d$ is a metric to the reader and begin by noting that, for all $x\in Q$, $|f(x)-g(x)|\leq\|f-g\|$, by definition. Let $\{f_n\}$ be a Cauchy sequence of functions in $C(Q)$. Then, \[|f_n(x)-f_m(x)|\leq\|f_n-f_m\|\] Then the sequence $\{f_n(x)\}$ is Cauchy. Since $\mathbb{R}$ is complete, it follows that \[f_n(x)\to f(x)\] for some function $f:Q\to\mathbb{R}$. 
+
+Clearly, the sequence $\{\|f_n\|\}$ is bounded, and so $f_n\to f$. We must show that $f\in C(Q)$, i.e. that $f$ is continuous. For any $\epsilon>0$, there exists a $\delta>0$ such that, if $|x-y|<\delta$, then \[|f(x)-f(y)|\leq|f_n(x)-f_n(y)|+|f_n(y)-f(y)|+|f(x)-f_n(x)|<\epsilon\] Thus, $f$ is continuous and the space is complete. 
+\end{proof}
+
+Recall that $C_0(\mathbb{R}^n)$ denotes the set of continuous Real-valued functions on $R^n$ who go to $0$ at infinity. These functions are therefore bounded. By an argument similar to the one given above, you can show that $C(\mathbb{R}^n)$ is complete. You must, in addition to the argument above, show that the function $f$ goes to $0$ at infinity:
+
+\[|f(x)|\leq|f_n(x)-f(x)|+|f_n(x)|<\epsilon\]
+
+A result about metric spaces is given below
+
+\begin{Thm}
+ Let $E$ be a metric space. $E$ is compact if and only if $E$ is complete and totally bounded\footnote{Recall that a set in a metric space is \textbf{totally bounded} if, for every $\epsilon>0$, the set can be covered by a finite number of $\epsilon$-balls.}.
+\end{Thm}
+
+In $\mathbb{R}^n$, complete is equivalent to closed and totally bounded is equivalent to bounded. Thus, a special case of the above theorem is Heine-Borel, stated previously:
+
+\begin{Thm}[Heine-Borel]
+ A set $E\subseteq\mathbb{R}^n$ is compact if and only if it is closed and bounded.
+\end{Thm}
+
+Real Analysis is the study of countable processes. 
+
+Looking at integrals applied to sets, we want \[\int_Ad\mu\] to equal the ``size'' of the set $A$. We also want to be able to change the order of integration.
+
+Let $K$ be a compact subset of $\mathbb{R}^n$. Recall, again, that $C(K)$ denotes the set of continuous Real-valued functions on $K$, and $C_0(\mathbb{R}^n)$ denotes the set of continous Real-valued functions on $\mathbb{R}^n$ which go to $0$ at infinity.
+
+We shall denote by $C_c^{\infty}[\mathbb{R}^n]$ the set of all infinitely differentiable real-valued functions on $\mathbb{R}^n$ who have compact support\footnote{The \textbf{support} of a function $f:X\to\mathbb{R}$ is the closure of the set of all points where $f$ is non-zero, i.e. $\overline{\{x\in X|f(x)\not=0\}}$.} and whose derivatives have compact support. 
+
+Observe that $e^{-\pi|x|^2}$ is infinitely differentiable and that it goes to 0 at infinity. Further, for any polynomial $p(x)$, $p(x)e^{-\pi|x|^2}$ is still infinitely differentiable and still goes to 0 at infinity. Then \[e^{-\pi|x|^2}\in\mathcal{S} \left(\mathbb{R}^n\right)=\{f\in C^\infty(\mathbb{R}^n)\mid\|f\|_{\alpha,\beta}<\infty\,\forall\,\alpha,\beta\}\] where 
+\[\|f\|_{\alpha,\beta}=\sup_{x\in\mathbb{R}^n}|x^\alpha D^\beta f(x)|\] We call $\mathcal{S}(\mathbb{R}^n)$ the \textbf{Schwartz Space} on $\mathbb{R}^n$.
+
+The sets $\mathcal{S}(\mathbb{R}^n)$ and $C_c^{\infty}(\mathbb{R}^n$ are closed under the following operations:
+
+\begin{description}
+ \item [(1)] Differentiation of any order
+ \item [(2)] Multiplication by any polynomial
+\end{description}
+
+Consider the quadratic form given by \[<f,g>=\int_{\mathbb{R}^n}f(x)g(x)dx\] 
+
+\begin{Lem}[Cauchy-Schwarz]
+ Suppose $f$ and $g$ are continuous. Then \[\left|\int_{\mathbb{R}^n}f(x)g(x)dx\right|<\left(\int_{\mathbb{R}^n}|f(x)|^2dx\right)^{1/2}\left(\int_{\mathbb{R}^n}|g(x)|^2dx\right)^{1/2}\]
+\end{Lem}
+
+\begin{proof}
+ Take $\lambda\in\mathbb{R}$. Then \begin{align*}0&\leq\int_{\mathbb{R}^n}\left|f(x)-\lambda g(x)\right|^2dx=\int_{\mathbb{R}^n}(f(x)-\lambda g(x))(f(x)-\lambda g(x))dx\\&=\int_{\mathbb{R}^n}|f(x)|^2dx-2\lambda\int_{\mathbb{R}^n}f(x)g(x)dx+\lambda^2\int_{\mathbb{R}^n}|g(x)|^2dx\end{align*} Let \begin{align*}A&=\int_{\mathbb{R}^n}|g(x)|^2dx\\B&=\int_{\mathbb{R}^n}f(x)g(x)dx\\C&=\int_{\mathbb{R}^n}|f(x)|^2dx\end{align*} Then $0\leq A\lambda^2+2B\lambda+C$ is a polynomial in $\mathbb{R}$. This is true only if the discriminant, $(-2B)^2-4AC$, is not positive, i.e.\begin{align*}(-2B)^2-4AC&\leq0\\4B^2-4AC&\leq0\\B^2-AC&\leq0\\B^2&\leq AC\\B&\leq\sqrt{AC}\\\left|\int_{\mathbb{R}^n}f(x)f(x)dx\right|&\leq\left(\int_{\mathbb{R}^n}|f|^2dx\right)^{1/2}\left(\int_{\mathbb{R}^n}|g|^2dx\right)^{1/2}\end{align*}
+\end{proof}
+
+Holder's Inequality
+
+\[\left|\int_{\mathbb{R}^n}f(x)g(x)dx\right|\leq\left[\int_{\mathbb{R}^n}|f(x)|^pdx\right]^{1/p}\left[\int_{\mathbb{R}^n}|g(x)|^qdx\right]^{1/q}\] where $\frac{1}{p}+\frac{1}{q}=1$.
+
+Hardy Littlewood's Inequality
+
+\[AB\leq\frac{1}{p}A^p+\frac{1}{q}B^q\] where $A,B>0$ and $p,q\in\mathbb{R}$ with $\frac{1}{p}+\frac{1}{q}=1$.
+
+Purpose: In using integration we want to think about functional size
+\end{document}

@@ -1,0 +1,107 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Real Analysis\\\large Homework 2}
+\date{September 9, 2010}
+\author{Khalid Hourani}
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{fancy}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{(\arabic{enumi})}}
+\renewcommand{\labelenumii}{\textbf{\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+\begin{titlepage}
+ \maketitle 
+\end{titlepage}
+
+\begin{enumerate}
+  \item (Borel-Cantelli Lemma) Suppose $\{E_k\}_{k=1}^{\infty}$ is a countable family of measurable sets in $\R^d$ and that \[\sum_{k=1}^{\infty}|E_k|<\infty\] Let $E=\displaystyle\limsup_{k\to\infty}E_k$. Show that $E$ is a measurable set and that $|E|=0$.
+\begin{Proof}
+Since \[\sum_{k=1}^{\infty}|E_k|<\infty\] we have \[\inf_{K\geq1}\sum_{k=K}^{\infty}|E_k|=0\] Thus
+\[|E|=|\limsup_{k\to\infty}E_k|=\left|\bigcap_{K=1}^{\infty}\bigcup_{k=K}^{\infty}E_k\right|\leq\inf_{K\geq1}\left|\bigcup_{k=K}^{\infty}E_k\right|\leq\inf_{K\geq1}\sum_{k=K}^{\infty}|E_k|=0\] Thus $E$ is measurable and has measure zero.
+\end{Proof}
+
+  \item Show that a $\sigma$ algebra with infinitely many elements cannot be countable.
+  \begin{Proof}
+   Suppose $\Sigma$ is a countable $\sigma$ algebra on an infinite set $Y$, and let $X$ be the union of all elements of $\Sigma$. Let $f:X\to \Sigma$ be the intersection of all sets in $\Sigma$ which contain $x$. Notice that $f(X)=\{f(x)|x\in X\}$ forms a partition of $X$. Moreover, the set $f(X)$ is countably infinite, and therefore has an uncountable powerset $\mathcal{P}(f(X))$. However, there is a clear injective map from $\mathcal{P}(f(X))$ to $\Sigma$, a contradiction! Thus, $\Sigma$ is uncountable.
+  \end{Proof}
+
+  \item Construct a Borel set $E\subset[0,1]$ such that \[0<|E\cap I|<|I|\] for every nonempty, open interval $I\subset(0,1)$.
+\begin{Proof}
+ Let $E_1$ be the fat cantor set in $[0,1]$ of measure $1/3$. For any ``gap`` $I$ in $E_1$, replace $I$ with a fat cantor set of measure $1/6|I|$, and call the resulting set $E_2$. We can repeat this process infinitely and write \[E=\bigcup_{k=1}^{\infty}E_k\] Now, for any open interval $I$ in $[0,1]$, there is a closed interval $I'$ contained in $I$ which occurs as a gap in some $E_k$. Then \[|E\cap I'|=|I'|\sum_{n=k}^{\infty}1/3^n<|I'|\] Then, by countable additivity \begin{align*}0<|E\cap I|&=|E\cap I'|+|E\cap(I-I')|\\&<|I'|+|I-I'|\\&=|I|\qedhere\end{align*}
+\end{Proof}
+
+  \item (Recall that any open subset of $\R$ is a countable union of intervals) Prove that:
+    \begin{enumerate}
+     \item An open disc in the plane is not the disjoint union of open rectangles.
+     \item In fact: an open and connected set $\Omega\in\R^2$ is the disjoint union of open rectangles if and only if $\Omega$ itself is an open rectangle.
+     \item On the other hand, any open set $\Omega\in\R^n$ is the union of a countable family of \textit{non-overlapping} closed cubed. Namely, prove that for any open $\Omega$ there exists some countable family of cubes $\{Q_j\}_{j=1}^{\infty}$ such that 
+
+     1) the interior of the cubes are disjoint
+     2) If $l_j>0$ denotes the side length of $Q_j$ then there exist positive constants $c$ and $C$ (depending only on the dimension) such that $cd(Q_j,\Omega^c)\leq l_j\leq Cd(Q_j,\Omega^c)$ (so the cubes are smaller the closer they are to the boundary of $\Omega$).
+    \end{enumerate}
+  \begin{Proof}
+   \begin{enumerate}
+    \item Suppose that an open disc is the disjoint union of disjoint open rectangles, say $\bigcup_{i=1}^{\infty}Q_i$. Then the open disc can be written as the union of two disjoint open sets, $\bigcup_{i=1}^{\infty}Q_{2i}$ and $\bigcup_{i=1}^{\infty}Q_{2i-1}$. However, this implies that the open disc is \textit{disconnected}, a contradiction. Thus, the open disc is \textit{not} the union of disjoint open rectangles.
+    \item One direction follows the same argument as in \textbf{(a)}: if $\Omega$ is an open connected set which is not an open rectangle, then $\Omega$ cannot be written as the disjoint union of open rectangles, for otherwise it would be connected. The other direction is trivial: if $\Omega$ is an open rectangle, then $\Omega$ is the union of itself.
+    \item To see that any open set $\Omega\in\R^n$ is the union of a countable family of non-overlapping closed cubes, take a ``grid'' of some size $n$. \footnote{That is, partition the plane into congruent cubes with volume $n$.} Let $S_1$ denote the set of cubes which are in the interior of $\Omega$. Then, take a grid of size $n/2$, and let $S_2$ denote the set of cubes in $\Omega^{\circ}-S_1^{\circ}$. Continuing this process, we see that the $S_k$ have disjoint interiors (by construction) and that $\Omega=\bigcup_{k=1}^{\infty}S_k$, hence $\Omega$ can be written as the union of countably many non-overlapping closed cubes. 
+   \end{enumerate}
+
+  \end{Proof}
+
+  \item Let $E\subset\R$, measurable and such that $0<|E|<\infty$. Prove that for every $\alpha\in(0,1)$ there is an open interval $I$ such that \[|E\cap I|\geq\alpha|I|\]
+\begin{Proof}
+ Suppose, by way of contradiction, that there exists an $\alpha\in(0,1)$ such that, for all open intervals $I$, $|E\cap I|<\alpha|I|$. Since $E$ is measurable, there exists a set $\{I_k\}_{k=1}^{\infty}$ of intervals which covers $E$, satisfying \[\tag{1}\sum_{k=1}^{\infty}|I_k|<|E|+\epsilon|E|\] Take $\epsilon=(1-\alpha)$. By construction, $|E\cap I_k|<\alpha|I_k|$, hence \[\tag{2}|E|\leq\sum_{k=1}^{\infty}|E\cap I_k|<\alpha\sum_{k=1}^{\infty}|I_k|\] by countable subadditivity. Reversing (2), we have \[\tag{3}-\alpha\sum_{k=1}^{\infty}|I_k|\leq-|E|\] Combining (1) and (3): \begin{align*}(1-\alpha)\sum_{k=1}^{\infty}|I_k|&\leq(1-\alpha)|E|\\\sum_{k=1}^{\infty}|I_k|&\leq|E|\end{align*} This is a contradiction, hence no such alpha exists. In particular, for every $\alpha\in(0,1)$, there exists an open interval $I$ such that \[|E\cap I|\geq\alpha|I|\qedhere\]
+\end{Proof}
+
+  \item Let $E\subset\R$. Consider a second set \[F=\{z\in\R|z=x-y\text{ for some }x,y\in E\}\] show that if $|E|>0$ then there exists some $\delta>0$ such that $(-\delta,\delta)\subset F$.
+
+      Hint: Assume that such a $\delta$ does not exist and use the previous exercise to get a contradiction, it is helpful to observe that $z\in F$ is the same as say that $F$ and $F+z$ have a nonempty intersection.
+
+\end{enumerate}
+\end{document}

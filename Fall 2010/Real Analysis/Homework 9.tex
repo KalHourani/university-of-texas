@@ -1,0 +1,103 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Real Analysis\\\large Homework 9}
+\date{November 10, 2010}
+\author{Khalid Hourani}
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{fancy}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{(\arabic{enumi})}}
+\renewcommand{\labelenumii}{\textbf{\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+\begin{titlepage}
+ \maketitle\thispagestyle{empty}
+\end{titlepage}
+\thispagestyle{empty}
+\clearpage\mbox{}\clearpage
+
+\setcounter{page}{1}
+\begin{enumerate}
+ \item Fix $f\in L^1(\R^n)$. We can define a ``non-centered'' version of the Maximal function of $f$ by \[M^*f(x)=\sup_{\{Q:x\in Q\}}\frac{1}{|Q|}\int_Q|f(y)|dy\] If $Mf(x)$ denotes the usual maximal function then since the supremum above is taken over a larger set we have trivially that $Mf(x)\leq M^*f(x)$ a.e. Prove a sort of converse, that is, show there exists a positive constant $c_n$ (depending only on the dimension $n$ and not $f$) such that \[M^*f(x)\leq c_nMf(x)\text{ for almost all }x\in\R^n\]
+
+\begin{Proof}
+ For any $Q$ containing $x$, take $Q_x$ to be the cube centered at $x$ with apothem\footnote{The apothem of a regular polygon is the perpendicular line segment reaching from the center to any side.} equal in length to a side of $Q$. We see that $|Q_x|/|Q|=2^n$, hence \[M^*f(x)\leq 2^nMf(x)\text{ for almost all }x\in\R^n\qedhere\]
+\end{Proof}
+
+ \item Let $f\in L^p(0,1) (1<\leq p<\infty)$. Given $k,j\in\N$ with $j\leq2^k$ define \[E_{j,k}=\{x\in Q:(j-1)2^{-k}<x<j2^{-k}\}\] Define $f_k(x)$ as the step function which equals $\frac{1}{|E_{j,k}|}\int_{E_{j,k}}f(x)dx$ in $E_{j,k}$. Prove that $f_k\to f$ in $L^p(0,1)$.
+ \item Let $\psi\in(L^p(\R^n))^*(1\leq p<\infty)$ such that $\psi(f)=0$ for any $f\in L^p$ which fanishes inside $B_1(0)$. How can you build an additive set function out of $\psi$?
+
+\begin{Proof}
+ Take $\mu$ a set function given by \[\mu(A)=\psi(\chi_{A\cap B_1(0)})\] We see that, for any countable union of pairwise disjoint sets, \begin{align*}\mu\left(\cup A_n\right)=\psi\left(\chi_{(\cup A_n)\cap B_1(0)}\right)&=\psi\left(\chi_{\cup(A_n\cap B_1(0))}\right)\\&=\psi\left(\sum\chi_{A_n\cap B_1(0)}\right)\end{align*}
+\end{Proof}
+
+ \item \begin{enumerate}
+        \item Let $G$ be a \textit{finite set} and $\Sigma$ the $\sigma$-algebra of \textit{all} the subsets of $G$. Prove that the collection of all additive set functions on $\Sigma$ is a vector space \textit{canonically} identified with the vector space of functions $\{f:G\to R\}$. 
+	\item Suppose now that $G$ is also a \textit{group}. Prove that there exists a \textit{unique} probability measure $\mu$ which is \textit{left-invariant} with respect to the group operation, in fact, give a formula for it. Being left-invariant means that $\forall g\in G$ and any subset $E\subseteq G$ we have \[\mu(g\cdot E)=\mu(E)\]
+       \end{enumerate}
+
+\begin{Proof}\indent
+ \begin{enumerate}
+  \item Let $V$ denote the set of all additive set functions on $\Sigma$. We shall first prove that $V$ is a vector space: for any $f,g\in V$, \begin{align*}(f+g)(A\cup B)=f(A\cup B)+g(A\cup B)&=f(A)+f(B)+g(A)+g(B)\\&=(f+g)(A)+(f+g)(B)\end{align*} Similarly, for any $r\in\R$, $rf$ is additive, therefore  $V$ is a vector space.
+
+Now let $V'$ denote the vector space of functions $\{f:G\to\R\}$. We see that, for any $f\in V$, \[f=\sum_{g\in G}f(g)f_g\] where $f_g(\{g\})=1$ and $f_g(\{h\})=0$ for $h\not=g$. However, for any $f\in V'$, we have \[f=\sum_{g\in G}f(g)f_g\] where $f_g(g)=1$ and $f_g(h)=0$ for $h\not=g$. In particular, the vector spaces $V$ and $V'$ are clearly isomorphic, and the basis in each vector space is the same when we identify a singleton with its element.
+  \item We take $\mu$ the probability measure given by \[\mu(E)=\frac{|E|}{|G|}\] In particular $\mu(G)=|G|/|G|=1$. Moreover, $|g\cdot E|=|E|$ for any $g\in G$ and any $E\subseteq G$. We see this is unique by taking another $\mu'$ which satisfies the same property: \[\mu'(g\cdot E)=\mu'(E)\] By definition, $\mu'(G)=1$, hence \[\sum_{g\in G}\mu'(\{g\})=1\] However, multiplying by $g^{-1}$ for each $g$ (recalling that $G$ is a group), we have \[\sum_{g\in G}\mu'(\{1\})=1\] hence $\mu'(\{1\})=\frac{1}{|G|}$. This forces $\mu'(\{g\})=\frac{1}{|G|}$ for each $g\in G$, hence $\mu=\mu'$.
+ \end{enumerate}
+
+\end{Proof}
+
+ \item Let $(X,\Sigma_1,\mu_1)$ and $(Y,\Sigma_2,\mu_2)$ be two measure spaces and $T:X\to Y$ a \textit{measure preserving map}, i.e., $T$ is a bijection and $T(E)\in\Sigma_2$ with $\mu_1(E)=\mu_2(T(E))$ for any $E\in\Sigma_1$. Prove that \[f(x)\mapsto f(T(x))\:f\in L^1(\mu_2)\] Defines an isometry from $L^1(\mu_2)$ to the space $L^1(\mu_1)$.
+
+\begin{Proof}
+ We show that, for any $h\in L^1(\mu_1)$, \[\|h\|_{L^1(\mu_1)}=\|h\circ T\|_{L^1(\mu_2)}\] from which the result follows. To see this, we first prove the result for characteristic functions $h=\chi_E$:
+
+\[\|h\circ T\|_{L^1(\mu_2)}=\int_Yh\circ Td\mu_2\] However, $h\circ T$ is 1 whenever $T(x)$ is in $E$ and 0 otherwise. This makes the integral above \[\int_{T(E)}1d\mu_2=\mu_2(T(E))=\mu_1(E)=\|h\|_{L^1(\mu_1)}\] The result then follows for simple functions trivially. For any $h$, we see \begin{align*}\|h\|_{L^1(\mu_1)}=\int_Xhd\mu_1&=\sup_{s\text{-simple}}\int_Xsd\mu_1\\&=\sup_{s\leq h}\int_Ys\circ Td\mu_2\\&=\int_Yh\circ Td\mu_2\\&=\|h\circ T\|_{L^1(\mu_2)}\end{align*}
+\end{Proof}
+
+\end{enumerate}
+\end{document}

@@ -1,0 +1,437 @@
+
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Problems in Algebraic Number Theory\\Proofs and Solutions}
+\date{}
+\author{Khalid Hourani}
+
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\numberwithin{equation}{section}
+\pagestyle{fancy}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+
+\makeindex
+
+\setcounter{page}{-1}\begin{document}
+\maketitle\thispagestyle{empty}
+\tableofcontents\thispagestyle{empty}
+\thispagestyle{empty}
+
+\setcounter{page}{0}
+\chapter{Elementary Number Theory}
+\section{Integers}
+\begin{thm}
+ If $a,b$ are relatively prime, then we can find integers $x,y$ such that $ax+by=1$. 
+\end{thm}
+
+\begin{Proof}
+ By the \textbf{Division Algorithm} there exist integers $r_0,q_0$ so that \[a=bq_0+r_0\] We repeat this process, writing \begin{align*}b&=r_0q_1+r_1\\r_0&=r_1q_2+r_2\\&\hskip.08in\vdots\\r_{n-2}&=r_{n-1}q_n+1\end{align*} By working backwards, we have integers $x,y$ so that $ax+by=1$. 
+\end{Proof}
+
+\begin{thm}
+ Every integer greater than 1 has a prime divisor.
+\end{thm}
+
+\begin{Proof}
+ In order to reach a contradiction, suppose there is an integer greater than 1 which has no prime divisor. Then there must be a smallest such integer, say $n$. Since $n$ has no prime divisors, it cannot be prime, hence there is an integer $m$ with $m\mid n$. Then $m<n$. By construction, $m$ is divisible by a prime, say $p$, for $n$ is the smallest integer which has no prime divisor. Then $p\mid n$, a contradiction! Thus, every integer greater than 1 has a prime divisor.
+\end{Proof}
+
+\begin{thm}
+ There are infinitely many primes.
+\end{thm}
+
+\begin{Proof}
+ Suppose that there are finitely many primes, $p_1,p_2,\hdots,p_n$. Let $q=p_1p_2\hdots p_n+1$. By construction, $q$ is not prime, and so, by \textbf{Theorem 1.1.2}, it must be divisible by a prime. But $q$ is clearly not divisible by any $p_1,p_2,\hdots,p_n$. This is a contradiction. Thus, there are infinitely many primes.
+\end{Proof}
+
+\begin{thm}
+ If $p$ is a prime with $p\mid ab$, then $p\mid a$ or $p\mid b$.
+\end{thm}
+
+\begin{Proof}
+ Without loss of generality, suppose $p\nmid a$. Then $(a,p)=1$, so there exist integers $x,y$ with $ax+py=1$. Then $b=abx+pby$. Since $p\mid ab$, $ab=pq$ for some integer $q$. Thus, $b=p(qx+by)$, so $p\mid b$.
+\end{Proof}
+
+\begin{thm}
+ $\mathbb{Z}$ has unique factorization.
+\end{thm}
+
+\begin{Proof}
+ We first show that every integer can be written as the product of (not necessarily distinct) primes. Suppose that there is some integer greater than 1 which cannot be written as the product of primes. Then there must be a smallest such integer, say $n$. Clearly, $n$ is not prime, so $n$ is composite, say $n=p_1q$ with $p_1$ prime by \textbf{Theorem 1.1.2}. Then $q<n$, so $q$ can be written as the product of primes, say $q=p_2p_3\hdots p_k$. Then $n=p_1p_2\hdots p_k$, a contradiction! Thus, every integer can be written as the product of primes.
+
+We now prove uniqueness. Suppose $n$ has two prime factorizations: \[n=p_1p_2\hdots p_k=q_1q_2\hdots q_l\] Then $p_1\mid q_1q_2\hdots q_l$. Without loss of generality, say $p_1\mid q_1$. Then $p_1=q_1$. Similarly, $p_2=q_2$, $p_3=q_3$ and so on. Further, $k=l$, for otherwise, $1=q_{k+1}q_{k+2}\hdots q_l$. Thus, this factorization is unique.
+\end{Proof}
+
+\begin{ex}
+ Show that \[S=1+\frac{1}{2}+\frac{1}{3}+\hdots+\frac{1}{n}\] is not an integer for $n>1$.
+\end{ex}
+
+\begin{Solution}
+ Let $k$ be the greatest power of 2 less than $n$, i.e., $2^k<n<2^{k+1}$. Let $L=\lcm\left(1,2,\hdots,2^k-1,2^k+1,\hdots,n\right)$. Multiplying $S$ by $L$ we see that \[LS=L+\frac{L}{2}+\frac{L}{3}+\hdots+\frac{L}{2^k}+\hdots+\frac{L}{n}\] Every term on the right hand side is an integer except for $\frac{L}{2^k}$. Thus, $SL$ is not an integer, so $S$ is not an integer.
+\end{Solution}
+
+\begin{exer}
+ Show that \[S=1+\frac{1}{3}+\frac{1}{5}+\hdots+\frac{1}{2n-1}\] is not an integer for $n>1$. 
+\end{exer}
+
+\begin{Solution}
+ Let $k$ be the greatest power of 3 less than $2n-1$, i.e., $3^k<2n-1<3^{k+1}$. Let $L=\lcm\left(1,3,\hdots,3^k-1,3^k+1,\hdots,2n-1\right)$. Multiplying $S$ by $L$ we see that \[LS=L+\frac{L}{3}+\hdots+\frac{L}{3^k}+\hdots+\frac{L}{2n-1}\] Every term on the right hand side is an integer except for $\frac{L}{3^k}$. Thus, $SL$ is not an integer, so $S$ is not an integer.
+\end{Solution}
+
+\begin{exer}
+ Let $a_1,a_2,\hdots,a_n$ be nonzero integers with $n\geq2$. If there is a prime $p$ and a positive integer $h$ such that $p^h\mid a_i$ for some $i$ and $p^h$ does not divide $a_j$ for all $j\not=i$, then \[S=\frac{1}{a_1}+\frac{1}{a_2}+\hdots+\frac{1}{a_n}\] is not an integer. 
+\end{exer}
+
+\begin{Solution}
+ Without loss of generality, let $p^h\mid a_1$. Let $L=\lcm\left(a_1/p^h,a_2,a_3,\hdots,a_n\right)$. Multiplying $S$ by $L$ we see that \[LS=\frac{L}{a_1}+\frac{L}{a_2}+\hdots+\frac{L}{a_n}\] Notice that $L/a_1$ is not an integer, for if $a_1\mid L$, $p^h\mid L$, which it clearly does not. On the other hand, $L/a_i$ is clearly an integer for $i>1$. Thus, $SL$ is not an integer, so $S$ is not an integer.
+\end{Solution}
+
+\begin{exer}
+ Prove that if $n$ is a composite integer, then $n$ has a prime factor not exceeding $\sqrt{n}$. 
+\end{exer}
+
+\begin{Solution}
+ Write $n=pq$ with $p$ prime. If $p<\sqrt{n}$, we are done. If $p\geq\sqrt{n}$, then $q<\sqrt{n}$, hence any prime factor of $q$ (which is a prime factor of $n$) is less than $\sqrt{n}$. 
+\end{Solution}
+
+\begin{exer}
+ Show that if the smallest prime factor $p$ of the positive integer $n$ exceeds $\sqrt[3]{n}$, then $n/p$ must be prime or 1.
+\end{exer}
+
+\begin{Solution}
+ Suppose that the smallest prime factor $p$ of the positive integer $n$ exceeds $\sqrt[3]{n}$. Write $n=pq$. If $p>q$, then $q=1$, for otherwise $q$ (and therefore $n$) has prime factors less than $p$. Thus, $n/p=1$. If $p\leq q$, then since $p>\sqrt[3]{n}$, $p\leq q=n/p<p^2$. This forces $q$ prime, since all prime factors of $n$ are no greater than $p$.
+\end{Solution}
+
+\begin{exer}
+ Let $p$ be a prime. Show that each of the binomial coefficients ${p\choose k}$, $1\leq k\leq p-1$, is divisible by $p$.
+\end{exer}
+
+\begin{Solution}
+ Since \[{p\choose k}=\frac{p!}{k!(p-k)!}\] is an integer, the denominator is not divisible by $p$, and the numerator is divisible by $p$, ${p\choose k}$ is divisible by $p$.
+\end{Solution}
+
+\begin{exer}
+ Prove that if $p$ is an odd prime then $2^{p-1}\equiv1\pmod{p}$.
+\end{exer}
+
+\begin{Solution}
+ Since $\mathbb{Z}/p\mathbb{Z}$ is a ring of characteristic $p$, \[2^p=(1+1)^p=1^p+1^p=2\] in $\mathbb{Z}/p\mathbb{Z}$. Equivalently, $2^{p-1}\equiv1\pmod{p}$.
+\end{Solution}
+
+\begin{exer}
+ Prove \textbf{Fermat's Little Theorem}: If $a,p\in\mathbb{Z}$ with $p$ a prime, and $p\nmid a$, prove that $a^{p-1}\equiv1\pmod{p}$. 
+\end{exer}
+
+\begin{Solution}
+ Since $p\nmid a$, $a\in\mathbb{Z}/p\mathbb{Z}$. By \textbf{Lagrange's Theorem}, $a^{p-1}\equiv1\bmod{p}$. 
+\end{Solution}
+
+\begin{thm}
+ Given $a,n\in\mathbb{Z}$, $a^{\phi(n)}\equiv1\pmod{n}$ when $\gcd(a,n)=1$. 
+\end{thm}
+
+\begin{Proof}
+ Recall that \[\phi(n)=\left|\mathbb{Z}/n\mathbb{Z}\right|\] Thus, by \textbf{Lagrange's Theorem}, $a^{\phi(n)}\equiv1\pmod{n}$ when $a\in\mathbb{Z}/n\mathbb{Z}$, which is whenever $(a,n)=1$.
+\end{Proof}
+
+\begin{exer}
+ Show that $n\mid\phi(a^n-1)$ for any $a>n$.
+\end{exer}
+
+\begin{Solution}
+ Recall that $\left(\mathbb{Z}/(a^n-1)\mathbb{Z}\right)^{\times}$ has order $\phi(a^n-1)$. Further, $a^n\equiv1\pmod{a^n-1}$, thus $n\mid\phi(a^n-1)$.
+\end{Solution}
+
+\begin{exer}
+ Show that $n\nmid2^n-1$ for any natural number $n>1$. 
+\end{exer}
+
+\begin{Proof}
+ Suppose that there exists some $n>1$ so that $n\mid 2^n-1$. Then there must exist a least $n$, say $n_0$. Then $n_0\mid2^{n_0}-1$, hence \[2^{n_0}\equiv1\bmod{n_0}\] By \textbf{Theorem 1.1.14}, \[2^{\phi(n_0)}\equiv1\bmod{n_0}\] Let $d=(n_0,\phi(n_0))$. By \textbf{Theorem 1.1.1}, there exist integers $x$ and $y$ so that $n_0x+\phi(n_0)y=d$. Then $2^d\equiv1\bmod{n_0}$. Since $d\mid n_0$, we have $2^d\equiv1\bmod{d}$, which contradicts the minimality of $n_0$. Thus, there is no integer $n>1$ so that $n\mid2^n-1$.
+\end{Proof}
+
+\begin{exer}
+ Show that \[\frac{\phi(n)}{n}=\prod_{p\mid n}\left(1-\frac{1}{p}\right)\] by interpreting the left-hand side as the probability that a random number chosen from $1\leq a\leq n$ is coprime to $n$.
+\end{exer}
+
+\begin{Solution}
+ Since $\phi(n)$ is the number of integers less than $n$ which are coprime to $n$, the probability that an element chosen from $\{1,2,\hdots,n\}$ is coprime to $n$ is clearly $\phi(n)/n$. On the other hand, this is clearly just the probability that an element from $\{1,2,\hdots,n\}$ has no prime factors in common with $n$, which is given by \[\prod_{p\mid n}\left(1-\frac{1}{p}\right)\qedhere\]
+\end{Solution}
+
+\begin{exer}
+ Show that $\phi$ is multiplicative (i.e., $\phi(mn)=\phi(m)\phi(n)$ when $(m,n)=1$) and $\phi(p^{\alpha})=p^{\alpha-1}(p-1)$ for $p$ prime.
+\end{exer}
+
+\begin{Solution}
+ This follows directly from \textbf{Exercise 1.1.17}: when $(m,n)=1$, \[\phi(mn)=mn\prod_{p\mid mn}\left(1-\frac{1}{p}\right)=m\prod_{p\mid m}\left(1-\frac{1}{p}\right)n\prod_{p\mid n}\left(1-\frac{1}{p})\right)=\phi(m)\phi(n)\] And \[\phi(p^{\alpha})=p^{\alpha}\prod_{p\mid p^{\alpha}}\left(1-\frac{1}{p}\right)=p^{\alpha}\left(1-\frac{1}{p}\right)=p^{\alpha-1}(p-1)\qedhere\]
+\end{Solution}
+
+\begin{exer}
+ Find the last two digits of $3^{1000}$. 
+\end{exer}
+
+\begin{Solution}
+ Notice that $\phi(100)=\phi(4)\phi(25)=2\cdot20=40$. Then, by \textbf{Theorem 1.1.14}, $3^40\equiv1\bmod{100}$, hence $3^1000=\left(3^{40}\right)^25\equiv1\bmod{100}$. The last two digits of $3^{1000}$ are therefore 01.
+\end{Solution}
+
+
+\begin{exer}
+ Find the last two digits of $2^{1000}$.
+\end{exer}
+
+\begin{Solution}
+ We wish to find the residue class of $2^{1000}\pmod{100}$. Since $1000$ is not coprime to $2$, we cannot apply \textbf{Euler's Theorem} as in the previous exercise. However, we have \begin{align*}2^{1000}&\equiv1\bmod{25}\\2^{1000}&\equiv0\bmod{4}\end{align*} We can determine which residue classes $z\mod{100}$ satisfy the above two relations in order to simplify $2^{1000}\pmod{100}$. The second equation gives $z=4k$ for some $k$, hence we solve $4k\equiv1\pmod{25}$. Multiplying through by $-6$ we have $k\equiv-6\pmod{25}$ or, equivalently, $k\equiv19\pmod{25}$. Thus, $z=19\cdot4=76$, hence \[2^{1000}\equiv76\pmod{100}\] so the last two digits of $2^{1000}$ are $76$.
+\end{Solution}
+
+\begin{exer}
+ Let $p_k$ denote the $k$th prime. Prove that \[p_{k+1}\leq p_1p_2\hdots p_k+1\]
+\end{exer}
+
+\begin{Solution}
+ If $p_1p_2\hdots p_k+1$ is prime, then it is clearly larger than $p_{k+1}$. On the other hand, if $p_1p_2\hdots p_k+1$ is composite, then it is divisible by some prime which is different from $p_1,p_2,\hdots,p_k$, and so \[p_{k+1}\leq p_1p_2\hdots p_k+1\qedhere\]
+\end{Solution}
+
+\begin{exer}
+ Show that \[p_k<2^{2^k}\] where $p_k$ denotes the $k$th prime.
+\end{exer}
+
+\begin{Solution}
+ We proceed by strong induction on $k$: notice first that $p_1=2<2^{2^1}$. Suppose that $p_{n}<2^{2^{n}}$ for all $1\leq n\leq k-1$. By the previous exercise, $p_k\leq p_1p_2\hdots p_{k-1}+1$ and, by the induction hypothesis \begin{align*}p_k&<2^{2^1}2^{2^2}\hdots2^{2^{k-1}}+1\\&=2^{2+4+\hdots+2^{k-1}}+1\\&=2^{2^k-2}+1\\&<2^{2^k}\qedhere\end{align*}
+\end{Solution}
+
+
+\begin{exer}
+Prove that $\pi(x)\geq\log(\log x)$.
+\end{exer}
+
+\begin{Solution}
+ From the previous exercise, we have $p_n<2^{2^n}$. Thus, $\pi(2^{2^n})\geq n$. Take $n$ to be an integer so that \[e^{e^{n-1}}<x<e^{e^n}\] then clearly \[\log(\log x)\leq n\] Further, $2^{2^n}<e^{e^{n-1}}$, hence \begin{align*}\pi(x)&\geq \pi\left(e^{e^{n-1}}\right)\\&\geq\pi\left(2^{2^n}\right)\\&\geq n\\&\geq\log(\log x)\qedhere\end{align*}
+\end{Solution}
+
+\begin{exer}
+By observing that any natural number can be written as $sr^2$ with $s$ squarefree, show that \[\sqrt{x}\leq2^{\pi(x)}\] Deduce that \[\pi(x)\geq\frac{\log x}{2\log2}\]
+\end{exer}
+
+\begin{Solution}
+Let $\gamma(n)$ be the set of primes dividing $n$. For any set of primes $S$ define $f_S(x)$ to be the number of integers $n$ such that $1\leq n\leq x$ with $\gamma(n)\subseteq S$. If $S$ is finite, say $|S|=t$. For each $n$ as in $f_S(x)$, write $n=sr^2$ with $s$ squarefree. Since $1\leq sr^2\leq x$, we have $r\leq\sqrt{x}$. There are $2^t$ choices for $s$ corresponding to the subsets of $S$, hence $f_S(x)\leq 2^t\sqrt{x}$. 
+
+Let $\pi(x)=m$ so that $p_{m+1}>x$. Taking $S=\{p_1,p_2,\hdots, p_m\}$, we have $f_S(x)=x$, hence \[x\leq2^m\sqrt{x}=2^{\pi(x)}\sqrt{x}\] which yields $\sqrt{x}\leq2^{\pi(x)}$. Thus, \begin{align*}\frac{1}{2}\log{x}&\leq\pi(x)\log2\\\pi(x)&\geq\frac{\log{x}}{2\log2}\qedhere\end{align*}
+\end{Solution}
+
+\begin{exer}
+Let $\psi(x)=\sum_{p^{\alpha}\leq x}\log p$ where the summation is over prime powers $p^{\alpha}\leq x$.
+ \begin{description}
+ \item[(i)] For $0\leq x\leq1$, show that $x(1-x)\leq\frac{1}{4}$. Deduce that \[\int_0^1x^n(1-x)^ndx\leq\frac{1}{4^n}\]for every natural number $n$.
+ \item[(ii)] Show that $e^{\psi(2n+1)}\int_0^1x^n(1-x)^ndx$ is a positive integer. Deduce that \[\psi(2n+1)\geq2n\log2\]
+ \item[(iii)] Prove that $\psi(x)\geq\frac{1}{2}x\log2$ for $x\geq6$. Deduce that \[\pi(x)\geq\frac{x\log2}{2\log x}\] for $x\geq6$.
+\end{description}
+\end{exer}
+
+\begin{Solution}\indent
+ \begin{description}
+  \item [(i)] Define $f:[0,1]\to\mathbb{R}$ by $f(x)=x(1-x)$. Observe that $f'(x)=1-2x$, hence $f$ has a critical point at $x=\frac{1}{2}$. Further, $f''(x)=-2<0$. By \textbf{The Second-Derivative Test}, $f$ attains a maximum value of $\frac{1}{4}$ at $x=\frac{1}{2}$. Thus $x(1-x)\leq\frac{1}{4}$. Further, we have $x^n(1-x)^n\leq\frac{1}{4^n}$ and so \[\int_0^1x^n(1-x)^ndx\leq\int_0^1\frac{1}{4^n}dx=\frac{1}{4^n}\]
+  \item [(ii)] Notice that $e^{\psi(2n+1)}=\lcm(1,2,\hdots,2n+1)$. Further, by expanding $x^n(1-x)^n$, we see that $\int_0^1x^n(1-x)^ndx$ is a sum of rational numbers whose denominators are less than $2n+1$, hence \[e^{\psi(2n+1)}\int_0^1x^n(1-x)^ndx\] is an integer, say $k$. Thus, $e^{\psi(2n+1)}\geq2^{2n}$.
+  \item [(iii)] Take $n$ so that $2n-1\leq x<2n+1$. By (ii),\[\psi(x)\geq\psi(2n-1)\geq(2n-2)\log2>(x-3)\log2\] For $x\geq6$, $x-3>x/2$, hence $\psi(x)>x\log2/2$. Since $\psi(x)\leq\pi(x)\log x$, we have \[\pi(x)\geq\frac{x\log2}{2\log{x}}\] for $x\geq6$.
+ \end{description}
+
+\end{Solution}
+
+\begin{exer}
+By observing that \[\prod_{n<p\leq2n}p\Bigg|{2n\choose n}\] show that \[\pi(x)\leq\frac{9x\log 2}{\log x}\] for every integer $x\geq2$.
+\end{exer}
+
+\begin{Solution}
+ Since \[\prod_{n<p\leq2n}p\Bigg|{2n\choose n}\] we have that \begin{align*}\sum_{n<p\leq 2n}\log p&\leq\log\left(\frac{(2n)!}{n!^2}\right)\\&=\log(2n)!-2\log n!\\&=\sum_{k=1}^{2n}\log k-2\sum_{k=1}^n\log k\\&=\sum_{k=1}^n\log2k-\sum_{k=1}^n\log k\\&=\sum_{k=1}^n\log2\\&=n\log2\\&\leq2n\log2\end{align*} 
+
+Let \[\theta(n)=\sum_{p\leq n}\log p\] It is easy to show by induction that \[\theta(2^r)\leq 2^{r+1}\log2\] For any $x\geq2$, take $r$ so that $2^r\leq x<2^{r+1}$ and notice that \[\theta(x)\leq\theta(2^{r+1})\leq2^{r+2}\log2\leq4x\log2\] Thus \[\sum_{\sqrt{x}\leq p\leq x}\log p\leq4x\log2\] which yields \[\left(\frac{1}{2}\log x\right)\left(\pi(x)-\pi(\sqrt{x})\right)\leq4x\log2\] Now, dividing through by $\frac{1}{2}\log x$, we see that \[\pi(x)\leq\frac{8x\log2}{\log x}+\pi(\sqrt{x})\leq\frac{8x\log2}{\log x}+\sqrt{x}\] For $x\geq10$, $\sqrt{x}\leq\frac{x\log2}{\log x}$, hence \[\pi(x)\leq\frac{9x\log2}{\log x}\] For $x\leq10$, the inequality can be verified directly.
+\end{Solution}
+
+\section{Applications of Unique Factorization}
+\begin{exer}
+Suppose that $a,b,c\in\mathbb{Z}$. If $ab=c^2$ and $(a,b)=1$, then show that $a=d^2$ and $b=e^2$ for some $d,e\in\mathbb{Z}$. More generally, if $ab=c^g$ then $a=d^g$ and $b=e^g$ for some $d,e\in\mathbb{Z}$.
+\end{exer}
+
+\begin{Solution}
+ We prove the more general result by writing $a=p_1^{e_1}p_2^{e_2}\hdots p_k^{e_k}$ and $b=q_1^{t_1}q_2^{t_2}\hdots q_l^{t_l}$. Since $(a,b)=1$, $q_i$ and $p_j$ are different for all $i,j$. Further, since $ab=c^g$, \begin{align*}ab&=p_1^{e_1}p_2^{e_2}\hdots p_k^{e_k}q_1^{t_1}q_2^{t_2}\hdots q_l^{t_l}\\&=c^g\\&=p_1^{g\alpha_1}p_2^{g\alpha_2}\hdots p_k^{g\alpha_k}q_1^{g\beta_1}q_2^{g\beta_2}\hdots g_l^{g\beta_l}\end{align*} where $c=p_1^{\alpha_1}p_2^{\alpha_2}\hdots p_k^{\alpha_k}q_1^{\beta_1}q_2^{\beta_2}\hdots q_l^{\beta_l}$. By unique factorization, $e_1=g\alpha_1$, $e_2=g\alpha_2$ and so on. We can therefore write \[a=p_1^{g\alpha_1}p_2^{g\alpha_2}\hdots p_k^{g\alpha_k}\]\[b=q_1^{g\beta_1}q_2^{g\beta_2}\hdots q_l^{g\beta_l}\] and so clearly $a=d^g$, $b=e^g$ where $d=p_1p_2\hdots p_k$ and $e=q_1q_2\hdots q_l$.
+\end{Solution}
+
+\begin{exer}
+ Solve the equation $x^2+y^2=z^2$ where $x,y,z$ are integers and $(x,y)=(y,z)=(x,z)=1$. 
+\end{exer}
+
+\begin{Solution}
+ Notice that if $x$ and $y$ are odd then $x^2\equiv1\bmod4$ and $y^2\equiv1\bmod4$, hence $z^2\equiv2\bmod4$. There is no such $z$, hence either $x$ or $y$ is even. Without loss of generality, say $x$ is even, $y$ is odd. Since $x$ is even, $x^2$ is divisible by 4, and \begin{align*}x^2&=z^2-y^2\\\left(\frac{x}{2}\right)^2&=\frac{(z+y)}{2}\frac{(z-y)}{2}\end{align*} Further, since $(x,y)=(y,z)=(x,z)$, we have \[\left(\frac{(z+y)}{2},\frac{(z-y)}{2}\right)=1\] By the previous exercise, there must be $a,b\in\mathbb{Z}$ so that \begin{align*}\frac{(z+y)}{2}&=a^2\\\frac{(z-y)}{2}&=b^2\end{align*} Our solutions are therefore given by \begin{align*}x&=2ab\\y&=a^2-b^2\\z&=a^2+b^2\end{align*} where $a-b\equiv1\bmod{2}$, i.e. $a$ and $b$ have opposite parity. Further, any $a,b\in\mathbb{Z}$ gives rise to a triple $(x,y,z)$ which satisfies $x^2+y^2=z^2$, hence we have the entire solution set.
+\end{Solution}
+
+\begin{exer}
+ Show that $x^4+y^4=z^2$ has no nontrivial solution. Hence deduce, with Fermat, that $x^4+y^4=z^4$ has no nontrivial solution. 
+\end{exer}
+
+\begin{Solution}
+ Suppose a solution to $x^4+y^4=z^2$ exists which is nontrivial. Then there must be a solution whose absolute value is smallest, say $z$. By the previous exercise we can write \begin{align*}x^2&=2ab\\y^2&=a^2-b^2\\z&=a^2+b^2\end{align*} with $a$ and $b$ having different parity. If $a$ is even, then \[y^2=a^2-b^2\equiv-1\equiv3\bmod{4}\] which is impossible, hence $a$ is odd and $b$ is even. Write $b=2c$ and note that $(a,c)=1$. Further, $x^2=2ab=4ac$ and so $a$ and $c$ are perfect squares by \textbf{Exercise 1.2.1}. Write $a=m^2$, $c=n^2$, noting that $(m,n)=1$. By the previous exercise, we have $y^2=a^2-b^2=m^4-4n^4$. Thus $(2n^2)^2+y^2=(m^2)^2$ and $(2n^2,y)=(y,m^2)=(2n^2,m^2)=1$. 
+
+Again applying the previous exercise, we have $2n^2=2\alpha\beta$, $y=\beta^2-\alpha^2$ and $m^2=\alpha^2+\beta^2$ where $(\alpha,\beta)=1$ and $\alpha$ and $\beta$ have opposite parity. Further, $n^2=\alpha\beta$, hence $\alpha=p^2$ and $\beta=q^2$ for some $p,q$ by \textbf{Exercise 1.2.1}. Then $m^2=p^4+q^4$. This contradicts the minimality of $z$ chosen previously, hence there is no nontrivial solution to the system \[x^4+y^4=z^2\] which clearly implies that no nontrivial solution exists for the system \[x^4+y^4=z^4\qedhere\]
+\end{Solution}
+
+\begin{exer}
+ Show that $x^4-y^4=z^2$ has no nontrivial solution.
+\end{exer}
+
+
+\begin{Solution}
+ First note that $x^4-y^4=(x^2+y^2)(x^2-y^2)=z^2$. Suppose that a nontrivial solution exists to this system with $|x|$ minimal. We can write $(x^2)^2=z^2+(y^2)^2$. By \textbf{Exercise 1.2.2}, there is no solution to this system for $x$ even, hence $x$ is odd. 
+
+Suppose $y$ is odd. By \textbf{Exercise 1.2.2}, we can write \begin{align*}z&=2ab\\y^2&=a^2-b^2\\x^2&=a^2+b^2\end{align*} with $(a,b)=1$. Then \[a^4-b^4=(a^2+b^2)(a^2-b^2)=x^2y^2=(xy)^2\] which yields another solution to $x^4-y^4=z^2$. But $a<x$, contradicting the minimality of $|x|$. Thus, there are no solutions for $y$ odd.
+
+Suppose then that $y$ is even. By \textbf{Exercise 1.2.2}, we can write \begin{align*}y^2&=2cd\\z&=c^2-d^2\\x^2&=c^2+d^2\end{align*} with $c,d$ of opposite parity (say, without loss of generality, $c$ is even). Then $(2c,d)=1$, hence we can write $2c=s^2$, $d=t^2$. Since $s$ is even, we can write $s=2u$, hence $c=2u^2$. Thus, we have \[x^2=c^2+d^2=(2u^2)^2+(t^2)^2\] Hence we can write \begin{align*}2u^2&=2vw\\t^2&=v^2-w^2\\x&=v^2+w^2\end{align*} Since $u^2=vw$, we can write $v=a^2$ and $w=b^2$. Then \[t^2=v^2-w^2=a^4-b^4\] But $a<x$, a contradiction! 
+
+Thus, $x^4-y^4=z^2$ has no nontrivial solution.
+\end{Solution}
+
+\begin{exer}
+ Prove that if $f(x)\in\mathbb{Z}[x]$, then $f(x)\equiv0\pmod{p}$ is solvable for infinitely many primes $p$.
+\end{exer}
+
+\begin{Solution}
+ We say $p$ is a prime divisor of $f$ if there exists an $n$ such that $p\mid f(n)$. Suppose that $f(x)\equiv0\pmod{p}$ for only finitely many primes, say $p_1,p_2,\hdots,p_k$, and write \begin{align*}f(x)&=a_0+a_1x+\hdots+a_nx^n\\g(x)&=1+a_1x+a_2a_0x^2+\hdots+a_na_0^{n-1}x^n\end{align*} Let $m=p_1p_2\hdots p_k$ and notice that \begin{align*}f(a_0m)&=a_0+a_1a_0m+\hdots+a_n(a_0m)^n\\&=a_0(1+a_1m+a_2a_0m^2+\hdots+a_na_0^{n-1}m^n)\\&=a_0g(m)\end{align*} Clearly, no $p_1,p_2,\hdots,p_k$ divides $g(m)$, hence $g(m)$ has a prime divisor divisor different than $p_1,p_2,\hdots,p_k$. This prime divisor is also a prime divisor of $f$. This is a contradiction. Thus, $f$ has infinitely many prime divisors.
+\end{Solution}
+
+\begin{exer}
+ Let $q$ be a prime. Show that there are infinitely many primes $p$ so that $p\equiv1\pmod{q}$.
+\end{exer}
+
+\begin{Solution}
+ Consider the polynomial \[f(x)=\frac{x^q-1}{x-1}=1+x+\hdots+x^{q-1}\] Let $x_0$ be an integer so that $f(x_0)\equiv0\pmod{p}$. Then $x_0^q\equiv1\bmod{p}$. Since $q$ is prime, this implies that $q$ is the order of $x_0$ in $\left(\mathbb{Z}/p\mathbb{Z}\right)^{\times}=(1,2,\hdots,p-1)$, hence $q\mid p-1$. Thus, $p\equiv1\pmod{q}$. If $x_0\equiv1\pmod{p}$, then \[1+x_0+\hdots+x_0^{q-1}\equiv0\pmod{p}\] which forces $p=q$. Thus, every prime divisor of $f$ is either $q$ or congruent to $1\pmod{q}$.  By the previous exercise, there are infinitely many primes $p$ so that $f(x)\equiv0\bmod{p}$, hence there are infinitely many primes $p$ so that $q\equiv1\bmod{p}$. 
+\end{Solution}
+
+\begin{exer}
+ Show that $F_n$ divides $F_m-2$ if $n$ is less than $m$, and from this deduce that $F_n$ and $F_m$ are relatively prime if $m\not=n$.
+\end{exer}
+
+\begin{Solution}
+ Write $m=n+k$ with $k>0$. Then \begin{align*}\frac{F_m-2}{F_n}&=\frac{F{n+k}-2}{F_n}\\&=\frac{2^{2^{n+k}}-1}{2^{2^n}+1}\\&=\frac{(2^{2^n})^{2^k}-1}{2^{2^n}+1}\\&=\frac{t^{2^k}-1}{t+1}=t^{2^k-1}-t^{2^k-2}+\hdots-1\end{align*} where $t=2^{2^n}$. Hence $F_n\mid F_m-2$. 
+
+Write $kF_n=F_m-2$. Then $F_m-kF_n=2$, hence $(F_m,F_n)\mid2$. Obviously, $(F_m,F_n)\not=2$, since both are odd, hence $(F_m,F_n)=1$, i.e. they are relatively prime.$\qedhere$  
+\end{Solution}
+
+\begin{exer}
+ Consider the $n$th Fermat number $F_n=2^{2^n}+1$. Prove that every prime divisor of $F_n$ is of the form $2^{n+1}k+1$.
+\end{exer}
+
+\begin{Solution}
+ Let $p$ be a prime divisor of $F_n$. Since $p|2^{2^n}+1$, we have $2^{2^n}\equiv-1\pmod{p}$, hence $(2^{2^n})^2\equiv1\pmod{p}$. Thus \[2^{2^{n+1}}\equiv1\pmod{p}\] Consider now the group $G=\left(\mathbb{Z}/p\mathbb{Z}\right)^{\times}=(1,2,\hdots,p-1)$. Since $2^{2^{n+1}}\equiv1\pmod{p}$, $\ord{2}|2^{n+1}$ hence is a power of 2, say $2^m$. Notice that, for all $k\geq m$, \[2^{2^k}=(2^{2^m})^{k-m}\equiv1\pmod{p}\] By assumption, $2^{2^n}\equiv-1\pmod{p}$, hence $m\geq n+1$. On the other hand, $m\leq n+1$ since $2^{2^{n+1}}\equiv1\pmod{p}$, so $\ord{2}=2^{2^{n+1}}$. Thus, $2^{n+1}\mid p-1$ by \textbf{Lagrange's Theorem}, so there exists an integer $k$ such that $p=k2^{n+1}+1$. 
+\end{Solution}
+
+\begin{Lem}
+ If $f$ is a monic nonconstant polynomial satisfying $f(x_0)\equiv0\pmod{p}$, then $f(x_0+p)\equiv f(x_0)+pf'(x_0)\pmod{p^2}$.
+\end{Lem}
+
+\begin{proof}
+ We proceed by induction on the degree of $f$. The case $\deg{f}=0$ is trivially true. Suppose that, for all $f$ with $\deg{f}=k$, $f(x_0+p)\equiv f(x_0)+pf'(x_0)\pmod{p^2}$. Then, for any $f$ of degree $k+1$, we have \[f(x)=x^{k+1}+a_1x^k+\hdots+a_0\] hence we need only show that the lemma is satisfied for $x^{k+1}$. By the binomial theorem, we have \begin{align*}(x_0+p)^{k+1}&=\sum_{i=0}^{k=1}{k+1\choose i}x_0^{k+1-i}p^i\\&\equiv\sum_{i=0}^1{k+1\choose i}x_0^{k+1-i}p^i\pmod{p^2}\\&\equiv x_0^{k+1}+p(k+1)x_0^k\pmod{p^2}\qedhere\end{align*}
+\end{proof}
+
+\begin{exer}
+Given a natural number $n$, let $n=p_1^{\alpha_1}p_2^{\alpha_2}\hdots p_k^{\alpha_k}$ be its unique factorization as a product of prime powers. We define the squarefree part of $n$, denoted $S(n)$, to be the product of primes $p_i$ for which $\alpha_i=1$. Let $f(x)\in\mathbb{Z}[x]$ be nonconstant and monic. Show that $\liminf S(f(n))$ is unbounded as $n$ ranges over the integers. 
+\end{exer}
+
+\begin{Solution}
+ Write $f(x)=x^n+a_1x^{n-1}+\hdots+a_0$. For any prime divisor, $p$, we have $f(x_0)\equiv0\pmod{p}$ for some $x_0$. By the above lemma, we have \[f(x_0+p)\equiv f(x_0)+pf'(x_0)\pmod{p^2}\]
+\end{Solution}
+
+\section{The \textit{ABC} Conjecture}
+
+\begin{exer}
+ Assuming the ABC Conjecture, show that if $xyz\not=0$ and $x^n+y^n=z^n$ for three mutually coprime integers $x,y,$ and $z$, then $n$ is bounded.
+\end{exer}
+
+\begin{Solution}
+ Without loss of generality, suppose $\max(|x|,|y|,|z|)=|z|$. By \textbf{The ABC Conjecture}, for every $\epsilon>0$ there is a $\kappa(\epsilon)$ so that \[\max(|x^n|,|y^n|,|z^n|)=|z|^n\leq\kappa(\epsilon)\left(\text{rad}(xyz)\right)^{1+\epsilon}\leq\kappa(\epsilon)|z|^{3+3\epsilon}\] Since $|z|>1$, $n$ must be bounded. In particular, this implies that, for sufficiently large $n$, Fermat's Last Theorem is true.
+\end{Solution}
+
+\begin{exer}
+ Let $p$ be an odd prime. Suppose that $2^n\equiv1\pmod{p}$ and $2^n\not\equiv1\pmod{p^2}$. Show that $2^d\not\equiv1\pmod{p^2}$ where $d$ is the order of $2\pmod{p}$.
+\end{exer} 
+
+\begin{Solution}
+ Since $2^n=2^d=1$ in $\mathbb{Z}/p\mathbb{Z}$, it follows that $d|n$, say $n=de$. Suppose $2^d\equiv1\pmod{p^2}$. Then $2^n=2^{de}=(2^d)^e\equiv1\pmod{p^2}$, a contradiction. Thus, $2^d\not\equiv1\pmod{p^2}$. 
+\end{Solution}
+
+\begin{exer}
+ Assuming the $ABC$ Conjecture, show that there are infinitely many primes $p$ such that $2^{p-1}\not\equiv1\pmod{p^2}$. 
+\end{exer}
+
+\begin{exer}
+ Show that the number of primes $p\leq x$ for which \[2^{p-1}\not\equiv1\pmod{p^2}\] is $\gg\log x/\log\log x$, assuming the $ABC$ Conjecture.
+\end{exer}
+
+\begin{exer}
+ Show that if the Erd\"{o}s conjecture above is true, then there are infinitely many primes $p$ such that $2^{p-1}\not\equiv1\pmod{p^2}$.
+\end{exer}
+
+\begin{exer}
+ Assuming the $ABC$ Conjecture, prove that there are only finitely many $n$ such that $n-1$, $n$, $n+1$ are squarefull.
+\end{exer}
+
+\begin{Solution}
+ Consider the equation\[(n^2-1)+1=n^2\] where $n$ is such that $n-1,n,n+1$ are squarefull. By the $ABC$ Conjecture, \begin{align*}n^2&\leq \kappa(\epsilon)\left(\text{rad}\left(n^2(n^2-1)\right)\right)^{1+\epsilon}\\&\leq\kappa(\epsilon)\left(n^{1/2}\sqrt{n-1}\sqrt{n+1}\right)^{1+\epsilon}\end{align*} This implies that $n$ is bounded.
+\end{Solution}
+
+\begin{exer}
+ Suppose that $a$ and $b$ are odd positive integers satisfying \[\text{rad}(a^n-2)=\text{rad}(b^n-2)\] for every natural number $n$. Assuming $ABC$, prove that $a=b$.
+\end{exer}
+
+\begin{Solution}
+ Without loss of generality, suppose $a<b$
+\end{Solution}
+
+\section{Supplementary Problems}
+
+\begin{exer}
+ Show that every proper ideal of $\mathbb{Z}$ is of the form $n\mathbb{Z}$ for some integer $n$.
+\end{exer}
+
+\begin{Solution}
+ Every ideal of $\mathbb{Z}$ is a subgroup of $\left(\mathbb{Z},+\right)$. Thus, we must merely show that all subgroups of $\left(\mathbb{Z},+)$ are of the form $n\mathbb{Z}$, in which case the result clearly follows.
+
+Take $G$ to be a subgroup of $\mathbb{Z}$. Let $n$ be the greatest common divisor of all elements of $G$. Then $n\mathbb{Z}\leq G$. On the other hand, if $m\notin n\mathbb{Z}$, then $n\nmid m$. But $n$ is a divisor of all elements of $G$, so $n\notin G$. This proves $G=
+\end{Solution}
+
+\end{document}

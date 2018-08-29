@@ -1,0 +1,104 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Real Analysis\\\large Homework 5}
+\date{September 30, 2010}
+\author{Khalid Hourani}
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{fancy}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{(\arabic{enumi})}}
+\renewcommand{\labelenumii}{\textbf{\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+\begin{titlepage}
+ \maketitle 
+\end{titlepage}
+
+\begin{enumerate}
+ \item Construct a non-negative funciton $f\in L^1{\R}$ which is essentially unbounded in every interval (i.e. for any interval $I$ we have $\text{essup}f=+\infty$).
+
+\begin{Proof}
+ Let $g(x)=x^{-1/2}\chi_{[0,1]}$. Let $f:\N\to\Q$ be a bijection, and define $a_n=f(n)$. Now, let \[f(x)=\sum_{n=1}^{\infty}2^{-n}g(x-a_n)\] Then \begin{align*}\int|f(x)|dx&=\sum_{n=1}^{\infty}2^{-n}\int|g(x-a_n)|dx\\&=\sum_{n=1}^{\infty}2^{-n}\int|g(x)|dx\\&=\int|g(x)|dx\end{align*} Then, for any interval $I$, there is an interval $J$ about the origin such that \[\underset{I}{\text{essup}}f=\underset{J}{\text{essup}}g\] Hence \[\underset{I}{\text{essup}}f=+\infty\qedhere\]
+\end{Proof}
+
+ \item A few limits with integrals:
+  \begin{enumerate}
+   \item Find whether $\lim_{n\to\infty}\int_0^1(1-\frac{x}{n})^ne^{\frac{x}{2}}dx$ exists and if it does find its value.
+   \item (Riemann-Lebesgue Lemma) Let $f\in L^1(\R)$. Compute \[\lim_{n\to\infty}\int_{\R}f(x)\cos(nx)dx\]
+   \item Let $E\subseteq(0,2\pi)$ and $u_n$ some arbitrary sequence of real numbers. Compute \[\lim_{n\to\infty}\int_E(\cos(nx+u_n))^2dx\]
+  \end{enumerate}
+
+\begin{Proof}\indent
+ \begin{enumerate}
+  \item Write $f_n(x)=(1-\frac{x}{n})^ne^{\frac{x}{2}}$ and observe that $f_n(x)$ is dominated by (and further has a limit of) $e^{\frac{3x}{2}}$. By dominated convergence, \begin{align*}\lim_{n\to\infty}\int_0^1\left(1-\frac{x}{n}\right)^n\cos(nx)dx&=\int_0^1e^{\frac{3x}{2}}\\&=\frac{2}{3}\left(e^{\frac{3}{2}}-1\right)\end{align*}
+
+  \item We first observe that \[\lim_{n\to\infty}\int_I\cos(nx)dx=0\] for any compact interval $I$. Further, for any step function $f(x)=\lambda\chi_I$, \[\lim_{n\to\infty}\int_{\R}f(x)\cos(nx)dx=\lambda\lim_{n\to\infty}\int_I\cos(nx)dx=0\] For any positive function $f$, we have $f_k\to f$ with $f_k$ a sequence of step functions and, by dominated convergence, \begin{align*}\lim_{n\to\infty}\int_{\R}f(x)\cos(nx)dx&=\lim_{n\to\infty}\lim_{k\to\infty}\int_{\R}f_k(x)\cos(nx)dx\\&=\lim_{k\to\infty}\lim_{n\to\infty}\int_{\R}f_k(x)\cos(nx)dx\\&=0\end{align*} Then, for any measurable function $f$, write $f=g-h$ with $g,h$ positive $L_1$ functions. Then \begin{align*}\lim_{n\to\infty}\int_{\R}f(x)\cos(nx)dx&=\lim_{n\to\infty}\int_{\R}g(x)\cos(nx)dx-\lim_{n\to\infty}\int_{\R}h(x)\cos(nx)dx\\&=0\end{align*} which completes the proof.
+
+  \item Recall that \[\cos^2(\theta)=\frac{1+\cos2\theta}{2}\] and so \begin{align*}\int_E\cos^2(nx+u_n)dx&=\frac{1}{2}\int_E1dx+\frac{1}{2}\int_E\cos2\left(nx+u_n\right)dx\\&=\frac{1}{2}|E|+\frac{1}{2}\cos2u_n\int_E\cos2nxdx-\frac{1}{2}\sin2u_n\int_E\sin2nxdx\end{align*} By the Riemann-Lebesgue Lemma, \begin{align*}\int_E\cos2nxdx&=\int_{-\infty}^{\infty}\chi_E(x)\cos2nxdx\to0\text{ as }n\to\infty\\\int_E\sin2nxdx&=\int_{-\infty}^{\infty}\chi_E(x)\sin2nxdx\to0\text{ as }n\to\infty\end{align*} hence \[\int_E\cos^2(nx+u_n)dx\to\frac{1}{2}|E|\text{ as }n\to\infty\qedhere\]
+
+\end{enumerate}
+\end{Proof}
+
+ \item Given $f$ measurable in $\R^n$, we define its distribution funciton $\lambda:\R_+\to\R_+$ by \[\lambda(t)=|\{x\in\R:|f|>t\}|\] Prove $f\in L^p(\R)$ if and only if $\displaystyle\sum_{-\infty}^{\infty}2^{kp}\lambda(2^k)<+\infty$.
+
+ \item First some definitions: A complex-valued function $f:\R^n\to\C$ is \textit{measurable} if its real and imaginary parts are measurable. It is also defined to be in $L^p$ if $|f(x)|$ (a real valued, measurable function) is in $L^p$. Given $f\in L^1(\R)$, with calues in $\C$, the \textit{Fourier transform} of $f$ (traditionally called ``f hat'') is function \[\hat{f}:\R^n\to\R,\hskip.05in \hat{f}(y):=\int_{\R}f(x)e^{-2\pi ix\cdot y}dx\hskip.2in y\in\R^n\] Note: for complex-valued functions we define \[\int_f(x)dx=\int\text{Re}(f(x))dx+i\int\text{Im}(f(x))dx\] With these definitions, prove (assuming $f\in L^1$)
+  \begin{enumerate}
+   \item $\hat{f}(y)$ is a continuous function in $\R^n$
+   \item (Riemann-Lebesgue revisited) As $|y|\to\infty$ we have $\hat{f}(y)\to0$. 
+  \end{enumerate}
+
+\begin{Proof}\indent
+ \begin{enumerate}
+  \item Observe that \begin{align*}\left|\hat{f}(w)-\hat{f}(z)\right|&=\left|\int_{\R}\left(e^{-2\pi ix\cdot w}-e^{-2\pi ix\cdot z}\right)f(x)dx\right|\\&=\left|\int_{\R}e^{-2\pi ix\cdot w}\left(e^{-2\pi ix\cdot(z-w)}-1\right)f(x)d(x)\right|\\&\leq\int_{\R}\left|e^{-2\pi i(z-w)x}-1\right||f(x)|d(x)\\&\leq2\int_{\R}|f(x)|dx\end{align*} 
+  \item This proof follows the same format as \textbf{(2b)}. Simply write \[\hat{f}(y)=\int_{\R}f(x)\cos(2\pi yx)dx+i\int_{\R}f(x)\sin(2\pi yx)dx\] Then as $|y|\to\infty$, $\hat{f}(y)\to0$.
+ \end{enumerate}
+
+\end{Proof}
+
+\end{enumerate}
+\end{document}

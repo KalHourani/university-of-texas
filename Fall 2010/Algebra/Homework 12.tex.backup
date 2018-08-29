@@ -1,0 +1,94 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Algebra\\\large Homework 11}
+\date{November 16, 2010}
+\author{Khalid Hourani}
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{fancy}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Tor}{\operatorname{Tor}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{(\arabic{enumi})}}
+\renewcommand{\labelenumii}{\textbf{\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+\begin{titlepage}
+ \maketitle\thispagestyle{empty}
+\end{titlepage}
+\thispagestyle{empty}
+\clearpage\mbox{}\clearpage
+
+\setcounter{page}{1}
+\section*{Section 12.1}
+\begin{enumerate}
+ \item [17.] 
+ \item [18.]
+ \item [19.] 
+\end{enumerate}
+
+\section*{Section 12.2}
+\begin{enumerate}
+ \item [1.] If $A$ and $B$ are similar then, by Theorem 15, $A$ and $B$ have the same rational canonical form, hence the same invariant factors. Thus, by proposition 20, they have the same characteristic polynomial. From proposition 20, it also follows that they have the same minimal polynomials, since they have the same roots. 
+ \item [3.] If two matrices are similar, they have the same characteristic polynomials by the previous exercise. Conversely, if two non-scalar matrices $A_{2\times2}$ and $B_{2\times2}$ over $F$ have the same characteristic polynomial, $x^2-a$, we have $A^2=B^2$ by Cayley-Hamilton. This forces $(A+B)(A-B)=0$. 
+ \item [4.] If two matrices are similar, they have the same characteristic and minimal polynomials by the previous exercise. Conversely, if two matrices $A$ and $B$ have the same characteristic and minimal polynomials, 
+ \item [10.] 
+ \item [15.] 
+\end{enumerate}
+
+\section*{Section 12.3}
+\begin{enumerate}
+ \item [21.]
+ \item [22.]
+ \item [31.]
+ \item [32.]
+ \item [38.] Write $A=PCP^{-1}$ with $B$ in Jordan canonical form. We see that, if $C=B^2$, then $A=(PBP^{-1})^2$, hence a matrix has a square root if and only if its Jordan canonical form has a square root. By exercise 37, the Jordan canonical form of a matrix must have non-zero eigenvalues which are perfect squares (which is not a restriction in this case, since the entries of the matrix are elements of $\C$). Thus, the Jordan canonical form of a matrix has a square root if and only if all of its Jordan blocks with eigenvalues of 0 come in pairs of size: \[\frac{n}{2}\text{ and }\frac{n}{2}\] or \[\frac{n-1}{2}\text{ and }\frac{n+1}{2}\qedhere\]
+\end{enumerate}
+
+\end{document}

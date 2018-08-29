@@ -1,0 +1,106 @@
+
+\documentclass[12pt,leqno]{article}
+
+\usepackage{graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\numberwithin{equation}{section}
+\pagestyle{headings}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in} \noindent\fbox{#1} #2 \vspace{.10in}}
+
+\swapnumbers
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\theoremstyle{definition}
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+
+
+\makeindex
+
+\begin{document}
+
+
+\thispagestyle{plain}
+\begin{flushright}
+\large{\textbf{Khalid Hourani\\
+}}
+\end{flushright}
+
+\question{3}{Prove Lemma 5.3 in all detail.}
+
+\begin{Lem}
+ Let $F$ and $F'$ be fields and let $\tau:F\to F'$ be an isomorphism. Then the function $\tau^*:F[x]\to F'[t]$ given by \[\tau^*(a_0x^n+a_1x^{n-1}+\hdots+a_n)=\tau(a_0)t^n+\tau(a_1)t^{n-1}+\hdots+\tau(a_n)\] is an isomorphism.
+\end{Lem}
+
+\begin{proof}
+ Suppose $p(x)$ and $q(x)$ are polynomials in $F[x]$ of degree $m$ and $n$, respectively, with respective coefficients $a_i$ and $b_i$. Without loss of generality, suppose $m<n$, and let $a_i=0$ for $i>m$. We shall denote $\tau(a)=a'$ for all $a\in F$. Then \begin{align*}\tau^*(p(x)+q(x))&=\tau^*(a_0+a_1x+\hdots+a_mx^m+b_0+b_1x+\hdots+b_nx^n)\\&=\tau^*((a_0+b_0)+(a_1+b_1)x+\hdots+(a_n+b_n)x^n)\\&=(a_0+b_0)'+(a_1+b_1)'t+\hdots+(a_n+b_n)'t^n\\&=(a_0'+b_0')+(a_1'+b_1')t+\hdots+(a_n'+b_n')t^n\\&=a_0'+a_1't+\hdots+a_n't^n+b_0'+b_1't+\hdots+b_n't\\&=a_0'+a_1't+\hdots+a_m't^m+b_0'+b_1't+\hdots+b_n't^n\\&=\tau^*(p(x))+\tau^*(q(x))\end{align*}
+
+Further \begin{align*}\tau^*(cp(x))&=\tau^*(ca_0+ca_1x+\hdots+ca_mx^m)\\&=(ca_0)'+(ca_1)'t+\hdots+(ca_m)'t^m\\&=ca_0'+ca_1't+\hdots+ca_m't^m\\&=c\tau^*(p(x))\end{align*}
+
+Finally, $\tau^*$ is a bijection since it is not identically $0$.                                                                                                                                                                                            \end{proof}
+
+\question{6}{Let $\mathbb{Q}$ be the field of rational numbers. Determine the degrees of the splitting fields of the following polynomials over $\mathbb{Q}$.}
+\begin{description}
+ \item [(a)] $x^4+1$
+ \item [(b)] $x^6+1$
+ \item [(c)] $x^4-2$
+ \item [(d)] $x^5-1$
+ \item [(e)] $x^9+x^3+1$
+\end{description}
+
+\begin{proof}[Solution]
+ \begin{description}
+  \item [(a)] Observe that $x^4+1$ has roots \begin{align*}\frac{\sqrt{2}}{2}+i\frac{\sqrt{2}}{2},&\hskip.1in \frac{\sqrt{2}}{2}-i\frac{\sqrt{2}}{2}\\\frac{-\sqrt{2}}{2}+i\frac{\sqrt{2}}{2},&\hskip.1in \frac{-\sqrt{2}}{2}-i\frac{\sqrt{2}}{2}\end{align*} Thus, the splitting field of $x^4+1$ is $\mathbb{Q}(\frac{\sqrt{2}}{2}+i\frac{\sqrt{2}}{2})$, which has degree $4$.
+ \item [(b)]
+ \end{description}
+\end{proof}
+
+\question{9}{If $F$ is the field of rational numbers, find necessary and sufficient conditions on $a$ and $b$ so that the splitting field of $x^3+ax+b$ has degree exactly $3$ over $F$.}
+
+\question{11}{If $E$ is an extension of $F$ and if $f(x)\in F[x]$ and if $\phi$ is an automorphism of $E$ leaving every element of $F$ fixed, prove that $\phi$ must take a root of $f(x)$ lying in $E$ into a root of $f(x)$ in $E$.}
+
+\begin{Thm}
+ Let $F$ be a field and $E$ and extension of $F$, and let $\phi$ be an automorphism of $E$ which leaves every element of $F$ fixed. If $f(x)\in F[x]$ has a root $r$ in $E$, then $\phi(r)$ is a root of $f(x)$ in $E$.
+\end{Thm}
+
+\begin{proof}
+ Suppose $f(x)=a_0+a_1x+\hdots+a_nx^n$. Then $0=a_0+a_1r+\hdots+a_nr^n$. Thus, \begin{align*}\phi(0)=0&=\phi(a_0)+\phi(a_1)\phi(r)+\hdots+\phi(a_n)\phi(r)^n\\&=a_0+a_1\phi(r)+\hdots+a_n\phi(r)^n\\&=f(\phi(r))\end{align*} so $\phi(r)$ is a root of $f(x)$ in $E$.
+\end{proof}
+
+\question{15}{If $\mathbb{R}$ is the field of real numbers, prove that if $\phi$ is an automorphism of $\mathbb{R}$ then $\phi$ leaves every element of $\mathbb{R}$ fixed.}
+
+\begin{Thm}
+ If $\phi:\mathbb{R}\to\mathbb{R}$ is a field automorphism, then $\phi(x)=x$ for all $x\in\mathbb{R}$.
+\end{Thm}
+
+\begin{proof}
+ First, we shall see that $\phi(x)=x$ for all $x\in\mathbb{N}$. To see this, observe that \begin{align*}\phi(n)&=\phi\left(\underbrace{1+1+\hdots+1}_{n-\text{times}}\right)\\&=\underbrace{\phi(1)+\phi(1)+\hdots+\phi(1)}_{n-\text{times}}\\&=\underbrace{1+1+\hdots+1}_{n-\text{times}}\\&=n\end{align*} If $x<0$ is an integer, then $\phi(x)=-\phi(-x)=-(-x)=x$. Thus, $\phi(x)=x$ for all $x\in\mathbb{Z}$. Further, for all $x\in\mathbb{Q}$, $x=\frac{a}{b}$ for some integers $a$ and $b$. Hence, \begin{align*}\phi(x)&=\phi\left(\frac{a}{b}\right)\\&=\frac{\phi(a)}{\phi(b)}\\&=\frac{a}{b}\\&=x\end{align*} Observe that $x<0$ if and only if there exists a $y\in\mathbb{R}$ such that $x=-y^2$. Further, $\phi(x)=\phi(-y^2)=-\phi(y)^2>0$. Thus, if $x<y$, $x-y<0$, and $\phi(x-y)=\phi(x)-\phi(y)<0$, so $\phi(x)<\phi(y)$. Now, let $\{x_n\}$ be a sequence of reals with $x_n\to0$. Then, for every $\epsilon>0$, let $\delta$ be a rational number with $\delta<\epsilon$. Since $x_n\to0$, there exists an $N\in\mathbb{N}$ such that $|x_n|<\delta$ for all $n\geq N$. Thus \begin{align*}& |x_n|<\delta\\-\delta&<x_n<\delta\\\phi(-\delta)&<\phi(x_n)<\phi(\delta)\\-\delta&<\phi(x_n)<\delta\\& |\phi(x_n)|<\delta<\epsilon\end{align*} Thus, $\phi(x_n)\to0$, so $\phi$ is continuos at $0$. To see that $\phi$ is continuous everywhere, observe that, if $x_n\to x$, then $x_n-x\to0$ and $\phi(x_n-x)=\phi(x_n)-\phi(x)\to0$, therefore $\phi(x_n)\to\phi(x)$. Finally, for every $x\in\mathbb{R}$, let $\{x_n\}$ be a sequence of rationals with $x_n\to x$. Then $\phi(x_n)\to\phi(x)$ and, since $x_n\in\mathbb{Q}$, $\phi(x_n)=x_n\to x$. By uniqueness of limits, $\phi(x)=x$.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,161 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Algebra\\\large Homework 9}
+\date{November 4, 2010}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Tor}{\operatorname{Tor}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+
+\section*{Section 10.2}
+\begin{enumerate}
+ \item [6.] Prove that $\Hom_{\Z}(\Z/n\Z,\Z/m\Z)\cong\Z/(n,m)\Z$.
+
+\begin{Proof}
+ As $\Z$-modules, $\Z/n\Z$ and $\Z/m\Z$ are simply abelian groups, and homomorphisms between these modules are simply group homomorphisms. In particular, we shall show that $\Hom_{\Z}(\Z/n\Z,\Z/m\Z)\cong\End_{\Z}(\Z/(n,m)\Z)$, which proves the result. To see this, observe first that every homomorphism $\phi:\Z/n\Z\to\Z/m\Z$ is determined by its image on 1, and further $\phi(1)$ has order which divides $(n,m)$. In particular, we have that every homomorphism from $\Z/n\Z$ to $\Z/m\Z$ is of the form $\phi_k$ where $\phi_k(1)=k$ and $k|(n,m)$. We consider the map $\tau_k\in\End_(\Z/(n,m)\Z)$ given by $\tau(1)=k$, and see that the map \[\Psi:\Hom_{\Z}(\Z/n\Z,\Z/m\Z)\to\End(\Z/(n,m)\Z)\] given by $\Psi(\phi_k)=\tau_k$ describes a homomorphism. To see that it is in fact an isomorphism, merely look at its kernel: if $\tau_k=\text{Id}_{\Z/(n,m)\Z}$, then $k=1$, hence $\phi_k$ is the identity of $\Hom_{\Z}(\Z/n\Z,\Z/m\Z)$. Surjectivity is clear, for any $\tau_k$ is mapped to by $\phi_k$.
+\end{Proof}
+
+ \item [7.] Let $z$ be a fixed element of the center of $R$. Prove that the map $m\mapsto zm$ is an $R$-module homomorphism from $M$ to itself. Show that for a commutative ring $R$ the map from $R$ to $\End_R(M)$ given by $r\mapsto rI$ is a ring homomorphism (where $I$ is the identity endomorphism).
+
+\begin{Proof}
+ We see that \[r_1m_1-r_2m_2\mapsto z(r_1m_1-r_2m_2)=zr_1m_1-zr_2m_2=r_1zm_1-r_2zm_2\] hence the map $m\mapsto zm$ is an $R$-module homomorphism from $M$ to itself. If $R$ is commutative, then $r_1-r_2\mapsto (r_1-r_2)I=r_1I-r_2I$, and $r_1r_2\mapsto r_1r_2I=r_1Ir_2I$, hence this map is a ring homomorphism.
+\end{Proof}
+
+ \item [8.] Let $\phi:M\to N$ be an $R$-module homomorphism. Prove that $\phi(\Tor(M))\subseteq\Tor(N)$.
+
+\begin{Proof}
+ Take $m\in\Tor(M)$, say $rm=0$ with $r\not=0$. Then $\phi(rm)=r\phi(m)=0$, so $\phi(m)\in\Tor(N)$. Thus, $\phi(\Tor(M))\subseteq\Tor(N)$.
+\end{Proof}
+
+ \item [9.] Let $R$ be a commutative ring. Prove that $\Hom_R(R,M)$ and $M$ are isomorphic as left $R$-modules.
+
+\begin{Proof}
+ For each $\phi\in\Hom_R(R,M)$, we see that $\phi(z)=\phi(z\cdot1)=z\phi(1)$, hence $\phi$ is determined by its value on 1. In particular, there is a unique homomorphism for each $m\in M$, which we denote $\phi_m$. The map \[\Psi:\Hom_R(R,M)\to M\] given by $\phi_m\mapsto m$ describes an isomorphism.
+\end{Proof}
+
+\end{enumerate}
+
+\section*{Section 10.3}
+\begin{enumerate}
+ \item [2.] Assume $R$ is commutative. Prove that $R^n\cong R^m$ if and only if $n=m$, i.e., two free-rank modules are isomorphic if and only if they they have the same rank.
+
+\begin{Proof}
+ If $n=m$, then $R^n\cong R^m$, clearly. On the other hand, if $R^n\cong R^m$, then take an ideal $I\unlhd R$ which is maximal. Then \[R^n/IR^n\cong R/I\oplus R/I\oplus\hdots\oplus R/I\] and \[R^m/IR^m\cong R/I\oplus R/I\oplus\hdots\oplus R/I\] However, $R/I$ is a field, so $R^n/IR^n\cong F^n$ and $R^m/IR^m\cong F^m$. This yields $F^n\cong F^m$, which forces $n=m$.
+\end{Proof}
+
+ \item [4.] An $R$-module is called a \textit{torsion} module if for each $m\in M$ there is a nonzero element $r\in R$ such that $rm=0$, where $r$ may depend on $m$, (i.e., $M=\Tor(M)$). Prove that every finite abelian group is a torsion $\Z$-module. Give an example of an infinite abelian group that is a torsion $\Z$-module.
+
+\begin{Proof}
+ If $G$ is a finite abelian group, every element has a finite order, hence for each non-zero $g\in G$, simply take $r=\ord(g)$. Then $rg=0$, so $G$ is torsion.
+
+To see that this is also true for some infinite groups, take $G=\Q/\Z$. Every element $q+\Z$ of $G$ has finite order: write $q=\frac{a}{b}$. Then \[\underbrace{\left(\frac{a}{b}+\Z\right)+\left(\frac{a}{b}+\Z\right)+\hdots+\left(\frac{a}{b}+\Z\right)}_{b-\text{times}}=a+\Z=\Z\] We apply the same technique as for finite groups: for each non-zero $g\in G$, take $r=\ord(g)$. Then $rg=0$, so $G$ is torsion.
+\end{Proof}
+
+ \item [5.] Let $R$ be an integral domain. Prove that every finitely generated torsion $R$-module has a nonzero annihilator, i.e., there is nonzero element $r\in R$ such that $rm=0$ for all $m\in M$ -- here $r$ does not depend on $M$. Give an example of a torsion $R$-module whose annihilator is the zero ideal.
+
+\begin{Proof}
+ Take $M$ a finitely generated torsion $R$-module, say $M=\langle A\rangle$ with $A$ a finite subset of $M$. Since $M$ is a torsion module, for each $m\in M$ there is an $a\in A$ such that $am=0$. Take \[r=\prod_{a\in A}a\] and observe that, for each $m\in M$, $rm=0$.
+
+ 
+\end{Proof}
+
+ \item [15.] An element $e$ is called \textit{central idempotent} if $e^2=e$ and $er=re$ for all $r\in R$. If $e$ is central idempotent in $R$, prove that $M=eM\oplus(1-e)M$.
+
+\begin{Proof}
+ We see that $M=eM+(1-e)M$: for any $m\in M$ write $m=em+(1-e)m$. We shall show that $eM\cap(1-e)M=0$, from which the result follows: 
+
+take $m\in eM\cap(1-e)M$, say $m=em_1=(1-e)m_2$. Then $em_1=m_2-em_2$, so $e(m_1+m_2)=m_2$. Multiplying by $e$, and noting that $e^2=e$, we see that $e(m_1+m_2)=em_2$, so $m=em_1=0$. 
+\end{Proof}
+
+\end{enumerate}
+
+
+\section*{Additional Problems}
+\begin{enumerate}
+ \item Let $D$ be a division ring. 
+  \begin{enumerate}
+   \item Prove that $D^{\text{op}}$ is a division ring.   
+   \item For any ring $R$ prove that $M_n(R)^{\text{op}}=M_n(R^{\text{op}})$.
+   \item Regarding R as a left R-module, show that there is a ring isomorphism $\End_R(R)=R^{\text{op}}$.
+  \end{enumerate}
+
+\begin{Proof}
+ \begin{enumerate}
+  \item Since $D$ is a division ring, for each $d\in D$ there is a $d^{-1}\in D$ such that $d\cdot d^{-1}=d^{-1}\cdot d=1$. Then, for each $d\in D$, $d\stackrel{\text{op}}{\cdot}d^{-1}=d^{-1}\cdot d=1$, hence $D^{\text{op}}$ is a division ring.
+  \item For any $m_1,m_2\in M_n(R)$, $m_1\stackrel{\text{op}}{\cdot}m_2=m_2\cdot m_1$, hence the $i,j^{\text{th}}$ entry of $m_1\stackrel{\text{op}}{\cdot}m_2$ is just the $i,j^{\text{th}}$ entry of $m_2m_1$. 
+ \end{enumerate}
+
+\end{Proof}
+
+ \item Suppose a left $R$-module $M$ is isomorphic to the direct sum of $n$ copies of a simple module $L$. Show that $End_R(M)$ is isomorphic to $Mat_n(End_R(L))$. 
+
+ \item Prove that every submodule and every quotient module of a semisimple module is semisimple and the direct sum of semisimples is semisimple. 
+
+ \item The Jacobson Radical $J$ of a ring $R$ is the intersection of all maximal ideals in $R$. Compute the Jacobson radical of $\Z/30\Z$. Show in general that $x$ is in $J$ if and only if $1-xy$ is a unit in $R$ for all $y$ in $R$.
+
+\begin{Proof}
+ 
+\end{Proof}
+ 
+\end{enumerate}
+
+
+\end{document}

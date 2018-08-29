@@ -1,0 +1,114 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Analysis\\Homework 10}
+\date{November, 23}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+\begin{titlepage}
+ \maketitle\thispagestyle{empty}
+\end{titlepage}
+\thispagestyle{empty}
+\clearpage\mbox{}\clearpage
+
+\setcounter{page}{1}
+\begin{enumerate}
+ \item Consider the following Borel measures in $\R^2$, for each one give some reasonable expression for the integral of a generic continuous function $f:\R^2\to\R$:
+\begin{enumerate}
+ \item Let $p\in\R^2$, consider the Borel measure $\delta_p$ defined by $\delta_p(E)=1$ if $p\in E$ and 0 otherwise.
+ \item Given points $p_1,p_2,\hdots,p_n$ and positive numbers $\lambda_1,\lambda_2,\hdots,\lambda_N$, let $\mu$ be the measure given by $\mu(E)=\lambda_1\delta_{p_1}(E)+\hdots+\lambda_N\delta_{p_N}(E)$.
+ \item Let $\gamma:(0,1)\to\R^2$ be a smooth curve. Define \[\mu(E)=|\{s\in(0,1):\gamma(s)\in E\}|\] 
+\end{enumerate}
+
+\begin{Proof}\indent
+ \begin{enumerate}
+  \item We see that, for $s=\sum y_i\chi_{A_i}$ a positive simple function, \[\int_{\R^2}sd\delta_p=\sum y_i\delta_p(A_i)=s(p)\] hence for any $f>0$, \[\int_{\R^2}fd\delta_p=\sup_{0\leq s\leq f}\left\{\int_{\R^2}sd\delta_p\right\}=\sup_{0\leq s\leq f}\{s(p)\}=f(p)\] Then, for any $f$ measurable, we have \[\int_{\R^2}fd\delta_p=f(p)\]
+  \item For $s=\sum y_i\chi_{A_i}$, \[\int_{\R^2}sd\mu=\sum y_i\mu(A_i)=\sum\lambda_is(p_i)\] hence for any $f>0$, \[\int_{\R^2}fd\delta_p=\sup_{0\leq s\leq f}\left\{\int_{\R^2}sd\delta_p\right\}=\sup_{0\leq s\leq f}\left\{\sum\lambda_is(p_i)\right\}=\sum\lambda_if(p_i)\] Then, for any $f$ measurable, we have \[\int_{\R^2}fd\delta_p=\sum\lambda_if(p_i)\]
+  \item We see that $\mu(E)=|\gamma^{-1}(E)|$. 
+ \end{enumerate}
+
+\end{Proof}
+
+\item Let $(Tau,\Sigma,\mu)$ be a measure space, and let $E$ be a measurable set with $\mu(E)<+\infty$. Let $\{f_k\}$ be a sequence of measurable functions on $E$ such that each $f_k$ is finite a.e. in $E$ and $\{f_k\}$ converges a.e. in $E$ to a finite limit. Then, given $\epsilon>0$, there is a measurable set $A\subseteq E$ with $\mu(A-E)<\epsilon$ such that $f_k$ converges uniformly on $A$.
+
+\item\indent\begin{enumerate}
+             \item [Fatou's Lemma:] Let $f_n\geq0$ be a sequence of measurable functions. Then \[\int_X\liminf f_nd\mu\leq\liminf\int_Xf_nd\mu\]
+	     \item [Dominated Convergence:] Let $(X,\Sigma,\mu)$ be a measure space and let $\{f_n\}$ be a sequence of measurable functions that converge pointwise to $f$: \[f(x)=\lim_{n\to\infty}f_n(x)\] Suppose $|f_n(x)|\leq g(x)$ for some $g\in\mathcal{L}^1(X)$ then $f\in\mathcal{L}^1$ and \[\int_X|f_n-f|d\mu\to 0\text{ as }n\to\infty\]
+            \end{enumerate}
+
+
+\item Let $(X_1,\Sigma_1,\mu_1)$ and $(X_2,\Sigma_2,\mu_2)$ be measure spaces, and let $\overline{\Sigma}$ be the \textit{smallest} $\sigma$-algebra of subsets of the product of $X_1\times X_2$ containing all sets of the form $A\times B$ with $A\in\Sigma_1$ and $B\in\Sigma_2$.
+
+Prove there exists a unique measure $\mu$ on $\overline{\Sigma}$ such that $\mu(A\times B)=\mu_1(A)\times\mu_2(B)$. 
+
+\begin{Proof}
+ We define a measure $\mu$ on rectangles $A\times B$ by \[\mu(A\times B)=\mu_1(A)\times\mu_2(B)\] and similarly extend this to countable unions of ractangles by \[\mu\left(\bigcup A_i\times B_i\right)=\sum\mu(A_i\times B_i)=\sum\mu_1(A_i)\mu_2(B_i)\] Now, for any set $Z$ in $\overline{\Sigma}$, we define the measure $\mu(Z)$ by: \[\mu(Z)=\inf\{\mu(U)\}\] where the infimum is taken over all countable rectangular covers of $Z$. Note that this agrees with our previous definition.
+
+We prove first that this is a measure: the properties that $\mu$ is nonnegative and that $\mu(\emptyset)=0$ are clear. To see countable additivity, take $Z_1,Z_2,\hdots$ pairwise disjoint sets in $\overline{\Sigma}$. We see that \[\mu\left(\bigcup Z_i\right)\leq\sum\mu(Z_i)\] clearly, for we merely take the union of countable rectangle covers for each $Z_i$. 
+
+We now prove uniqueness. Suppose $\overline{\mu}$ is any measure on $\overline{\Sigma}$ satisfying the property $\overline{\mu}(A\times B)=\mu_1(A)\times\mu_2(B)$. By definition, for any set $Z$, for any countable rectangle cover $U$ of $Z$, $\overline{\mu}(Z)\leq\overline{\mu}(U)=\mu(U)$, hence $\overline{\mu}(Z)\leq\mu(Z)$. The other inequality is clear, 
+\end{Proof}
+
+\item Let $f:(0,1)\to\R$ be a Lipschitz function with Lipschitz constant 1. Prove that for almost every $x$ the derivative $f'(x)$ exists and $|f'(x)|\leq1$.
+
+\begin{Proof}
+ Clearly, a Lipschitz continuous function with Lipschitz constant $k$ must be absolutely continuous: for every $\epsilon>0$ take $\delta=\epsilon/k$. Then, if $\sum|x_i-x_{i-1}|\leq\delta$, we have \[\sum|f(x_i)-f(x_{i-1})|\leq\sum k|x_i-x_{i-1}|\leq k\delta=\epsilon\]
+
+ Now, $f$ must be absolutely continuous, hence we take $\mu$, Lebesgue-Stieljes measure of $f$, and see that $\mu<<m$, where $m$ denotes the Lebesgue measure on $\R$. By the Radon-Nikodym theorem, there is a function $h$ such that \[\mu(E)=\int_Ehdm\]
+\end{Proof}
+
+\end{enumerate}
+
+\end{document}

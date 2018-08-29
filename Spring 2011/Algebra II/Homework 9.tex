@@ -1,0 +1,81 @@
+\documentclass[12pt,leqno]{article}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Algebra II\\\large Homework 8}
+\date{March 23, 2011}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\w}{\omega}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\+}{\oplus}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+
+\section*{Section 14.7}
+  \begin{enumerate}
+   \item [4.] 
+   \item [5.]
+   \item [6.]
+   \item [8.] Let $p$, $q$ and $r$ be primes in $\Z$ with $q\not=r$. Let $\sqrt[p]{q}$ denote any root of $x^p-q$ and let $\sqrt[p]{r}$ denote any root of $x^p-r$. Prove that $\Q(\sqrt[p]{q})\not=\Q(\sqrt[p]{r})$.
+   \item [9.] \textit{(Artin-Schreir Extensions)} Let $F$ be a field of characteristic $p$ and let $K$ be a cyclic extension of $F$ of degree $p$. Prove that $K=F(\alpha)$ where $\alpha$ is a root of the polynomial $x^p-x+a$ for some $a\in F$. Note that since $F$ contains the $p^{\text{th}}$ roots of unity (namely, 1) that this completes the description of all cyclic extensions of prime degree $p$ over fields containing the $p^{\text{th}}$ roots of unity in all characteristics. 
+   \item [12.] Let $L$ be the Galois closure of the finite extension $\Q(\alpha)$ of $\Q$. For any prime $p$ dividing the order of $\Gal(L/\Q)$ prove that there is a subfield $F$ of $L$ with $[L:F]=p$ and $L=F(\alpha)$.
+   \begin{Proof}
+   Let $H$ be an isomorphic copy of $\Z/p\Z$ inside $\Gal(L/\Q)$ and let $F$ be the fixed field of $H$. By The Fundamental Theorem of Galois Theory, $[L:F]=p$. 
+   \end{Proof}
+   \item [13.] Let $F$ be a subfield of the real numbers $\R$. Let $a$ be an element of $F$ and let $K=F(\sqrt[n]{a})$ where $\sqrt[n]{a}$ denotes a real $n^{\text{th}}$ root of $a$. Prove that if $L$ is any Galois extension of $F$ contained in $K$ then $[L:F]\leq2$.
+  \end{enumerate}
+\end{document}

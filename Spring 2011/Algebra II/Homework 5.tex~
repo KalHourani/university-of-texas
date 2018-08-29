@@ -1,0 +1,117 @@
+\documentclass[12pt,leqno]{article}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Algebra II\\\large Homework 5}
+\date{February 21, 2011}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+
+\section*{Section 14.2}
+  \begin{enumerate}
+   \item [4.] Let $p$ be a prime. Determine the elements of the Galois group of $x^p-2$.
+    \begin{Solution}
+     Let $\omega$ be a primitive $p^{\text{th}}$ root of unity, and let $\alpha=\sqrt[p]{2}$. Then the splitting field of this polynomial is $\Q(\alpha,\omega)$, and the roots of this polynomial are $\omega^i\alpha$ for $0\leq i\leq p-1$. In particular, the Galois group is the set of automorphisms $\Aut(\Q(\alpha,\omega)/\Q)$. Suppose $\phi$ is an automorphism of $\Q(\alpha,\omega)$. We see that \[\phi(\omega)^p=\phi(\omega^p)=\phi(1)=1\] hence $\omega$ must be sent to a power of $\omega$. Similarly, $\alpha$ must be sent to a $p^{\text{th}}$ root of 2. In particular, we see that for each $0\leq i,j\leq p-1$, with $i\not=0$, there is an automorphism given by \begin{align*}\omega&\mapsto\omega^i\\\alpha&\mapsto\omega^j\alpha\end{align*} which in particular yields $|\Aut(\Q(\alpha,\omega)/\Q)|=p(p-1)$.
+    \end{Solution}
+   \item [5.] Prove that the Galois group of $x^p-2$ for $p$ a prime is isomorphic to the group of matrices $\begin{bmatrix}a&b\\0&1\end{bmatrix}$ where $a,b\in\F_p$, $a\not=0$.
+    \begin{Proof}
+     We see that the automorphisms described above are determined by $i,j$, hence we denote the automorphism group by $\{\phi_{(i,j)}:0\leq i,j\leq p-1,i\not=0\}$. We see that the composition of these automorphisms is as follows: \begin{align*}\phi_{(i_1,j_1)}\circ\phi_{(i_2,j_2)}(\omega)&=\phi_{(i_1,j_1)}(\omega^{i_2})=\omega^{i_1i_2}\\\phi_{(i_1,j_1)}\circ\phi_{(i_2,j_2)}(\alpha)&=\phi_{(i_1,j_1)}(\omega^{j_2}\alpha)=\omega^{i_1j_2+j_1}\alpha\end{align*} hence \[\phi_{(i_1,j_1)}\circ\phi_{(i_2,j_2)}=\phi_{(i_1i_2,i_1j_2+j_1)}\] which allows us to define a map $\Psi$ from the automorphisms to the group of matrices $\begin{bmatrix}a&b\\0&1\end{bmatrix}$ where $a,b\in\F_p$, $a\not=0$: \[\phi_{(a,b)}\mapsto\begin{bmatrix}a&b\\0&1\end{bmatrix}\] This is a homomorphism, for \begin{align*}\phi_{(i_1,j_1)}\circ\phi{(i_2,j_2)}=\phi_{(i_1i_2,i_1j_2+j_1)}&\mapsto\begin{bmatrix}i_1i_2&i_1j_2+j_1\\0&1\end{bmatrix}\\&=\begin{bmatrix}i_1&j_1\\0&1\end{bmatrix}\begin{bmatrix}i_2&j_2\\0&1\end{bmatrix}\end{align*} This map is clearly surjective, and injectivity is clear, for the kernel is $\{\phi_{(1,0)}\}$, which is the automorphism which fixes both $\alpha$ and $\omega$, hence all of $\Q(\alpha,\omega)$, i.e., $\phi_{(1,0)}$ is the identity, hence the kernel is trivial. In particular, this map is an isomorphism.
+    \end{Proof}
+   \item [13.] Prove that if the Galois group of the splitting field of a cubic over $\Q$ is the cyclic group of order 3 then all the roots of the cubic are real.
+    \begin{Proof}
+     Note first that, if $p(x)$ is a polynomial with real coefficients, then $p(z)=0$ if and only if $p(\overline{z})=0$, where $\overline{z}$ denotes the complex conjugate of $z$, i.e., if $z=x+iy$, then $\overline{z}=x-iy$. To see this, write \[p(x)=a_0+a_1x+\hdots+a_nx^n\] and suppose $z$ is any root of $p(x)$. Since $a_0,a_1,\hdots,a_n$ are real, we have \begin{align*}p(\overline{z})&=a_0+a_1\overline{z}+\hdots+a_n\overline{z}^n\\&=\overline{a_0}+\overline{a_1z}+\hdots+\overline{a_nz^n}\\&=\overline{a_0+a_1z+\hdots+a_nz^n}\\&=\overline{0}\\&=0\end{align*} Suppose now that $p(x)$ is a cubic whose Galois group is the cyclic group of order 3. Let $r$ denote a real root of $p(x)$. We see that $p(x)$ must be irreducible, for otherwise we would not have a Galois group of order 3. Moreover, the splitting field of $p(x)$ must be $\Q(r)$, which is a subfield of $\R$, hence $p(x)$ has only real roots.
+    \end{Proof}
+   \item [14.] Show that $\Q(\sqrt{2+\sqrt{2}})$ is a cyclic quartic field, i.e., is a Galois extension of degree 4 with cyclic Galois group.
+    \begin{Proof}
+     We see that $x^4-4x^2+2$ is the minimal polynomial for $\sqrt{2+\sqrt{2}}$, hence $\Q(\sqrt{2+\sqrt{2}})$ is a degree 4 extension. Since the Galois group of this polynomial has at most 4 elements, it suffices to find 4 distinct automorphisms in $\Q(\sqrt{2+\sqrt{2}})/\Q$ to prove that this extension is Galois. Moreover, we shall show that this group is cyclic by showing that a single automorphism generates it:
+
+     Observe that $\sqrt{2}=\sqrt{2+\sqrt{2}}^2-2$, hence $\sqrt{2}\in\Q(\sqrt{2+\sqrt{2}})$. Further, \[\left(2+\sqrt{2}\right)\left(2-\sqrt{2}\right)=2\] hence \[\sqrt{2-\sqrt{2}}=\frac{\sqrt{2}}{\sqrt{2+\sqrt{2}}}\] so $\sqrt{2-\sqrt{2}}$ is also an element of $\Q(\sqrt{2+\sqrt{2}}$. Let $\phi$ denote the automorphism which takes $\sqrt{2+\sqrt{2}}$ to $\sqrt{2-\sqrt{2}}$. We see that \[\phi(\sqrt{2})=\phi\left(\sqrt{2+\sqrt{2}}^2-2\right)=\phi\left(\sqrt{2+\sqrt{2}}\right)^2-2=2-\sqrt{2}-2=-\sqrt{2}\]  hence we can evaluate powers of $\phi$:\begin{align*}\phi^2\left(\sqrt{2+\sqrt{2}}\right)&=\phi\left(\sqrt{2-\sqrt{2}}\right)\\&=\phi\left(\frac{\sqrt{2}}{\sqrt{2+\sqrt{2}}}\right)\\&=\frac{-\sqrt{2}}{\sqrt{2-\sqrt{2}}}\\&=-\sqrt{2+\sqrt{2}}\end{align*} Similarly \begin{align*}\phi^3\left(\sqrt{2+\sqrt{2}}\right)&=\phi\left(-\sqrt{2+\sqrt{2}}\right)=-\sqrt{2-\sqrt{2}}\\\phi^4\left(\sqrt{2+\sqrt{2}}\right)&=\phi\left(-\sqrt{2-\sqrt{2}}\right)=\sqrt{2+\sqrt{2}}\end{align*} Thus the Galois group is exactly $\{\phi,\phi^2,\phi^3,\phi^4=\text{Id}\}$, hence $\Q(\sqrt{2+\sqrt{2}})$ is a cyclic quartic field.
+    \end{Proof}
+   \item [15.] (\textit{Biquadratic Extensions}) Let $F$ be a field of characteristic $\not=2$.
+    \begin{enumerate}
+     \item If $K=F(\sqrt{D_1},\sqrt{D_2})$, where $D_1,D_2\in F$ have the property that none of $D_1,D_2$ or $D_1D_2$ is a square in $F$, prove that $K/F$ is a Galois extension with $\Gal(K/F)$ isomorphic to the Klein 4-group.
+     \item Conversely, suppose $K/F$ is a Galois extension with $\Gal(K/F)$ isomorphic to the Klein 4-group. Prove that $K=F(\sqrt{D_1},\sqrt{D_2})$ where $D_1,D_2\in F$ have the property that none of $D_1,D_2$ or $D_1D_2$ is a square in $F$.
+    \end{enumerate}
+    \begin{Proof}\indent
+     \begin{enumerate}
+      \item We see that $F(\sqrt{D_1})\not=F(\sqrt{D_2})$, for otherwise $D_1D_2$ would be a perfect square in $F$. It follows that the polynomial $x^2-D_1$ is the minimal polynomial of $\sqrt{D_1}$ over $F$ and that $x^2-D_2$ is the minimal polynomial of $\sqrt{D_2}$ over $F(\sqrt{D_1})$, hence \[[K:F]=[K:F(\sqrt{D_1})][F(\sqrt{D_1}):F]=4\] In particular, this forces $|\Gal(K/F)|\leq4$, hence it suffices to find 4 automorphisms of $K/F$. Take $\phi_0,\phi_1,\phi_2,\phi_3$ the automorphisms defined by \begin{align*}&\phi_0(\sqrt{D_1})=\sqrt{D_1}&\phi_0(\sqrt{D_2})=\sqrt{D_2}\\&\phi_1(\sqrt{D_1})=-\sqrt{D_1}&\phi_1(\sqrt{D_2})=\sqrt{D_2}\\&\phi_2(\sqrt{D_1})=\sqrt{D_1}&\phi_2(\sqrt{D_2})=-\sqrt{D_2}\\&\phi_3(\sqrt{D_1})=-\sqrt{D_1}&\phi_3(\sqrt{D_2})=-\sqrt{D_2}\end{align*} From this we see that $K/F$ is a Galois extension. Moreover, it is easily verified that the map \begin{align*}\phi_0&\mapsto(0,0)\\\phi_1&\mapsto(1,0)\\\phi_2&\mapsto(0,1)\\\phi_3&\mapsto(1,1)\end{align*} describes an isomorphism of $\Gal(K/F)$ to $\Z_2\times\Z_2$.
+      \item Conversely, if $K/F$ is a Galois extension with $\Gal(K/F)$ isomorphic to the Klein 4-group, then the automorphisms $\phi_1,\phi_2,\phi_3$, which are not the identity isomorphism, satisfy \begin{align*}\phi_1\phi_2&=\phi_3\\\phi_1\phi_3&=\phi_2\\\phi_2\phi_3&=\phi_1\end{align*}
+     \end{enumerate}
+
+    \end{Proof}
+
+   \item [16.]
+    \begin{enumerate}
+     \item Prove that $x^4-2x^2-2$ is irreducible over $\Q$.
+     \item Show the roots of this quartic are\begin{align*}&\alpha_1=\sqrt{1+\sqrt{3}} &\alpha_3=-\sqrt{1+\sqrt{3}}\\&\alpha_2=\sqrt{1-\sqrt{3}} &\alpha_4=-\sqrt{1-\sqrt{3}}\end{align*}
+     \item Let $K_1=\Q(\alpha_1)$ and $K_2=\Q(\alpha_2)$. Show that $K_1\not=K_2$, and $K_1\cap K_2=\Q(\sqrt{3})=F$.
+     \item Prove that $K_1,K_2$ and $K_1K_2$ are Galois over $F$ with $\Gal(K_1K_2/F)$ the Klein 4-group. Write out the elements of $\Gal(K_1K_2/F)$ explicitly. Determine all the subgroups of the Galois group and give their corresponding fixed subfields of $K_1K_2$ containing $F$.
+     \item Prove that the splitting field of $x^4-2x^2-2$ over $\Q$ is of degree 8 with dihedral Galois group.
+    \end{enumerate}
+    \begin{Proof}\indent
+     \begin{enumerate}
+      \item This follows from the Eisenstein Criterion for $p=2$.
+      \item We apply the formula $(x-a)(x+a)=x^2-a^2$ to see that these are the roots:\begin{align*}(x-\alpha_1)(x-\alpha_3)(x-\alpha_2)(x-\alpha_4)&=(x^2-(1+\sqrt{3}))(x^2-(1-\sqrt{3}))\\&=x^4-\left((1+\sqrt{3})+(1-\sqrt{3})\right)x^2-2\\&=x^4-2x^2-2\end{align*}
+      \item Clearly, $K_1\not=K_2$, since $\alpha_2$ has non-zero imaginary part, whereas $K_1=\Q(\alpha_1)$ is a subfield of $\R$. Moreover, since they are distinct fields, their intersection is a proper subfield of both $K_1$ and $K_2$. In particular, since $\Q(\sqrt{3})\subseteq K_1\cap K_2\subseteq K_1$, and since $K_1$ is a degree 4 extensions of $\Q$, it follows that $K_1\cap K_2$ is a degree 2 extension of $\Q$. Since $\Q(\sqrt{3})$ is a degree 2 extension of $\Q$, and $\Q(\sqrt{3})\subseteq K_1\cap K_2$, we have $K_1\cap K_2=\Q(\sqrt{3})=F$.
+      \item Since $K_1$ and $K_2$ are both subfields of $K_1K_2$, we see that if $K_1K_2$ has an abelian Galois group then $K_1$ and $K_2$ must both be Galois, for their corresponding subgroups of $\Gal(K_1K_2/F)$ must be normal. In fact, \\$|\Gal(K_1K_2/F)|\leq4$, hence it suffices to find 4 distinct automorphisms of $K_1K_2/F$, from which we see that $K_1K_2/F$ is Galois (and that $\Gal(K_1K_2/F)$ is abelian, however that will soon be shown explicitly). We consider the four automorphisms defined by \begin{align*}\phi_0:&\alpha_1\mapsto\alpha_1 &\alpha_2\mapsto\alpha_2\\\phi_1:&\alpha_1\mapsto\alpha_3 &\alpha_2\mapsto\alpha_2\\\phi_2:&\alpha_1\mapsto\alpha_1 &\alpha_2\mapsto\alpha_4\\\phi_3:&\alpha_1\mapsto\alpha_3 &\alpha_2\mapsto\alpha_4\end{align*} hence we see that $\Gal(K_1K_2/F)$ is a group of order 4. In particular, the map \begin{align*}\phi_0&\mapsto(0,0)\\\phi_1&\mapsto(1,0)\\\phi_2&\mapsto(0,1)\\\phi_3&\mapsto(1,1)\end{align*} describes an isomorphism of $\Gal(K_1K_2/F)$ to $\Z_2\times\Z_2$. Thus, $K_1$ and $K_2$ must be Galois as well. The subgroups of this Galois group are just $\{\phi_0\}$ and $\{\phi_0,\phi_i\}$ for $i=1,2,3$. In particular, the group $\{\phi_0\}$ has fixed field $K_1K_2$, the group $\{\phi_0,\phi_1\}$ has fixed field $K_2$, the group $\{\phi_0,\phi_2\}$ has fixed field $K_1$, and $\{\phi_0,\phi_3\}$ has fixed field $F$.
+      \item The fact that $x^4-2x^2-2$ has a degree 8 splitting field over $\Q$ follows from the fact that $K_1\cap K_2=\Q(\sqrt{3})$: \[[K_1K_2:\Q]=[K_1K_2:\Q(\sqrt{3})][\Q\sqrt{3}:\Q]=4\cdot2=8\]
+  \end{enumerate}
+    \end{Proof}
+  \end{enumerate}
+\end{document}

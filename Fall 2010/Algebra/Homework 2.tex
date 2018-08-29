@@ -1,0 +1,257 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Algebra\\\large Homework 2}
+\date{September 14, 2010}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+\section*{Section 2.2}
+\begin{enumerate}
+ \item [6.] Let $H$ be a subgroup of the group $G$.
+  \begin{enumerate}
+   \item Show that $H\leq N_G(H)$. Give an example to show that this is not necessarily true if $H$ is not a subgroup.
+   \item Show that $H\leq C_G(H)$ if and only if $H$ is abelian.
+  \end{enumerate}
+\begin{Proof}
+ \begin{enumerate}
+  \item Obviously, for all $h\in H$, $hHh^{-1}=H$, hence $H\leq N_G(H)$. However, if $H$ is not a group, this is not generally true: take a set $H$ which is not closed under multiplication, e.g. $H=\{i,j\}$ in $Q_8$. Then $jij^{-1}=ji(-j)=kj=-i\notin H$, so $j\notin N_{Q_8}(H)$.
+  \item On the one hand, if $H$ is abelian then, for all $h\in H$, $hg=gh$ for all $g\in H$, so $H\leq C_G(H)$. On the other hand, if $H\leq C_G(H)$, then $hg=gh$ for all $g,h\in H$, so $H$ is abelian. 
+ \end{enumerate}
+\end{Proof}
+ \item [10.] Let $H$ be a subgroup of order 2 in $G$. Show that $N_G(H)=C_G(H)$. Deduce that if $N_G(H)=G$ then $H\leq Z(G)$.
+\begin{Proof}
+ Since $H$ has order 2, $H=\{1,h\}$ with $h^2=1$. For any $g\in N_G(H)$, $gHg^{-1}=H$. However, $g1g^{-1}=1$, so $ghg^{-1}=h$, which forces $gh=hg$, hence $g\in C_G(H)$. Thus, we have the inclusion $N_G(H)\subseteq C_G(H)$. Taking $g\in C_G(H)$, we see that $gh=hg$ hence $ghg^{-1}=h$, hence $gHg^{-1}=H$, which gives the other inclusion. Thus, $N_G(H)=C_G(H)$.
+
+If $N_G(H)=G$ then, since $N_G(H)=C_G(H)$, we have $C_G(H)=G$, i.e., that all elements of $G$ commute with $H$. Thus $H\leq Z(G)$.
+\end{Proof}
+ \item [14.] Let $H(F)$ be the Heisenberg group over a field $F$ introduced in exercise 11 of Section 1.4. Determine which matrices lie in the center of of $H(F)$ and prove that $Z(H(F))$ is isomorphic to the additive group $F$.
+\begin{Proof}
+ Suppose that the matrix $\begin{bmatrix}1&x&y\\0&1&z\\0&0&1\end{bmatrix}$ commutes with any matrix $T=\begin{bmatrix}1&a&b\\0&1&c\\0&0&1\end{bmatrix}$ in $H(F)$. Then we have \[\begin{bmatrix}1&x&y\\0&1&z\\0&0&1\end{bmatrix}\begin{bmatrix}1&a&b\\0&1&c\\0&0&1\end{bmatrix}=\begin{bmatrix}1&a&b\\0&1&c\\0&0&1\end{bmatrix}\begin{bmatrix}1&x&y\\0&1&z\\0&0&1\end{bmatrix}\] which forces $xc=az$ for all $a,c\in F$. Clearly, then, this forces $x=z=0$, hence the center of $H(F)$ is the set of matrices of the form \[\begin{bmatrix}1&0&\alpha\\0&1&0\\0&0&1\end{bmatrix}\] for $\alpha\in F$. To see that the center is isomorphic to the additive group $F$, let $\phi:Z(H(F))\to F$ be given by \[\begin{bmatrix}1&0&\alpha\\0&1&0\\0&0&1\end{bmatrix}\mapsto\alpha\] This map is a homomorphism, for \[\begin{bmatrix}1&0&\alpha\\0&1&0\\0&0&1\end{bmatrix}\begin{bmatrix}1&0&\beta\\0&1&0\\0&0&1\end{bmatrix}=\begin{bmatrix}1&0&\alpha+\beta\\0&1&0\\0&0&1\end{bmatrix}\] Further, this map is injective, hence $\phi$ defines an isomorphism.
+\end{Proof}
+
+\end{enumerate}
+
+\section*{Section 2.3}
+\begin{enumerate}
+ \item [1.] Find all subgroups of $Z_{45}=<x>$, giving a generator for each. Describe the containments between these subgroups.
+\begin{Proof}
+ The generators of $Z_{45}$ are just the elements $x^k$ with $k|45$, by Lagrange's Theorem. Thus, the subgroups of $Z_{45}$ are\begin{align*}<1>&=\{1\}\\<x^{15}>&=\{1,x^{15},x^{30}\}\\<x^5>&=\{1,x^5,x^{10},x^{15},x^{20},x^{25},x^{30},x^{35},x^{40}\}\\<x^3>&=\{1,x^3,x^9,x^{12},x^{15},x^{18},x^{21},x^{24},x^{27},x^{30},x^{33},x^{36},x^{39},x^{42}\}\\<x>&=Z_{45}\qedhere\end{align*} 
+
+The containments between these groups can be seen from the above list, however all groups intersect at the identity and groups $<x^i>$ and $<x^j>$ intersect elsewhere if they have a common multiple less than 45, e.g., $<x^3>$ and $<x^15>$ intersect at $x^{15},x^{30},x^{45}=1$.
+\end{Proof}
+
+ \item [11.] Find all cyclic subgroups of $D_8$. Find a proper subgroup of $D_8$ which is not cyclic.
+\begin{Proof}
+ We write $D_8=\{1,x,x^2,x^3,y,xy,x^2y,x^3y\}$ with the property that $yx=x^3y$. The cyclic subgroups of $D_8$ are therefore \begin{align*}(1)&=\{1\}\\<x>&=\{1,x,x^2,x^3\}\\<x^2>&=\{1,x^2\}\\<y>&=\{1,y\}\\<xy>&=\{1,xy\}\\<x^2y>&=\{1,x^2y\}\\<x^3y>&=\{1,x^3y\}\end{align*} There are two proper subgroups of $D_8$ which are not cyclic: \begin{align*}<x^2,y>&=\{1,x^2,y,x^2y\}\\<x^2,xy>&=\{1,x^2,xy,x^3y\}\qedhere\end{align*}
+\end{Proof}
+
+ \item [24.] Let $G$ be a finite group and let $x\in G$.
+  \begin{enumerate}
+   \item Prove that if $g\in N_G(<x>)$ then $gxg^{-1}=x^a$ for some $a\in\Z$.
+   \item Prove conversely that if $gxg^{-1}=x^a$ for some $a\in\Z$ then $g\in N_G(<x>)$.
+  \end{enumerate}
+\begin{Proof}
+ \begin{enumerate}
+  \item Since $g\in N_g(<x>)$, $gxg^{-1}\in<x>$. However, the elements of $<x>$ are of the form $x^n$, hence there is an $a\in\Z$ such that $gxg^{-1}=x^a$.
+  \item If $gxg^{-1}=x^a$ then $gxg^{-1}\in<x>$, hence $g\in N_G(<x>)$.
+ \end{enumerate}
+\end{Proof}
+ \item [26.] Let $Z_n$ be a cyclic group of order $n$ and for each integer $a$ let \[\sigma_a:Z_n\to Z_n\text{   by   }\sigma_a(x)=x^a\text{ for all }x\in Z_n\]
+  \begin{enumerate}
+   \item Prove that $\sigma_a$ is an automorphism of $Z_n$ if and only if $a$ and $n$ are relatively prime.
+   \item Prove that $\sigma_a=\sigma_b$ if and only if $a\equiv b\pmod{n}$.
+   \item Prove that every automorphism of $Z_n$ is equal to $\sigma_a$ for some integer $a$.
+   \item Prove that $\sigma_a\circ\sigma_b=\sigma{ab}$. Deduce that the map $\overline{a}\mapsto\sigma_a$ is an isomorphism of $\left(\Z/n\Z\right)^{\times}$ onto the automorphism group of $Z_n$ (so $\text{Aut}(Z_n)$ is an abelian group of order $\phi(n)$).
+  \end{enumerate}
+\begin{Proof}
+ \begin{enumerate}
+  \item Observe that $\sigma_a(x^k)=0$ if and only if $x^{ak}=0$. However, this is if and only if $n|ak$. The function $\sigma_a$ is an automorphism if and only if its kernel is trivial, hence $\sigma_a$ is an automorphism if and only if $n|ak$ implies $n|k$, which is if and only if $(a,n)=1$.
+  \item If $\sigma_a=\sigma_b$, then $\sigma_a(x)=\sigma_b(x)$, hence $x^a=x^b$. This implies $x^{a-b}=1$, so $n|a-b$. Equivalently, $a\equiv b\pmod{n}$. 
+
+On the other hand, if $a\equiv b\pmod{n}$, say $b=a+kn$, then \[\sigma_a(x)=x^a=x^ax^{kn}=x^{a+kn}=x^b=\sigma_b(x)\] for all $x$. Thus, $\sigma_a=\sigma_b$.
+  \item Write $Z_n=<x>$ and take $\phi\in\text{Aut}(Z_n)$. Clearly, $\phi(x)=x^a$ for some $a$. For any $x^k\in Z_n$, \[\phi(x^k)=\phi(x)^k=(x^a)^k=(x^k)^a=\sigma_a(x^k)\] Thus $\phi=\sigma_a$.
+  \item For any $x\in Z_n$, \[\sigma_a\circ\sigma_b(x)=\sigma_a(x^b)=(x^b)^a=x^{ab}=\sigma{ab}(x)\] Clearly this implies that the map $\overline{a}\mapsto\sigma_a$ is a homomorphism. This map is clearly surjective and, by \textbf{(b)}, it is also injective. It is therefore an isomorphism.
+ \end{enumerate}
+
+\end{Proof}
+
+\end{enumerate}
+\section*{Section 2.4}
+\begin{enumerate}
+ \item [9.] Prove that $SL_2(\F_3)$ is the subgroup of $GL_2(\F_3)$ generated by $\begin{bmatrix}1&1\\0&1\end{bmatrix}$ and $\begin{bmatrix}1&0\\1&1\end{bmatrix}$.
+\begin{Proof}
+ One inclusion is easy: we must merely show that any element of the form $\begin{bmatrix}1&1\\0&1\end{bmatrix}^a\begin{bmatrix}1&0\\1&1\end{bmatrix}^b$ has determinant 1. The determinant of this is simply \[\begin{vmatrix}1&1\\0&1\end{vmatrix}^a\begin{vmatrix}1&0\\1&1\end{vmatrix}^b=1\] However the other inclusion requires that we show that every $2\times2$ matrix with determinant 1 is a product of elements in $\left<\begin{bmatrix}1&1\\0&1\end{bmatrix},\begin{bmatrix}1&0\\1&1\end{bmatrix}\right>$. To see this, notice that \begin{align*}\begin{bmatrix}1&1\\0&1\end{bmatrix}^a\begin{bmatrix}1&0\\1&1\end{bmatrix}^b&=\begin{bmatrix}1&a\\0&1\end{bmatrix}\begin{bmatrix}1&0\\b&1\end{bmatrix}=\begin{bmatrix}1+ab&a\\b&1\end{bmatrix}\\\begin{bmatrix}1&0\\1&1\end{bmatrix}^b\begin{bmatrix}1&1\\0&1\end{bmatrix}^a&=\begin{bmatrix}1&0\\b&1\end{bmatrix}\begin{bmatrix}1&a\\0&1\end{bmatrix}=\begin{bmatrix}1&a\\b&1+ab\end{bmatrix}\end{align*} We can therefore calculate \[\left<\begin{bmatrix}1&1\\0&1\end{bmatrix},\begin{bmatrix}1&0\\1&1\end{bmatrix}\right>\] directly, concluding that it is a group of order 24. Thus, \[SL_2(\F_3)=\left<\begin{bmatrix}1&1\\0&1\end{bmatrix},\begin{bmatrix}1&0\\1&1\end{bmatrix}\right>\qedhere\]
+\end{Proof}
+
+ \item [10.] Prove that the subgroup of $SL_2(\F_3)$ generated by $\begin{bmatrix}0&-1\\1&0\end{bmatrix}$ and $\begin{bmatrix}1&1\\1&-1\end{bmatrix}$ is isomorphic to the quaternion group of order 8.
+\begin{Proof}
+ To see this, let $i=\begin{bmatrix}0&-1\\1&0\end{bmatrix}$, $j=\begin{bmatrix}1&1\\1&-1\end{bmatrix}$ and $k=ij$. Since \[i^2=j^2=k^2=ijk=-I_2\] we see that this is the quaternion group. 
+\end{Proof}
+ \item [11.] Show that $SL_2(\F_3)$ and $S_4$ are two nonisomorphic groups of order 24.
+\begin{Proof}
+ Clearly, every element of $S_4$ has order four. However, $x=\begin{bmatrix}2&2\\0&2\end{bmatrix}$ has order greater than 4, since \begin{align*}x&=\begin{bmatrix}2&2\\0&2\end{bmatrix}\\x^2&=\begin{bmatrix}1&2\\0&1\end{bmatrix}\\x^3&=\begin{bmatrix}2&0\\0&2\end{bmatrix}\\x^4&=\begin{bmatrix}1&1\\0&1\end{bmatrix}\qedhere\end{align*}
+\end{Proof}
+
+\end{enumerate}
+
+\section*{Section 3.1}
+\begin{enumerate}
+ \item [1.] Let $\phi:G\to H$ be a homomorphism and let $E$ be a subgroup of $H$. Prove that $\phi^{-1}(E)\leq G$ (i.e., the preimage or pullback of a subgroup under a homomorphism is a subgroup). If $E\unlhd H$ prove that $\phi^{-1}(E)\unlhd G$. Deduce that $\ker\phi\unlhd G$. 
+\begin{Proof}
+ Take $x,y\in\phi^{-1}(E)$. We shall show that $xy^{-1}\in\phi^{-1}(E)$. Since $x,y\in\phi^{-1}(E)$, there exist $a,b\in E$ so that $\phi(a)=x$, $\phi(b)=y$. Then \[\phi(ab^{-1})=\phi(a)\phi(b)^{-1}=xy^{-1}\in\phi^{-1}(E)\] If $E\unlhd H$, then, for any $g\in G$, $\phi(gxg^{-1})=h\phi(x)h^{-1}\in E$. Then $gxg^{-1}\in\phi^{-1}(E)$, so $\phi^{-1}(E)\unlhd G$. Since $\phi^{-1}(1)=\ker\phi$, this implies that $\ker\phi\unlhd G$.
+\end{Proof}
+
+ \item [12.] Let $G$ be the additive group of real numbers, let $H$ be the multiplicative group of complex numbers of absolute value 1 and let $\phi:G\to H$ be the homomorphism $\phi:r\mapsto e^{2\pi ri}$. Draw the points on the real line which lie in the kernel of $\phi$. Describe similarly the elements in the fibers of $\phi$ above the points $-1,i$  and $e^{4\pi i/3}$ of $H$.
+
+\begin{Solution}
+ We see that the kernel of $\phi$ is just $\Z$. Further, the fibers of $\phi$ above $-1$ are just the points $\frac{z}{2}$ with $z\in\Z$. Similarly, the fibers above $e^{4\pi i/3}$ are just $\frac{2}{3}z$ for $z\in\Z$. 
+\end{Solution}
+
+ \item [14.] Consider the additive quotient group $\Q/\Z$. 
+  \begin{enumerate}
+   \item Show that every coset of $\Z$ in $\Q$ contains exactly one representative $q\in\Q$ in the range $0\leq q<1$.
+   \item Show that every element of $\Q/\Z$ has finite order but that there are elements of arbitrarily large order.
+   \item Show that $\Q/\Z$ is the torsion subgroup of $\R/\Z$.
+   \item Prove that $\Q/\Z$ is isomorphic to the multiplicative group of roots of unity $\C^{\times}$. 
+  \end{enumerate}
+\begin{Proof}
+ \begin{enumerate}
+  \item Take $Q+\Z$ to be a coset of $\Z$ in $\Q$. Let $Q=z+q$ where $z$ is the integer part of $Q$. Then \[Q+\Z=(q+z)+\Z=(q+\Z)+(z+\Z)=q+\Z\] with $q\in[0,1)$. 
+  \item For $q+\Z$ with $q\in[0,1)$, write $q=\frac{a}{b}$. Then \[\underbrace{\left(\frac{a}{b}+\Z\right)+\left(\frac{a}{b}+\Z\right)+\hdots+\left(\frac{a}{b}+\Z\right)}_{b-\text{times}}=a+\Z=\Z\] so $q=\Z$ has finite order. However, for every positive integer $m$ there is an element of order $m$, in particular $\frac{1}{m}+\Z$.
+  \item Since every element of $\Q/\Z$ has finite order, $\Q/\Z$ is a subset of the torsion subgroup of $\R/\Z$. Moreover, if $x\notin\Q$, then $x+\Z$ has infinite order, so $\Q/\Z$ is in fact equal to the torsion subgroup of $\R/\Z$.
+  \item Let $U$ denote the roots of unity and let $\phi:\Q\to U$ be given by $\phi(q)=e^{2\pi iq}$. Then $\phi$ is surjective and $\ker\phi=\Z$, hence $\Q/\Z\cong U$ by the First Isomorphism Theorem.
+ \end{enumerate}
+
+\end{Proof}
+
+ \item [16.] Let $G$ be a group, let $N$ be a normal subgroup of $G$ and let $\overline{G}=G/N$. Prove that if $G=<x,y>$ then $\overline{G}=<\overline{x},\overline{y}>$. Prove more generally that if $G=<S>$ for any subset $S$ of $G$, then $\overline{G}=<\overline{S}>$, so $\overline{G}=<\overline{S}>$
+
+\begin{Proof}
+ Since $G=<S>$, every element of $G$ can be written as the product of elements in $S$. However, for any $\overline{g}\in\overline{G}$, we have $\overline{g}=g_1g_2\hdots g_nN$ with $g=g_1g_2\hdots g_n$. Then $\overline{g}=g_1Ng_2N\hdots g_nN$ is the product of elements in $\overline{S}$.  
+\end{Proof}
+
+ \item [32.] Prove that every subgroup of $Q_8$ is normal. For each subgroup find the isomorphism type of its corresponding quotient.
+\begin{Proof}
+ Notice that every subgroup of $Q_8$ is of order 1, 2 or 4. If it is of order 4, then it is of index 2 and is therefore normal. If it is just the identity, it is similarly normal. Finally, there is one group of order 2, $\{1,-1\}$, which is the center of $Q_8$ and is clearly normal.
+\end{Proof}
+
+ \item [36.] Prove that if $G/Z(G)$ is cyclic then $G$ is abelian. 
+
+\begin{Proof}
+ If $G/Z(G)$ is cyclic, then $G/Z(G)=<xZ(G)>$ for some $x$. Since the cosets partition $G$, we have that every element of $G$ is in some coset $x^nZ(G)$. Equivalently, every element of $G$ is of the form $x^nz$ for some $z\in Z(G)$. Clearly, then, for any two elements of $G$, say $x^nz_1$ and $x^mz_2$, \[x^nz_1x^mz_2=x^nx^mz_1z_2=x^mx^nz_2z_1=x^mz_2x^nz_1\qedhere\]
+\end{Proof}
+
+ \item [41.] Let $G$ be a group. Prove that $N=\{<x^{-1}y^{-1}xy>|x,y\in G\}$ is a normal subgroup of $G$ and $G/N$ is abelian ($N$ is called the \textit{commutator subgroup} of $G$). 
+\begin{Proof}
+ To see that $gNg^{-1}=N$, we show that conjugation sends the generators of $N$ to $N$. In order to show this, we write $a=gxg^{-1}$, $b=gyg^{-1}$, hence \[gx^{-1}y^{-1}xyg^{-1}=gx^{-1}gg^{-1}y^{-1}gg^{-1}xgg^{-1}ygg^{-1}=aba^{-1}b^{-1}\in N\] Further, $G/N$ is abelian, for \[xNyN=xyN=xy(y^{-1}x^{-1}yx)N=yxN=yNxN\qedhere\]
+\end{Proof}
+
+\end{enumerate}
+
+\section*{Section 3.2}
+\begin{enumerate}
+ \item [4.] Show that if $|G|=pq$ for some primes $p$ and $q$ (not necessarily distinct) then either $G$ is abelian or $Z(G)=1$.
+\begin{Proof}
+ Since $|G|=pq$, if $Z(G)\not=1$, $|G/Z(G)|$ is $p$ or $q$. In either case, $G/Z(G)$ must be cyclic, hence $G$ must abelian.
+\end{Proof}
+
+ \item [11.] Let $H\leq K\leq G$. Prove that $|G:H|=|G:K|\cdot|K:H|$ (do not assume $G$ is finite).
+
+\begin{Proof}
+ Recall that $G$ can be written as the disjoint union of elements in $G/H$. However, it can also be written as the disjoint union of elements in $G/K$. However, $K$ can be written as the disjoint union of elements in $K/H$, hence the disjoint union of elements of $G/H$ is equal to the disjoint union of elements $gK$ and $kH$, i.e., \[|G:H|=|G:K|\cdot|K:H|\qedhere\]
+\end{Proof}
+
+ \item [18.] Let $G$ be a finite group, let $H$ be a subgroup of $G$ and let $N\unlhd G$. Prove that if $|H|$ and $|G:N|$ are relatively prime then $H\leq N$.
+
+\begin{Proof}
+ Since $N$ is normal, $HN$ is a group, and \[|HN|=\frac{|H||N|}{|H\cap N|}\] Since $HN$ is a subgroup of $G$, this implies \[\frac{|H||N|}{|H\cap N|}||G|\] hence \[\frac{|H|}{|H\cap N|}|\frac{|G|}{|N|}\] Since $|H|$ and $|G:N|$ are relatively prime, this forces $\frac{|H|}{|H\cap N|}=1$, hence $|H|=|H\cap N|$. Thus, $H\leq N$.
+\end{Proof}
+
+\end{enumerate}
+
+\section*{Section 3.3}
+\begin{enumerate}
+ \item [2.] Prove all parts of the Lattice Isomorphism Theorem: 
+
+Let $G$ be a group and let $N$ be a normal subgroup of $G$. Then there is a bijection from the set of subgroups $A$ of $G$ which contain $N$ onto the set of subgroups $\overline{A}=A/N$ of $G/N$. In particular, every subgroup of $\overline{G}$ is of the form $A/N$ for some subgroup $A$ of $G$ containing $N$. This bijection has the following properties: for all $A,B\leq G$ with $N\leq A$ and $N\leq B$,
+\begin{description}
+  \item [(1)] $A\leq B$ if and only if $\overline{A}\leq\overline{B}$
+  \item [(2)] if $A\leq B$, then $|B:A|=|\overline{B}:\overline{A}|$
+  \item [(3)] $\overline{<A,B>}=<\overline{A},\overline{B}>$
+  \item [(4)] $\overline{A\cap B}=\overline{A}\cap\overline{B}$
+  \item [(5)] $A\unlhd G$ if and only if $\overline{A}\unlhd\overline{G}$
+ \end{description}
+\begin{Proof}
+ \begin{description}
+  \item [(1)] If $A\leq B$ then, for any $aN$ with $a\in A\leq B$, so $aN\in B/N=\overline{B}$. Hence $\overline{A}\leq\overline{B}$.
+  \item [(2)] Let $\phi:B/A\to\overline{B}/\overline{A}$ denote the map $bA\mapsto bN\overline{A}$. Since $N$ is normal, this well defined, for $baA\mapsto baN\overline{A}=bNa\overline{A}=bN\overline{A}$. This map is clearly surjective. It is also injective, for $bN\overline{A}=cN\overline{A}$ if and only if $bc^{-1}N\in\overline{A}$, which is if and only if $bc^{-1}\in A$, i.e., $bA=cA$.
+  \item [(3)] Observe that any product in $\overline{<A,B>}$ is of the form $\overline{x_1x_2\hdots x_n}=\overline{x_1}\hskip.05in\overline{x_2}\hdots\overline{x_n}$ for $x_i$ in $A$ and $B$. However, this is clearly in $<\overline{A},\overline{B}>$. The other inclusion can be shown similarly.
+  \item [(4)] If $xN$ with $x\in A\cap B$, then $xN$ is clearly in $\overline{A}$ and $\overline{B}$, so one inclusion is clear. On the other hand, if $xN\in\overline{A}\cap\overline{B}$, then $x\in A$ and $x\in B$. Hence $x\in A\cap B$, so $xN\in\overline{A\cap B}$. Thus $\overline{A\cap B}=\overline{A}\cap\overline{B}$ 
+  \item [(5)] If $A\unlhd G$, then $gAg^{-1}=A$ for all $g$. Hence, \[gN\overline{A}(gN)^{-1}=gN\overline{A}g^{-1}N=Ng\overline{A}g^{-1}N=\overline{A}\] The other direction follows similarly.
+ \end{description}
+
+\end{Proof}
+
+ \item [9.] Let $P$ be a prime and let $G$ be a group of order $p^am$, where $p$ does not divide $m$. Assume $P$ is a subgroup of $G$ of order $p^a$ and $N$ is a normal subgroup of $G$ of order $p^bn$ where $p$ does not divide $n$. Prove that $|P\cap N|=p^b$ and $|PN/N|=p^{a-b}$.
+\begin{Proof}
+ Since $N$ is normal, $PN$ is a group, hence \[|PN|=\frac{|P||N|}{|P\cap N|}|p^am\] Hence \[\frac{p^{a+b}n}{|P\cap N|}|p^am\] so $p^b||P\cap N|$. However, $|P\cap N|<|N|=p^bn$, so $|P\cap N|=p^b$. By the Second Isomorphism Theorem, \[|PN/N|=\frac{|P|}{|P\cap N|}=p^{a-b}\qedhere\]
+\end{Proof}
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,110 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Real Analysis\\\large Homework 3}
+\date{September 16, 2010}
+\author{Khalid Hourani}
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{fancy}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{(\arabic{enumi})}}
+\renewcommand{\labelenumii}{\textbf{\roman{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+\begin{titlepage}
+ \maketitle 
+\end{titlepage}
+
+\begin{enumerate}
+  \item Let $f$ be a bounded function defined in $I=[0,1]$. For $x\in[0,1]$ and $r>0$ define \[O_f(x,r)=\sup_{y,z\in I\cap(x-r,x+r)}|f(y)-f(z)|\] Prove the following:
+\begin{enumerate}
+ \item $O_f(x)=\lim_{r\to0}O_f(x,r)$ is always well defined
+ \item Given $\epsilon>0$ the set $\{x|O_f(x)\geq\epsilon\}$ is compact (and thus measurable)
+ \item $f$ is continuous at $x\in I$ if and only if $O_f(x)=0$
+\end{enumerate}
+\begin{Proof}
+ \begin{enumerate}
+  \item Observe that $O_f(x,r)\leq O_f(x,r+\delta)$. for any $\delta>0$. Then \[L=\inf_{r>0}O_f(x,r)\] is well-defined. Therefore, for every $\epsilon>0$ there is a $\delta>0$ such that, if $|r|<\delta$, then $|O_f(x,r)-L|<\epsilon$. Thus \[\lim_{r\to0}O_f(x,r)=L=O_f(x)\]
+  \item Write $\mathcal{O}=\{x|O_f(x)\geq\epsilon\}$ and take $c$ in the complement of $\mathcal{O}$. By definition, $O_f(c)<\epsilon$. Further, there exists a $\delta>0$ such that $O_f(c,\delta)<\epsilon$, hence for any $x\in(c-\delta,c+\delta)$ there is a $\delta'$ such that \[(x-\delta',x+\delta')\subseteq(c-\delta,c+\delta)\] By definition, for any $y,z\in(c-\delta,c+\delta)$, $|f(y)-f(z)|<O_f(c,\delta)$, hence \[O_f(x)\leq O_f(x,\delta')\leq O_f(c,\delta)<\epsilon\] hence $x\in\mathcal{O}^c$, so $\mathcal{O}^c$ is open. Therefore $\mathcal{O}$ is closed.
+  \item \begin{description}
+         \item [$\Rightarrow$]  Suppose $f$ is continuous at $x_0$. Then, for every $\epsilon>0$ there is a $\delta>0$ such that, if $|x-x_0|<\delta$ then $|f(x)-f(x_0)|<\epsilon/2$. Then \begin{align*}O_f(x,\delta)&=\sup_{y,z\in(x_0-\delta,x_0+\delta)}|f(y)-f(z)|\\&\leq\sup_{y,z\in(x_0-\delta,x_0+\delta)}|f(y)-f(x_0)|+|f(x_0)-f(z)|\\&\leq\epsilon/2+\epsilon/2\\&=\epsilon\end{align*} Hence \[O_f(x)=\lim_{r\to0}O_f(x,r)=0\qedhere\]
+	 \item [$\Leftarrow$] On the other hand, if $O_f(x_0)=0$, then for every $\epsilon>0$ there is a $\delta>0$ such that \[\sup_{y,z\in(x_0-\delta,x_0+\delta)}|f(y)-f(z)|<\epsilon\] So, in particular, there is a $\delta>0$ such that, if $|x-x_0|<\delta$, then $|f(x)-f(x_0)|<\epsilon$. Thus $f$ is continuous at $x_0$.
+        \end{description}
+ \end{enumerate}
+\end{Proof}
+\item Prove that a bounded function $f$ is Riemann integrable in $I$ if and only if its set of discontinuities has measure zero, i.e., if and only if the set $\{x|O_f(x)>0\}$ has measure 0.
+\begin{Proof}
+ \begin{description}
+  \item [$\Rightarrow$] Suppose $f$ is Riemann integrable on $I$. For $\alpha>0$, define $N_{\alpha}=\{x\in I|O_f(x)>\alpha\}$. We shall show that the set $N_{\alpha}$ has measure zero.
+
+For any interval $I=(x_0-r,x_0+r)$, let $O_f(I)=O_f(x_0,r)$. Take $\epsilon>0$. Since $f$ is integrable, we can choose a partition $P=[x_0,x_1,\hdots,x_n]$ of $I$ so that \[\sum_{i=1}^n|O_f([x_{i-1},x_i])|(x_i-x_{i-1})\leq\alpha\epsilon/2\] Let $E$ be the set of all $i$ such that $(x_{i-1},x_i)\cap N_{\alpha}$ is nonempty. Then, for all $i\in E$, $O_f([x_{i-1},x_i])\geq\alpha$, hence \[\alpha\sum_{i\in E}\Delta x_i\leq\sum_{i\in E}O_f([x_{i-1},x_i])\Delta x_i\leq\alpha\epsilon/2\] hence $\sum_{i\in E}\Delta x_i<\epsilon/2$. Therefore $N_{\alpha}-\{x_0,x_1,\hdots,x_n\}$ can be covered by closed intervals whose total length is less than $\epsilon/2$. However, the set $\{x_0,x_1,\hdots,x_n\}$ can be covered by closed intervals whose total length is also less than $\epsilon/2$, hence $N_{\alpha}$ can be covered by closed intervals of total length less than $\epsilon$. Therefore, $N_{\alpha}$ has measure zero.
+
+Now, notice that \[\{x|O_f(x)>0\}=\bigcup_{k=1}^{\infty}N_{\frac{1}{k}}\] is the countable union of sets of measure zero, and so has measure zero.
+  \item [$\Leftarrow$] Suppose instead that $D=\{x|O_f(x)>0\}$ has measure zero. For $\epsilon>0$ let $E=\{x|O_f(X)\geq\epsilon\}$. Since $E\subseteq D$, $E$ has measure zero, hence we can cover $E$ with a countable family of open intervals whose total length is less than $\delta=\frac{\epsilon}{2\|f\|+|I|}$ where $\|f\|$ denotes the supremum of $f$ on $I$. However, by the previous exercise $E$ is compact, so it suffices to write \[E\subseteq\bigcup_{i=1}^nU_i\] Let $I_i=\overline{U_i}$ and suppose, without loss of generality, that the $I_i$ do not intersect. Further, let \[K=I-\bigcup_{i=1}^nU_i\] and observe that $K$ is compact and that, for all $k\in K$, $O_f(k)<\delta$. Equivalently, there is a closed interval $L$ with $k\in L^{\circ}$ such that $O_f(L)<\delta$. Since $K$ is compact, we can cover $K$ with a finite number of such intervals $L$, say $L_1,L_2,\hdots,L_m$. Letting $J_i=L_i\cap K$, we notice that the family $J_i$ covers $K$. Again, without loss of generality, we can suppose the $J_i$ do not intersect.
+
+We now have a partition of $I$: \[\{I_1,I_2,\hdots,I_n,J_1,J_2,\hdots,J_m\}=\{[x_0,x_1],[x_1,x_2],\hdots,[x_{k-1},x_k]\}\] Before evaluating the Riemann sum on this partition, notice that $O_f(I_i)\leq2\|f\|$ by the triangle inequality.  The Riemann sum on this partition is given by \begin{align*}\sum_{i=1}^k|f(x_i)-f(x_{i-1})|(x_i-x_{i-1})&\leq\sum_{i=1}^kO_f([x_{i-1},x_i])(x_i-x_{i-1})\\&=\sum_{i=1}^nO_f(I_i)|I_i|+\sum_{i=1}^mO_f(J_i)|J_i|\\&\leq\sum_{i=1}^n2\|f\||I_i|+\sum_{i=1}^m\delta|J_i|\\&=2\|f\|\sum_{i=1}^n|I_i|+\delta|I|\\&=2\|f\|\delta+\delta|I|\\&=\epsilon\end{align*} Thus $f$ is integrable on $I$.
+ \end{description}
+\end{Proof}
+\item Let $E$ be a measurable set with $|E|<\infty$ such that $E=E_1\cup E_2$ and $E_1\cap E_2=\emptyset$. Show that $E_1$ and $E_2$ are measurable if and only if $|E|=|E_1|_e+|E_2|_e$. 
+\begin{Proof}
+ One direction is trivially true: if $E_1$ and $E_2$ are measurable, then they have measure equal to their external measure and $|E|=|E_1|_e+|E_2|_e$. For the other direction, we suppose $|E|=|E_1|_e+|E_2|_e$ and wish to show that $E_1$ and $E_2$ are measurable. Since $E$ is measurable and $|E|<\infty$, for every $\epsilon>0$ we can cover $E$ with a countable collection of open balls whose total volume is less than $\epsilon+|E|$. By intersecting these open balls with $E_1$ (keeping in mind that $E_1$ and $E_2$ are disjoint), we see that $E_1$ can be covered by a countable collection of open sets disjoint from $E_2$ whose total volume is less than $\epsilon+|E|=\epsilon+|E_1|_e$, hence $E_1$ is measurable. We similarly have that $E_2$ is measurable.
+\end{Proof}
+\item A function $f$ is said to be \textit{measurable} when, for each $a\in\R$ the set $\{x:f(x)>a\}$ is measurable.
+\begin{enumerate}
+ \item [1)] Suppose that $f$ is measurable, bounded and non-negative in $I$, show that the set $G_f=\{(x,y):x\in I,0\leq y\leq f(x)\}$ is a measurable set in $\R^2$ and that $|G_f|<\infty$. 
+ \item [2)] Show that any bounded $f$ which is Riemann integrable is also measurable and the Riemann integral of $f$ in $I$ equal $|G_f|$.
+\end{enumerate}
+ \begin{Proof}
+  \begin{enumerate}
+   \item [1)] Notice first that $G_f\subseteq I\times[0,m]$ where $m$ is any supremum of $f$. Thus, if $G_f$ is measure, its measure must be finite. Now, since $f$ is measurable, we can take a sequence $f_k$ of step-functions such that $f_k\to f$ pointwise almost everywhere (i.e., everywhere but on a set of measure zero). Then we can write \[G_f=\left(\bigcup G_{f_k}\right)\cup E\] where $E$ is a set of measure zero. However, it is clear that $G_{f_k}$ is measurable, hence $G_f$ is measurable.
+   \item [2)] We consider the set $\{x:f(x)>a\}$ for each $a\in\R$. Since $f$ is Riemann integrable, its set of discontinuities has measure 0. However, this is just the set $\{x|O_f(x)>0\}$, which 
+  \end{enumerate}
+
+ \end{Proof}
+
+\end{enumerate}
+\end{document}

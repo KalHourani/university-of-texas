@@ -1,0 +1,124 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Algebra\\\large Homework 7}
+\date{October 19, 2010}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+\section*{Section 6.1}
+\begin{enumerate}
+ \item [7.] Prove that subgroups and quotient groups of nilpotent groups are nilpotent (your proof should work for infinite groups). Give an explicit example of a group $G$ which possesses a normal subgroup $H$ such that both $H$ and $G/H$ are nilpotent by $G$ is not nilpotent.
+
+\begin{Proof}
+We begin by showing that, if $H\leq G$ and $G$ and $H$ have lower central series \begin{align*}G=G_0\unrhd G_1\unrhd G_2\unrhd\hdots\\H=H_0\unrhd H_1\unrhd H_2\unrhd\hdots\end{align*} then $H_k\leq G_k$ for all $k$. We proceed by induction on $k$: clearly $H_0\leq G_0$. Suppose that $H_{k-1}\leq G_{k-1}$. Then \[H_k=[H,H_{k-1}]\leq[G,H_{k-1}]\leq[G,G_{k-1}]=G_k\] 
+
+Now, if $G$ is nilpotent with nilpotency class $c$, then $G$ has a lower central series of length $c$. In particular, we have \[G=G_0\unrhd G_1\unrhd G_2\unrhd\hdots\unrhd G_c=\{1\}\] Take $H$ a subgroup of $G$, and consider the lower central series of $H$:
+\[H=H_0\unrhd H_1\unrhd H_2\unrhd\hdots\] The lower central series for $H$ must terminate, since $H_c\leq G_c=\{1\}$, hence $H$ is nilpotent. Moreover, if $H$ is normal, $G/H$ is solvable, for the series \[G/H\unrhd G_1/H_1\unrhd G_2/H_2\unrhd\hdots\unrhd G_c/H_c=\{1\}\] is a terminating lower central series for $G/H$. 
+
+To see that the converse is not generally true, take $G=S_3$ and $H=A_3$. The lower central series $A_3
+\end{Proof}
+
+\end{enumerate}
+
+\section*{Section 7.1}
+\begin{enumerate}
+ \item [7.] The \textit{center} of a ring $R$ is $\{z\in R|zr=rz\text{ for all }r\in R\}$ (i.e., is the set of all elements which commute with every element of $R$). Prove that the center of a ring is a subring that contains the identity. Prove that the center of a division ring is a field.
+
+\begin{Proof}
+ Take $x,y$ in the center of $R$. For any $r\in R$, \[(x-y)r=xr-yr=rx-ry=r(x-y)\] hence $x-y$ is in the center. Similarly, \[(xy)r=x(yr)=x(ry)=(xr)y=(rx)y=r(xy)\] so $xy$ is also in the center. Thus, the center forms a subring of $R$. Moreover, if $1\in R$, then $1$ is in the center, since $1$ clearly commutes with every element of $R$. 
+
+ If $R$ is a division ring, then, since the center is a commutative subring of $R$, the center is a field.
+\end{Proof}
+
+ \item [9.] For a fixed element $a\in R$ define $C(a)=\{r\in R|ra=ar\}$. Prove that $C(a)$ is a subring of $R$ containing $a$. Prove that the center of $R$ is the intersection of the subgrings $C(a)$ over all $a\in R$.
+
+\begin{Proof}
+ Obviously, $a$ commutes with $a$, so $a\in C(a)$. To see that it is a subring, take $x,y\in C(a)$. Then \[(x-y)a=xa-ya=ax-ay=a(x-y)\] so $x-y\in C(a)$. Similarly, \[(xy)a=x(ya)=x(ay)=(xa)y=(ax)y=a(xy)\] so $xy\in C(a)$. Thus, $C(a)$ is a subring of $R$ containing $a$. 
+
+Now, if $r$ is in the center, $Z(R)$, of $R$, then $r$ is clearly in $C(a)$ for all $a\in R$, since $r$ commutes with all $a\in R$. In particular, this forces \[Z(R)\leq\bigcap_{a\in R}C(a)\] On the other hand, if $\displaystyle r\in\bigcap_{a\in R}C(a)$, then $r$ commutes with all $a\in R$, so $r$ is in the center. This gives \[\bigcap_{a\in R}C(a)\leq Z(R)\] which proves equality, i.e., \[Z(R)=\bigcap_{a\in R}C(a)\qedhere\]
+\end{Proof}
+
+ \item [10.] Prove that if $D$ is a division ring then $C(a)$ is a division ring for all $a\in D$.
+
+\begin{Proof}
+ Take $x\in C(a)$. By definition, $xa=ax$. Since $D$ is a division ring, there is an element $x^{-1}\in D$ such that $x^{-1}x=1$. Multiplying on the right by $x^{-1}$, we see that $xax^{-1}=a$. Multiplying on the left by $x^{-1}$, we see that $ax^{-1}=x^{-1}a$, so $x^{-1}\in C(a)$. In particular, every element of $C(a)$ is invertible, so $C(a)$ is a division ring.
+\end{Proof}
+
+ \item [13.] An element $x$ in $R$ is called \textit{nilpotent} if $x^m=0$ for some $m\in\Z^+$. 
+    \begin{enumerate}
+     \item Show that if $n=a^kb$ for some integers $a$ and $b$ then $\overline{ab}$ is a nilpotent element of $\Z/n\Z$.
+     \item If $a\in\Z$ is an integer, show that the element $\overline{a}\in\Z/n\Z$ is nilpotent if and only if every prime divisor of $n$ is also a divisor of $a$. In particular, determine the nilpotent elements of $\Z/72\Z$ explicitly.
+     \item Let $R$ be a the ring of functions from a nonempty set $X$ to a field $F$. Prove that $R$ contains no nonzero nilpotent elements.
+    \end{enumerate}
+
+\begin{Proof}\indent
+ \begin{enumerate}
+  \item In $\Z/n\Z$, \[\overline{ab}^k=\overline{a^kb^k}=\left(\overline{a^kb}\right)\overline{b^{k-1}}=(\overline{n})\overline{b^{k-1}}=\overline{0}\] so $\overline{ab}$ is nilpotent.
+  \item \begin{description}
+         \item [$\Rightarrow$] Suppose that every prime divisor of $n$ is a divisor of $a$. In particular, write $n=p_1^{e_1}p_2^{e_2}\hdots p_k^{e_k}$, and take $e=\text{max}\{e_1,e_2,\hdots,e_k\}$. Since each $p_i$ divides $a$, we see that $n|a^e$, hence \[a^e\equiv0\bmod{n}\] so $\overline{a^e}=\overline{a}^e=\overline{0}$. Thus, $\overline{a}$ is nilpotent.
+	 \item [$\Leftarrow$] Suppose that $\overline{a}$ is nilpotent. Then there is an integer $k$ such that $\overline{a}^k=\overline{a^k}=\overline{0}$. Equivalently, $n|a^k$, so all primes divisors of $n$ must be prime divisors of $a$.
+
+Now, the nilpotent elements of $\Z/72\Z$ are exactly the elements which are evenly divisible by both $2$ and $3$. These are just \[\overline{0},\overline{6},\overline{12},\overline{18},\overline{24},\overline{30},\overline{36},\overline{42},\overline{48},\overline{54},\overline{60},\overline{66}\]
+        \end{description}
+  \item Suppose $\phi$ is a nilpotent element of $R$. Then $\phi^{n}\equiv0$ for some $n$, i.e., $\phi(x)^n=0$ for all $x\in X$. However, $\phi(x)\in F$, so $\phi(x)$ is a zero divisor - this forces $\phi(x)=0$ for all $x\in X$. In other words, $\phi\equiv0$, so the only nilpotent element of $R$ is the zero-function.
+ \end{enumerate}
+\end{Proof}
+
+\end{enumerate}
+
+\end{document}

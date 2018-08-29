@@ -1,0 +1,143 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Real Analysis\\\large Homework 1}
+\date{September 2, 2010}
+\author{Khalid Hourani}
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{fancy}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{(\arabic{enumi})}}
+\renewcommand{\labelenumii}{\textbf{\roman{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+\begin{titlepage}
+ \maketitle
+\end{titlepage}
+
+\begin{enumerate}
+ \item Let $f(x)$ be a Riemann integrable function in $(0,1)$ such that $|f(x)|\leq1$. Consider the function \[F(x)=\int_0^xf(t)dt\]  \begin{enumerate}                                                                                                                                           \item If $f$ is continuous at $x_0\in(0,1)$ show that $F'(x_0)$ exists and is equal to $f(x_0)$.
+ \item Otherwise, show that \[\limsup{\frac{F(x+h)-F(x)}{h}}\text{ and }\liminf{\frac{F(x+h)-F(x)}{h}}\] both exist and have absolute value less than 1. Conclude that $F(x)$ is uniformly continuous in $(0,1)$.
+\end{enumerate}
+\begin{Proof}
+ \begin{enumerate}
+  \item Consider the difference quotient for $F$: \begin{align*}\left|\frac{F(x)-F(x_0)}{x-x_0}-f(x_0)\right|&=\left|\frac{\int_0^{x}f(t)dt-\int_0^{x_0}f(t)dt}{x-x_0}-f(x_0)\right|\\&=\left|\frac{1}{x-x_0}\int_{x_0}^{x}f(t)dt-f(x_0)\right|\\&\leq\left|\frac{1}{x-x_0}\right|\int_{x_0}^{x}|f(t)-f(x_0)|dt\end{align*}
+
+  Take $\epsilon>0$. Since $f$ is continuous at $x_0$, there is a $\delta>0$ so that, whenever $|x-x_0|<\delta$, $|f(x)-f(x_0)|<\epsilon$. Thus, $\int_{x_0}^x|f(x)-f(x_0)|dt\leq\int_{x_0}^x\epsilon dt=\epsilon(x-x_0)$. Thus, whenever $|x-x_0|<\delta$:
+
+\[\left|\frac{F(x)-F(x_0)}{x-x_0}-f(x_0)\right|<\epsilon\] Hence \[F'(x_0)=\lim_{x\to x_0}\frac{F(x)-F(x_0)}{x-x_0}=f(x_0)\]
+  \item Observe that \begin{align*}\left|\limsup_{h\to0}\frac{F(x+h)-F(x)}{h}\right|&=\left|\lim_{\delta\to0}\sup_{h\in B'_{\delta}(0)}\frac{F(x+h)-F(x)}{h}\right|\\&=\left|\lim_{\delta\to0}\sup_{h\in B'_{\delta}(0)}\frac{1}{h}\int_x^{x+h}f(t)dt\right|\\&\leq\lim_{\delta\to0}\sup_{h\in B'_{\delta}(0)}\frac{1}{h}\int_x^{x+h}|f(t)|dt\\&\leq\lim_{\delta\to0}\sup_{h\in B'_{\delta}(0)}\frac{1}{h}\int_x^{x+h}1dt\\&=\lim_{\delta\to0}\sup_{h\in B'_{\delta}(0)}1\\&=1\end{align*}
+
+A similar argument shows that \[\left|\liminf_{h\to0}{\frac{F(x+h)-F(x)}{h}}\right|<1\] 
+
+To see uniform continuity, notice that \begin{align*}\left|F(x)-F(y)\right|&=\left|\int_x^yf(t)dt\right|\\&\leq\int_x^y|f(t)|dt\leq |y-x|\end{align*} Thus, for every $\epsilon>0$, take $\delta=\epsilon$, and the result follows.$\qedhere$ 
+ \end{enumerate}
+
+\end{Proof}
+\item Let $f_k$ be a sequence of bounded Riemann integrable functions in an interval $(a,b)$ which are converging uniformly to a function $f:(a,b)\to\mathbb{R}$. Show that $f$ itself is Riemann integrable and that \[\lim_{k\to\infty}\int_a^bf_k(x)dx=\int_a^bf(x)dx\]
+\begin{Proof}
+ For any partition $\pi$ of $(a,b)$ and any $g:(a,b)\to\mathbb{R}$, let \begin{align*}L_{\pi}(g)&=\sum_k\inf_{I_k}g(x)V(I_k)\\R_{\pi}(g)&=\sum_k\sup_{I_k}g(x)V(I_k)\end{align*} where $I_k$ is the interval $[x_k,x_{k+1}]$. To see that $f$ is integrable, we shall show that $|L_{\pi}(f)-R_{\pi}(f)|<\epsilon$ for some partition $\pi$. 
+
+Since $f_k\to f$ uniformly, take $n$ to be an integer such that $|f_n(x)-f(x)|<\frac{\epsilon}{4(b-a)}$ for all $x\in(a,b)$. Since $f_n$ is integrable, we can choose a partition $\pi$ so that \begin{align*}U_{\pi}(f_n)&<\int_a^bf_n(x)dx+\frac{\epsilon}{4}\\L_{\pi}(f_n)&>\int_a^bf(x)dx-\frac{\epsilon}{4}\end{align*} Thus, we have \[\left|U_{\pi}(f_n)-L_{\pi}(f_n)\right|<\frac{\epsilon}{2}\] 
+
+Now, consider $|U_{\pi}(f_n)-U_{\pi}(f)|$. By definition, this is simply \[\left|\sum_k\left[\sup_{I_k}f_n(x)-\sup_{I_k}f(x)\right]v(I_k)\right|\leq\sum_k\left|\sup_{I_k}f_n(x)-\sup_{I_k}f(x)\right|v(I_k)\] Now, since $|f_n(x)-f(x)|<\frac{\epsilon}{4(b-a)}$, it follows that \[\left|\sup_{I_k}f_n(x)-\sup_{I_k}f(x)\right|\leq\frac{\epsilon}{4(b-a)}\] Thus, our previous inequality becomes: \[\left|U_{\pi}(f_n)-U_{\pi}(f)\right|\leq\frac{\epsilon}{4}\]
+
+Similarly, \[|L_{\pi}(f_n)-L_{\pi}(f)|\leq\frac{\epsilon}{4}\] Finally, by the triangle inequality, we hae \begin{align*}\left|U_{\pi}(f)-L_{\pi}(f)\right|&\leq\left|U_{\pi}(f_n)-U_{\pi}(f)\right|+\left|U_{\pi}(f_n)-L_{\pi}(f_n)\right|+\left|L_{\pi}(f_n)-L_{\pi}(f)\right|\\&<\frac{\epsilon}{4}+\frac{\epsilon}{2}+\frac{\epsilon}{4}\\&=\epsilon\end{align*} Thus, $f$ is integrable.
+
+We now show the second result, namely that $\int_a^bf_k(x)dx\to\int_a^bf(x)dx$. Since $f_k\to f$ uniformly, for $\epsilon>0$ we can choose $N$ so that $|f_n(x)-f(x)|<\frac{\epsilon}{b-a}$ for all $n\geq N$ and $x\in(a,b)$. Thus, for $\epsilon>0$: \begin{align*}\left|\int_a^bf_n(x)dx-\int_a^bf(x)dx\right|&=\left|\int_a^bf_n(x)-f(x)dx\right|\\&\leq\int_a^b\left|f_n(x)-f(x)\right|dx\\&<\int_a^b\frac{\epsilon}{b-a}dx\\&=\epsilon\qedhere\end{align*}
+\end{Proof}
+
+\item Let $E\subset\mathbb{R}$ be relatively open with respect to an interval $I$. Show that $E$ can be written as a union of non-overlapping intervals. 
+
+\begin{Proof}
+ Since $E$ is relatively open in $I$, we have $E=U\cap I$ for some set $U$ open in $\mathbb{R}$. To see that $U$ can be written as the union of disjoint open intervals, for each $x\in U$, let $I_x\subseteq U$ be the maximal open interval containing $x$. If $x, x'\in U$ and $x\not=x'$, then $I_x$ and $I_x'$ must be disjoint or equal, for, if they intersect, their union is an open interval containing $x$ and $x'$. Clearly, $U=\bigcup_{x\in U}I_x$. 
+
+Now, \[E=U\cap I=\bigcup_{x\in U}I\cap I_x\] which completes the proof.  
+\end{Proof}
+
+
+\item If $f$ is a uniformly continuous function defined in some set $E\subset\mathbb{R}^n$, then show there exists a unique function $\hat{f}:\overline{E}\to\mathbb{R}$ which is continuous and which agrees with $f$ when restricted to $E$.
+
+\begin{Proof}
+If such an $\hat{f}$ exists, then it must satisfy $\hat{f}(x_0)=\lim_{x\to x_0}f(x)$ for $x_0\in\overline{E}$. This forces the uniqueness of $\hat{f}$. Thus, we only need show $\lim_{x\to x_0}f(x)$ exists for all $x_0\in\overline{E}$ and that $\hat{f}$ is continuous on $\overline{E}$.
+
+Since $f$ is uniformly continuous, this limit exists and is equal to $f(x_0)$ whenever $x_0\in E$. Take $x_0\in\overline{E}-E$ and $x_n$ a sequence which converges to $x_0$. Since $x_n$ converges, it is Cauchy. Further, the sequence $f(x_n)$ is Cauchy since $f$ is uniformly continuous, hence $f(x_n)$ converges, for $\mathbb{R}^n$ is complete. Let $f(x_n)\to L$. We will show that $\lim_{x\to x_0}f(x)=L$. 
+
+Since $f$ is uniformly continuous and $x_n\to x_0$, we can choose $n$ so that $|f(x)-f(x_n)|<\frac{\epsilon}{2}$. Further, since $f(x_n)\to L$, we can choose $n$ sufficiently large so that $|f(x_n)-L|<\frac{\epsilon}{2}$. Thus, we can choose $n$ sufficiently large so that \begin{align*}|f(x)-L|&=|f(x)-f(x_n)+f(x_n)-L|\\&\leq|f(x)-f(x_n)|+|f(x_n)-L|\\&<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon\end{align*} In particular, this shows $\lim_{x\to x_0}f(x)=L$ and moreover that the limit $L$ is independent of the sequence chosen. 
+
+We will now show that $\hat{f}$ is a continuous function. Take $\{x_n\}$ a sequence in $\overline{E}$ and notice that \[|\hat{f}(x_n)-\hat{f}(x_0)|=\left|\lim_{x\to x_n}f(x)-\lim_{x\to x_0}f(x)\right|\] For sufficiently large $n$, the expression on the right is arbitrarily small, hence $\hat{f}(x_n)\to\hat{f}(x_0)$. Thus, $\hat{f}$ is continuous on $\overline{E}$. 
+\end{Proof}
+
+\item A set $E\subset\mathbb{R}^n$ is said to have measure zero if $\forall\epsilon>0$ it can be covered by a countable family of balls $\{B_i\}_{i\geq0}$ with radii $\{r_i\}_{i\geq0}$ such that \[\sum_{i=1}^{\infty}r_i^n<\epsilon\] 
+\begin{enumerate}
+ \item Prove that any countable set has measure zero.
+ \item Prove that the union of a countable family of sets of measure zero also has measure zero.
+\end{enumerate}
+
+\begin{Proof}
+\begin{enumerate}
+ \item Take $X$ to be a countable set with elements $x_1,x_2,\hdots$. For $\epsilon>0$, take \[r_i=\frac{1}{2}\sqrt[n]{\frac{\epsilon}{2^{i+1}}}\] and center balls of radius $r_i$ at each $x_i$. Clearly, these balls cover $X$, and \[\sum_{i=1}^{\infty}r_i^n=\frac{1}{2}\sum_{i=1}^{\infty}\frac{\epsilon}{2^{i+1}}=\frac{1}{2}\epsilon<\epsilon\]
+ \item Take $\{X_i\}$ to be a countable family of sets of measure zero and take $\epsilon>0$. Since $X_i$ has measure zero, there is an associated countable family of balls whose radii, when raised to the power $n$, sum to less than $\left(1-1/\epsilon\right)^i$. Take $\mathcal{U}=\bigcup U_k$ and observe that $\mathcal{U}$ is countable and covers $\bigcup X_i$, and that the sum of the radii is bounded: \[\sum_{\mathcal{U}}r_i^n<\sum_{i=0}^{\infty}\left(1-1/\epsilon\right)^i=\epsilon\qedhere\]
+\end{enumerate}
+\end{Proof}
+
+\item Let $\{f_k\}_j$ be a sequence of functions of bounded variation on $[a,b]$. If $V[f_k]\leq M<+\infty$ for all $k$ and if $f_k\to f$ pointwise on $[a,b]$, show that $f$ is of bounded variation and that $V[f]\leq M$. Give an example of a convergent sequence of functions of bounded variation whose limit is not of bounded variation.
+
+\begin{Proof}
+ Take $\epsilon>0$. For any partition $\pi$ of $[a,b]$, there is an $n_i$ for each $x_i$ in $\pi$ so that $|f_{n_i}(x_i)-f(x_i)|<\frac{\epsilon}{2|\pi|}$, for $f_k$ converges pointwise to $f$. Take $n$ to be the maximum of these $n_i$, and notice that \begin{align*}|V_{\pi}(f)-V_{\pi}(f_n)|&=\left|\sum_{\pi}|f_n(x_i)-f_n(x_{i-1})|-|f(x_i)-f(x_{i-1})\right|\\&\leq\sum_{\pi}|f_n(x_i)-f_n(x_{i-1})|-[f(x_i)-f(x_{i-1})]|\\&=\sum_{\pi}|f_n(x_i)-f(x_i)|+\sum_{\pi}|f_n(x_{i-1})+f(x_{i-1})|\\&\leq\frac{\epsilon}{2}+\frac{\epsilon}{2}\\&=\epsilon\end{align*} Thus, we have $V_{\pi}(f)-V_{\pi}(f_n)\leq\epsilon$. Since $V[f_k]\leq M$, this yields $V_{\pi}(f)\leq\epsilon+M$, which shows that $f$ is of bounded variation and that $V[f]\leq M$. 
+
+Let $f_n(x)$ be the function which is 0 everywhere except at $\frac{1}{k}$ for integers $k\leq n$. Let $f$ be the limit of $f_k$ and notice that $f(\frac{1}{n})=\frac{1}{n}$ for $n\in\mathbb{N}$, and that $f(x)$ is 0 elsewhere. This function clearly has unbounded variation.
+\end{Proof}
+
+
+\item Assume $f$ is $C^1$ in an open interval containing $[a,b]$, show that $V[f]=\int_a^b|f'(t)|dt$.
+\begin{Proof}
+ By the Mean Value Theorem, \[V_{\pi}=\sum_{i=1}^m|f(x_i)-f(x_{i-1})|=\sum_{i=1}^m|f'(\alpha_i)|(x_i-x_{i-1})\] for appropriate $\alpha_i$. Thus, \[V=\lim_{|\pi|\to0}V_{\pi}=\lim_{|\pi|\to0}\sum_{i=1}^m|f'(\alpha_i)|(x_i-x_{i-1})=\int_a^b|f'(t)|dt\qedhere\]
+\end{Proof}
+
+\end{enumerate}
+\end{document}

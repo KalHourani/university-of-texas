@@ -1,0 +1,102 @@
+\documentclass[12pt,leqno]{article}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Algebra II\\\large Homework 8}
+\date{March 23, 2011}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\w}{\omega}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\+}{\oplus}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+
+\section*{Section 13.6}
+  \begin{enumerate}
+   \item [14.] Given any monic polynomial $P(x)\in\Z[x]$ of degree at least one show that there are infinitely many distinct prime divisors of the integers \[P(1),P(2),P(3),\hdots,P(n),\hdots\]
+    \begin{Proof}
+     Suppose $p_1,p_2,\hdots,p_k$ are the only prime divisors of $P(n)$ for $n=1,2,\hdots$. Let $N$ be an integer with $P(N)=a\not=0$. Setting $b=p_1p_2\hdots p_k$ and $P(x)=\sum_{i=0}^n\alpha_ix^i$, we see \[P(N+abx)=\sum_{i=0}^n\alpha_i(N+abx)^i=\sum_{i=0}^n\alpha_i\sum_{k=0}^i{i\choose k}N^{i-k}a^kb^kx^k\] Now, $a$ clearly divides the coefficient of any non-constant term above. However, the constant term above is just \[\sum_{i=0}^n\alpha_iN^i=P(N)=a\] hence $Q(x)=a^{-1}P(N+bx)\in\Z[x]$. Now, modulo $p_1p_2\hdots p_k$, the non-constant terms above are all 0 when evaluated at any $n$, since they are just multiples of $b=p_1p_2\hdots p_k$. The remaining term is $Q(0)=a^{-1}P(N)=1$, hence \[Q(n)\equiv1\pmod{p_1p_2\hdots p_k}\text{ for }n=1,2\hdots\] Now, taking $M\in\Z$ such that $Q(M)$ is neither 0 nor 1, we see that \[Q(M)=\alpha p_1p_2\hdots p_k+1\] for some $\alpha\in\Z$. Clearly, $Q(M)$ is not divisible by any $p_1,p_2,\hdots,p_k$, hence is divisible by a different prime. However, this implies that $P(N+ap_1p_2\hdots p_kM)$ is divisible by a prime different from $p_1,p_2\hdots, p_k$, a contradiction. Thus, $P(x)$ must have infinitely many distinct prime divisors.
+    \end{Proof}
+
+   \item [17.] Prove that there are infinitely many primes $p$ with $p\equiv1\pmod{m}$. 
+    \begin{Proof}
+     By \textbf{14.}, there are infinitely many primes $p$ such that $p$ divides $\varPhi_m(a)$ for some $a$. By \textbf{16.}, each prime $p$ is either a divisor of $m$ or congruent to 1 modulo $m$. Since there are finitely many prime divisors of $m$, it must be that there are infinitely many primes $p$ such that $p\equiv1\pmod{m}$.
+    \end{Proof}
+  \end{enumerate}
+
+\section*{Section 14.4}
+  \begin{enumerate}
+   \item [5.] Let $P$ be a prime and let $F$ be a field. Let $K$ be a Galois extension of $F$ whose Galois group is a $p$-group (i.e., the degree $[K:F]$ is a power of $p$). Such an extension is called a $p$\textit{-extension} (note that $p$-extensions are Galois by definition).
+    \begin{enumerate}
+     \item Let $L$ be a $p$-extension of $K$. Prove that the Galois closure of $L$ over $F$ is a $p$-extension of $F$.
+     \item Give an example to show that \textbf{(a)} need not hold if $[K:F]$ but $K/F$ is not Galois. 
+    \end{enumerate}
+  \item [6.] Prove that $\F_p(x,y)/\F_p(x^p,y^p)$ is not a simple extension by explicitly exhibiting an infinite number of intermediate subfields.
+  \end{enumerate}
+
+\section*{Section 14.5}
+  \begin{enumerate}
+   \item [5.] Let $p$ be a prime and let $\epsilon_1,\epsilon_2,\hdots,\epsilon_{p-1}$ denote the primitive $p^{\text{th}}$ roots of unity. Set $p_n=\epsilon_1^n+\epsilon_2^n+\hdots+\epsilon_{p-1}^n$, the sum of the $n^{\text{th}}$ powers of the $\epsilon_i$. Prove that $p_n=-1$ if $p$ does not divide $n$ and that $p_n=p-1$ if $p$ does divide $n$.
+    \begin{Proof}
+     The sum $p_1$ corresponds to the constant term of $\varPhi_p$, hence $p_1=-1$. For any $n\in\N$, write $n=qp+k$ with $0\leq k<p-1$. We see that, if $k\not=0$, i.e., if $p$ does not divide $n$, then $\epsilon_i^k$ is a primitive $p^{\text{th}}$ root of unity and that each $\epsilon_i^k$ is distinct. Thus, \begin{align*}p_n&=\epsilon_1^n+\epsilon_2^n+\hdots+\epsilon_{p-1}^n\\&=\epsilon_1^k+\epsilon_2^k+\hdots+\epsilon_{p-1}^k\\&=\epsilon_1+\epsilon_2+\hdots+\epsilon_{p-1}\\&=p_1\\&=-1\end{align*} Now, whenever $k=0$, i.e., when $p$ divides $n$, we have \[p_n=\epsilon_1^0+\epsilon_2^0+\hdots+\epsilon_{p-1}^0=p-1\qedhere\]
+    \end{Proof}
+   \item [7.] Show that complex conjugation restricts to the automorphism $\sigma_{-1}\in\Gal(\Q(\zeta_n)/\Q)$ of the cyclotomic field of $n^{\text{th}}$ roots of unity. Show that the field $K^+=\Q(\zeta_n+\zeta_n^{-1})$ is the subfield of real elements in $K=\Q(\zeta_n)$, called the \textit{maximal real subfield of} $K$.
+    \begin{Proof}
+     Recall that $\zeta_n\overline{\zeta_n}=|\zeta_n|^2=1$, hence $\overline{\zeta_n}=\zeta_n^{-1}$. In particular, conjugation restricts to the automorphism $\sigma_{-1}\in\Gal(\Q(\zeta_n)/\Q)$, which takes $\zeta_n$ to $\zeta_n^{-1}$. Since $\overline{\zeta_n}=\zeta_n^{-1}$, we have $\zeta_n+\zeta_n^{-1}=2\text{Re}(\zeta_n)$, hence $K^+$ is a real subfield of $K=\Q(\zeta_n)$. We need only show that the real elements of $K$ are in $K^+$. If $z$ is any element of $K$, then $\frac{z+z^{-1}}{2}=\Re(z)$, hence $\Re(z)\in K$. 
+    \end{Proof}
+  \end{enumerate}
+\end{document}

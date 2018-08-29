@@ -1,0 +1,108 @@
+
+\documentclass[12pt,leqno]{article}
+
+\usepackage{graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\numberwithin{equation}{section}
+\pagestyle{headings}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in} \noindent\fbox{#1} #2 \vspace{.10in}}
+
+\swapnumbers
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+
+
+\makeindex
+
+\begin{document}
+
+
+\thispagestyle{plain}
+\begin{flushright}
+\large{\textbf{Khalid Hourani\\
+}}
+\end{flushright}
+
+\question{1}{Prove that $S\in A(V)$ is regular if and only if whenever $v_1,\hdots,v_n$ are linearly independent, then $v_1S,v_2S,\hdots,v_nS$ are also linearly independent.}
+
+\begin{proof}
+ \begin{description}
+  \item [$\Rightarrow$] If $S$ is regular, then there exists an $S^{-1}$ so that $SS^{-1}=\text{Id}_V$. Suppose $v_1,v_2,\hdots,v_n$ are linearly independent, and take $a_1,a_2,\hdots,a_n$ so that \[a_1v_1S+a_2v_2S+\hdots+a_nv_nS=0\] Then \[(a_1v_1+a_1v_2+\hdots+a_nv_n)S=0\] Hence, \[(a_1v_1+a_2v_2+\hdots+a_nv_n)SS^{-1}=a_1v_1+a_2v_2+\hdots+a_nv_n=0\] By linear independence of $v_1,v_2,\hdots,v_n$, $a_1=a_2=\hdots=a_n=0$. Hence $v_1S,v_2S,\hdots,v_nS$  are linearly independent.
+  \item [$\Leftarrow$] Suppose that, whenever $v_1,\hdots,v_n$ are linearly independent, then $v_1S,v_2S,\hdots,v_nS$ are also linearly independent, and consider a basis $e_1,e_2,\hdots,e_n$ of $V$. Then $e_1S,e_2S,\hdots,e_nS$ is also a basis, for it is a maximal linearly independent set, so $S$ is onto and therefore regular.
+ \end{description}
+\end{proof}
+
+\question{2}{Prove that $T\in A(V)$ is completely determined by its values on a basis of $V$.}
+
+\begin{proof}
+Take $e_1,e_2,\hdots,e_n$ to be a basis of $V$. For any $v\in V$, \[v=a_1e_1+a_2e_2+\hdots+a_ne_n\] hence \begin{align*}vT&=(a_1e_1+a_2e_2+\hdots+a_ne_n)T\\&=a_1e_1T+a_2e_2T+\hdots+a_ne_nT\end{align*}
+\end{proof}
+
+\question{5}{If $V$ is two-dimensional over $F$ and $A=A(V)$, write down a basis of $A$ over $F$ and compute $T_a$ for each $a$ in this basis.}
+
+\begin{proof}[Solution]
+ Suppose $V$ has a basis $e_1,e_2$ over $F$. We can write the following four linear maps:\begin{align*}\phi_1(e_1)&=e_1&\phi_1(e_2)&=0\\\phi_2(e_1)&=e_2&\phi_2(e_2)&=0\\\phi_3(e_1)&=0&\phi_3(e_2)&=e_1\\\phi_4(e_1)&=0&\phi_4(e_2)&=e_2\end{align*} The set $\{\phi_1,\phi_2,\phi_3,\phi_4\}$ is clearly a spanning set for $A$, and is clearly linearly independent. Hence, it is a basis.
+\end{proof}
+
+\question{7}{In $A(V)$ let $Z=\{T\in A(V)|ST=TS\text{ for all }S\in A(V)\}$. Prove that $Z$ merely consists of multiples of the unit element of $A(V)$ by the elements of $F$.}
+
+\begin{proof}
+We observe that, if $\text{dim}V=n$, then $V$ is isomorphic to $F^n$. Thus, proving this result for $F^n$ is equivalent to proving it for $V$. To see the result for $F^n$, merely choose a basis:\[\begin{bmatrix}1\\0\\0\\\vdots\\0\end{bmatrix},\begin{bmatrix}0\\1\\0\\\vdots\\0\end{bmatrix},\begin{bmatrix}0\\0\\1\\\vdots\\0\end{bmatrix},\hdots,\begin{bmatrix}0\\0\\0\\\vdots\\1\end{bmatrix}\] and note that the linear maps in this case are $n\times n$ matrices. Observe that matrices of the form $fI$ commute with each other. To see that they are the only matrices which commute, observe that, if $T$ commutes with all matrices, then $T$ commutes with elementary matrices. Hence, every row-operation on $T$ is also a column operation, and so multiplying the $i$th row of $T$ by $f$ is equivalent to multiplying the $i$th column of $T$ by $f$. So $T$ must be a diagonal matrix. Further, since interchanging the $i$th and $j$th rows of $T$ is equivalent to interchanging the $i$th and $j$th columns, $T$ must be a multiple of the identity.
+\end{proof}
+
+\question{8}{If $\text{dim}_F(V)>1$ prove that $A(V)$ has no two-sided ideals other than $(0)$ and $A(V)$.}
+
+\begin{proof}
+ If $\text{dim}_F(V)=n$, then $A(V)$ is isomorphic (as a ring) to $M_n(F)$. We then show this result for $M_n(F)$. We begin by showing that the two-sided ideals in $M_n(R)$ correspond to the ideals $I$ in $R$ in the following way: If $I$ is an ideal in $R$ then $M_n(I)$ is an ideal in $M_n(R)$ and each ideal in $M_n(R)$ arises this way.
+
+ Clearly, if $I$ is an ideal in $R$, then so too must $M_n(I)$ be an ideal in $M_n(R)$. Now, suppose $J$ is an ideal in $M_n(R)$, and say $I$ is the set of all elements in $R$ such that the matrices in $J$ have entries from $I$. If $x,y\in I$, then there are matrices $X$ and $Y$ in $J$ so that $x$ and $y$ are entries in $X$ and $Y$ respectively, say $x=(X)_{ij}$ and $y=Y_{kl}$. We denote by $E_{ij}$ the matrix whose entries are 0 everywhere but the entry in $i$th row and $j$th column, which is 1. Then $XE_{jl}+E_{ik}Y$ has $x+y$ at position $(il)$. Thus, $I$ is closed under addition. To see that it is closed under multiplication by elements of $R$, observe that $X\sum_{i=1}^nrE_{ii}$ has $xr$ as an entry, and $\sum_{i=1}^nrE_{ii}X$ has $rx$ as an entry. Thus, $I$ is an ideal in $R$.
+
+Then, since $F$ is a field, $M_n(F)$ only has ideals corresponding to $(0)$ and $F$: $M_n(0)=(0)$ and $M_n(F)$.
+
+\end{proof}
+
+\question{14}{If $F$ is a finite field with $q$ elements, compute the order of the group of regular elements in $A(V)$ where $V$ is two-dimensional over $F$.}
+
+\begin{proof}[Solution]
+Observe that the group of regular elements of $A(V)$ is isomorphic to the group $GL_2(F)$; in particular, they have the same order. Thus, we must simply compute the order of $GL_2(F)$. A matrix $M\in M_2(F)$ is invertible if and only if its columns are linearly independent. Thus, the first column of a matrix $M\in GL_2(F)$ is chosen to be any non-zero element of $F^2$. There are $q^2-1$ such elements. The second column cannot be a multiple of the first. Since there are $q$ multiples of the first column, there are $q^2-q$ possible choices for the second column. Hence, the order of $GL_2(F)$ is $(q^2-1)(q^2-q)$.
+\end{proof}
+
+\question{20}{The element $T\in A(V)$ is called \textit{nilpotent} if $T^m=0$ for some $m$. If $T$ is \textit{nilpotent} and if $vT=\alpha v$ for some $v\not=0$ in $V$, with $\alpha\in F$, prove that $\alpha=0$.}
+
+\begin{proof}
+Since $T$ is nilpotent, $T^n=0$. Thus, $vT^m=\alpha^nv=0$. Since $v\not=0$, $\alpha^n=0$. 0 is the only nilpotent element of a field, hence $\alpha=0$.
+\end{proof}
+
+
+
+
+\end{document}

@@ -1,0 +1,121 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Algebra II\\\large Homework 2}
+\date{January 31, 2011}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+
+\section*{Section 13.2}
+  \begin{description}
+   \item [16.] Let $K/F$ be an algebraic extension and let $R$ be a \textit{ring} contained in $K$ and containing $F$. Show that $R$ is a subfield of $K$ containing $F$.
+  \begin{Proof}
+   Clearly, $R$ is a commutative integral domain, hence we need only show it is a division ring. Take $r\in R$. We show that $r^{-1}\in K$ is in fact an element of $R$ by considering the ideal $(r)$ as an ideal in $R$. If $(r)=R$, then $r$ is a unit in $R$ and we are finished. On the otherhand
+  \end{Proof}
+   \item [19.] Let $K$ be an extension of $F$ of degree $n$. 
+    \begin{description}
+     \item [(a)] For any $\alpha\in K$ prove that $\alpha$ acting by left multiplication on $K$ is an $F$-linear transformation of $K$.
+     \item [(b)] Prove that $K$ is isomorphic to a subfield of the $n\times n$ matrices over $F$, so the ring of $n\times n$ matrices over $F$ contains an isomorphic copy of \textit{every} extension of $F$ of degree $\leq n$.
+    \end{description}
+    \begin{Proof}\indent
+     \begin{description}
+      \item [(a)] If $k_1,k_2$ are elements of $K$, then, for any $a_1,a_2\in F$, \[\alpha(a_1k_1+a_2k_2)=a_1\alpha(k_1)+a_2\alpha(k_2)\] hence $\alpha$ is a linear map on the vector space $K/F$.
+      \item [(b)] Since every linear transformation of $F$ is given by a matrix, for any $\alpha\in K$, we see that the map $\psi(\alpha)=\phi_{\alpha}$, where $\phi_{\alpha}(x)=\alpha x$, defines an injective map from $K$ to $M_{n\times n}(F)$.
+     \end{description}
+    \end{Proof}
+   \item [20.] Show that if the matrix of the linear transformation ``multiplication by $\alpha$'' considered in the previous exercise is $A$ then $\alpha$ is a root of the characteristic polynomial for $A$. This gives an effective procedure for determining an equation of degree $n$ satisfied by an element $\alpha$ in an extension of $F$ of degree $n$. Use this procedure to obtain the monic polynomial of degree 3 satisfied by $1+\sqrt[3]{2}+\sqrt[3]{4}$.
+  \end{description}
+
+\section*{Section 13.4}
+\begin{description}
+ \item [1.] Determine the splitting field and its degree over $\Q$ for $x^4-2$.
+  \begin{Solution}
+   Write $x^4-2=(x^2+2)(x^2-2)$. We see that the roots of this polynomial are $\pm\sqrt{2}$ and $\pm i\sqrt{2}$. It is clear that the splitting field is at least contained in $\Q(i,\sqrt{2})$. However, this is exactly the splitting field of $x^4-2$, for both $\Q(i)$ and $\Q(\sqrt{2})$ are subfields of $\Q(i,\sqrt{2})$, yet neither is the splitting field. Further, this shows that this is a degree 4 extension, since \[[\Q(i,\sqrt{2}):\Q]=[\Q(i,\sqrt{2}):\Q(\sqrt{2})][\Q(\sqrt{2}):\Q]\qedhere\]
+  \end{Solution}
+ \item [3.] Determine the splitting field and its degree over $\Q$ for $x^4+x^2+1$.
+  \begin{Solution}
+   The polynomial $x^4+x^2+1$ factors as $(x^2+x+1)(x^2-x+1)$. Take $\alpha$ to be a root of $x^2+x+1$. \footnote{Formally, we write $K=Q[\alpha]/(\alpha^2+\alpha+1)$, and see that $\Q$ is isomorphic to a subfield of $K$.} Then $(-\alpha)^2-(-\alpha)+1=\alpha^2+\alpha+1=0$, hence the polyomial above splits into linears. Thus, $\Q(\alpha)$ is the splitting field of $x^4+x^2+1$ and is a degree 2 extension of $\Q$.
+  \end{Solution}
+ \item [4.] Determine the splitting field and its degree over $\Q$ for $x^6-4$.
+  \begin{Solution}
+   Write $x^6-4=(x^3+2)(x^3-2)$. By a similar argument to \textbf{1.}, this polynomial splits over $\Q(\sqrt[3]{2},i)$, which is a degree 6 extension over $\Q$.
+  \end{Solution}
+ \item [6.] Let $K_1$ and $K_2$ be finite extensions of $F$ contained in the field $K$, and assume both are splitting fields over $F$.
+  \begin{description}
+   \item [(a)] Prove that $K_1K_2$ is splitting field over $F$.
+   \item [(b)] Prove that $K_1\cap K_2$ is a splitting field over $F$.
+  \end{description}
+  \begin{Proof}\indent
+   \begin{description}
+    \item [(a)] Since $K_1,K_2$ are both subfields of $K_1K_2$, $K_1K_2$ is clearly a splitting field over $F$.
+    \item [(b)] 
+   \end{description}
+  \end{Proof}
+
+\end{description}
+
+\section*{Section 13.5}
+  \begin{description}
+   \item [8.] Prove that $f(x)^p=f(x^p)$ for any polynomial $f(x)\in \F_p[x]$.
+    \begin{Proof}
+     Since $\F_p$ has characteristic $p$, we have $(\alpha+\beta)^p=\alpha^p+\beta^p$ for any $\alpha,\beta$. Moreover, for any $\alpha\in \F_p$, we have $\alpha^p=\alpha$. In particular, \begin{align*}f(x)^p&=\left(a_0+a_1x+\hdots+a_nx^n\right)^p\\&=a_0^p+a_1^px^p+\hdots+a_n^px^{np}\\&=a_0+a_1x^p+\hdots+a_n(x^p)^n\\&=f(x^p)\qedhere\end{align*}
+    \end{Proof}
+   \item [10.] Let $f(x_1,x_2,\hdots,x_n)\in\Z[x_1,x_2,\hdots,x_n]$ be a polynomial in the variables $x_1,x_2,\hdots,x_n$ with integer coefficients. For any prime $p$ prove that the polynomial \[f(x_1,x_2,\hdots,x_n)^p-f(x_1^p,x_2^p,\hdots,x_n^p)\in\Z[x_1,x_2,\hdots,x_n]\] has all its coefficients divisible by $p$.
+  \end{description}
+
+\end{document}

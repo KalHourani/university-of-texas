@@ -1,0 +1,86 @@
+\documentclass[12pt,leqno]{article}
+
+\usepackage{graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Complex Analysis\\\large Homework 6}
+\date{March 2, 2011}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\footskip=36pt
+
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\re}{\operatorname{Re}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\w}{\omega}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+\clearpage\mbox{}\clearpage
+
+\setcounter{page}{1}
+\begin{enumerate}
+ \item If $\gamma(t)=2e^{it}$ with $0\leq t\leq2\pi$, compute the integrals \[\int_{\gamma}\frac{dz}{z^4-z^3-z^2-16z},\hskip.5in\int_{\gamma}\frac{\sin z}{(z+1)^2}dz\] 
+ \item Evaluate the integral \[\int_0^{2\pi}\frac{dt}{3+2\cos(t)},\] by converting it into a path integral along the unit circle $\gamma(t)=e^{it}$, and using that $2\cos(t)=z+1/z$ for $z=e^{it}$.
+  \begin{Solution}
+   As suggested, write $\gamma(t)=e^{it}$, $0\leq t\leq2\pi$. We have \begin{align*}\int_0^{2\pi}\frac{dt}{3+2\cos(t)}&=\int_{\gamma}\frac{-i/z}{3+z+1/z}dz\\&=-i\int_{\gamma}\frac{dz}{z^2+3z+1}\end{align*} By partial fractions, this is just \[-i\left(\int_{\gamma}\frac{1/3}{z-\frac{3-\sqrt{5}}{2}}dz-\int_{\gamma}\frac{1/3}{z-\frac{-3-\sqrt{5}}{2}}dz\right)=\frac{2\pi}{\sqrt{5}}\qedhere\]
+  \end{Solution}
+ \item Evaluate \[\int_{-\infty}^{\infty}\frac{e^{ipx}}{x^2+1}dx,\hskip.5inp\in\R\]
+  \begin{Solution}
+   Let $\gamma(x)=x$, $-R<t<R$ and let $\sigma(t)=Re^{it}$ for $p\geq0$ and $\sigma(t)=Re^{-it}$ for $p\leq0$, with $0\leq t\leq\pi$. We see that, for $p\geq0$ \begin{align*}\int_{-R}^R\frac{e^{ipx}}{x^2+1}dx&=\int_{\gamma+\sigma}\frac{e^{ipz}}{z^2+1}dz+\int_{-\sigma}\frac{e^{ipz}}{z^2+1}dz\\&=\int_{\gamma+\sigma}\frac{e^{ipz}/(z+i)}{z-i}dz-\int_{\sigma}\frac{e^{ipz}}{z^2+1}dz\\&=\pi e^{-p}-i\int_0^{\pi}\frac{e^{ip\sigma}}{\sigma^2+1}\sigma dt\end{align*} Now, \begin{align*}\left|\int_{0}^{\pi}\frac{e^{ip\sigma}}{\sigma^2+1}\sigma dt\right|&\leq\int_0^{\pi}\left|\frac{e^{ip\sigma}}{\sigma^2+1}\sigma\right| dt\\&\leq\int_0^{\pi}\left|\frac{\sigma}{\sigma^2+1}\right|\left|e^{ip\sigma}\right|dt\\&\leq\frac{1}{R}\int_0^{\pi}e^{-pR\sin(t)}dt\end{align*} hence we have \[\lim_{R\to\infty}\int_{\sigma}\frac{e^{ipz}}{z^2+1}dz=0\] from which we conclude \[\int_{-\infty}^{\infty}\frac{e^{ipx}}{x^2+1}dx=\lim_{R\to\infty}\int_{-R}^R\frac{e^{ipx}}{x^2+1}dx=\pi e^{-p}\] Similarly, for $p\leq0$, noting that $\eta(\sigma,-i)=-1$, we have \[\int_{-\infty}^{\infty}\frac{e^{ipx}}{x^2+1}dx=\pi e^p\] hence for $p\in\R$ we have \[\int_{-\infty}^{\infty}\frac{e^{ipx}}{x^2+1}dx=\pi e^{-|p|}\qedhere\]
+  \end{Solution}
+ \item If a function $f$ is analytic in an open disk $D=\{z\in\C:|z|<1\}$ and continuous in the closure of $D$, and if $f(z)=0$ for every $z\in\partial D$ with $\im(z)\geq0$, then $f(z)=0$ for every $z$ in $D$. Prove this.
+  \begin{Proof}
+   Write $g(z)=f(z)f(-z)$. Clearly, $g(z)=0$ on $\partial D$. By the maximum principle, $|g(z)|$ attains its maximum on $\partial D$, hence $g(z)=0$. Thus either $f(z)$ is identically 0 on $D$, or $f(z)=0$ whenever $f(-z)\not=0$. However, in that case $f$ would have isolated zeroes, which is clearly impossible. Thus $f(z)=0$ for all $z\in D$.
+  \end{Proof}
+ \item 
+ \item 
+ \item Suppose $f$ is an entire function with the property that $f(z)$ is real if and only if $z$ is real. Verify that $f'(z)=0$ cannot be true for any real $z$.
+  \begin{Proof}
+   Write $g_a(z)=f(z)-f(a)$ for $a\in\R$. We see that $g_a(a)=0$. If $g'(a)=0$, then $f'(a)=0$, however then $g$ must then have a pole of order 2 or greater at $a$. Take $\gamma_a(t)=a+\epsilon e^{it}$, $0\leq t\leq2\pi$ for $\epsilon$ sufficiently small. Then $g_a\circ\gamma_a$ must be at least two-to-one, which means that, for at least four $z$ on $\gamma_a$, $g_a(z)\in\R$. This is clearly impossible if $a\in\R$ (since $f(z)\in\R$ if and only if $z\in\R$) hence $g_a'(a)=f'(a)\not=0$ for any $a\in\R$.
+  \end{Proof}
+\end{enumerate}
+
+
+\end{document}

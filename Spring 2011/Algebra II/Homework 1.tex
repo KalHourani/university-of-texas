@@ -1,0 +1,109 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Algebra II\\\large Homework 1}
+\date{January 26, 2011}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+
+\section*{Section 13.1}
+\begin{description}
+ \item [1.] Show that $p(x)=x^3+9x+6$ is irreducible in $\Q[x]$. Let $\theta$ be a root of $p(x)$. Find the inverse of $1+\theta$ in $Q(\theta)$. 
+  \begin{Solution}
+   By the Eisenstein Criterion, $p(x)$ is irreducible, for 3 divides the non-leading terms of $p(x)$, 3 does not divide the leading term of $p(x)$, and $3^2=9$ does not divide the constant term of $p(x)$. Moreover, by the Euclidean Algorithm we see that \[(x+1)\left(\frac{x^2-x+10}{-4}\right)+\frac{x^3+9x-6}{4}=1\] Thus, if $\theta$ is a root of $p(x)$, we have \[(\theta+1)\left(\frac{\theta^2-\theta+10}{-4}\right)=1\] hence the inverse of $\theta+1$ in $\Q(\theta)$ is $\frac{1}{4}(\theta^2-\theta+10)$.
+  \end{Solution}
+ \item [4.] Prove directly that the map $a+b\sqrt{2}\mapsto a-b\sqrt{2}$ is an isomorphism of $\Q(\sqrt{2})$ with itself. 
+  \begin{Proof}
+   Call this map $\phi$. We shall first show that $\phi$ is a field homomorphism. Let $x=a+b\sqrt{2}$, $y=c+d\sqrt{2}$ be arbitrary elements of $Q(\sqrt{2})$. Then \begin{align*}\phi(x+y)&=\phi\left(a+c+(b+d)\sqrt{2}\right)\\&=a+c-(b+d)\sqrt{2}\\&=a-b\sqrt{2}+c-d\sqrt{2}\\&=\phi(x)+\phi(y)\end{align*} Similarly, \begin{align*}\phi(xy)&=\phi\left(ac+2bd+(ad+bc)\sqrt{2}\right)\\&=ac+2bd-(ad+bc)\sqrt{2}\\&=(a-b\sqrt{2})(c-d\sqrt{2})\\&=\phi(x)\phi(y)\end{align*} Thus, $\phi$ is a homomorphism. It is in fact an isomorphism, for every field homorphism is injective, and this map is clearly surjective.
+  \end{Proof}
+ \item [5.] Suppose that $\alpha$ is a rational root of a monic polynomial in $\Z[x]$. Prove that $\alpha$ is an integer.
+  \begin{Proof}
+   Suppose $\alpha=\frac{p}{q}$ is a rational root of $p(x)=x^n+a_1x^{n-1}+\hdots+a_{n-1}x+a_n$ for some coprime $p,q$. Then \[\left(\frac{p}{q}\right)^n+a_1\left(\frac{p}{q}\right)^{n-1}+\hdots+a_{n-1}\left(\frac{p}{q}\right)+a_n=0\] Subtracting the leading term and multiplying by $q^n$, we have \[q\left(a_1p^{n-1}+\hdots+a_{n-1}q^{n-2}p+a_nq^{n-1}\right)=-p^n\] hence $q|p^n$. However, $p$ and $q$ are mutually prime, so $q=1$. Thus, $\alpha$ is an integer.
+  \end{Proof}
+\end{description}
+
+\section*{Section 13.2}
+\begin{description}
+ \item [4.] Determine the degree over $\Q$ of $2+\sqrt{3}$ and of $1+\sqrt[3]{2}+\sqrt[3]{4}$. 
+  \begin{Solution}
+   The degree over $\Q$ of $2+\sqrt{3}$ is clearly the same as the degree of $\sqrt{3}$ over $\Q$ since $2\in\Q$. It is elementary to show that $\sqrt{3}$ is irrational, hence must be of degree at least 2 over $\Q$. However, $\sqrt{3}$ solves the rational polynomial $x^2-3$, hence $\sqrt{3}$ has degree 2.
+
+  In the same fashion, we see that the degree of $1+\sqrt[3]{2}+\sqrt[3]{4}$ is the same as that of $\sqrt[3]{4}$, for \[\frac{1}{2}\left(\sqrt[3]{4}\right)^2=\frac{1}{2}\left(2^{4/3}\right)=\sqrt[3]{2}\] It is similarly elementary to show that $\sqrt[3]{2}$ is irrational and that its square is irrational, hence $\sqrt[3]{2}$ has degree at least 3. However, $\sqrt[3]{2}$ solves the rational polynomial $x^3-2$. Thus, $\sqrt[3]{2}$ has degree 3 over $\Q$. 
+  \end{Solution}
+ \item [5.] Let $F=\Q(i)$. Prove that $x^3-2$ and $x^3-3$ are irreducible over $F$.
+  \begin{Proof}
+   Write $2=(1+i)(1-i)$. We shall show that $1+i$ is prime in $\Z[i]$, from which it follows that $x^3-2$ is irreducible by the Eisenstein Criterion. Suppose $1+i=pq$ with $p$ not a unit. Then $|p||q|=2$, hence $|p|=2$. Writing $p=x+yi$, we see that $x^2+y^2=2$, which forces $p$ to be one of $1+i$, $1-i$, $-1-i$ and $-1+i$. However, in each case this forces $q$ to be a unit: \begin{align*}1+i&=(1+i)1\\1+i&=(1-i)i\\1+i&=(-1-i)(-1)\\1+i&=(-1+i)(-i)\end{align*} Thus $1+i$ is prime.
+
+Similarly, we shall show that 3 is prime. Write $3=pq$ with $p$ not a unit. Then $|p|=3$ or $|p|=9$. However, $|p|\not=3$ for if $p=x+yi$ then $x^2+y^2=3$ which is impossible. Thus, $|p|=9$. The only squares which sum to 9 are 0 and 9, hence $p$ is one of 3, $-3$, $3i$ and $-3i$. In each case this forces $q$ to be a unit, hence 3 is prime. By the Eisenstein Criterion, $x^3-3$ is irreducible.
+  \end{Proof}
+ \item [7.] Prove that $\Q(\sqrt{2}+\sqrt{3})=\Q(\sqrt{2},\sqrt{3})$. Conclude that $[\Q(\sqrt{2}+\sqrt{3}):\Q]=4$. Find an irreducible polynomial satisfied by $\sqrt{2}+\sqrt{3}$.
+  \begin{Proof}
+   We see that \[\frac{(\sqrt{2}+\sqrt{3})^3-9(\sqrt{2}+\sqrt{3})}{2}=\sqrt{2}\] from which the equality $\Q(\sqrt{2}+\sqrt{3})=\Q(\sqrt{2},\sqrt{3})$ clearly follows. Since $\Q(\sqrt{2},\sqrt{3})$ has degree 4 over $\Q$, we deduce that $[\Q(\sqrt{2}+\sqrt{3}):\Q]=4$. Moreover, $\sqrt{2}+\sqrt{3}$ satisfies the polynomial $x^4-10x+1$.
+  \end{Proof}
+ \item [12.] Suppose the degree of the extension $K/F$ is a prime $p$. Show that any subfield $E$ of $K$ containing $F$ is either $K$ or $F$.
+  \begin{Proof}
+   Simply write $[K:F]=[K:E][E:F]$. Since $[K:F]=p$ and $[E:F]$ divides $[K:F]$, it follows that $[E:F]$ is either 1 or $p$. In the former case, $E=F$. In the latter case, $E=K$.
+  \end{Proof}
+ \item [13.] Suppose $F=\Q(\alpha_1,\alpha_2,\hdots,\alpha_n)$ where $\alpha_i^2\in\Q$. Prove that $\sqrt[3]{2}\not\in F$. 
+  \begin{Proof}
+   Since $\alpha_i^2\in\Q$, it follows that $[F:\Q]=2^k$ for some $k\leq n$. However, $\sqrt[3]{2}$ has degree 3 over $\Q$, hence $\sqrt[3]{2}$ is not an element of $F$, for otherwise we would have \[[F:\Q]=[F:\Q(\sqrt[3]{2})][\Q(\sqrt[3]{2}):\Q]\] which is impossible.
+  \end{Proof}
+
+\end{description}
+
+\end{document}

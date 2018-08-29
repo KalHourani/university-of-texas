@@ -1,0 +1,90 @@
+\documentclass[12pt,letterpaper]{article}
+
+\usepackage{fancyhdr,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref,ifpdf,mla,fullpage}
+
+\headheight=14.5pt
+\pagestyle{myheadings}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\w}{\omega}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\+}{\oplus}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+
+\begin{document}
+\begin{mla}{Kal}{Hourani, Rachel Wolfe}{Dvoskin}{TD 357T Musicals: Performing America}{March 7, 2011}{\underline{Chicago}}
+\section*{\underline{Plot Summary}} Velma Kelly and Roxie Hart, two vaudevillains accused of murder in 1920s prohibition-era Chicago, each hire Billy Flynn, a big shot smooth-talking lawyer who has never lost a case, to their legal defense. However, Velma and Roxie find themselves competing for the public's favor as their cases come closer to trial. With a little help from Mama Morton, the prison warden whose motto is ``when you're good to Mama, Mama's good to you,'' some sympathy from the media, an alleged pregnancy, and Flynn's ability to make a show out of a trial, Hart and Kelly are both acquitted and begin a successful career performing a double act.\section*{\underline{Libretto Information}}
+\begin{itemize}
+ \item Written by Bob Fosse (who also directed and choreographed) and Fred Ebb.
+ \item Music by John Kander.
+ \item Based on a 1926 play of the same name written by reporter Maurine Dallas Watkins.
+\end{itemize}
+
+\section*{\underline{Production History}}
+\begin{itemize}
+ \item Premiered in 1975.
+ \item Not received very well, possibly as a result of the high crime rates of the '70s. Critics called the musical cynical. 
+ \item Negative reception most likely a result of people not believing that, by having media coverage, someone can be acquitted of murder.
+ \item This is evidenced by the positive reception of the 1996 revival, occuring two years after the infamous O.J. Simpson murder trial.
+ \item Viewers were also made uncomfortable by the Brechtian style of the musical, in which the fourth wall was frequently dropped.
+\end{itemize}
+
+\begin{workscited}
+
+\bibent
+Leve, James. \textit{Kander and Ebb.} New Haven \& London: Yale University Press, 2009. Print.
+
+\bibent
+Marshall, Rob, dir. \textit{Chicago.} Miramax Films, 2002. DVD
+
+\bibent
+Miller, Scott. \textit{Deconstructing Harold Hill.} Portsmouth: Heinemann, 2000. Print.
+
+\bibent
+Murder Rates in the United States. Chart. \textit{www.jrsa.org.} Bureau of Justice Statistics, Office of Justice Programs, U.S. Department of Justice, 2000. Web. 4. Mar. 2011. $<$http://www.jrsa.org/programs/Historical.pdf$>$.
+
+\bibent
+\textit{The Bloody Odyssey of O.J. Simpson.} 1994. \textit{Time 27} June 1994: n. pag. \textit{Time.} N.P., n.d., Web. 4 Mar. 2011. $<$http://www.time.com/time/magazine/article/0,9171,981001-2,00.html$>$.
+\end{workscited}
+\end{mla}
+
+\end{document}

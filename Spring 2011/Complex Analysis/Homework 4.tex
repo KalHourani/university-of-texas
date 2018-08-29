@@ -1,0 +1,105 @@
+\documentclass[12pt,leqno]{article}
+
+\usepackage{graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Complex Analysis\\\large Homework 3}
+\date{February 9, 2011}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\footskip=36pt
+
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\re}{\operatorname{Re}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\w}{\omega}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+\clearpage\mbox{}\clearpage
+
+\setcounter{page}{1}
+\begin{enumerate}
+ \item Find all circles that are orthogonal to $|z|=1$ and $|z-1|=4$.
+  \begin{Solution}
+   
+  \end{Solution}
+ \item All maps considered here are M\"{o}bius transformations. We say that $T$ is \textit{conjugate} to $T_0$ if there exists a transformations $S$ such that $S^{-1}TS=T_0$, that is, $T$ maps $Sz$ to $S\w$ whenever $T_0$ maps $z$ to $\w$. Show that
+  \begin{enumerate}
+   \item if $T$ has exactly two fixed points, then $T$ is conjugate to a dilation $z\mapsto\lambda z$, $\lambda\in\C$.
+   \item if $T$ has exactly one fixed point, then $T$ is conjugate to the translation $z\mapsto z+1$.
+  \end{enumerate}
+  \begin{Proof}\indent
+  \begin{enumerate}
+   \item Suppose $z_1,z_2$ are fixed points of the map $T$. Let \[S(z)=\frac{z-z_1}{z-z_2}\] We see that $STS^{-1}$ has fixed points at $0$ and $\infty$, hence is a dilation.
+   \item Suppose $z_1$ is the only fixed point of the map $T$. Let \[S(z)=\frac{1}{z-z_1}\] We see that $STS^{-1}$ has no fixed points, hence is a translation. In fact, $STS^{-1}(0)=1$, so the translation is $z\mapsto z+1$.
+  \end{enumerate}
+  \end{Proof}
+   \item 
+   \item 
+   \item 
+   \item Using the curve $\gamma:[-1,1]:\C$, defined by $\gamma(t)=1-t^2+it$, compute \[I_1=\int_{\gamma}\overline{z}dz,\hskip.5in I_2=\int_{\gamma}\frac{dz}{z},\hskip.5in I_3=\int_{\gamma}\frac{dz}{z^3}.\]
+    \begin{Solution}\indent
+     \begin{itemize}
+      \item \begin{align*}I_1=\int_{\gamma}\overline{z}dz=\int_{-1}^1\overline{\gamma(t)}\gamma'(t)dt&=\int_{-1}^1(1-t^2-it)(-2t+i)dt\\&=\int_{-1}^12t^3-t+i\left(t^2+1\right)dt\\&=\frac{t^4}{2}-\frac{t^2}{2}+i\left(\frac{t^3}{3}+t\right)\Big |_{-1}^1\\&=\frac{8}{3}i\end{align*}
+      \item \begin{align*}I_2=\int_{\gamma}\frac{1}{z}dz=\int_{-1}^1\frac{\gamma'(t)}{\gamma(t)}dt&=\log(\gamma(t))\Big|_{-1}^1\\&=\log(i)-\log(-i)\\&=i\frac{\pi}{2}-i\frac{-\pi}{2}\\&=\pi i\end{align*}
+      \item Let $u=\gamma(t)$. Then $du=\gamma'(t)dt$, hence \begin{align*}I_3=\int_{\gamma}\frac{dz}{z^3}=\int_{-1}^1\frac{\gamma'(t)}{\gamma(t)^3}dt&=\int_{-i}^i\frac{1}{u^3}du\\&=-\frac{1}{2}\frac{1}{u^2}\Big|_{-i}^i\\&=0\end{align*}\qedhere
+     \end{itemize}
+    \end{Solution}
+   \item Compute the same integrals $I_n$ as in problem 6, but for the curve $\gamma(t)=|t|-1+it$, with $t\in[-1,1]$.
+    \begin{Solution}\indent
+     \begin{itemize}
+      \item \begin{align*}I_1=\int_{\gamma}\overline{z}dz=\int_{-1}^1\overline{\gamma(t)}\gamma'(t)dt&=\int_{-1}^0\overline{\gamma(t)}\gamma'(t)dt+\int_0^1\overline{\gamma(t)}\gamma'(t)dt\\&=\int_{-1}^0(-t-1-it)(-1+i)dt\\&+\int_0^1(t-1+it)(1+i)dt\\&=-2i\end{align*}
+      \item \begin{align*}I_2=\int_{\gamma}\frac{1}{z}dz=\int_{-1}^1\frac{\gamma'(t)}{\gamma(t)}dt&=\log(\gamma(t))\Big|_{-1}^1\\&=\log(i)-\log(-i)\\&=i\frac{\pi}{2}-i\frac{-\pi}{2}\\&=\pi i\end{align*}
+      \item Let $u=\gamma(t)$. Then $du=\gamma'(t)dt$, hence \begin{align*}I_3=\int_{\gamma}\frac{dz}{z^3}=\int_{-1}^1\frac{\gamma'(t)}{\gamma(t)^3}dt&=\int_{-i}^i\frac{1}{u^3}du\\&=-\frac{1}{2}\frac{1}{u^2}\Big|_{-i}^i\\&=0\end{align*}\qedhere
+     \end{itemize}
+    \end{Solution}
+   \item 
+    \begin{Proof}
+     For any $z_1,z_2\in D$, if the segment $\overline{z_1z_2}$ lies in $D$, take $\gamma:[0,1]\to\C$ with $\gamma=(1-t)z_1+tz_2$, else take $\gamma$ a curve in $D$ connecting $z_1$ and $z_2$ which, in particular, is parallel to $z=it$ for $t\leq1/2$ and parallel to $z=t$ for $t>1/2$, i.e., $\gamma$ is composed of the top and right edges in $D$ of the rectangle whose diagonal is the segment $\overline{z_1z_2}$. In the latter case we have a rectangle whose diagonal length is $|z_1-z_2|$. We shall show that the arclength of $\gamma$, $\mathcal{L}(\gamma)$, is less than $\sqrt{2}|z_1-z_2|$: write $\gamma=\gamma_x+i\gamma_y$, where $\gamma_x=\re(\gamma)$ and $\gamma_y=\im(\gamma)$. Let $X$ denote the arclength of $\gamma_x$, $Y$ the arclength of $\gamma_y$, and $Z$ the distance $|z_1-z_2|$. By definition, $X^2+Y^2=Z^2$, hence \[2XY=XY+XY<X^2+Y^2=Z^2\] Then \[(X+Y)^2=X^2+Y^2+2XY<2Z^2\] hence $X+Y<\sqrt{2}Z$. In either case, we have \begin{align*}\left|f(z_2)-f(z_1)\right|&=\left|\int_{z_1}^{z_2}f'(\gamma(t))\gamma'(t)dt\right|\\&=\left|\int_{\gamma}f'(z)dz\right|\\&\leq\int_{\gamma}|f'(z)|dz\\&\leq\mathcal{L}(\gamma)\leq\sqrt{2}|z_1-z_2|\end{align*}
+    \end{Proof}
+\end{enumerate}
+
+
+\end{document}

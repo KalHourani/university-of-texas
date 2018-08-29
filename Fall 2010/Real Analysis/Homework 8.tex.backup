@@ -1,0 +1,98 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Real Analysis\\\large Homework 8}
+\date{October 28, 2010}
+\author{Khalid Hourani}
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{fancy}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{(\arabic{enumi})}}
+\renewcommand{\labelenumii}{\textbf{\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+\begin{titlepage}
+ \maketitle 
+\end{titlepage}
+
+\begin{enumerate}
+\item Fix $f\in L^1(\R^n)$, show the following:
+  \begin{enumerate}
+   \item Let first $n=1$, and take $g(x)=\int_0^xf(t)dt$ (recalling the convention that if $x<0$ then $\int_0^x=-\int_x^0$).
+    
+    Prove that for each $\epsilon>0$ one can find $\delta>0$ such that for \textit{every} sequence $x_1<\hdots<x_N$ such that $\displaystyle\sum_i|x_{i+1}-x_i|<\delta$ we have \[\sum_i|g(x_{i+1})-g(x_i)|<\epsilon\]
+    Note: this property is called ``absolute continuity''
+   \item (for any $n$) Show that given $\epsilon>0$ one can find $\delta>0$ such that $\forall E$ with $|E|<\delta$ one has $\int_E|f|dx<\epsilon$.
+   \item (also for any $n$) Given $\epsilon>0$ one can find $R>0$ such that $\forall E$ for which $|E\cap B_R(0)|=0$ we have $\int_E|f|dx<\epsilon$.
+  \end{enumerate}
+
+\begin{Proof}\indent
+ \begin{enumerate}
+  \item [\textbf{b)}] We show this result for bounded functions: for every $\epsilon>0$ take $\delta=\frac{\epsilon}{\|f\|_{L^{\infty}}}$. If $|E|<\delta$, then \[\int_{E}f(t)dt\leq|E|\|f\|_{L^{\infty}}=\epsilon\] For any $f$ and any $m\in\R$ we can define functions $G_m=f\chi_{\{x|f(x)\leq m\}}$ and $B_m=f\chi_{\{x|f(x)>m\}}$ and write $f=G_m+B_m$. In particular, we shall show that, for $f\in L^1(\R^n)$, for any $\epsilon>0$, there is an $m>0$ such that $\|B_m\|_{L^1(\R^n)}<\epsilon$, from which the result follows: \[\int_Ef=\int_EG_m+\int_EB_m<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon\] However, the existence of such an $m$ follows from the density of bounded functions in $L^1(\R^n)$.
+  \item [\textbf{a)}] From \textbf{b)}, if $|x_N-x_1|=\displaystyle\sum_i|x_{i+1}-x_i|<\delta$, then \begin{align*}\sum_i|g(x_{i+1})-g(x_i)|&=\sum_i\left|\int_{x_i}^{x_{i+1}}f(t)dt\right|\\&\leq\sum_i\int_{x_i}^{x_{i+1}}|f(t)|dt\\&=\int_{x_1}^{x_N}|f(t)|dt\\&<\epsilon\end{align*}
+  \item If $|E\cap B_R(0)|=0$, then
+ \end{enumerate}
+
+\end{Proof}
+
+
+\item Take $f\in L^p(\R^n)$, $1<p\leq+\infty$ consider again $g(x)=\int_0^xf(t)dt$.
+  \begin{enumerate}
+   \item Prove that $g$ is ``H\"{o}lder continuous with exponent $\alpha=1-\frac{1}{p}$,'' that is, there is a constant $C>0$ such that \[|g(x)-g(y)|\leq C|x-y|^{\alpha},\:\forall x,y\in\R\] In fact, show it is enough to take $C=\|f\|_{L^p(\R^1)}$.
+   \item Prove for almost every $x\in\R$ that $g'(x)$ exists and that $g'(x)=f(x)$.
+  \end{enumerate}
+
+\item The following problem deals with the regularity of convolutions $f*g$ when $f,g$ have enough integrability.
+  \begin{enumerate}
+   \item Given $x,y\in\R^n$ and $R>0$, prove that for some $C=C(R)$ one has \[B_R(x)\Delta B_R(y)|\leq C|x-y|\]
+   \item Let $f\in L^p(\R^n)$, $g\in L^{\infty}(\R^n)$, $p=1+\epsilon$ ($\epsilon>0$). Assuming $g=0$ a.e. outside $B_1$, prove that $f*g$ is H\"{o}lder continuous with some small exponent $\alpha$ depending only on $\epsilon$.
+   \item Prove that for each $f\in C_c^1(\R^n)$ the $L^p$ norm of $|\nabla f(x)|$ ($p>n)$ controls the H\"{o}lder semi-norm\footnote{This is defined as the supremum of $\frac{|f(x)-f(y)|}{|x-y|^{\alpha}}$ among all pairs $x,y\in\R^n$.} of order $\alpha=1-\frac{n}{p}$ (Hint: Recall the convolution used in class).
+  \end{enumerate}
+
+\item Let $f_k$ be a sequence of functions in $L^2$ converging \textit{weakly} to $f$. Assuming that $\|f_k\|_{L^2}=\|f\|_{L^2}$ for all $k$ show that $f_k$ converges to $f$ in the strong $L^2$ sense.
+\end{enumerate}
+\end{document}

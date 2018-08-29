@@ -1,0 +1,766 @@
+
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Intellectual Entrepreneurship Assignment}
+\date{Thursday May 6, 2010}
+\author{Khalid Hourani}
+
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\numberwithin{equation}{section}
+\pagestyle{fancy}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\swapnumbers
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+
+\makeindex
+
+\setcounter{page}{-1}\begin{document}
+\maketitle\thispagestyle{empty}
+\tableofcontents\thispagestyle{empty}
+\thispagestyle{empty}
+
+\setcounter{page}{0}\setcounter{chapter}{6}
+\chapter{Introduction to Rings}
+\section{Basic Definitions and Examples}
+
+\question{13}{An element $x\in R$ is called nilpotent if $x^m=0$ for some $m\in\mathbb{Z}^+$.}
+\begin{description}
+ \item [(a)] Show that if $n=a^kb$ for some integers $a$ and $b$ then $\overline{ab}$ is a nilpotent element of $\mathbb{Z}/n\mathbb{Z}$.
+ \item [(b)] If $a\in\mathbb{Z}$ is an integer, show that the element $\overline{a}\in\mathbb{Z}/n\mathbb{Z}$ is nilpotent if and only if every prime divisor of $n$ is also a divisor of $a$. In particular, determine the nilpotent elements of $\mathbb{Z}/72\mathbb{Z}$ explicitly.
+ \item [(c)] Let $R$ be the ring of functions from a nonempty set $X$ to a field $F$. Prove that $R$ contains no nonzero nilpotent elements.
+\end{description}
+
+\begin{proof}\indent
+ \begin{description}
+  \item [(a)] Observe that $(ab)^k=a^kb^k=a^kbb^{k-1}=nb^{k-1}$, hence $n|(ab)^k$, so $\overline{(ab)^k}=0$. Thus, $\overline{ab}$ is nilpotent.
+  \item [(b)] \begin{description}
+               \item [$\Rightarrow$] Suppose $\overline{a}$ is nilpotent. Then $\overline{a^k}=0$ for some $k\in\mathbb{Z}^+$, i.e. $n|a^k$. Clearly, for any prime $p$, if $p|n$, then $p|a^k$, hence $p|a$.
+	       \item [$\Leftarrow$] Suppose that every prime divisor of $n$ is a divisor of $a$, say $n=p_1^{j_1}p_2^{j_2}\hdots p_m^{j_m}$. Let $j=\text{max}\{j_1,j_2,\hdots,j_m\}$. Then $n$ clearly divides $a^j$, hence $\overline{a}^j=0$, and $\overline{a}$ is nilpotent.
+
+An element $a\in\mathbb{Z}/72\mathbb{Z}$ is nilpotenent if and only if $a$ is divisible by all prime divisors of $72$, hence the nilpotent elements of $\mathbb{Z}/72\mathbb{Z}$ are 6, 12, 18, 24, 36, and 72.
+              \end{description}
+  \item [(c)] Suppose $\phi\in R$ is nilpotent, i.e. that $\phi^{(n)}(x)=\phi(x)^n=0$ for some $n$. Since $F$ is a field, it has no zero divisors hence, for all $x\in X$, $\phi(x)=0$.\qedhere
+ \end{description}
+
+\end{proof}
+
+\question{14}{Let $x$ be a nilpotent element of the commutative ring $R$}
+\begin{description}
+ \item [(a)] Prove that $x$ is either 0 or a zero divisor.
+ \item [(b)] Prove that $rx$ is nilpotent for all $r\in R$.
+ \item [(c)] Prove that $1+x$ is a unit in $R$.
+ \item [(d)] Deduce that the sum of a nilpotent element and a unit is a unit.
+\end{description}
+
+\begin{proof}
+Let $n$ be the smallest integer such that $x^n=0$.
+ \begin{description}
+  \item [(a)] If $x\not=0$, then $x^{n-1}\not=0$. Since, $x^n=xx^{n-1}=0$, $x$ is a zero divisor.
+  \item [(b)] Since $R$ is commutative, $(rx)^n=r^nx^n=r^n\cdot0=0$.
+  \item [(c)] Observe that $(1+x)(1-x+x^2-x^3+\hdots+(-1)^nx^n)=1+x^n=1$.
+  \item [(d)] Suppose $u$ is a unit, i.e. that $uv=1$ for some $v\in R$. Then $u+x=u(1+vx)$ is the product of units. Hence, $u+x$ is a unit.\qedhere
+\end{description}
+\end{proof}
+
+\section{Polynomial Rings, Matrix Rings, and Group Rings}
+
+\question{3}{Define the set $R[[x]]$ of \textit{formal power series} in the indeterminate $x$ with coefficients from $R$ to be all formal infinite sums \[\sum_{n=0}^{\infty}a_nx^n=a_0+a_1x+a_2x^2+a_3x^3+\hdots\] Define addition and multiplication of power series in the same way as for power series with real or complex coefficients, i.e., extend polynomial addition and multiplication to power series as though they were ``polynomials of infinite degree'':\begin{align*}\sum_{n=0}^{\infty}a_nx^n+\sum_{n=0}^{\infty}b_nx^n&=\sum_{n=0}^{\infty}(a_n+b_n)x^n\\\sum_{n=0}^{\infty}a_nx^n\times\sum_{n=0}^{\infty}b_nx^n&=\sum_{n=0}^{\infty}\left(\sum_{k=0}^na_kb_{n-k}\right)x^n\end{align*}}
+\begin{description}
+ \item [(a)] Prove that $R[[x]]$ is a commutative ring with 1.
+ \item [(b)] Show that $1-x$ is a unit in $R[[x]]$ with inverse $1+x+x^2+\hdots$.
+ \item [(c)] Prove that $\sum_{n=0}^{\infty}a_nx^n$ is a unit in $R[[x]]$ if and only if $a_0$ is a unit in $R$.
+\end{description}
+
+\begin{proof}\indent
+ \begin{description}
+  \item [(a)] To see that $R[[x]]$ is commutative, take $f(x)=\sum_{n=0}^{\infty}a_nx^n$ and $g(x)=\sum_{n=0}^{\infty}b_nx^n$. The product $f(x)g(x)$ is given by\begin{align*}f(x)g(x)&=\sum_{n=0}^{\infty}\left(\sum_{k=0}^na_kb_{n-k}\right)x^n\\&=\sum_{n=0}^{\infty}\left(\sum_{k=0}^nb_{n-k}a_k\right)x^n\\&=\sum_{n=0}^{\infty}\left(\sum_{k=0}^nb_ka_{n-k}\right)x^n\\&=g(x)f(x)\end{align*}
+
+The function $1=1+0x+0x^2+\hdots$ is the multiplicative identity of $R[[x]]$, for take any $g(x)=\sum_{n=0}^{\infty}a_nx^n$, then \[1g(x)=\sum_{n=0}^{\infty}\left(\sum_{k=0}^n\sigma_ka_{n-k}\right)x^n\] where $\{\sigma_n\}_{n=0}^{\infty}=\{1,0,0,\hdots\}$. Hence $1g(x)=\sum_{k=0}^{\infty}a_k=g(x)$.
+  \item [(b)] Observe that \begin{align*}(1-x)(1+x+x^2+\hdots)=1&+x+x^2+\hdots\\&-x-x^2-\hdots\\=1\end{align*}
+  \item [(c)] $\Rightarrow$ Suppose $\sum_{n=0}^{\infty}a_nx^n$ is a unit in $R[[x]]$. Then there exists a power series $\sum_{n=0}^{\infty}b_nx^n$ so that \[\sum_{n=0}^{\infty}a_nx^n\times\sum_{n=0}^{\infty}b_nx^n=\sum_{n=0}^{\infty}\left(\sum_{k=0}^na_kb_{n-k}\right)x^n=1\] hence $a_0b_0=1$, so $a_0$ is a unit in $R$.
+  \item [$\Leftarrow$] Suppose $a_0$ is a unit in $R$ with inverse $b_0$. Let $\{b_n\}$ be a sequence recursively defined by \[b_{n+1}=-b_0(a_1b_n+a_2b_{n-1}+a_3b_{n-2}+\hdots+a_{n-1}b_1+a_nb_0)\] In order to see that $\sum_{n=0}^{\infty}a_nx^n$ is a unit with inverse $\sum_{n=0}^{\infty}b_nx^n$, we prove by strong induction that $\sum_{k=0}^na_kb_{n-k}=0$ for $n\geq1$:
+
+For $n=1$, \[\sum_{k=0}^1a_kb_{n-k}=a_0b_1+a_1b_0=a_0(-b_0(a_1b_0))+a_1b_0=-a_1b_0+a_1b_0=0\] Suppose that, for all $n\leq N$, $\sum_{k=0}^na_kb_{n-k}=0$. Then \begin{align*}\sum_{k=0}^{N+1}a_kb_{N+1-k}&=-b_0\sum_{k=0}^{N+1}\left(a_k\sum_{i=0}^{N+1-k}a_{i+1}b_{N+1-k-i}\right)\end{align*} By the induction hypothesis, since $N+1-k\leq N$,\footnote{Except for $k=0$, which can easily be verified separately.} \[\sum_{i=0}^{N+1-k}a_{i+1}b_{N+1-k-i}=0\] Thus, the product of the power series $\sum_{n=0}^{\infty}a_nx^n$ and $\sum_{n=0}^{\infty}b_nx^n$ is given by \[\sum_{n=0}^{\infty}a_nx^n\times\sum_{n=0}^{\infty}b_nx^n=\sum_{n=0}^{\infty}\left(\sum_{k=0}^na_nb_{n-k}\right)x^n=a_0b_0+0=1\qedhere\]
+\end{description}
+
+\end{proof}
+
+\section{Ring Homomorphisms and Quotient Rings}
+\question{24}{Let $\phi:R\to S$ be a ring homomorphism.}
+\begin{description}
+ \item [(a)] Prove that if $J$ is an ideal of $S$ then $\phi^{-1}(J)$ is an ideal of $R$. Apply this to the special case where $R$ is a subring of $S$ and $\phi$ is the inclusion homomorphism to deduce that if $J$ is an ideal of $S$ then $J\cap R$ is an ideal of $R$.
+ \item [(b)] Prove that if $\phi$ is surjective and $I$ is a ideal of $R$ then $\phi(I)$ is an ideal of $S$. Give an example where this fails if $\phi$ is not surjective.
+\end{description}
+
+\begin{proof}\indent
+ \begin{description}
+  \item [(a)] Take $x,y\in\phi^{-1}(J)$, then $\phi(x),\phi(y)\in J$. Since $J$ is an ideal, $\phi(x)+\phi(y)\in J$. Further, since $\phi$ is a homomorphism, $\phi(x+y)=\phi(x)+\phi(y)\in J$, so $x+y\in\phi^{-1}(J)$. For all $r\in R$, $\phi(rx)=\phi(r)\phi(x)\in J$ since $J$ is an ideal. Thus, $rx\in\phi^{-1}(J)$. A similar argument shows that $xr\in\phi^{-1}(J)$. So $\phi^{-1}(J)$ is an ideal in $R$.
+
+If $R$ is a subring of $S$ and $\phi$ is the inclusion homomorphism, then $\phi^{-1}(J)=J\cap R$, so $J\cap R$ is an ideal in $R$.
+  \item [(b)] Take $x,y\in\phi(I)$, say $\phi(a)=x$ and $\phi(b)=y$. Then $\phi(a+b)=\phi(a)+\phi(b)=x+y$, so $x+y\in\phi(I)$. Since $\phi$ is surjective, for any $s\in S$ there exists an $r\in R$ so that $\phi(r)=s$. Then $\phi(ra)=\phi(r)\phi(a)=sx\in\phi(I)$. A similar argument shows that $xr\in\phi(I)$. So $\phi(I)$ is an ideal in $S$.
+
+To see that the image of an ideal is not in general an ideal when the homomorphism is not surjective, take $\phi:\mathbb{R}\to\mathbb{C}$ to be the inclusion map, i.e. $\phi(x)=x$ for all $x\in\mathbb{R}$. $\mathbb{R}$ is cleary an ideal in $\mathbb{R}$, but $\phi(\mathbb{R})=\mathbb{R}$ is not an ideal in $\mathbb{C}$.\qedhere
+ \end{description}
+
+\end{proof}
+
+\question{26}{The \textit{characteristic} of a ring $R$ is the smallest positive integer $n$ such that $1+1+\hdots+1=0$ ($n$ times) in $R$; if no such integer exists the characteristic of $R$ is said to be 0.}
+\begin{description}
+ \item [(a)] Prove that the map $\mathbb{Z}\to R$ defined by \[k\mapsto\begin{cases}1+1+\hdots+1(k\text{ times})&\text{if }k>0\\0&\text{if }k=0\\-1-1-\hdots-1(-k\text{ times})&\text{if }k<0\end{cases}\]is a ring homomorphism whose kernel is $n\mathbb{Z}$, where $n$ is the characteristic of $R$.
+ \item [(b)] Determine the characteristics of the rings $\mathbb{Q}$, $\mathbb{Z}[x]$, $\mathbb{Z}/n\mathbb{Z}[x]$.
+ \item [(c)] Prove that if $p$ is prime and if $R$ is a commutative ring of characteristic $p$, then $(a+b)^p=a^p+b^p$ for all $a,b\in R$.
+\end{description}
+
+\begin{proof}\indent
+ \begin{description}
+  \item [(a)] The fact that this map is a ring homomorphism is clear, and requires little inspection. We shall call this map $\phi$ and begin by showing that the image of $\phi$ is determined by $\phi(0),\phi(1),\hdots,\phi(n-1)$. Suppose $x\equiv k\pmod{n}$ where $k\in\mathbb{Z}/n\mathbb{Z}$. To see that $\phi(x)=\phi(k)$, observe that $x=nt+k$ for some $t$, hence $\phi(x)=\phi(nt+k)=\phi(n)\phi(t)+\phi(k)=0+\phi(k)=\phi(k)$. Since the characteristic of $R$ is $n$, it follows that the only element in $\mathbb{Z}/n\mathbb{Z}$ which maps to 0 is 0. Hence, the kernel is given by $\overline{0}=n\mathbb{Z}$.
+  \item [(b)] It is clear that $\mathbb{Q}$ and $\mathbb{Z}[x]$ have characteristic 0. To see that $\mathbb{Z}/n\mathbb{Z}[x]$ has characteristic $n$, observe that $\mathbb{Z}/n\mathbb{Z}$ lives in $\mathbb{Z}/n\mathbb{Z}[x]$, and that the characteristic of $\mathbb{Z}/n\mathbb{Z}$ is $n$.
+  \item [(c)] Observe that, for $0<n<p$, \[{p\choose n}=\frac{p!}{n!(p-n)!}=0\] By the binomial theorem, \begin{align*}(a+b)^p&={p\choose0}a^pb^0+{p\choose 1}a^{p-1}b^1+\hdots+{p\choose p-1}a^1b^{p-1}+{p\choose p}a^0b^p\\&=a^p+b^p\qedhere\end{align*}
+ \end{description}
+
+\end{proof}
+
+\question{29.}{Let $R$ be a commutative ring. Recall that an element $x\in R$ is nilpotent if $x^n=0$ for some $n\in\mathbb{Z}^+$. Prove that the set of nilpotent elements form an ideal - called the \textit{nilradical} of $R$ and denoted by $\mathfrak{N}(R)$.}
+
+\begin{proof}
+ To see that $\mathfrak{N}(R)$ is closed under addition, we note that \[(x+y)^{nm}=\sum_{k=0}^{nm}\begin{pmatrix}nm\\k\end{pmatrix}x^{nm-k}y^k\] Notice that either $x^{nm-k}=0$ or $y^k=0$, for if $x^{nm-k}\not=0$, $nm-k<n$, and so $k>nm-n>m$. Hence, the binomial expansion above yields \[(x+y)^{nm}=0\] The fact that $\mathfrak{N}(R)$ is an ideal follows directly, for take any $r\in R$, then\[(xr)^n=(rx)^n=r^nx^n=r^n\cdot0=0\qedhere\]
+\end{proof}
+
+\question{30.}{Prove that if $R$ is a commutative ring and $\mathfrak{N}(R)$ is its nilradical then zero is the only nilpotent element of $R/\mathfrak{N}(R)$ i.e., prove that $\mathfrak{N}(R/\mathfrak{N}(R))=0$.}
+
+\begin{proof}
+ Take $x=r+\mathfrak{N}(R)$ such that $x^n=0+\mathfrak{N}(R)$. Then \[x^n=\left(r+\mathfrak{N}(R)\right)^n=r^n+\mathfrak{N}(R)=0+\mathfrak{N}(R)\] So $r^n$ is nilpotent, hence $r\in\mathfrak{N}(R)$. Thus, $x=r+\mathfrak{N}(R)=0+\mathfrak{N}(R)$.
+\end{proof}
+
+\question{34.}{Let $I$ and $J$ be ideals of $R$.}
+\begin{description}
+ \item [(a)] Prove that $I+J$ is the smallest ideal of $R$ containing both $I$ and $J$.
+ \item [(b)] Prove that $IJ$ is an ideal contained in $I\cap J$.
+ \item [(c)] Give an example of where $IJ\not=I\cap J$.
+ \item [(d)] Prove that if $R$ is commutative and if $I+J=R$ then $IJ=I\cap J$.
+\end{description}
+
+\begin{proof}\indent
+ \begin{description}
+  \item [(a)] Suppose $K$ is an ideal containing both $I$ and $J$. Then $K$ is closed under addition. Hence, for all $i\in I, j\in J$, $i+j\in K$, so $I+J\subseteq K$.
+  \item [(b)] We first show that $IJ$ is an ideal. If \begin{align*}x&=i_1j_1+i_2j_2+\hdots+i_nj_n\\y&=u_1v_1+u_2v_2+\hdots+u_mv_m\end{align*} then \[x+y=i_1j_2+i_2j_2+\hdots+i_nj_n+u_1v_1+u_2v_2+\hdots+u_mv_m\] is clearly in $IJ$. For any $r\in R$, \[rx=(ri_1)j_1+(ri_2)j_2+\hdots+(ri_n)j_n\] is in $IJ$, since $ri_1,ri_2,\hdots,ri_n\in I$. 
+
+ We now show $IJ\subseteq I\cap J$. Take $x\in IJ$, say \[x=i_1j_1+i_2j_2+\hdots+i_nj_n\] with $i_1,i_2,\hdots,i_n\in I$ and $j_1,j_2,\hdots,j_n\in J$. Since $I$ is an ideal, for all $r\in R$ and $i\in I$, $ir\in I$. Then, for all $j\in J$ and $i\in I$, $ij\in I$. Similarly, for all $i\in I$ and $j\in J$, $ij\in J$. Since an ideal is closed under addition, it follows that $x=i_1j_1+i_2j_2+\hdots+i_nj_n\in I\cap J$. 
+  \item [(c)] Take $R=\mathbb{Z}$, $I=J=2\mathbb{Z}$. Notice that $IJ=4\mathbb{Z}$, but $I\cap J=2\mathbb{Z}$
+  \item [(d)] By \textbf{(b)}, $IJ\subseteq I\cap J$. To see the other inclusion, take $x\in I\cap J$. Then $x\in I$ and $x\in J$. Since $I+J=R$, $1=i+j$ for some $i\in I$, $j\in J$. Further, since $R$ is commutative \begin{align*}x&=x\cdot1\\&=x(i+j)\\&=xi+xj\\&=ix+xj\in IJ\qedhere\end{align*}
+ \end{description}
+
+\end{proof}
+
+
+\question{35.}{Let $I,J,K$ be ideals of $R$.}
+\begin{description}
+ \item [(a)] Prove that $I(J+K)=IJ+IK$ and $(I+J)K=IK+JK$.
+ \item [(b)] Prove that if $J\subseteq I$ then $I\cap(J+K)=J+(I\cap K)$.
+\end{description}
+
+\begin{proof}\indent
+ \begin{description}
+  \item [(a)] \begin{align*}I(J+K)&=\left\{\sum_{\alpha=1}^ni_{\alpha}b_{\alpha}|n\in\mathbb{N},i_{\alpha}\in I,b_{\alpha}\in J+K\right\}\\&=\left\{\sum_{\alpha=1}^ni_{\alpha}(j_{\alpha}+k_{\alpha})|n\in\mathbb{N},i_{\alpha}\in I,j_{\alpha}\in J,k_{\alpha}\in K\right\}\\&=\left\{\sum_{\alpha=1}^ni_{\alpha}j_{\alpha}+i_{\alpha}k_{\alpha}|n\in\mathbb{N},i_{\alpha}\in I,j_{\alpha}\in J,k_{\alpha}\in K\right\}\\&=\left\{\sum_{\alpha=1}^ni_{\alpha}j_{\alpha}|n\in\mathbb{N},i_{\alpha}\in I,j_{\alpha}\in J\right\}+\left\{\sum_{\alpha=1}^ni_{\alpha}k_{\alpha}|n\in\mathbb{N},i_{\alpha}\in I,k_{\alpha}\in K\right\}\\&=IJ+IK\end{align*}
+
+A similar proof shows that $(I+J)K=IK+JK$.
+  \item [(b)] To see that $I\cap(J+K)\subseteq J+(I\cap K)$, take $i\in I\cap(J+K)$, then $i=j+k$ for some $j\in J$, $k\in K$. Since $J\subseteq I$, $j\in I$, hence $k\in I$. Thus, $k\in I\cap K$, and $i=j+k\in J+(I\cap K)$
+
+To see the other inclusion, take $j+k$ where $j\in J$ and $k\in I\cap K$. Since $J\subseteq I$, $j\in I$, hence $j+k\in I\cap(J+K)$.\qedhere
+ \end{description}
+
+\end{proof}
+
+
+\section{Properties of Ideals}
+
+\question{2.}{Assume $R$ is commutative. Prove that the augmentation ideal in the group ring $RG$ is generated by $\{g-1|g\in G\}$. Prove that if $G=<\sigma>$ is cyclic then the augmentation ideal is generated by $\sigma-1$.}
+
+\begin{proof}
+ Recall that the augmentation ideal is the kernel of the augmentation map given by \[\sum_{i=1}^na_ig_i\mapsto\sum_{i=1}^na_i\] Suppose $x$ is in the kernel of this map, i.e. $x=\sum_{i=1}^na_ig_i$ with $\sum_{i=1}^na_i=0$. Observe that\begin{align*}x&=\sum_{i=1}^na_ig_i\\&=\sum_{i=1}^na_ig_i-\sum_{i=1}^na_i\\&=\sum_{i=1}^na_ig_i-a_i\\&=\sum_{i=1}^na_i(g_i-1)\end{align*} Hence $x$ is in the ring generated by $\{g-1|g\in G\}$. If $G=<\sigma>$ is cyclic, then the augmentation ideal is generated by $\{\sigma^n-1|n\in\mathbb{N}\}$. Since \[\sigma^n-1=(\sigma-1)(\sigma^{n-1}+\sigma^{n-2}+\hdots+\sigma+1)\] it follows that the ideal generated by $\{\sigma^n-1|n\in\mathbb{N}\}$ is the same ideal as that generated by $\sigma-1$.
+\end{proof}
+
+
+\question{3.}{ }\vspace{-.43in}\begin{description}
+ \item [\hskip.3in(a)] Let $p$ be a prime and let $G$ be an abelian group of order $p^n$. Prove that the nilradical of the group ring $\mathbb{F}_pG$ is the augmentation ideal.
+ \item [(b)] Let $G=\{g_1,g_2,\hdots,g_n\}$ be a finite group and assume $R$ is commutative. Prove that if $r$ is any element of the augmentation ideal of $RG$ then $r(g_1+g_2+\hdots+g_n)=0$.
+\end{description}
+
+\begin{proof}\indent
+ \begin{description}
+    \item [(a)] As shown in question 2, the augmentation ideal is generated by $\{g-1|g\in G\}$. Since $G$ is abelian, $\mathbb{F}_pG$ is a commutative ring, hence, by the binomial theorem, \[(g-1)^{p^n}=g^{p^n}+\sum_{k=1}^{p^n-1}{p^n\choose k}g^k(-1)^{p^n-k}+(-1)^{p^n}\] notice that ${p^n\choose k}=0$ for $0<k<p^n$, hence \[(g-1)^{p^n}=g^{p^n}+(-1)^{p^n}=1+(-1)^{p^n}\] If $p=2$, then $(g-1)^{p^n}=1+1=2=0$. Otherwise, $(-1)^{p^n}=-1$ and $(g-1)^{p^n}=1-1=0$. Thus, the augmentation ideal is contained in the nilradical of $\mathbb{F}_pG$. To see that they are equal, take $x\in\mathbb{F}_pG$ to be nilpotent, i.e. $x=\sum_{i=1}^{p^n} f_ig_i$ with $x^m=0$ for some $m$. Notice that, under the augmentation map, $x^m\mapsto\left(\sum_{i=1}^{p^n}f_i\right)^m$, hence $\left(\sum_{i=1}^{p^n}f_i\right)^m=0$. Since $\mathbb{F}_p$ is a field, $\sum_{i=1}^{p^n}f_i=0$. Thus, $x$ is an element of the augmentation ideal.
+    \item [(b)] If $r=r_1g_1+r_2g_2+\hdots+r_ng_n$, then \begin{align*}r(g_1+g_2+\hdots+g_n)&=rg_1+rg_2+\hdots+rg_n\\&=r_1(g_1^2+g_1g_2+\hdots+g_1g_n)\\&+r_2(g_2g_1+g_2^2+\hdots+g_2g_n)\\&\hskip.08in\vdots\\&+r_n(g_ng_1+g_ng_2+\hdots+g_n^2)\end{align*} Observe that, for any $g_i$, $g_i(g_1+g_2+\hdots+g_n)=g_1+g_2+\hdots+g_n$ since left-multiplication is a bijection on $G$. Thus, \[r(g_1+g_2+\hdots+g_n)=(r_1+r_2+\hdots+r_n)(g_1+g_2+\hdots+g_n)\] Since $r$ is in the augmentation ideal, $r_1+r_2+\hdots+r_n=0$, and so \[r(g_1+g_2+\hdots+g_n)=0\qedhere\]
+ \end{description}
+
+\end{proof}
+
+\question{5.}{Prove that if $M$ is an ideal such that $R/M$ is a field then $M$ is a maximal ideal (do not assume $R$ is commutative).}
+
+\begin{proof}
+ Let $J$ be an ideal of $R$ strictly containing $M$ and take $a\in J-M$. Since $R/M$ is a field, there exists $b\in R$ so that $(a+M)(b+M)=1+M$. Hence, $ab+M=1+M$, so $1-ab\in M$, say $m=1-ab$. Then, since $m\in M\subseteq J$ and $ab\in J$, $1=m+ab$ is in $J$. So $J=R$.
+\end{proof}
+
+\question{13.}{Let $\phi:R\to S$ be a homomorphism of commutative rings.}
+\begin{description}
+ \item [(a)] Prove that if $P$ is a prime ideal of $S$ then either $\phi^{-1}(P)=R$ or $\phi^{-1}(P)$ is a prime ideal of $R$. Apply this to the special case when $R$ is a subring of $S$ and $\phi$ is the inclusion homomorphism to deduce that if $P$ is a prime ideal of $S$ then $P\cap R$ is either $R$ or a prime ideal of $R$.
+ \item [(b)] Prove that if $M$ is a maximal ideal of $S$ and $\phi$ is surjective then $\phi^{-1}(M)$ is a maximal ideal of $R$. Give an example to show that this need not be the case if $\phi$ is not surjective.
+\end{description}
+
+\begin{proof}\indent
+ \begin{description}
+  \item [(a)] Take $xy\in\phi^{-1}(P)$. By definition, $\phi(xy)\in P$. Since $\phi$ is a homomorphism, $\phi(x)\phi(y)\in P$. Further, since $P$ is prime, $\phi(x)\in P$ or $\phi(y)\in P$. Then $x\in\phi^{-1}(P)$ or $y\in\phi^{-1}(P)$. Thus, $\phi^{-1}(P)=R$ or $\phi^{-1}(P)$ is a prime ideal of $R$.
+
+When $R$ is a subring of $S$ and $\phi$ is the inclusion homomorphism, if $P$ is a prime ideal of $S$ then, since $\phi^{-1}(P)=P\cap R$, either $P\cap R=R$ or $P\cap R$ is a prime ideal of $R$.
+  \item [(b)] Notice that, since $\phi$ is surjective, for any $B\subseteq S$, $B=\phi(\phi^{-1}(B))$. Further, since it is a surjective homomorphism of rings, it maps ideals to ideals. Now, suppose $J$ is an ideal of $R$ containing $\phi^{-1}(M)$, i.e. $\phi^{-1}(M)\subseteq J$. Then $M=\phi(\phi^{-1}(M))\subseteq\phi(J)$, with $\phi(J)$ an ideal of $S$. By the maximality of $M$, $\phi(J)=M$ or $\phi(J)=S$. Recalling that $J\subseteq\phi^{-1}(\phi(J))=\phi^{-1}(M)$, we have $J=\phi^{-1}(M)$ or $J=R$. Thus, $\phi^{-1}(M)$ is maximal. 
+
+To see that this need not be the case if $\phi$ is not surjective, take $\phi:\mathbb{Z}\to\mathbb{Q}$ given by $\phi(z)=z$. While $(0)$ is maximal in $\mathbb{Q}$, $\phi^{-1}(0)=(0)$ is not maximal in $\mathbb{Z}$.\qedhere
+ \end{description}
+
+\end{proof}
+
+\question{14.}{Assume $R$ is commutative. Let $x$ be an indeterminate, let $f(x)$ be a monic polynomial in $R[x]$ of degree $n\geq1$ and use the bar notation to denote passage to the quotient ring $R[x]/(f(x))$.}
+\begin{description}
+ \item [(a)] Show that every element of $R[x]/(f(x))$ is of the form $\overline{p(x)}$ for some polynomial $p(x)\in R[x]$ of degree less than $n$, i.e.\[R[x]/(f(x))=\{\overline{a_0}+\overline{a_1x}+\hdots+\overline{a_{n-1}x^{n-1}}|a_0,a_1,\hdots,a_{n-1}\in R\}\]
+ \item [(b)] Prove that if $p(x)$ and $q(x)$ are distinct polynomials in $R[x]$ which are both of degree less than $n$, then $\overline{p(x)}\not=\overline{q(x)}$
+ \item [(c)] If $f(x)=a(x)b(x)$ where both $a(x)$ and $b(x)$ have degree less than $n$, prove that $\overline{a(x)}$ is a zero divisor in $R[x]/(f(x))$.
+ \item [(d)] If $f(x)=x^n-a$ for some nilpotent element $a\in R$, prove that $\overline{x}$ is nilpotent in $R[x]/(f(x))$
+ \item [(e)] Let $p$ be a prime, assume $R=\mathbb{F}_p$ and use $f(x)=x^p-a$ for some $a\in\mathbb{F}_P$. Prove that $\overline{x-a}$ is nilpotent in $R[x]/(f(x))$.
+\end{description}
+
+\begin{proof}\indent
+\begin{description}
+ \item [(a)] We write $f(x)=x^n-a_1x^{n-1}-\hdots-a_{n-2}x^2-a_{n-1}x-a_n$. Using the bar notation, we denote $p(x)+(f(x))$ by $\overline{p(x)}$. Observe that $\overline{f(x)}=\overline{0}$. Thus, $\overline{x^n}=\overline{a_1x^{n-1}+\hdots+a_{n-2}x^2+a_{n-1}x+a_n}$. Now, take $\overline{p(x)}$ given by \begin{align*}\overline{p(x)}&=\overline{b_0+b_1x+\hdots+b_{n-1}x^{n-1}+b_nx^n+\hdots+b_mx^m}\\&=b_0+b_1\overline{x}+\hdots+b_{n-1}\overline{x^{n-1}}+b_n\overline{x^n}+\hdots+b_m\overline{x^n}\cdot\overline{x^{m-n}}\end{align*} repeatedly substituting $\overline{x^n}=\overline{a_1x^{n-1}+\hdots+a_{n-2}x^2+a_{n-1}x+a_n}$, we have that $\overline{p(x)}$ is a polynomial of degree less than $n$.
+ \item [(b)] Suppose $p(x)=a_0+a_1x+\hdots+a_{n-1}x^{n-1}$ and $q(x)=b_0+b_1x+\hdots+b_{n-1}x^{n-1}$, and that $\overline{p(x)}=\overline{q(x)}$. Then $a_0+a_1\overline{x}+\hdots+a_{n-1}\overline{x^{n-1}}=b_0+b_1\overline{x}+\hdots+b_{n-1}\overline{x^{n-1}}$. Then $(a_0-b_0)+(a_1-b_1)\overline{x}+\hdots+(a_{n-1}-b_{n-1})\overline{x^{n-1}}=0$. Thus, the coefficients are 0 and \begin{align*}a_0&=b_0\\a_1&=b_1\\\vdots\\a_{n-1}&=b_{n-1}\end{align*}
+ \item [(c)] Since $f(x)=a(x)b(x)$, $\overline{f(x)}=\overline{0}=\overline{a(x)}\hskip.09in\overline{b(x)}$, so $\overline{a(x)}$ divides 0.
+ \item [(d)] If $f(x)=x^n-a$, with $a^m=0$, then $\overline{x^n}=\overline{a}$. Then $\overline{x}^{mn}=(\overline{x}^n)^m=a^m=0$.
+ \item [(e)] Recall that, in $\mathbb{F}_p$, $(\overline{x-a})^p=\overline{x}^p+(-1)^p\overline{a}^p$. If $p$ is odd, this is merely $a-a^p=0$, by \textbf{Fermat's Little Theorem}. If $p=2$, then this is $a+a^2$. But $1=-1$ in $\mathbb{F}_2$, and so $a+a^2=0$.\qedhere  
+\end{description}
+\end{proof}
+
+
+\question{16}{Let $x^4-16$ be an element of the polynomial ring $E=\mathbb{Z}[x]$ and use the bar notation to denote passage to the quotient ring $\mathbb{Z}[x]/(x^4-16)$.}
+\begin{description}
+ \item [(a)] Find a polynomial of degree $\leq3$ that is congruent to $7x^{13}-11x^9+5x^5-2x^3+3$ modulo $(x^4-16)$.
+ \item [(b)] Prove that $\overline{x-2}$ and $\overline{x+2}$ are zero divisors in $\overline{E}$.
+\end{description}
+
+\begin{proof}[Solution]\indent
+ \begin{description}
+  \item [(a)] In $\mathbb{Z}[x]/(x^4-16)$, $x^4=16$, thus \begin{align*}7x^{13}-11x^9+5x^5-2x^3+3&=(x^4)^3\cdot7x-(x^4)^2\cdot11x+x^4\cdot5x-2x^3+3\\&=16^3\cdot7x-16^2\cdot11x+16\cdot5x-2x^3+3\\&=-2x^3+25936x+3\end{align*}
+  \item [(b)] Observe that $(\overline{x-2})(\overline{x+2})(\overline{x^2+4})=\overline{x^4-16}=\overline{0}$\qedhere
+ \end{description}
+\end{proof}
+
+\question{17}{Let $x^3-2x+1$ be an element of the polynomial ring $E=\mathbb{Z}[x]$ and use the bar notation to denote passage to the quotient ring $\mathbb{Z}[x]/(x^3-2x+1)$. Let $p(x)=2x^7-7x^5+4x^3-9x+1$ and let $q(x)=(x-1)^4$.}
+\begin{description}
+ \item [(a)] Express each of the following elements of $\overline{E}$ in the form $\overline{f(x)}$ for some polynomial $f(x)$ of degree $\leq2$: $\overline{p(x)},\overline{q(x)},\overline{p(x)+q(x)},$ and $\overline{p(x)q(x)}$.
+ \item [(b)] Prove that $\overline{E}$ is not an integral domain.
+ \item [(c)] Prove that $\overline{x}$ is a unit in $\overline{E}$.
+\end{description}
+
+\begin{proof}[Solution]\indent
+\begin{description}
+ \item [(a)] Observe that in $\mathbb{Z}[x]/(x^3-2x+1)$, $x^3=2x-1$, so \begin{align*}p(x)&=2x^7-7x^5+4x^3-9x+1\\&=(x^3)^2\cdot2x-x^3\cdot7x^2+4x^3-9x+1\\&=(2x-1)^2\cdot2x-(2x-1)\cdot7x^2+4(2x-1)-9x-1\\&=-6x^3-x^2+x-5\\&=-6(2x-1)-x^2+x-5\\&=-x^2-11x+1\\\\q(x)&=(x-1)^4\\&=x^4-4x^3+6x^2-4x+1\\&=x^3\cdot x-4x^3+6x^2-4x+1\\&=(2x-1)\cdot x-4(2x-1)+6x^2-4x+1\\&=8x^2-13x+5\\\\p(x)+q(x)&=(-x^2-11x+1)+(8x^2-13x+5)\\&=7x^2-24x+6\\\\p(x)q(x)&=(-x^2-11x+1)(8x^2-13x+5)\\&=-8x^4-75x^3+146x^2-68x+5\\&=-x^3\cdot8x-75x^3+146x^2-68x+5\\&=-(2x-1)\cdot8x-75(2x-1)+146x^2-68x+5\\&=130x^2-210x+80\end{align*}
+ \item [(b)] Observe that $(x^2+x-1)(x-1)=x^3-2x+1=0$.
+ \item [(c)] Notice that $x(2-x^2)=2x-x^3=1$.\qedhere
+\end{description}
+
+\end{proof}
+
+\question{18}{Prove that if $R$ is an integral domain and $R[[x]]$ is the ring of formal power series in the indeterminate $x$ then the principal ideal generated by $x$ is a prime ideal. Prove that the principal ideal generated by $x$ is a maximal ideal if and only if $R$ is a field.}
+
+\begin{proof}
+ Observe that the principal ideal generated by $x$ is the set of all formal power series with constant term 0, i.e. \[\left\{\sum_{n=1}^{\infty}a_nx^n|\{a_n\}\text{ is a sequence in }R\right\}\] To see that this ideal is prime, observe that, for any power series $p(x)$ and $q(x)$ not in this ideal, i.e. those with nonzero constant term, $p(x)q(x)$ is not in this ideal, for $p(x)q(x)$ has a nonzero constant term\footnote{In particular, the constant term of $p(x)q(x)$ is the product of the constant terms of $p(x)$ and $q(x)$. Since $R$ is an integral domain, this term is nonzero.}.
+
+Notice that $R[[x]]/(x)=R$, for the ring homomorphism \[a_0+a_1x+a_2x^2+\hdots\mapsto a_0\] has kernel $(x)$ and is clearly surjective. Thus, $R$ is a field if and only if $R[[x]]/(x)$ is a field, which is if and only if $(x)$ is maximal.
+\end{proof}
+
+\question{19}{Let $R$ be a finite commutative ring with identity. Prove that every prime ideal of $R$ is a maximal ideal.}
+
+\begin{proof}
+ Suppose $P$ is a prime ideal in $R$. Consider some element $r+P\in R/P$, and suppose $(r+P)(x+P)=0$ for some $x\not\in P$. Then $rx\in P$, hence $r\in P$. Thus, $r+P=P$, so $R/P$ is an integral domain. Since $R$ is finite, $R/P$ is finite, so $R/P$ is a field. Therefore, $P$ is maximal.
+\end{proof}
+
+\question{26}{Prove that a prime ideal in a commutative ring $R$ contains every nilpotent element. Deduce that the nilradical of $R$ is contained in the intersection of all prime ideals of $R$.}
+
+\begin{proof}
+Let $P$ be a prime ideal of $R$. Clearly, $0\in P$. For any nilpotent $r\in R$, $r^n=0$ for some $n$. Then $r^n\in P$, hence $r\in P$. Thus, $P$ contains all nilpotent elements, i.e. $\mathfrak{N}(R)\subseteq P$. This is true for any prime ideal, hence $\mathfrak{N}(R)$ is contained in the intersection of all prime ideals.
+\end{proof}
+
+\question{27}{Let $R$ be a commutative ring with $1\not=0$. Prove that if $a$ is a nilpotent element of $R$ then $1-ab$ is a unit for all $b\in R$.}
+
+\begin{proof}
+ Since $a$ is nilpotent, we have $a^n=0$ for some $n$. Notice that \begin{align*}(1-ab)(1+ab+a^2b^2+\hdots+a^{n-1}b^{n-1})=1&+ab+a^2b^2+\hdots+a^{n-1}b^{n-1}\\&-ab-a^2b^2-\hdots-a^{n-1}b^{n-1}-a^nb^n\\=1\end{align*} so $1-ab$ is a unit.
+\end{proof}
+
+\question{30}{Let $I$ be an ideal of a commutative ring $R$ and define \[\text{rad }I=\{r\in R|r^n\in I\text{ for some }n\in\mathbb{Z}^+\}\] called the \textit{radical} of $I$. Prove that $\text{rad }I$ is an ideal containing $I$ and that $(\text{rad }I)/I$ is the nilradical of the quotient ring $R/I$, i.e., $(\text{rad }I)/I=\mathfrak{N}(R/I)$.}
+
+\begin{proof}
+ Suppose $a,b\in\text{rad }I$ with $a^n,b^m\in I$. By the binomial theorem, \[(a+b)^{mn}=\sum_{k=0}^{mn}{mn\choose k}a^{mn-k}b^k\] Each of these terms is in $I$, for if $a^{mn-k}\notin I$, $mn-k<n$, and $k>n(m-1)>m$, so $b^k\in I$. Thus, $(a+b)^{mn}\in I$. Further, $(ra)^n=r^na^n\in I$ since $I$ is an ideal. Thus, $\text{rad }I$ forms an ideal. Further, for all $i\in I$, $i^1=i$, so $\text{rad }I$ contains $I$.
+
+Now, suppose $x\in(\text{rad }I)/I$, i.e. $x=r+I$ with $r^n\in I$. Then $x^n=(r+I)^n=r^n+I=I$, so $x\in\mathfrak{N}(R/I)$. Thus, $(\text{rad }I)/I\subseteq\mathfrak{N}(R/I)$. To see the other inclusion, take $x\in\mathfrak{N}(R/I)$. Then $x=r+I$ with $x^n=r^n+I=I$. Thus, $r^n\in I$, and $r\in\text{rad }I$. Hence $x=r+I\in(\text{rad }I)/I$.
+\end{proof}
+
+
+\question{32}{Let $I$ be an ideal of a commutative ring $R$ and define\[\text{Jac }I\text{ to be the intersection of all maximal ideals of }R\text{ that contain }I\]}where the convention is that $\text{Jac }R=R$. (If $I$ is the zero ideal, $\text{Jac }0$ is called the \textit{Jacobson radical} of the ring $R$, so $\text{Jac }I$ is the preimage in $R$ of the Jacobson radical of $R/I$.)
+\begin{description}
+ \item [(a)] Prove that $\text{Jac }I$ is an ideal of $R$ containing $I$.
+ \item [(b)] Prove that $\text{rad } I\subseteq\text{Jac }I$, where $\text{rad } I$ is the radical of $I$ defined in exercise 30.
+ \item [(c)] Let $n>1$ be an integer. Describe $\text{Jac }n\mathbb{Z}$ in terms of the prime factorization of $n$.
+\end{description}
+
+\begin{proof}\indent
+\begin{description}
+ \item [(a)] We begin by showing that the intersection of ideals is an ideal. Suppose $R$ is a ring and $K$ indexes the set of ideals $\{I_k|k\in K\}$. Let \[I=\bigcap_{k\in K}I_k\] If $x\in I$, then $x\in I_k$ for all $k$. Since $I_k$ is an ideal, $rx\in I_k$ for all $k$, and so $rx\in I$. Similarly, for any $x,y\in I$, $x+y\in I$. Therefore, $I$ is an ideal.
+
+  Since $\text{Jac }I$ is the intersection of ideals containing $I$, it is an ideal containing $I$.
+ \item [(b)] Take $r\in\text{rad }I$, say $r^n\in I$. Since $\text{Jac }I$ contains $I$, $r^n\in\text{Jac }I$. Suppose that $J$ is a maximal ideal containing $I$. Then $(r+J)^n=r^n+J=0+J$. Since $J$ is maximal, $R/J$ is a field, so $r+J=0+J$. Thus, $r\in J$. Since $J$ is arbitrary, $r$ is in the intersection of all maximal ideals containing $I$, hence $r\in\text{Jac }I$.
+ \item [(c)] Suppose $n=p_1^{j_1}p_2^{j_2}\hdots p_k^{j_k}$. Then $\text{Jac }n\mathbb{Z}$ is the intersection of all maximal ideals of $\mathbb{Z}$ containing $n\mathbb{Z}$. In other words, \[\text{Jac }n\mathbb{Z}=\bigcap_{i=1}^kp_i\mathbb{Z}=p_1p_2\hdots p_k\mathbb{Z}\qedhere\]
+\end{description}
+\end{proof}
+
+\question{40}{Assume $R$ is commutative. Prove that the following are equivalent:}
+\begin{description}
+ \item [(i)] $R$ has exactly one prime ideal.
+ \item [(ii)] every element of $R$ is either nilpotent or a unit
+ \item [(iii)] $R/\mathfrak{N}(R)$ is a field
+\end{description}
+\begin{proof}
+\begin{description}
+  \item [(i) $\Rightarrow$ (ii):] Suppose $R$ has exactly one prime ideal, $P$. Notice that $\mathfrak{N}(R)\subseteq P$, for if $x$ is nilpotent, say $x^n=0$, then $x^n\in P$. By the primality of $P$, $x\in P$.  To see the other inclusion, suppose $x\notin\mathfrak{N}(R)$. Let \[\Sigma=\{I\lhd R|x^n\notin I\text{ for all }n\geq1\}\] $\Sigma$ is partially ordered under $\leq$. Further, $(0)\in\Sigma$, so $\Sigma$ is nonempty. Applying Zorn's Lemma, there must be a maximal element of $\Sigma$, say $Q$. Suppose $ab\in Q$, but $a,b\notin Q$. Then $Q$ is a proper subset of $Q+(a)$ and $Q+(b)$, hence $x^n\in Q+(a)$ and $x^m\in Q+(b)$ for some integers $m,n$. Then $x^{m+n}\in Q+(ab)=Q$. This is a contradiction, so $a\in Q$ or $b\in Q$, i.e. $Q$ is prime. Since $P$ is the only prime ideal of $R$, $Q=P$, hence $P$ contains no elements which are not nilpotent. In other words, $P=\mathfrak{N}(R)$. The remaining elements are units, for if $x\notin P$, $x+P\not=P$, so there exists a $y\notin P$ so that $(x+P)(y+P)=1+P$, i.e. $xy-1\in P$. Thus, $(xy-1)^n=0$ for some $n$. Since $R$ is commutative, we can apply the binomial theorem:\begin{align*}x^ny^n+{n\choose1}(-1)^{n-1}x^{n-1}y^{n-1}+\hdots+{n\choose n-1}(-1)^{n-1}xy+(-1)^n&=0\\x^ny^n+{n\choose1}(-1)^{n-1}x^{n-1}y^{n-1}+\hdots+{n\choose n-1}(-1)^{n-1}xy&=(-1)^{n-1}\\x\left(x^{n-1}y^n+{n\choose1}(-1)^{n-1}x^{n-2}y^{n-1}+\hdots+{n\choose n-1}(-1)^{n-1}y\right)&=(-1)^{n-1}\end{align*} so $x$ is a unit.
+  \item [(ii) $\Rightarrow$ (iii):] If all elements of $R$ are either nilpotent or units, and if  $x+\mathfrak{N}(R)$ is not 0, then $x$ is a unit. Thus, there exists an $x^{-1}\in R$ so that $xx^{-1}=1$, hence $(x+\mathfrak{N}(R))(x^{-1}+\mathfrak{N}(R))=1+\mathfrak{N}(R)$, so $x+\mathfrak{N}(R)$ is a unit.
+  \item[(iii) $\Rightarrow$ (i):] Since $R/\mathfrak{N}(R)$ is a field, $\mathfrak{N}(R)$ is maximal, and therefore a prime ideal. Suppose $P$ is a prime ideal in $R$. Observe that $\mathfrak{N}(R)\subset P$, for if $x\in\mathfrak{N}(R)$, then $x^n=0$ for some $n$. Hence $x^n\in P$, so $x\in P$ by the primality of $P$. Since $\mathfrak{N}(R)$ is maximal, $P=\mathfrak{N}(R)$.\qedhere 
+ \end{description}
+\end{proof}
+
+\question{41}{A proper ideal $Q$ of the commutative ring $R$ is called \textit{primary} if whenever $ab\in Q$ and $a\notin Q$ then $b^n\in Q$ for some positive integer $n$. Establish the following facts about primary ideals.}
+\begin{description}
+ \item [(a)] The primary ideals of $\mathbb{Z}$ are 0 and $(p^n)$ where $p$ is a prime and $n$ is a positive integer.
+ \item [(b)] Every prime ideal of $R$ is a primary ideal.
+ \item [(c)] An ideal $Q$ of $R$ is primary if and only if every zero divisor in $R/Q$ is a nilpotent element of $R/Q$.
+ \item [(d)] If $Q$ is a primary ideal then $\text{rad}(Q)$ is a prime ideal.
+\end{description}
+ 
+\begin{proof}\indent
+ \begin{description}
+  \item [(a)] Observe that, if $(p,q)=1$, with $p$ and $q$ nonunits, $pq\mathbb{Z}$ is not primary, for $pq\in\mathbb{Z}$ but no power of $p$ or $q$ is in $pq\mathbb{Z}$. Thus, $m\mathbb{Z}$ is primary if and only if $m=p^n$ for some prime $p$.
+  \item [(b)] If $P$ is a prime ideal, then for any $ab\in P$, if $a\notin P$, $b=b^1\in P$.
+  \item [(c)] \begin{description}
+               \item [$\Rightarrow$] Suppose $Q$ is primary, and take $r+Q$ to be a zero divisor, say $(r+Q)(r'+Q)=rr'+Q=Q$. Without loss of generality, suppose $r'\notin Q$. Then $r^n\in Q$ for some $n$. Thus, $(r+Q)^n=r^n+Q=Q$, so $r+Q$ is nilpotent.
+	       \item [$\Leftarrow$] Suppose every zero divisor in $R/Q$ is a nilpotent element of $R/Q$. If $(x+Q)(y+Q)=Q$, then $xy+Q=Q$, so $xy\in Q$. Without loss of generality, suppose $y\notin Q$. Since $(x+Q)$ is a zero divisor, $(x+Q)^n=x^n+Q=Q$, so $x^n\in Q$.
+              \end{description}
+  \item [(d)] Since $Q$ is primary, for any $xy\in Q$ with $y\notin Q$, $x^n\in Q$ for some $n$. Thus, $x\in\text{rad}(Q)$, so $\text{rad}(Q)$ is a prime ideal.\qedhere
+ \end{description}
+
+\end{proof}
+
+\section{Rings of Fractions}
+\question{2}{Let $R$ be an integral domain and let $D$ be a nonempty subset of $R$ that is closed under multiplication. Prove that the ring of fractions $D^{-1}R$ is isomorphic to a subring of the quotient field of $R$ (hence is also an integral domain).}
+
+\begin{proof}
+ Since $R$ is an integral domain, $D$ does not contain any zero divisors. Recall that $D^{-1}R=\{rd^{-1}|r\in R,d\in D\}$ and that $Q=\{rd^{-1}|r\in R,d\in R-\{0\}\}$ is the quotient field of $R$. Let $\phi:D^{-1}R\to Q$ be the identity homomorphism \[rd^{-1}\mapsto rd^{-1}\] This is injective, for if $rd^{-1}=rq^{-1}$ for some $q\in R-\{0\}$, then $rq=rd$. Since $r,q$ and $d$ are not zero divisors, $q=d$. Thus, $D^{-1}R$ is isomorphic to $\phi(D^{-1}R)$.
+\end{proof}
+
+\question{6}{Prove that the real numbers, $\mathbb{R}$, contain a subring $A$ with $1\in A$ and $A$ maximal (under inclusion) with respect to the property that $\frac{1}{2}\not\in A$.}
+
+\begin{proof}
+Let \[\Sigma=\left\{I\leq\mathbb{R}\Big|\frac{1}{2}\notin\mathbb{R},1\in\mathbb{R}\right\}\] $\Sigma$ is nonempty, for $\mathbb{Z}\in\Sigma$, and is partially ordered by $\leq$, with upper bound $\mathbb{R}$. By Zorn's Lemma, there is a maximal element of $\Sigma$, which contains 1 but does not contain $\frac{1}{2}$ by construction. 
+\end{proof}
+
+\section{The Chinese Remainder Theorem}
+\question{5}{Let $n_1,n_2,\hdots,n_k$ be integers which are relatively prime in pairs: $(n_i,n_j)=1$ for all $i\not=j$.}
+\begin{description}
+ \item [(a)] Show that the Chinese Remainder Theorem implies that for any $a_1,\hdots,a_k\in\mathbb{Z}$ there is a solution $x\in\mathbb{Z}$ to the simultaneous congruences \[x\equiv a_1\bmod{n_1},\hskip.3in x\equiv a_2\bmod{n_2},\hskip.3in\hdots,\hskip.3in x\equiv a_k\bmod{n_k}\] and that the solution $x$ is unique mod $n=n_1n_2\hdots n_k$.
+ \item [(b)] Let $n_i'=n/n_i$ be the quotient of $n$ by $n_i$, which is relatively prime to $n_i$ by assumption. Let $t_i$ be the inverse of $n_i'\bmod{n_i}$. Prove that the solution $x$ in \textbf{(a)} is given by \[x=a_1t_1n_1'+a_2t_2n_2'+\hdots+a_kt_kn_k'\bmod{n}\]
+ \item [(c)] Solve the simultaneous system of congruences\[x\equiv1\bmod{8},\hskip.3in x\equiv2\bmod{25},\hskip.3in x\equiv3\bmod{81}\] and the simultaneous system \[y\equiv5\bmod{8},\hskip.3in x\equiv12\bmod{25},\hskip.3in x\equiv47\bmod{81}\]
+\end{description}
+
+\begin{proof}
+ \begin{description}
+  \item [(a)] By the Chineses Remainder Theorem, the map from \[\mathbb{Z}\to\mathbb{Z}/n_1\mathbb{Z}\oplus\mathbb{Z}/n_2\mathbb{Z}\oplus\hdots\oplus\mathbb{Z}/n_k\mathbb{Z}\]defined by \[z\mapsto\left(z\bmod{n_1},z\bmod{n_2},\hdots,z\bmod{n_k}\right)\] is a ring homomorphism with kernel \[\mathbb{Z}/n_1\mathbb{Z}\cap\mathbb{Z}/n_2\mathbb{Z}\cap\hdots\cap\mathbb{Z}/n_k\mathbb{Z}\] Since $(n_i,n_j)=1$, $n_i\mathbb{Z}$ and $n_j\mathbb{Z}$ are comaximal. Thus, this homomorphism is surjective, and its kernel is given by \[n_1n_2\hdots n_k\mathbb{Z}=n\mathbb{Z}\] and \[\mathbb{Z}/n\mathbb{Z}=\mathbb{Z}/n_1\mathbb{Z}\oplus\mathbb{Z}/n_2\mathbb{Z}\oplus\hdots\oplus\mathbb{Z}/n_k\mathbb{Z}\] Thus, the system of congruences \[x\equiv a_1\bmod{n_1},\hskip.3in x\equiv a_2\bmod{n_2},\hskip.3in\hdots,\hskip.3in x\equiv a_k\bmod{n_k}\] must be solved by some $x\in\mathbb{Z}/n\mathbb{Z}$, for the isomorphism above guarantees some $x\in\mathbb{Z}/n\mathbb{Z}$ such that $x\mapsto(a_1\bmod{n_1},a_2\bmod{n_2},\hdots,a_k\bmod{n_k})$. If there exist two such elements, say $x_1$ and $x_2$, since $x_1\equiv a_i\bmod{n_i}$ and $x_2\equiv a_i\bmod{n_i}$ for all $i$, $x_1\equiv x_2\bmod{n_i}$. Since the $n_i$ are coprime, $x_1\equiv x_2\bmod{n}$.  
+\item [(b)] It suffices to show that \[x=a_1t_1n_1'+a_2t_2n_2'+\hdots+a_kt_kn_k'\] solves the system of congruences. For all $i$, notice that \[(x-a_i)\bmod{n_i}=a_1t_1n_1'+a_2t_2n_2'+\hdots+a_i(t_in_i'-1)+\hdots+a_kt_kn_k'\bmod{n_i}\] Since $n_k'=n/n_k$, $n_k'\equiv0\bmod{n_i}$ for $i\not=k$. Further, since $t_in_i'\equiv1\bmod{n_i}$, $(t_in_i'-1)\equiv0\bmod{n_i}$, thus \begin{align*}a_1t_1n_1'+a_2t_2n_2'+\hdots+a_i(t_in_i'-1)+\hdots+a_kt_kn_k'\bmod{n_i}&\equiv0\bmod{n_i}\\(x-a_i)&\equiv0\bmod{n_i}\\x&\equiv a_i\bmod{n_i}\end{align*} 
+ \end{description}
+\item [(c)] For the first system, $n_1'=\frac{8\cdot25\cdot81}{8}=2025$, $n_2'=\frac{8\cdot25\cdot81}{25}=648$, $n_3'={8\cdot25\cdot81}{81}=200$. $t_1=1$, $t_2=12$, $t_3=32$. Thus, \[x=1\cdot1\cdot2025+2\cdot12\cdot648+3\cdot32\cdot200\bmod{16200}=4277\]
+For the second system \[y=5\cdot1\cdot2025+12\cdot12\cdot648+47\cdot32\cdot200\bmod{16200}=15437\qedhere\]
+\end{proof}
+
+\question{6}{Let $f_1(x),f_2(x),\hdots,f_k(x)$ be polynomials with integer coefficients of the same degree $d$. Let $n_1,n_2,\hdots,n_k$ be integers which are relatively prime in pairs (i.e. $(n_i,n_j)=1$ for $i\not=j$). Use the Chinese Remainder Theorem to prove that there exists a polynomial $f(x)$ with integer coefficients and of degree $d$ with\[f(x)\equiv f_1(x)\bmod{n_1},\hskip.3in f(x)\equiv f_2(x)\bmod{n_2},\hskip.3in\hdots,\hskip.3in f(x)\equiv f_k(x)\bmod{n_k}\] i.e. the coefficients of $f(x)$ agree with the coefficients of $f_i(x)\bmod{n_i}$. Show that if all the $f_i(x)$ are monic, then $f(x)$ may also be chosen monic.}
+
+\begin{proof}
+ Consider $f_i(x)$ as a formal polynomial, i.e. if $f_i(x)=a_{1i}+a_{2i}x+\hdots+a_{di}x^d$, $f_i=(a_{1i},a_{2i},\hdots,a_{di})$. We would like to solve the system \[\begin{bmatrix}x_1\\x_2\\\vdots\\x_d\end{bmatrix}=\left(\begin{bmatrix}a_{11}\\a_{12}\\\vdots\\a_{1d}\end{bmatrix}\bmod{n_1},\begin{bmatrix}a_{21}\\a_{22}\\\vdots\\a_{2d}\end{bmatrix}\bmod{n_2},\hdots,\begin{bmatrix}a_{k1}\\a_{k2}\\\vdots\\a_{kd}\end{bmatrix}\bmod{n_k}\right)\] By the Chinese Remainder Theorem, we can solve the systems \[\begin{array}{cccc}x_1\equiv a_{11}\bmod{n_1} & x_1\equiv a_{21}\bmod{n_2} & \hdots & x_1\equiv a_{k1}\bmod{n_k}\\x_2\equiv a_{12}\bmod{n_1} & x_2\equiv a_{22}\bmod{n_2} & \hdots & x_2\equiv a_{k2}\bmod{n_k}\\\hskip-.6in\vdots & \hskip-.6in\vdots & \vdots & \hskip-.6in\vdots\\x_d\equiv a_{1d}\bmod{n_1}& x_d\equiv a_{2d}\bmod{n_2} & \hdots & x_d\equiv a_{kd}\bmod{n_k}\end{array}\] and so the polynomial $f(x)$ with coefficients $x_1,x_2,\hdots,x_d$ satisfies $f(x)\equiv x_i\bmod{n_i}$ for all $i$. If each $f_i$ is monic, then $a_{1i}=1$ for all $i$, and so $x_1=1$ clearly satisfies the congruence relations above.
+\end{proof}
+
+\question{7}{Let $m$ and $n$ be positive integers with $n$ dividing $m$. Prove that the natural surjective ring projection $\mathbb{Z}/m\mathbb{Z}\to\mathbb{Z}/n\mathbb{Z}$ is also surjective on the units:$(\mathbb{Z}/m\mathbb{Z})^{\times}\to(\mathbb{Z}/n\mathbb{Z})^{\times}$}
+
+\begin{proof}
+ The natural surjective ring projection given by \[z\bmod{m}\mapsto z\bmod{n}\] maps units to units, for if $xy\equiv1\bmod{m}$, then, since $n|m$, $xy\equiv1\bmod{n}$. Suppose $m$ has prime factorization $p_1^{e_1}p_2^{e_2}\hdots p_k^{e_k}$. By \textbf{The Chinese Remainder Theorem}, \[\mathbb{Z}/m\mathbb{Z}\cong\mathbb{Z}/p_1^{e_1}\mathbb{Z}\times\mathbb{Z}/p_2^{e_2}\mathbb{Z}\times\hdots\times\mathbb{Z}/pk^{e_k}\mathbb{Z}\] In particular, there is an isomorphism of multiplicative groups \[\left(\mathbb{Z}/m\mathbb{Z}\right)^{\times}\cong\left(\mathbb{Z}/p_1^{e_1}\mathbb{Z}\right)^{\times}\times\left(\mathbb{Z}/p_2^{e_2}\mathbb{Z}\right)^{\times}\times\hdots\times\left(\mathbb{Z}/pk^{e_k}\mathbb{Z}\right)^{\times}\] Since there is clearly a surjective map \[\left(\mathbb{Z}/p_1^{e_1}\mathbb{Z}\right)^{\times}\times\left(\mathbb{Z}/p_2^{e_2}\mathbb{Z}\right)^{\times}\times\hdots\times\left(\mathbb{Z}/p_k^{e_k}\mathbb{Z}\right)^{\times}\to\left(\mathbb{Z}/n\mathbb{Z}\right)^{\times}\] the projection $z\bmod{m}\mapsto z\bmod{n}$ is surjective on the units.
+\end{proof}
+
+\chapter{Euclidean Domains, Principal Ideal Domains and Unique Factorization Domains}\chaptermark{Euclidean, Principal and Unique Factorization Domains}
+\section{Euclidean Domains}
+
+\question{4}{Let $R$ be a Euclidean Domain.}
+\begin{description}
+ \item [(a)] Prove that if $(a,b)=1$ and $a$ divides $bc$ then $a$ divides $c$. More generally, show that if $a$ divides $bc$ with nonzero $a,b$ then $\frac{a}{(a,b)}$ divides $c$.
+ \item [(b)] Consider the Diophantine Equation $ax+by=N$ where $a,b$ and $N$ are integers and $a,b$ are nonzero. Suppose $x_0,y_0$ is a solution: $ax_0+by_0=N$. Prove that the full set of solutions is given by \[x=x_0+m\frac{b}{(a,b)},\hskip.3in y=y_0-m\frac{a}{(a,b)}\]as $m$ ranges over the integers.  
+\end{description}
+
+\begin{proof}\indent
+ \begin{description}
+  \item [(a)] Since $(a,b)=1$, there exist $x,y\in R$ with $ax+by=1$. Since $a|bc$, there exists $r\in R$ with $ar=bc$, thus \begin{align*}axc+byc&=c\\axc+ary&=c\\a(xc+ry)&=c\end{align*} so $a|c$. More generally, since $\left(\frac{a}{(a,b)},\frac{b}{(a,b)}\right)=1$, there exist $x,y\in R$ with \[\frac{a}{(a,b)}x+\frac{b}{(a,b)}y=1\] and the fact that $\frac{a}{(a,b)}$ divides $c$ follows similarly.
+  \item [(b)] Since $x_0,y_0$ is a solution, for any solution $x,y$, we have \begin{align*}a(x-x_0)+b(y-y_0)=c-c&=0\\\frac{a}{(a,b)}(x-x_0)+\frac{b}{(a,b)}(y-y_0)&=0\\\frac{a}{(a,b)}(x-x_0)&=-\frac{b}{(a,b)}(y-y_0)\end{align*} Since $\left(\frac{a}{(a,b)},\frac{b}{(a,b)}\right)=1$, $\frac{a}{(a,b)}|y-y_0$, say $y-y_0=-m\frac{a}{(a,b)}$. Then $y=y_0-m\frac{a}{(a,b)}$. Substiting into the equation above, $x=x_0+m\frac{a}{(a,b)}$.\qedhere
+ \end{description}
+
+\end{proof}
+
+\question{6}{(\textit{The Postage Stamp Problem} Let $a$ and $b$ be two relatively prime positive integers. Prove that every sufficiently large positive integer $N$ can be written as a linear combination $ax+by$ where $x$ and $y$ are nonnegative, i.e. there is an integer $N_0$ such that for all $N\geq N_0$ the equation $ax+by=N$ can be solved with both $x$ and $y$ nonnegative integers. Prove in fact that the integer $ab-a-b$ cannot be written as a positive linear combination of $a$ and $b$ but that every integer greater than $ab-a-b$ is a positive linear combination of $a$ and $b$ (so every ``postage'' greater than $ab-a-b$ can be obtained using only stamps in denominations $a$ and $b$).}
+
+\begin{proof}
+ Let $N_0=ab-a-b$. We begin by showing that $ax+by=N_0$ implies $x$ or $y$ is negative. If $ax+by=ab-b-a$, then $a(x+1)+b(y+1)=ab$. Letting $u=x+1$, $v=y+1$, we see that $u_0=b$, $v_0=0$ satisfies $au_0+bv_0=ab$, so there exists an $m\in\mathbb{Z}$ such that \begin{align*}u&=b+mb\\v&=-ma\end{align*} Substituting $u=x+1$, $v=y+1$, we see that \begin{align*}x&=b(m+1)-1\\y&=-ma-1\end{align*} If $m<0$, $x$ is negative. If $m\geq0$, $y$ is negative. Thus, there are no nonnegative integers $x,y$ so that $ax+by=ab-a-b$. 
+
+We now show that, for $N>N_0=ab-b-a$ there exist nonnegative integers $x,y$ so that $ax+by=N$. We proceed by induction on $N$, with base case \linebreak$N=N_0+1=(a-1)(b-1)$. Suppose $x_0,y_0$ satisfy $ax_0+by_0=1$. If $ax+by=ab-a-b+1$, then $a(x+1)+b(y+1)=ab+1$. Letting $u=x+1$, $v=y+1$, we see that $u_0=b+x_0$, $v_0=y_0$ satisfies $au_0+bv_0=ab+1$, hence the set of solutions is given by \begin{align*}u&=b+x_0+mb\\v&=y_0-ma\end{align*} as $m$ ranges over $\mathbb{Z}$. Substituting $u=x+1$, $v=y+1$, we see that the solution set of $ax+by=N_0+1$ is given by \begin{align*}x&=x_0+(m+1)b-1\\y&=y_0-ma-1\end{align*} 
+\end{proof}
+
+\question{7}{Find the generator for the ideal $(85,1+13i)$ in $\mathbb{Z}[i]$, i.e., a greatest common divisor for 85 and $1+13i$, by the Euclidean Algorithm. Do the same for the ideal $(47-13i,53+56i)$.}
+
+\begin{proof}[Solution]
+We observe first that \[\frac{85}{1+13i}=\frac{85}{1+13i}\cdot\frac{1-13i}{1-13i}=\frac{85-1105i}{170}=\frac{1}{2}-\frac{13}{2}i\] and so it follows that \[85=(1+13i)(-6i)+(7+6i)\] Now, \[\frac{1+13i}{7+6i}=\frac{1+13i}{7+6i}\cdot\frac{7-6i}{7-6i}=\frac{85+85i}{85}=1+i\] and so \[1+13i=(7+6i)(1+i)\] and thus \[(85,1+13i)=(7+6i)\] Similarly, for the ideal $(47-13i,53+56i)$, we have that \[\frac{53+56i}{47-13i}=\frac{43}{58}+\frac{81}{58}i\] hence \[53+56i=(47-13i)(1+i)+(-7+22i)\] Continuing the algorithm, \[\frac{47-13i}{-7+22i}=\frac{-15}{13}-\frac{23}{13}i\] and so \[(47-13i)=(-7+22i)(-1-2i)+(-4-5i)\] Finally, \[\frac{-7+22i}{-4-5i}=-2-3i\] so \[-7+22i=(-4-5i)(2-3i)\] hence \[(47-13i,53+56i)=(-4-5i)\qedhere\]
+\end{proof}
+
+
+\question{8}{Let $F=\mathbb{Q}(\sqrt{D})$ be a quadratic field with associated quadratic integer ring $\mathcal{O}$ and field norm $N$ as in section 7.1}
+\begin{description}
+ \item [(a)] Suppose $D$ is $-1,-2,-3,-7$ or $-11$. Prove that $\mathcal{O}$ is a Euclidean Domain with respect to $N$.
+ \item [(b)] Suppose $D=-43,-67,$ or $-163$. Prove that $\mathcal{O}$ is not a Euclidean Domain with respect to any norm.
+\end{description}
+
+\begin{proof}
+ We begin with some definitions. The quadratic integer ring $\mathcal{O}$ is $\mathbb{Z}[\omega]$, where \[\omega=\begin{cases}\sqrt{D}&\text{if }D\equiv2,3,\bmod{4}\\\frac{1+\sqrt{D}}{2}&\text{if }D\equiv1\bmod{4}\end{cases}\] The field norm $N$ is given by \[N(a+b\sqrt{D})=(a+b\sqrt{D})(a-b\sqrt{D})=a^2-Db^2\]
+\begin{description}
+ \item [(a)] If $D=-1$, then $\omega=\sqrt{D}$, and so $\mathcal{O}=\mathbb{Z}[i]$. Take $\alpha=a+bi$, $\beta=c+di$ in $\mathbb{Z}[i]$ with $\beta\not=0$. Then $\frac{\alpha}{\beta}=r+si$ where $r=\frac{ac+bd}{c^2+d^2}$ and $s=\frac{bc-ad}{c^2+d^2}$. Let $p$ be an integer closest to $r$ and let $q$ be an integer closest to $s$. Letting $\theta=(r-p)+(s-q)i$ and setting $\gamma=\beta\theta$, we see that $\gamma=\alpha-(p+qi)\beta\in\mathbb{Z}[i]$, hence $\alpha=(p+qi)\beta+\gamma$. Further, $N(\theta)=(r-p)^2+(s-q)^2\leq\frac{1}{4}+\frac{1}{4}=\frac{1}{2}$ and so $N(\gamma)=N(\theta)N(\beta)\leq\frac{1}{2}N(\beta)$. Thus, we have \[\alpha=(p+qi)\beta+\gamma\text{ with }N(\gamma)\leq\frac{1}{2}N(\beta)<N(\beta)\] and so $Z[i]$ is a Euclidean Domain under $N$.
+
+This proof requires little modification for $D=-2$, as the end result is \[\alpha=(p+qi)\beta+\gamma\text{ with }N(\gamma)\leq\frac{3}{4}N(\beta)<N(\beta)\] which is desired. 
+
+We note that, for all $x\in\mathbb{Q}[\sqrt{D}]$, there is a $y\in\mathcal{O}$ so that $N(x-y)\leq\frac{(1+|D|)^2}{16|D|}$. 
+
+For $D=-3$, rather than taking $p,q$ to be the integers closest to $r$ and $s$, respectively, we take $p$ and $q$ to be the elements of $\mathcal{O}$ such that $N(r-p)\leq\frac{(1+|D|)^2}{16|D|}$ and $N(s-q)\leq\frac{(1+|D|)^2}{16|D|}$, i.e. $N(r-p)\leq\frac{1}{3}$ and $N(s-q)\leq\frac{1}{3}$. Our end result is then \[\alpha=(p+qi)\beta+\gamma\text{ with }N(\gamma)\leq\frac{2}{3}N(\beta)<N(\beta)\] which completes the proof for $D=-3$. The same argument holds for $D=-7$ and $D=-11$.
+
+\item[(b)] We show that, for $D=-43$, $\mathcal{O}=\mathbb{Z}[\sqrt{-43}]$ has no universal side divisors. Notice that $\pm1$ are the only units in $\mathcal{O}$, and so $\widetilde{\mathcal{O}}=\{0,\pm1\}$. Suppose $u\in\mathcal{O}$ is a universal side divisor. Observe that, for any $z=a+b\sqrt{-43}$ in $\mathcal{O}$ with, $N(z)=a^2+43b^2$ has smallest nonzero values 1 and 4. Taking $x=2$ as in the definition of a universal side divisor, suppose $2=\alpha\beta$ for some $\alpha\beta$, then $N(2)=4=N(\alpha)N(\beta)$ and so $\alpha$ or $\beta$ has norm 1, i.e. is equal to $\pm1$, and so the only divisors of 2 in $\mathcal{O}$ are $\{\pm1,\pm2\}$. Similarly, the only divisors of 3 are $\{\pm1,\pm3\}$, and so $u$ can only be $\pm2$ or $\pm3$. Taking $x=\sqrt{-43}$, it is clear that none of $x,x+1,x-1$ are divisible by $\pm2$ or $\pm3$, and so none of these is a universal side divisor. The same argument shows that $\mathcal{O}$ is not a Euclidean Domain for $D=-67$ and $D=-163$ under any norm.\qedhere
+\end{description}
+
+\end{proof}
+
+\question{9}{Prove that the ring of integers $\mathcal{O}$ in the quadratic integer ring $\mathbb{Q}(\sqrt{2})$ is a Euclidean Domain with respect to the norm given by the absolute value of the field norm $N$ in section 7.1}
+
+\begin{proof}
+ The norm in question is the function $N:\mathbb{Z}[\sqrt{2}]\to\mathbb{Z}^+\cup\{0\}$ given by $N(a+b\sqrt{2})=|a^2-2b^2|$. Take $\alpha=a+b\sqrt{2}$, $\beta=c+d\sqrt{2}$ with $\beta\not=0$. Then $\frac{\alpha}{\beta}=r+s\sqrt{2}$ where $r=\frac{ac-2bd}{c^2-2d^2}$ and $s=\frac{ad+bc}{c^2-2d^2}$. Since $r,s\in\mathbb{Q}$, we can choose $p$ and $q$ to be the integers closest to $r$ and $s$, respectively, i.e. $N(r-p)<\frac{1}{2}$ and $N(s-q)<\frac{1}{2}$. Letting $\theta=(r-p)+(s-q)\sqrt{2}$ and setting $\gamma=\beta\theta$, we see that $\gamma=\alpha-(p+q\sqrt{2})\beta$ and so $\alpha=\gamma+(p+q\sqrt{2})\beta$. Then $N(\theta)=(r-p)^2+2(s-q)^2$ is at most $\frac{1}{4}+2\frac{1}{4}=\frac{3}{4}$, which yields\[\alpha=(p+qi)\beta+\gamma\text{ with }N(\gamma)\leq\frac{3}{4}N(\beta)<N(\beta)\qedhere\]
+\end{proof}
+
+
+\question{12}{(\textit{A Public Key Code}) Let $N$ be a positive integer. Let $M$ be an integer relatively prime to $N$ and let $d$ be an integer relatively prime to $\varphi(N)$, where $\varphi$ denotes Euler's $\varphi$-function. Prove that if $M_1\equiv M^d\pmod{N}$ then $M\equiv M_1^{d'}\pmod{N}$ where $d'$ is the inverse of $d\pmod{\varphi(N)}$: $dd'\equiv1\pmod{\varphi(N)}$.}
+
+\begin{proof}
+ Since $(M,N)=1$, $M\in(\mathbb{Z}/N\mathbb{Z})^{\times}$, and by \textbf{Lagrange's Theorem}, the order of $M$ is must divide the order of $(\mathbb{Z}/N\mathbb{Z})^{\times}$, i.e. $M^x\equiv1\bmod{N}$ implies $x|\phi(N)$. Thus $M^{\phi(N)}\equiv1\bmod{N}$. From this we see that, if $x\equiv y\bmod{\phi(N)}$, then $M^{x-y}\equiv0\bmod{N}$ and so $M^x\equiv M^y\bmod{N}$. Thus, since $dd'\equiv1\bmod{\phi(N)}$, $M^{dd'}\equiv M\bmod{N}$. Further, since $M_1\equiv M^d\bmod{N}$, $M_1^{d'}\equiv M^{dd'}\equiv M\bmod{N}$.
+\end{proof}
+
+
+\section{Principal Ideal Domains (P.I.D.s)}
+
+\question{1}{Prove that in a Principal Ideal Domain two ideals $(a)$ and $(b)$ are comaximal if and only if a greatest common divisor of $a$ and $b$ is 1 (in which case $a$ and $b$ are said to be \textit{coprime} or \textit{relatively prime}).}
+
+\begin{proof}Let $R$ be a principal ideal domain with elements $a,b\in R$.
+\begin{description}
+ \item [$\Rightarrow$] Suppose $(a)$ and $(b)$ are comaximal, i.e. $(a)+(b)=R$. Then $(a)+(b)=(a,b)=R=(1)$. By proposition 6, $1$ is a greatest common divisor for $a$ and $b$. 
+ \item [$\Leftarrow$] Suppose 1 is a greatest common divisor of $a$ and $b$. Since $R$ is a P.I.D., we have that $(a,b)=(d)$ for some $d\in R$. Thus, $d|a$ and $d|b$, so $d|1$ by definition of GCD. Therefore, $d$ is a unit, and $(a)+(b)=(a,b)=(d)=R$.\qedhere 
+\end{description}
+\end{proof}
+
+\question{5}{Let $R$ be the quadratic integer ring $\mathbb{Z}[\sqrt{-5}]$. Define the ideals $I_2=(2,1+\sqrt{-5})$, $I_3=(3,2+\sqrt{-5})$, and $I_3'=(3,2-\sqrt{-5})$.}
+\begin{description}
+ \item [(a)] Prove that $I_2,I_3$ and $I_3'$ are nonprincipal ideals in $R$.
+ \item [(b)] Prove that the product of two nonprincipal ideals can be principal by showing that $I_2^2$ is the principal ideal generated by 2, i.e. $I_2^2=(2)$.
+ \item [(c)] Prove similarly that $I_2I_3=(1-\sqrt{-5})$ and $I_2I_3'=(1+\sqrt{-5})$ are principal. Conclude that the principal ideal $(6)$ is the product of 4 ideals: $(6)=I_2^2I_3I_3'$.
+\end{description}
+
+\begin{proof}\indent
+\begin{description}
+ \item [(a)] Notice that if some element $a+b\sqrt{-5}$ generates $I_2$, then there are elements $\alpha,\beta$ so that \begin{align*}\alpha(a+b\sqrt{-5})&=2\\\beta(a+b\sqrt{-5})&=1+\sqrt{-5}\end{align*} and so $a^2+5b^2$ divides $4$ and $6$. This is clearly not possible for $a,b\in\mathbb{Z}$, and so no element can generate $I_2$. Similarly, if $a+b\sqrt{-5}$ generates $I_3$, then $a^2+5b^2$ divides $9$ and $10$, which is similarly not possible. The same argument shows that $I_3'$ is not principal.
+ \item [(b)] The ideal $I_2^2$ is the set of all finite sums $aa'$ where $a,a'\in I_2$. It suffices to show that all elements of the form $aa'$ are multiples of 2. In particular, we need only show this when $a$ and $a'$ are generators of $I_2$. If $a$ is 2, there is nothing to show. Notice that $(1+\sqrt{-5})^2=-4+2\sqrt{-5}$, and so the set $I_2^2$ contains only even elements. In particular, $I_2^2=(2)$.
+ \item [(c)] Again, we show that the product $aa'$ is a multiple of $1-\sqrt{-5}$ for $a,a'$ generators in $I_2$ and $I_3$, respectively. Notice that \begin{align*}(1+\sqrt{-5})(2+\sqrt{-5})&=-3+3\sqrt{-5}=-3(1-\sqrt{-5})\\3(1+\sqrt{-5})&=3+3\sqrt{-5}=-(2-\sqrt{-5})(1-\sqrt{-5})\\2(2+\sqrt{-5})&=4+2\sqrt{-5}=-(1-\sqrt{-5})^2\\2\cdot3&=6=(1-\sqrt{-5})^2\end{align*} and so we have that $I_2I_3=(1-\sqrt{-5})$. The same argument shows that $I_2I_3'=(1-\sqrt{-5})$. 
+ 
+Before considering the product $I_2^2I_3I_3'$ we show that the product of principal ideals $(a)(b)$ in a commutative ring is the principal ideal $(ab)$. The containment $(ab)\subseteq(a)(b)$ is clear. On the other hand, if \[x=a_1b_1+a_2b_2+\hdots+a_nb_n\] then, for each $a_i\in(a)$ and $b_i\in(b)$, there exists $r_i,s_i\in R$ so that $a_i=r_ia$ and $b_i=s_ib$, for these ideals are principal. Moreover, the rings commute, and so \begin{align*}x&=r_1as_1b+r_2as_2b+\hdots+r_nas_nb\\&=r_1s_1ab+r_2s_2ab+\hdots+r_ns_nab\\&=(r_1s_1+r_2s_2+\hdots+r_ns_n)ab\in(ab)\end{align*} Returning to the product $I_2^2I_3I_3'$, since $\mathbb{Z}[\sqrt{-5}]$ is commutative \[I_2^2I_3I_3'=I_2I_3I_2I_3'=(1-\sqrt{-5})(1+\sqrt{-5})=(6)\]\qedhere
+\end{description}
+\end{proof}
+
+\question{7}{An integral domain $R$ in which every ideal generated by two elements is principal (i.e. for every $a,b\in R$, $(a,b)=(d)$ for some $d\in R$) is called a \textit{B\'ezout Domain}.}
+\begin{description}
+ \item [(a)] Prove that the integral domain $R$ is a B\'ezout Domain if and only if every pair of elements $a,b$ of $R$ has a g.c.d. $d$ in $R$ that can be written as an $R$-linear combination of $a$ and $b$, i.e. $d=ax+by$ for some $x,y\in R$.
+ \item [(b)] Prove that every finitely generated ideal of a B\'ezout Domain is principal.
+ \item [(c)] Let $F$ be the fraction field of the B\'ezout Domain $R$. Prove that every element of $R$ can be written in the form $a/b$ with $a,b\in R$ and $a$ and $b$ relatively prime.
+\end{description}
+
+\begin{proof}\indent
+ \begin{description}
+  \item [(a)] One direction is straightforward: if $(a,b)=(d)$, then $ax+by=d$ for some $x,y$, and $d$ is a greatest common divisor of $a$ and $b$.
+
+If for all $a,b\in R$ there exist $x,y\in R$ so that $ax+by=d$, then $(d)\subseteq(a,b)$. If $d$ is a greatest common divisor of $a$ and $b$ (say $dk_1=a$, $dk_2=b$), then, for any $u,v\in R$, $au+bv=dk_1u+dk_2v=d(k_1u+k_2v)$, and so $(a,b)\subseteq(d)$.
+  \item [(b)] Suppose $A\subseteq R$ is a finite set. To see that $(A)$ is principal, we induct on $|A|$. The case $|A|=2$ has been shown in \textbf{(a)}. If, for $|A|=k$, $(A)$ is principal, then for $|A|=k+1$, take $a\in A$, and write $K=X-\{a\}$. Then $(A)=(K,a)$. Since $|K|=k$, we have that $K=(b)$ for some $b\in R$, and so $(A)=(K,a)=(b,a)=(d)$ for some $d\in R$.
+  \item [(c)] Since $R$ is a B\'ezout Domain, for any element $\frac{a}{b}$ in $F$, there is an element $d$ which is a gcd of $a$ and $b$, and such that $ax+by=d$ for some $x,y\in R$. Thus, $\frac{a}{d}x+\frac{b}{d}y=1$, so $\left(\frac{a}{d},\frac{b}{d}\right)=1$, and $\frac{a}{b}=\frac{a/d}{b/d}$.\qedhere
+ \end{description}
+\end{proof}
+
+\question{8}{Prove that if $R$ is a Principal Ideal Domain and $D$ is a multiplicatively closed subset of $R$, then $D^{-1}R$ is also a P.I.D.}
+
+\begin{proof}
+Let $I$ be an ideal in $D^{-1}R$ and define $I_R=\{r\in R|d^{-1}r\in I\text{ for some }d\in D\}$. Take $r\in I_R$, say $d^{-1}r\in D^{-1}R$, then, for any $s\in R$, $d^{-1}sr\in I$, since $I$ is an ideal. Thus, $sr\in I_R$. If $r,s\in I_R$, say $b^{-1}r,d^{-1}s\in I$, then $d^{-1}b^{-1}(r+s)=d^{-1}b^{-1}r+b^{-1}d^{-1}s\in I$, and so $r+s\in I$. Therefore, $I_R$ is an ideal in $R$.
+
+Now, since $R$ is a P.I.D., we have that $I_R=(a)$ for some $a\in R$. Take $d^{-1}r\in I$. Since $r\in I_R$, we have $r=sa$ for some $s\in R$. Further, $d^{-1}s\in D^{-1}R$, and so $d^{-1}r=(d^{-1}s)a$, hence $I=(a)$.
+\end{proof}
+
+
+\section{Unique Factorization Domains (U.F.D.s)}
+
+\question{5}{Let $R=\mathbb{Z}[\sqrt{-n}]$ where $n$ is a squarefree integer greater than 3.}
+\begin{description}
+ \item [(a)] Prove that $2,\sqrt{-n}$ and $1+\sqrt{-n}$ are irreducibles in $R$.
+ \item [(b)] Prove that $R$ is not a U.F.D. Conclude that the quadratic integer ring $\mathcal{O}$ is not a U.F.D. for $D=2,3\bmod{4},D<-3$ (so also not Euclidean and not a P.I.D.).
+ \item [(c)] Give an explicit ideal in $R$ that is not principal.
+\end{description}
+
+\begin{proof}Notice first that $R=\{a+b\sqrt{-n}|a,b\in\mathbb{Z}\}$. The norm of $x=a+b\sqrt{-n}$ is given by $a^2+nb^2$, which we denote $N(x)$.
+ \begin{description}
+  \item [(a)] Suppose $2=xy$ for some $x=a+b\sqrt{-n}$, $y=c+d\sqrt{-n}$. Then $N(2)=4$ must be divisible by $N(x)=a^2+nb^2$. Observe that $N(x)\not=2$, for $a^2+nb^2=2$ forces $b=0$, and so $a^2=2$, a contradiction. Thus, $N(x)=1$ or $N(x)=4$. If $N(x)=1$, $x$ is a unit, and we are finished. Similarly, if $N(x)=4$, then $N(y)=1$, and so $y$ is a unit. Therefore 2 is irreducible.
+
+Similarly, if $\sqrt{-n}=xy$ with $x=a+b\sqrt{-n}$, $y=c+d\sqrt{-n}$, since $N(\sqrt{-n})=n$, we have $a=0$ or $b=0$. If $a=0$, then $b=1$, and $x$ is a unit. If $b=0$, then $\sqrt{-n}=ac+ad\sqrt{-n}$ which forces $c=0$ and $ad=1$, and so $x=a$ is a unit. Thus, $\sqrt{-n}$ is irreducible.
+
+Finally, if $1+\sqrt{-n}=xy$ for some $x=a+b\sqrt{-n}$, $y=c+d\sqrt{-n}$, then $a^2+nb^2$ divides $1+n$. If $b\not=0$, then $b=1$ and $a=1$, in which case we are finished. If $b=0$, then $1+\sqrt{-n}=ac+ad\sqrt{-n}$, and so $ac=1$. Thus, $x=a$ is a unit, and $1+\sqrt{-n}$ is irreducible.
+ \item [(b)] 
+ \item [(c)]
+ \end{description}
+\end{proof}
+
+\question{6}{}\vspace{-.43in}\begin{description}
+ \item [\hskip.3in(a)] Prove that the quotient ring $\mathbb{Z}[i]/(1+i)$ is a field of order 2.
+ \item [(b)] Let $q\in\mathbb{Z}$ be a prime with $q\equiv3\bmod{4}$. Prove that the quotient ring $\mathbb{Z}[i]/(q)$ is a field with $q^2$ elements. 
+ \item [(c)] Let $p\in\mathbb{Z}$ be a prime with $p\equiv1\bmod{4}$ and write $p=\pi\overline{\pi}$ as in Proposition 18. Show that the hypotheses for the Chinese Remainder Theorem are satisfied and that $\mathbb{Z}[i]/(p)\cong\mathbb{Z}[i]/(\pi)\times\mathbb{Z}[i]/(\overline{\pi})$ as rings. Show that the quotient ring $\mathbb{Z}[i]/(p)$ has order $p^2$ and conclude that $\mathbb{Z}[i]/(\pi)$ and $\mathbb{Z}[i]/(\overline{\pi})$ are both fields of order $p$.
+\end{description}
+
+\begin{proof}\indent
+ \begin{description}
+  \item [(a)] First, observe that if $a+b\equiv0\bmod{2}$, then $b-a\equiv0\bmod{2}$, and so $(a+bi)=\left(\frac{a+b}{2}+\frac{b-a}{2}i\right)(1+i)\in(1+i)$, i.e. $a+bi\in(1+i)$. We show that, if $z\notin(1+i)$, then $z-1\in(1+i)$. Let $z=x+yi$. Since $z\notin(1+i)$, $x+y\equiv1\bmod{2}$, and so \[z=x+yi=\left(\frac{y+x-1}{2}+\frac{y-(x-1)}{2}i\right)(1+i)\in(1+i)\] which completes the proof.
+  \item [(b)] Since $q\equiv3\bmod{4}$, $q$ is irreducible and $\mathbb{Z}[i]/(q)$ is a field. Further, \[Z[i]/(q)=\left\{a+bi|a,b\in\mathbb{Z}/q\mathbb{Z}\right\}\] has $q^2$ elements.
+  \item [(c)] Since $p\equiv1\bmod{4}$, $p$ has irreducible factors $\pi=a+bi,\overline{\pi}=a-bi$ with $(\pi)+(\overline{\pi})=(2a)=\mathbb{Z}[i]$. Thus, by \textbf{The Chinese Remainder Theorem}, $\mathbb{Z}[i]/(p)\cong\mathbb{Z}[i]/(\pi)\times\mathbb{Z}[i]/(\overline{\pi})$. Further, $\mathbb{Z}[i]/(p)$ has order $p^2$ by the same argument as in \textbf{(b)}, which implies $\mathbb{Z}[i]/(\pi)$ and $\mathbb{Z}[i]/(\overline{\pi})$ are both fields of order $p$.
+ \end{description}
+
+\end{proof}
+
+
+\question{7}{Let $\pi$ be an irreducible element in $\mathbb{Z}[i]$.}
+\begin{description}
+ \item [(a)] For any integer $n\geq0$, prove that $(\pi^{n+1})=\pi^{n+1}\mathbb{Z}[i]$ is an ideal in $(\pi^n)=\pi^n\mathbb{Z}[i]$ and that multiplication by $\pi^n$ induces a isomorphism $\mathbb{Z}[i]/(\pi)\cong(\pi^n)/(\pi^{n+1})$ as additive abelian groups.
+ \item [(b)] Prove that $|\mathbb{Z}[i]/(\pi^n)|=|\mathbb{Z}[i]/(\pi)|^n$.
+ \item [(c)] Prove for any nonzero $\alpha$ in $\mathbb{Z}[i]$ that the quotient ring $\mathbb{Z}[i]/(\alpha)$has order equal to $N(\alpha)$.
+\end{description}
+
+\begin{proof}\indent
+ \begin{description}
+  \item [(a)] $(\pi^{n+1})$ is clearly an ideal in $(\pi^n)$, for \[(a\pi^n+b\pi^ni)(x\pi^{n+1}+y\pi^{n+1}i)=\pi^{2n+1}(ax-by+(ay+bx)i)\in(\pi^{n+1})\] Multiplication by $\pi^n$ induces an isomorphism as follows: Let \[\phi:\mathbb{Z}[i]/(\pi)\to(\pi^n)/(\pi^{n+1})\] be given by $\phi(z+(\pi))=\pi^nz+(\pi^{n+1})$. This is clearly a group homomorphism, and is injective, for if $z+(\pi)\in\text{ker}(\phi)$ then $\pi^nz+(\pi^{n+1})=0+(\pi^{n+1})$, i.e. $\pi^nz=\pi^{n+1}w$ for some $w$. Then $z=\pi w$. Since $\pi$ is irreducible, $z\equiv0\bmod{\pi}$, and so $z+(\pi)=0+(\pi)$. Surjectivity is straightforward: for any $w=\pi^nz+(\pi^{n+1})$, \[z+(\pi)\mapsto w\] Therefore, this map is an isomorphism.
+  \item [(b)] We proceed by induction on $n$. The case $n=1$ is trivially true. Suppose that, for $n-1$, we have $|\mathbb{Z}[i]/(\pi^{n-1})|=|\mathbb{Z}[i]/(\pi)|^{n-1}$. Observe that, since $(\pi^{n})$ is normal in both $\mathbb{Z}[i]$ and $(\pi^{n-1})$, \[\frac{\mathbb{Z}[i]/(\pi^n)}{(\pi^{n-1})/(\pi^n)}\cong\mathbb{Z}[i]/(\pi^{n-1})\] By \textbf{(a)}, $(\pi^{n-1})/(\pi^n)\cong\mathbb{Z}[i]/(\pi)$, and so \[\frac{\mathbb{Z}[i]/(\pi^n)}{\mathbb{Z}[i]/(\pi)}\cong\mathbb{Z}[i]/(\pi^{n-1})\] Which, by Lagrange's Theorem, yields \[|\mathbb{Z}[i]/(\pi^n)|=|\mathbb{Z}[i]/(\pi)|^n\] This completes the induction step, which completes the proof.
+  \item [(c)] By the chinese remainder theorem, we have \[\mathbb{Z}[i]/(\alpha)\cong\mathbb{Z}[i]/(\alpha_1)\times\mathbb{Z}[i]/(\alpha_2)\times\hdots\times\mathbb{Z}[i]/(\alpha_k)\] where $\alpha_1,\alpha_2,\hdots,\alpha_k$ are irreducible factors of $\alpha$. As shown in exercise 6, the order of $\mathbb{Z}/(p)$ where $p$ is irreducible is $N(p)$, and so the order of $\mathbb{Z}[i]/(\alpha)$ is \[N(\alpha_1)\cdot N(\alpha_2)\hdots\cdot N(\alpha_k)=N(\alpha_1\cdot\alpha_2\cdot\hdots\cdot\alpha_k)=N(\alpha)\qedhere\]
+ \end{description}
+\end{proof}
+
+\question{8}{Let $R$ be the quadratic integer ring $\mathbb{Z}[\sqrt{-5}]$ and define the ideals $I_2=(2,1+\sqrt{-5})$, $I_3=(3,2+\sqrt{-5})$ and $I_3'=(3,2-\sqrt{-5})$.}
+\begin{description}
+ \item [(a)] Prove that $2,3,1+\sqrt{-5}$ and $1-\sqrt{-5}$ is irreducibles in $R$, no two of which are associate in $R$, and that $6=2\cdot3=(1+\sqrt{-5})\cdot(1-\sqrt{-5})$ are two distinct factorizations of 6 into irreducibles in $R$.
+ \item [(b)] Prove that $I_2,I_3$ and $I_3'$ are prime ideals in $R$. 
+ \item [(c)] Show that the factorizations in \textbf{(a)} imply the equality of ideals $(6)=(2)(3)$ and $(6)=(1+\sqrt{-5})(1-\sqrt{-5})$. Show that these two ideal factorizations give the same factorization of the ideal (6) as the product of prime ideals.
+\end{description}
+
+\begin{proof}\indent
+ \begin{description}
+  \item [(a)] Suppose $2=xy$ for some $x=a+b\sqrt{-5}$, $y=c+d\sqrt{-5}$. Then $N(x)=a^2+5b^2$ divides $N(2)=4$. This forces $b=0$, and so $a^2=1$ or $a^2=4$. If $a^2=1$, then $x=a$ is a unit, and so we are done. If $a^2=4$, then $a$ is an associate of 2, which forces $y$ to be a unit. Thus, 2 is irreducible.
+
+Similarly, if $3=xy$, then $N(x)=a^2+5b^2$ divides $N(3)=9$. Then $a=2$, $b=1$ or $a=3$, $b=0$. If $a=2,b=1$, then $3=2c-5d+(c+2d)$ which yields \begin{align*}2c-5d&=3\\c+2d&=0\end{align*} but this system has no integer solutions. Thus, $a=3$, so $y$ is a unit and we are done. 
+
+If $1+\sqrt{-5}=xy$, then $N(x)=a^2+5b^2|6$, which forces $a^2=b^2=1$, and so $x$ is an associate of $1+\sqrt{-5}$, which forces $y$ to be a unit. The same argument shows $1-\sqrt{-5}$ is irreducible.
+
+Thus, $6=2\cdot3=(1+\sqrt{-5})\cdot(1-\sqrt{-5})$ are two distinct factorizations of 6 into irreducibles in $R$.
+  \item [(b)] Observe that $(2)$ is an ideal in both $R$ and $I_2$ and, by \textbf{The Third Isomorphism Theorem for Rings}, \[\frac{R/(2)}{I_2/(2)}=R/I_2\] By exercise 7, $R/(2)$ has 4 elements, and $I_2/(2)$ has 2 elements, and so $R/I_2$ has 2 elements. Thus $R/I_2\cong\mathbb{Z}/2\mathbb{Z}$ is a field, so $I_2$ maximal, and therefore prime.
+
+Similarly, $R/I_3$ is a field with 3 elements (as is $R/I_3'$), which shows that these ideals are prime.
+  \item [(c)] Since $6=2\cdot3=(1+\sqrt{-5})(1-\sqrt{-5})$, $(6)=(2)(3)=(1+\sqrt{-5})(1-\sqrt{-5})$.\qedhere
+ \end{description}
+
+\end{proof}
+
+\question{11}{(\textit{Characterization of P.I.D.s}) Prove that $R$ is a P.I.D. if and only if $R$ is a U.F.D. that is also a B\'ezout Domain.}
+
+We first prove the following lemma:
+
+\begin{Lem}[Ascending Chain Condition on Principal Ideals]
+ Let $R$ be a U.F.D. Then, given a chain \[(a_1)\subseteq(a_2)\subseteq\hdots\] there exists a $k$ so that $(a_k)=(a_{k+1})=\hdots$
+\end{Lem}
+
+\begin{proof}
+ Clearly, $a_{n+1}|a_n$. Since $R$ is a U.F.D., the factors of $a_{n+1}$ are associates of the factors of $a_n$ (counting multiplicity), and so the number of non-unit factors decreases as $n$ increases. In particular, since $a_1$ has finitely many factors, there is a $k$ so that all factors of $a_N$ for $N\geq k$ are associates, i.e. $(a_k)=(a_{k+1})=\hdots$. 
+\end{proof}
+
+We now show that $R$ is a P.I.D. if and only if it is a U.F.D. that is also a B\'ezout Domain.
+
+\begin{proof}\indent
+One direction is clear: if $R$ is a principal ideal domain, then $R$ is a unique factorization domain, and is clearly a B\'ezout Domain. Suppose now that $R$ is a U.F.D. that is also a B\'ezout Domain, and take $I$ an ideal in $R$.  Take $a_0\in I$, and consider the chain \[(a_0)\subseteq(a_0,a_1)\subseteq(a_0,a_1,a_2)\subseteq\hdots\] where $a_i$ are distinct elements of $I$. Since $R$ is B\'ezout, we have that $(a,a_1)=(b_1)$, $(a,a_2)=(b_2)$, and so on. Since $R$ is a U.F.D., it satisfies the ascending chain condition on principal ideals, i.e. $(b_k)=(b_{k+1})=\hdots$ for some $k$. Then, for any $x\in I$, $(b_k,x)=(b_k)$, and so $I\subseteq(b_k)$. Thus, $I$ is principal.
+\end{proof}
+
+\chapter{Polynomial Rings}
+\section{Definitions and Basic Properties}
+\question{6}{Prove that $(x,y)$ is not a principal ideal in $\mathbb{Q}[x,y]$.}
+
+\begin{proof}
+Suppose that $(x,y)=(d)$ is principal. Then $d|x$ and $d|y$, so $\text{deg}d\leq1$. If $d$ is degree 1, then it is of the form $(ax+by)$. This element only divides $x$ if $b=0$, but then does not divide $y$. Similarly, if $a=0$, it does not divide $x$, and so $d$ is not degree 1. Therefore, $d$ is degree 0, i.e $d\in\mathbb{Q}$. However, $(x,y)$ contains no elements of $\mathbb{Q}$! This is a contradiction. Thus, $(x,y)$ is not principal.
+\end{proof}
+
+\question{8}{Let $F$ be a field and let $R=F[x,x^2y,x^3y^2,\hdots,x^ny^{n-1},\hdots]$ be a subring of the polynomial ring $F[x,y]$.}
+\begin{description}
+ \item [(a)] Prove that the fields of fractions of $R$ and $F[x,y]$ are the same.
+ \item [(b)] Prove that $R$ contains an ideal which is not finitely generated.
+\end{description}
+
+\begin{proof}\indent
+\begin{description}
+ \item [(a)] Observe that $F[x,y]$ has fraction field $F(x,y)$. Let $Q$ be the fraction field of $R$. To see that $Q=F(x,y)$, notice that, since $x\in R$ and $x^2y\in R$, $x^2\frac{1}{x^2y}=\frac{1}{y}$ which places $\frac{1}{y}$ in $Q$. Further, $\frac{1}{x^2}x^2y=y$ places $y$ in $Q$, which yields $F[x,y,\frac{1}{x},\frac{1}{y}]\subseteq Q$. But $F[x,y,\frac{1}{x},\frac{1}{y}]=F(x,y)$, which forces $Q=F(x,y)$.
+ \item [(b)] Take the ideal $(x,x^2y,x^3y^2,\hdots)$. This ideal is not finitely generated.\qedhere
+\end{description}
+
+\end{proof}
+
+\question{9}{Prove that a polynomial ring in infinitely man variables with coefficients in any commutative ring contains ideals that are not finitely generated.}
+
+\begin{proof}
+ Suppose the set of variables $X$ is indexed by an infinite set $I$. Take $x\in X$, and write $A=X-\{x\}$. $A$ is not a finite set, and the ideal generated by $A$ cannot be generated by any proper subset of $A$, for the variables $x_i\in X$ satisfy no relations amongst each other. It follows that $(A)$ is an ideal which is not finitely generated (in particular, $A$ is the minimal generating set for $(A)$).
+\end{proof}
+
+
+\question{12}{Let $R=\mathbb{Q}[x,y,z]$ and let bars denote passage to $\mathbb{Q}[x,y,z]/(xy-z^2)$. Prove that $\overline{P}=(\overline{x},\overline{z})$ is a prime ideal. Show that $\overline{xy}\in\overline{P}^2$ but that no power of $\overline{y}$ lies in $\overline{P}^2$.}
+
+\begin{proof}
+
+\end{proof}
+
+\question{13}{Prove that the rings $F[x,y]/(y^2-x)$ and $F[x,y]/(y^2-x^2)$ are not isomorphic for any field $F$.}
+
+\begin{proof}
+We first show that $y^2-x$ is irreducible: suppose $y^2-x=pq$ for some $p,q\in F[x,y]$. Then $\text{deg}p+\text{deg}q=2$. Observe that $\text{deg}p$ is never 1, for if $\text{deg}p=1$, $p=ax+by$ and $q=cx+dy$, in which case $pq$ cannot equal $y^2-x$! Thus, $\text{deg}p$ is 0 or 2, so $y^2-x$ is irreducible.
+
+Now, since $y^2-x$ is irreducible, $F[x,y]/(y^2-x)$ is a field, but, since $y^2-x^2=(y-x)(y+x)$, $F[x,y]/(y^2-x^2)$ is not a field. Thus, the rings $F[x,y]/(y^2-x)$ and $F[x,y]/(y^2-x^2)$ are not isomorphic for any field $F$.
+\end{proof}
+
+\question{18}{Let $R$ be an arbitrary ring and let $\text{Func}(R)$ be the ring of all functions from $R$ to itself. If $p(x)\in R[x]$ is a polynomial, let $f_p\in\text{Func}(R)$ be the function on $R$ defined by $f_p(r)=p(r)$ (the usual way of viewing a polynomial $R[x]$ as defining a function on $R$ by ``evaluating at $r$'').}
+\begin{description}
+ \item [(a)] For fixed $a\in R$, prove that ``evaluation at $a$'' is a ring homomorphism from $\text{Func}(R)$ to $R$.
+ \item [(b)] Prove that the map $\phi:R[x]\to\text{Func}(R)$ defined by $\phi(p(x))=f_p$ is not a ring homomorphism in general. Deduce that polynomial identities need not give corresponding identities when the polynomials are viewed as functions.
+ \item [(c)] For fixed $a\in R$, prove that the composite ``evaluation at $a$'' of the maps in $(a)$ and $(b)$ mapping $R[x]$ to $R$ is a ring homomorphism if and only if $a$ is in the center of $R$.
+\end{description}
+
+\begin{proof}\indent
+ \begin{description}
+  \item [(a)] Let $\psi_a(f)=f(a)$ denote evaluation at $a$ for any function $f\in\text{Func}(R)$. Then, for any $f,g\in\text{Func}(R)$, \begin{align*}\psi_a(f+g)&=(f+g)(a)=f(a)+g(a)=\psi_a(f)+\psi_a(g)\\\psi_a(f\cdot g)&=(f\cdot g)(a)=f(a)\cdot g(a)=\psi_a(f)\cdot\psi_a(g)\end{align*}
+  \item [(b)] Take $R=\mathbb{H}$, the ring of real Hamilton Quaternions, and let $p(x)=x^2+1=(x+i)(x-i)$. Observe that $\phi(p(x))=p(j)=j^2+1=0$, while $\phi(x+i)\cdot\phi(x-i)=(j+i)(j-i)=2k$. 
+  \item [(c)] If $a$ is in the center of $R$, then the composite map is a homomorphism, for \begin{align*}\left(\alpha_nx^n+\alpha_{n-1}x^{n-1}+\hdots+\alpha_1x+\alpha_0\right)\left(\beta_mx^m+\beta_{m-1}x^{m-1}+\hdots+\beta_1x+\beta_0\right)\\=\sum_{k=0}^{m+n}\left(\sum_{i+j=k}\alpha_i\beta_k\right)x^k\\\mapsto\sum_{k=0}^{m+n}\left(\sum_{i+j=k}\alpha_i\beta_k\right)a^k\\=\left(\alpha_na^n+\alpha_{n-1}a^{n-1}+\hdots+\alpha_1a+\alpha_0\right)\left(\beta_ma^m+\beta_{m-1}a^{m-1}+\hdots+\beta_1x+\beta_0\right)\end{align*} 
+
+Now the converse: if $a$ is not in the center of $R$, there is a $b\in R$ so that $ab\not ba$, and \[(x+b)(x-b)=x^2-b^2\mapsto a^2-b^2\not=(a+b)(a-b)\] so the map is not a homomorphism.\qedhere
+ \end{description}
+
+\end{proof}
+
+
+\section{Polynomial Rings over Fields I}
+\question{11}{Suppose $f(x)$ and $g(x)$ are two nonzero polynomials in $\mathbb{Q}[x]$ with greatest common divisor $d(x)$.}
+\begin{description}
+ \item [(a)] Given $h(x)\in\mathbb{Q}[x]$, show that there are polynomials $a(x),b(x)\in\mathbb{Q}[x]$ satisfying the equation $a(x)f(x)+b(x)g(x)=h(x)$ if and only if $h(x)$ is divisible by $d(x)$.
+ \item [(b)] If $a_0(x),b_0(x)\in\mathbb{Q}[x]$ are particular solutions to the equation in \textbf{(a)}, show that the full set of solutions to this equation is given by\begin{align*}a(x)&=a_0(x)+m(x)\frac{g(x)}{d(x)}\\b(x)&=b_0(x)-m(x)\frac{f(x)}{d(x)}\end{align*} as $m(x)$ ranges over the polynomials in $\mathbb{Q}[x]$.  
+\end{description}
+
+\begin{proof}\indent
+\begin{description}
+ \item [(a)] By the division algorithm, there exist $q_0(x)$, $r_0(x)$ so that $f(x)=q_0(x)g(x)+r_0(x)$. We continue this process, writing \begin{align*}\tag{1}f(x)&=q_0(x)g(x)+r_0(x)\\\tag{2}g(x)&=q_1(x)r_0(x)+r_1(x)\\&\hskip.1in\vdots\\\tag{\textit{n}-1}r_{n-2}(x)&=q_n(x)r_{n-1}(x)+r_n(x)\\\tag{\textit{n}}r_{n-1}(x)&=q_{n+1}r_n\end{align*} and so $r_n(x)=d(x)$. By equation $(n)$, we can solve $d(x)=r_n(x)$ in terms of $r_{n-1}(x)$ and $r_{n-2}(x)$. By equation $(n-1)$, we can write $r_{n-1}(x)$ in terms of $r_{n-2}(x)$ and $r_{n-3}(x)$, and so we can express $d(x)$ in terms of $r_{n-2}(x)$ and $r_{n-3}(x)$. Continuing, we have $d(x)$ expressed in terms of $f(x)$ and $g(x)$.
+ \item [(b)] Since $a_0(x),b_0(x)$ is a solution, for any solution $a(x),b(x)$, we have that \begin{align*}f(x)\left(a(x)-a_0(x)\right)+g(x)\left(b(x)-b_0(y)\right)=h(x)-h(x)&=0\\\frac{f(x)}{d(x)}\left(a(x)-a_0(x)\right)+\frac{g(x)}{d(x)}\left(b(x)-b_0(x)\right)&=0\\\frac{f(x)}{d(x)}\left(a(x)x-a_0(x)\right)&=-\frac{g(x)}{d(x)}\left(b(x)-b_0(x)\right)\end{align*} Since $\left(\frac{f(x)}{d(x)},\frac{g(x)}{d(x)}\right)=1$, $\frac{f(x)}{d(x)}|b(x)-b_0(x)$, say $b(x)-b_0(x)=-m(x)\frac{f(x)}{d(x)}$. Then $b(x)=b_0(x)-m(x)\frac{f(x)}{d(x)}$. Substiting into the equation above, $a(x)=a_0(x)+m(x)\frac{g(x)}{d(x)}$.\qedhere
+\end{description}
+\end{proof}
+
+\section{Polynomial Rings that are Unique Factorization Domains}
+\question{1}{Let $R$ be an integral domain with quotient field $F$ and let $p(x)$ be a monic polynomial in $R[x]$. Assume that $p(x)=a(x)b(x)$ where $a(x)$ and $b(x)$ are monic polynomials in $F[x]$ of smaller degree than $p(x)$. Prove that if $a(x)\notin R[x]$ then $R$ is not a Unique Factorization Domain. Deduce that $\mathbb{Z}[2\sqrt{2}]$ is not a U.F.D.}
+
+\question{4}{Let $R=\mathbb{Z}+x\mathbb{Q}[x]\subset\mathbb{Q}[x]$ be the set of polynomials in $x$ with rational coefficients whose constant term is an integer.}
+\begin{description}
+ \item [(a)] Prove that $R$ is an integral domain and its units are $\pm1$.
+ \item [(b)] Show that the irreducibles in $R$ are $\pm p$ where $p$ is a prime in $\mathbb{Z}$ and the polynomials $f(x)$ that are irreducible in $\mathbb{Q}[x]$ and have constant term $\pm1$. Prove that these irreducibles are prime in $R$.
+ \item [(c)] Show that $x$ cannot be written as the product of irreducibles in $R$ (in particular, $x$ is not irreducible) and conclude that $R$ is not U.F.D.
+ \item [(d)] Show that $x$ is not a prime in $R$ and describe the quotient ring $R/(x)$. 
+\end{description}
+
+\begin{proof}\indent
+ \begin{description}
+  \item [(a)] We must merely show $R$ is a subring of $\mathbb{Q}[x]$. This is easily shown, for the product and sum of polynomials whose constant term is an integer is a polynomial whose constant term is an integer. To see that the units of $R$ are $\pm1$, simply note that $a(x)b(x)=1$ forces $a$ and $b$ to be constant, i.e. $a,b\in\mathbb{Z}$. The units of $\mathbb{Z}$ are 1 and $-1$.
+  \item [(b)] Clearly, $\pm p$ where $p$ is prime is irreducible in $R$. If $f(x)\in R$ is irreducible in $\mathbb{Q}[x]$ but $f(x)$ has a constant term not equal to $\pm1$, say $k$, then $\frac{f(x)}{k}\in R$ and $f(x)=k\frac{f(x)}{k}$ is not irreducible in $R$. Thus, if $f(x)$ is irreducible in $R$, $f(x)$ is irreducible in $\mathbb{Q}$, $f(x)$ has a constant term of $\pm1$.
+  \item [(c)] Clearly, no product of polynomials of the form $\pm p$ or $q(x)$ where $p\in\mathbb{Z}$ is prime and $q(x)$ is irreducible in $\mathbb{Q}$ with constant term $\pm1$ can equal $x$, for $\text{deg}q(x)\geq2$. Since $x$ cannot be written as the product of irreducibles, $R$ is not a U.F.D.
+  \item [(d)] $x$ is not irreducible, so it is not prime. The ring $R/(x)$ is just the ring $\mathbb{Z}$, for take any $q(x)=z+q_1x+q_2x^2+\hdots+q_nx^n$, then $\overline{q(x)}=z+q_1\overline{x}+q_1\overline{x}^2+\hdots+q_n\overline{x}^n=z$.\qedhere
+ \end{description}
+\end{proof}
+
+\question{5}{Let $R=\mathbb{Z}+x\mathbb{Q}[x]\subset\mathbb{Q}[x]$ be the ring considered in the previous exercise.}
+\begin{description}
+ \item [(a)] Suppose $f(x),g(x)\in\mathbb{Q}[x]$ are two nonzero polynomials with rational coefficients and that $x^r$ is the largest power of $x$ dividing both $f(x)$ and $g(x)$ in $\mathbb{Q}[x]$, (i.e. $r$ is the degree of the lowest order term appearing in either $f(x)$ or $g(x)$). Let $f_r$ and $g_r$ be the coefficients of $x^r$ in $f(x)$ and $g(x)$, respectively (one of which is nonzero by definition of $r$). Then $\mathbb{Z}f_r+\mathbb{Z}g_r$ for some nonzero $d_r\in\mathbb{Q}$. Prove that there is a polynomial $d(x)\in\mathbb{Q}[x]$ that is a g.c.d. of $f(x)$ and $g(x)$ in $\mathbb{Q}[x]$ and whose term of minimal degree is $d_rx^r$. 
+ \item [(b)] Prove that $f(x)=d(x)q_1(x)$ and $g(x)=d(x)q_2(x)$ where $q_1(x)$ and $q_2(x)$ are elements of the subring $R$ of $\mathbb{Q}[x]$.
+ \item [(c)] Prove that $d(x)=a(x)f(x)+b(x)g(x)$ for polynomials $a(x),b(x)\in R$. 
+ \item [(d)] Conclude from \textbf{(a)} and \textbf{(b)} that $Rf(x)+Rg(x)=Rd(x)$ in $\mathbb{Q}[x]$ and use this to prove that $R$ is a Bezout Domain.
+ \item [(e)] Show that \textbf{(d)}, the results of the previous exercise, and Exercise 11 of Section 8.3 imply that $R$ must contain ideals that are not principal (hence not finitely generated). Prove in fact taht $I=x\mathbb{Q}[x]$ is an ideal of $R$ that is not finitely generated.
+\end{description}
+
+\begin{proof}
+ \begin{description}
+  \item [(a)] 
+  \item [(b)]
+  \item [(c)]
+  \item [(d)]
+  \item [(e)]
+ \end{description}
+\end{proof}
+
+\end{document}

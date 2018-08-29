@@ -1,0 +1,115 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Complex Analysis\\\large Homework 1}
+\date{January 26, 2011}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\re}{\operatorname{Re}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\w}{\omega}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+
+\begin{enumerate}
+ \item If $S$ is a metric space with distance function $d(x,y)$, show that $S$ with the distance function $\delta(x,y)=d(x,y)/[1+d(x,y)]$ is also a metric space. The latter space is bounded in the sense that all distances lie under a fixed bound.
+  \begin{Proof}
+   We see that $\delta$ is a function which obviously satisfies the following properties:
+  \begin{itemize}
+   \item $\delta(x,y)=\delta(y,x)$
+   \item $\delta(x,y)=\delta(y,x)$
+   \item $\delta(x,y)=0$ if and only if $x=y$
+  \end{itemize}
+ We must merely show the triangle inequality. Let $a=d(x,z)$, $b=d(y,z)$ and $c=d(x,y)$. Observe that \[\delta(x,z)=a/[1+a],\hskip.15in \delta(y,z)=b/[1+b],\hskip.15in \text{and }\delta(x,y)=c/[a+c]\] By the triangle inequality, we have $c\leq a+b$, hence \[c\leq a+b+2ab+abc\] Adding $ac+bc+abc$ to both sides, we have \[c+ac+bc+abc\leq a+b+2ab+2abc+ac+bc+2abc\] Equivalently, we have \[(a(1+b)(1+c)+b(1+a)(1+c)\leq c(1+a)(1+b)\] Dividing through by $1+a$, $a+b$ and $1+c$ we have \[\frac{1}{1+a}+\frac{b}{1+b}\leq\frac{c}{1+c}\] hence \[\delta(x,y)\leq\delta(x,z)+\delta(z,y)\qedhere\] 
+  \end{Proof}
+ \item Classify each of the following sets as open, closed, or neither open nor closed.
+  \begin{enumerate}
+   \item $A=\{z\in\C:-\pi<\im z\leq\pi\}$
+   \item $B=\{z\in\C:1<|z|<2\}$
+   \item $C=\{z\in\C:|\re z|+|\im z|\leq1\}$
+   \item $D=\{z\in\C:0<\max\{x,y\}\leq1\}$
+   \item $E=\{z\in\C:y>x^2\}$
+   \item $F=\{z\in\C:\re z\text{ and }\im z\text{ are rational}\}$
+  \end{enumerate}
+\begin{Proof}\indent
+ \begin{enumerate}
+  \item This set is neither open nor closed. To see that it is non-open, observe that any open ball centered at $i\pi$ is not strictly contained in $A$. To see that it is not closed, we apply the same argument to show that its closure is not open: any open ball centered at $-i\pi$ is not strictly contained in $A^c$. 
+  \item This set is clearly open: for any point $z\in B$, take $\epsilon=\min(\frac
+  \item 
+ \end{enumerate}
+\end{Proof}
+ \item Determine the boundary, closure, and interior of each of the sets listed in the previous exercise.
+ \item Prove that the closure of a connected set is connected.
+  \begin{Proof}
+   We prove the contrapositive: suppose $A$ is a set whose closure is disconnected, say $\overline{A}=U\cup V$ with $U$, $V$ open.  However, $\overline{\overline{A}}=\overline{A}=\overline{U}\cup\overline{V}$, hence $U=\overline{U}$ and $V=\overline{V}$. In particular, $\overline{A}$ is the union of disjoint closed sets $U$ and $V$. We see that $A=(U\cap A)\cup(V\cap A)$ and that $U\cap A$ and $V\cap A$ are both nonempty and open. Thus, $A$ is disconnected.
+  \end{Proof}
+ \item Show that the union of two regions is a region if and only if they share a common point.
+  \begin{Proof}
+   In fact, if the union of two regions is a region, they must share a point, for otherwise their union could be written as the union of disjoint open sets, and would be disconnected. For the converse, suppose regions $U$ and $V$ share a common point. In order to reach a contradiction, suppose $U\cup V$ is disconnected, i.e., that $U\cup V=(A\cup B)$ with $A$, $B$ open and $A\cap B=\emptyset$. Since $A\cap B\not=\emptyset$, $U$ and $V$ cannot have elements in both $A$ and $B$. In particular, we can write $U\subseteq A$ and $V\subseteq B$. However, this contradicts $A\cap B=\emptyset$, hence $U\cup V$ must be connected. Since both $U$ and $V$ are regions, their union is both nonempty and open, hence $U\cup V$ is a region.
+  \end{Proof}
+ \item If $z=x+iy$ ($x$ and $y$) real, find the real and imaginary parts of \[z^4, \frac{1}{z}, \frac{z-1}{z+1}, \frac{1}{z^2}\]
+  \begin{Solution}\indent
+   \begin{itemize}
+    \item The binomial theorem, while noting $i^0=1$, $i^1=i$, $i^2=-1$, $i^3=-i$, and that $\{i^n:n\in\Z\}$ forms a cyclic group of order 4, yields: \[z^4=(x+iy)^4=x^4+y^4-6x^2y^2+i(4x^3y-4xy^3)\] hence the real part and imaginary part of $z^4$ are $x^4+y^4-6x^2y$ and $4x^3-3xy^3$, respectively.
+    \item We rewrite $\frac{1}{x+iy}$ as follows: \[\frac{1}{x+iy}=\frac{x-iy}{(x+iy)(x-iy)}=\frac{x-iy}{x^2-y^2}\] hence the real part and imaginary part of $\frac{1}{z}$ are \[\frac{x}{x^2-y^2}\text{ and }\frac{-y}{x^2-y^2}\] respectively.
+    \item Similarly, we have \begin{align*}\frac{z-1}{z+1}&=\frac{(z-1)(\overline{z}+1)}{(z+1)(\overline{z}+1)}\\&=\frac{z\overline{z}+(z-\overline{z})-1}{z\overline{z}+(z+\overline{z})+1}\\&=\frac{|z|+2i\im z-1}{|z|+2\re{z}+1}\end{align*} Hence the real part and imaginary part of $\frac{z-1}{z+1}$ are \[\frac{|z|-1}{|z|+2x+1}\text{ and }\frac{2y}{|z|+2x+1}\] respectively.
+    \item We begin by writing $z^2=(x+iy)^2=x^2-y^2+2ixy$. Then \[\frac{1}{z^2}=\frac{\overline{z}^2}{z^2\overline{z}^2}=\frac{\overline{z}^2}{|z|^2}\] Hence the real part and imaginary part of $\frac{1}{z^2}$ are \[\frac{x^2-y^2}{|z|^2}\text{ and }\frac{-2xy}{|z|^2}\] respectively.
+   \end{itemize}
+  \end{Solution}
+ \item Prove that \[\left|\frac{z-\w}{1-\overline{\w}z}\right|<1\tag{*}\] if $|\w|<1$ and $|z|<1$. For what $\w$ and $z$ is the left hand side of $(*)$ equal to 1?
+\end{enumerate}
+
+\end{document}

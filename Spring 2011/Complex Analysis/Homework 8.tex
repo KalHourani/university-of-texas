@@ -1,0 +1,93 @@
+\documentclass[12pt,leqno]{article}
+
+\usepackage{graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Complex Analysis\\\large Homework 8}
+\date{March 30, 2011}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\footskip=36pt
+
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\re}{\operatorname{Re}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\w}{\omega}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+\clearpage\mbox{}\clearpage
+
+\setcounter{page}{1}
+\begin{enumerate}
+ \item Assume $f\not\equiv0$ is analytic in an open set $\Omega\subset\C$. Prove that $f$ has analytic roots of all orders if and only if it has an analytic logarithm in $\Omega.$
+ \item Show that a single-valued analytic branch of $\sqrt{1-z^2}$ can be defined in any region such that the points $\pm1$ are in the same component of the complement. What are the possible values of \[\int_{\gamma}\frac{dz}{\sqrt{1-z^2}}\] over a closed curve $\gamma$ in the region?
+ \item Let $f(z)=g(z)/(z-a)^k$ with $g$ analytic at $a$ and $k$ a positive integer. Show that \[\Res(f,a)=\frac{g^{(k-1)}(a)}{(k-1)!}\]
+ 	\begin{Proof}
+ 	Since $g$ is analytic at $a$, there is a Taylor series \[g(z)=\sum_{m=0}^{\infty}\frac{g^{(m)}(a)}{m!}(z-a)^m\] hence for $f$ we have the Laurent Series \[f(z)=\sum_{m=0}^{\infty}\frac{g^{(m)}}{m!}(z-a)^{m-k}=\sum_{m=-k}^{\infty}\frac{g^{(k+m)}(a)}{(k+m)!}(z-a)^{m}\] The coefficient of the $\frac{1}{z-a}$ term is just \[\Res(f,a)=\frac{g^{(k-1)}(a)}{(k-1)!}\qedhere\]
+ 	\end{Proof}
+ \item Assume that $g,h$ are analytic at $a$, that $h$ has a zero of order $k\geq1$ at $a$, and that $g$ has a zero of order $k-1$ at $a$ (or no zero if $k=1$). Show that \[\Res(g/h,a)=k\frac{g^{(k-1)}(a)}{h^{(k)}(a)}\]
+ 	\begin{Proof}
+  Set $g(z)=(z-a)^{k-1}f_1(z)$ and $h(z)=(z-a)^kf_2(z)$ with $f_1,f_2$ analytic and non-zero at $a$. Then $\frac{g(z)}{h(z)}=\frac{f_1(z)/f_2(z)}{z-a}$, hence \[\Res(g/h,a)=\frac{f_1(a)}{f_2(a)}\] Now, $g^{(k-1)}(a)=(k-1)!f_1(a)$ and $h^{(k)}(a)=k!f_2(a)$, from which we see that \[\Res(g/h,a)=\frac{f_1(a)}{f_2(a)}=\frac{g^{(k-1)}(a)/(k-1)!}{h^{(k)}(a)/k!}=k\frac{g^{(k-1)}(a)}{h^{(k)}(a)}\qedhere\]
+ 	\end{Proof}
+ \item Evaluate the following integrals by the method of residues:
+
+  \begin{tabular}{cc}
+   (a) \hskip.1in$\displaystyle\int_0^{\pi/2}\frac{dx}{a+\sin^2x},\hskip.1in |a|>1$, & (c) \hskip.1in$\displaystyle\int_{-\infty}^{\infty}\frac{x^2-x+1}{x^4+10x^2+9}dx$\\
+   (d) \hskip.1in$\displaystyle\int_0^{\infty}\frac{x^2dx}{(x^2+a^2)^3},\hskip.1in a\in\R$, & (g) \hskip.1in$\displaystyle\int_0^{\infty}\frac{x^{1/3}}{1+x^2}dx,\hskip.1in|a|>1$
+  \end{tabular}
+  \begin{Solution}\indent
+  \begin{enumerate}
+  \item [(a)]
+  \item [(c)] Let $\gamma_r=l_r+C_r$, where $l_r$ denotes the line $[-r,r]$ and $C_r$ denotes the corresponding semi-circle $C_r(t)=re^{it}$, $t\in[0,\pi]$. Then, for all $r>3$, by the residue theorem \[\int_{\gamma_r}\frac{x^2-x+2}{x^4+10x^2+9}dx=2\pi i\left(\frac{1+i}{16}+\frac{-3+7i}{48}\right)=\frac{-5}{12}\pi\] We then clearly have \begin{align*}\frac{-5}{12}\pi&=\int_{l_r}\frac{x^2-x+2}{x^4+10x^2+9}dx+\int_{C_r}\frac{x^2-x+2}{x^4+10x^2+9}dx\\&=\int_{-r}^r\frac{x^2-x+2}{x^4+10x^2+9}dx+\int_0^{\pi}\frac{r^2e^{2it}-re^{it}+2}{r^4e^{4it}+10r^2e^{2it}+9}rie^{it}dt\end{align*} As $r$ approaches infinity, the integral on $C_r$ clearly goes to 0, hence \[\int_{-\infty}^{\infty}\frac{x^2-x+2}{x^4+10x^2+9}dx=\frac{-5}{12}\pi\]
+  \item [(d)] Observe that the function 
+  \end{enumerate}
+  \end{Solution}
+ \item Using the residue theorem and an appropriate contour, evaluate \[\int_0^{\infty}\frac{\cos(\alpha x)-\cos(\beta x)}{x^2}dx\] for $\alpha,\beta\geq0$.
+ \begin{Solution}
+  
+  \end{Solution}
+\end{enumerate}
+\end{document}

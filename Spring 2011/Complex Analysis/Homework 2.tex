@@ -1,0 +1,96 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Complex Analysis\\\large Homework 2}
+\date{February 2, 2011}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\re}{\operatorname{Re}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\w}{\omega}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+
+\begin{enumerate}
+ \item 
+ \item 
+ \item Which of the following functions are uniformly continuous on the whole real line: $\sin x$, $x\sin x$, $x\sin(x^2)$, $|x|^{1/2}\sin x$?
+  \begin{Solution}\indent
+   \begin{itemize}
+    \item For every $\epsilon>0$, take $\delta=\epsilon$. By the Mean Value Theorem, we have \[|\sin x-\sin y|=|\cos c||x-y|\] for some $c\in\R$. Thus, if $|x-y|<\delta$, then \[|\sin x-\sin y|\leq|x-y|<\delta=\epsilon\] Thus, $\sin x$ is uniformly continuous.  
+    \item Take $\epsilon=1$. For any $\delta>0$, write $x=2k\pi+\frac{1}{3}\delta$ and $y=2k\pi-\frac{1}{3}\delta$. Then $|x-y|=\frac{2}{3}\delta<\delta$, but $|f(x)-f(y)|=4k\pi\sin\delta>1$ for sufficiently large $k$. Thus, $x\sin x$ is not uniformly continuous.
+    \item In similar fashion to the proof that $x\sin x$ is not uniformly continuous, $x\sin(x^2)$ is not uniformly continuous.
+    \item We see that $|x|^{1/2}\sin x$ is continuous, and that $\lim_{x\to\infty}|x|^{1/2}\sin x=0$, so $|x|^{1/2}\sin x$ is uniformly continuous.\qedhere
+   \end{itemize}
+  \end{Solution}
+ \item Discuss completely the (pointwise) convergence and uniform convergence of the sequence $\{f_n\}$, where $f_n(z)=nz^n$. 
+  \begin{Solution}
+   We see that, for $|z|\geq1$, the sequence $nz^n$ does not convergence, hence $\{f_n\}$ does not converge at all outside of the circle $|z|<1$. However, for $|z|<1$, $\{f_n\}$ converges pointwise, for $|nz^n|=n|z|^n\to0$. In fact, $f_n\to0$ uniformly when restricted to $\{z:|z|<1\}$. 
+  \end{Solution}
+ \item Let $f(z)=(3/2)x^2-xy+ixy^2$. Locate all points $z$ at which $f$ is (complex) differentiable, and determine $f'(z)$ for each such point.
+  \begin{Solution}
+   By the Cauchy-Riemann equations, $f$ is differentiable when \begin{align*}3x-y&=2xy\\-x&=-y^2\end{align*} which forces $2y^3-3y^2+y=0$. Thus, $y=0,1,\frac{1}{2}$, hence $x=0,1,\frac{1}{4}$, respectively. That is, $f$ is differentiable at \begin{align*}z&=0\\z&=1+i\\z&=\frac{1}{4}+\frac{1}{2}i\end{align*} with derivative $f'(z)=3x-y+iy^2$. Thus, \begin{align*}f'(0)&=0\\f'(1+i)&=2+i\\f'\left(\frac{1}{4}+\frac{1}{2}i\right)&=\frac{1}{4}+\frac{1}{4}i\qedhere\end{align*} 
+  \end{Solution}
+ \item A function $f$ is analytic in an open set $U$. Define $g(z)=\overline{f(\overline{z})}$. Show that $g$ is analytic in the open set $U^*=\{z:\overline{z}\in U\}$ and that $g'(z)=\overline{f'(\overline{z})}$ for $z\in U$.
+  \begin{Proof}
+   Write $f(z)=u(x,y)+iv(x,y)$. By the Cauchy-Riemann equations, we have \begin{align*}u_x&=v_y\\u_y&=-v_x\end{align*} for all $z=x+iy\in U$. By definition, $g(z)=u(x,-y)-iv(x,-y)$. Let $\phi(x,y)=u(x,-y)$ and $\psi(x,y)=-v(x,-y)$. Again, by the Cauchy-Riemann equations, $g$ is analytic whenever \begin{align*}\phi_x&=\psi_y\\\phi_y&=-\psi_x\end{align*} hence whenever \begin{align*}u_x(x,-y)&=v_y(x,-y)\\-u_y(x,-y)&=v_x(x,-y)\end{align*} which is clearly satisfied whenever $\overline{z}\in U$. Thus, $g$ is analytic on $U^*$, and has derivative \[g'(z)=\phi_x(x,y)+i\psi_x(x,y)=u_x(x,-y)-iv_x(x,-y)=\overline{f'(\overline{z})}\qedhere\]
+  \end{Proof}
+ \item 
+ \item 
+\end{enumerate}
+
+
+\end{document}

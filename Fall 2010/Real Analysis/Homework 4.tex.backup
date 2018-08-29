@@ -1,0 +1,80 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Real Analysis\\\large Homework 4}
+\date{September 23, 2010}
+\author{Khalid Hourani}
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{fancy}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{(\arabic{enumi})}}
+\renewcommand{\labelenumii}{\textbf{\roman{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+\begin{titlepage}
+ \maketitle 
+\end{titlepage}
+
+\begin{enumerate}
+ \item Let $f\in L^1(\R^n)$ and $r>0$, define $F_r(\mathbf{x})$ by \[F_r(\mathbf{x})=\frac{1}{|B_r(\mathbf{x})|}\int_{B_r(\mathbf{x})}f(\mathbf{y})d\mathbf{y}\] show that for each $r$, $F_r$ is a uniformly continuous function in all of $\R^n$ and show that $\displaystyle\lim_{\|\mathbf{x}\|\to\infty}F_r(\mathbf{x})=0$. Show also that in case $f$ is continuous then for each compact set $K$ we have $F_r(\mathbf{x})\to f(\mathbf{x})$ as $r\to0$ uniformly for $x\in K$.
+\begin{Proof}
+ We begin by showing that, for every $\epsilon>0$, there is an $\omega>0$ such that if $|E|<\omega$ then $|\int_Ef(\mathbf{x})d\mathbf{x}|<\epsilon$:
+
+Take $g\in L^{\infty}(\R^n)$ such that $\|g-f\|_{L^1}<\epsilon/2$ and take $\omega=\frac{\epsilon}{2\|g\|_{L^{\infty}}}$. Then, if $|E|<\omega$, \begin{align*}\left|\int_Ef(\mathbf{x})d\mathbf{x}\right|&\leq\left|\int_Ef(\mathbf{x})-g(\mathbf{x})d\mathbf{x}\right|+\|g\|_{L^{\infty}}\cdot|E|\\&\leq\|f-g\|_{L^1}+\|g\|_{L^{\infty}}\cdot|E|\\&<\epsilon/2+\epsilon/2\\&=\epsilon\end{align*} Now, to see that $F_r$ is uniformly continuous, let \[S_{(\mathbf{x},\mathbf{y})}=B_r(\mathbf{x})\cup B_r(\mathbf{y})-B_r(\mathbf{x})\cap B_r(\mathbf{y})\] and observe that \begin{align*}\left|F_r(\mathbf{x})-F_r(\mathbf{y})\right|&=\left|\frac{1}{|B_r(\mathbf{x})|}\int_{B_r(\mathbf{x})}f(\mathbf{z})d\mathbf{z}-\frac{1}{|B_r(\mathbf{y})|}\int_{B_r(\mathbf{y})}f(\mathbf{z})d\mathbf{z}\right|\\&=\frac{1}{|B_r(\mathbf{x})|}\left|\int_{B_r(\mathbf{x})}f(\mathbf{z})d\mathbf{z}-\int_{B_r(\mathbf{y})}f(\mathbf{z})d\mathbf{z}\right|\\&=\frac{1}{|B_r(\mathbf{x})|}\left|\int_{S_{(x,y)}}f(\mathbf{z})d\mathbf{z}\right|\end{align*} However, as shown above, for every $\epsilon>0$ there is a $\omega>0$ such that, if $|S_{(x,y)}|<\omega$, \[\left|\int_{S_{(x,y)}}f(\mathbf{z})d\mathbf{z}\right|<|B_r(\mathbf{x})|\epsilon\] However, there is certainly a $\delta>0$ such that, if $\|\mathbf{x}-\mathbf{y}\|<\delta$, then $|S_{(x,y)}|<\omega$. Therefore \begin{align*}\left|F_r(\mathbf{x})-F_r(\mathbf{y})\right|&\leq\frac{1}{|B_r(\mathbf{x})|}\left|\int_{S_{(x,y)}}f(\mathbf{z})d\mathbf{z}\right|\\&\leq\frac{1}{|B_r(\mathbf{x})|}|B_r(\mathbf{x})|\epsilon\\&=\epsilon\end{align*} so $F_r$ is uniformly continuous. 
+
+We now wish to show that $\displaystyle\lim_{\|\mathbf{x}\|\to0}F_r(\mathbf{x})=0$. To see this, notice that, for every $\epsilon>0$ there is a $\delta>0$ such that \[\left|\int_{\R^n-B_{\delta}(\mathbf{0})}f(\mathbf{y})d\mathbf{y}\right|=\left|\int_{\R^n}f(\mathbf{y})d\mathbf{y}-\int_{B_{\delta}(\mathbf{0})}f(\mathbf{y})d\mathbf{y}\right|<|B_r(\mathbf{x})|\epsilon\] Then, for $\mathbf{x}$ such that $\|\mathbf{x}\|$ is sufficiently large, $B_r(\mathbf{x})\subseteq\R^n-B_{\delta}(\mathbf{0})$. Thus \begin{align*}\left|F_r(\mathbf{x})\right|&=\frac{1}{|B_r(\mathbf{x})|}\left|\int_{B_r(\mathbf{x})}f(\mathbf{y})d\mathbf{y}\right|\\&\leq\frac{1}{|B_r(\mathbf{x})|}\left|\int_{\R^n-B_{\delta}(\mathbf{0})}f(\mathbf{y})d\mathbf{y}\right|\\&<\epsilon\end{align*} so \[F_r(\mathbf{x})\to0\] as \[\|x\|\to\infty\] 
+
+Now note that, if $f$ is continuous, then $F_r(\mathbf{x})=\int_{B_r(\mathbf{x})}f(\mathbf{y})d\mathbf{y}$ is just the Riemann integral of $f$ on $B_r(\mathbf{x})$. However, by the Mean Value Theorem for Integrals, there is a $\mathbf{c}\in B_r(\mathbf{x})$ such that $F_r(\mathbf{x})=f(\mathbf{c})$. Thus, \begin{align*}\lim_{r\to0}F_r(\mathbf{x})&=\lim_{r\to0}f(\mathbf{c})\\&=f\left(\lim_{r\to0}\mathbf{c}\right)\\&=f(\mathbf{x})\qedhere\end{align*}
+\end{Proof}
+\item Show that if $\{f_k\}$, $f\in L^1(\R^n)$ are such that $f_k\to f$ in $L^1$ then for \textit{any} $\epsilon>0$ there exists a $\delta>0$ such that \[|E|<\delta\Rightarrow\left|\int_Ef_kdx\right|<\epsilon\hskip.05in\forall k\in\N\] Let us refer to this property as ``uniform integrability.'' Show conversely that if $\{f_k\}$, $f$ are in $L^1(B_1)$, $f_k\to f$ pointwise a.e. in $B_1$ and $\{f_k\}$ are uniformly integrable then $f_k\to f$ in the $L^1(B_1)$ sense.
+\begin{Proof}
+ Since $f_k\to f$ in $L^1$, there is an $N\in\N$ such that, for all $k\geq N$, \[\int_{\R^n}|f_k(\mathbf{x})-f(\mathbf{x})|dx<\frac{\epsilon}{2}\] As shown in \textbf{(1)}, there is a $\delta>0$ such that, if $|E|<\delta$, then \[\int_Ef(\mathbf{x})d\mathbf{x}<\frac{\epsilon}{2}\] Moreover, \[\left|\int_Ef_k(\mathbf{x})-f(\mathbf{x})d\mathbf{x}\right|\leq\int_E|f_k(\mathbf{x})-f(\mathbf{x})|d\mathbf{x}\leq\int_{\R^n}|f_k(\mathbf{x})-f(\mathbf{x})|d\mathbf{x}<\frac{\epsilon}{2}\] Therefore \begin{align*}\left|\int_Ef_k(\mathbf{x})d\mathbf{x}\right|&\leq\left|\int_Ef(\mathbf{x})d\mathbf{x}\right|+\left|\int_Ef_k(\mathbf{x})-f(\mathbf{x})d\mathbf{x}\right|\\&<\frac{\epsilon}{2}+\frac{\epsilon}{2}\\&=\epsilon\end{align*}
+\end{Proof}
+
+\item 
+\end{enumerate}
+\end{document}

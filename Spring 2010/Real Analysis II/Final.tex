@@ -1,0 +1,123 @@
+
+\documentclass[12pt,leqno]{article}
+
+\usepackage{graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\numberwithin{equation}{section}
+\pagestyle{headings}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in} \noindent\fbox{#1} #2 \vspace{.10in}}
+
+\swapnumbers
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\theoremstyle{definition}
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+
+
+\makeindex
+
+\begin{document}
+
+
+\thispagestyle{plain}
+\begin{flushright}Khalid Hourani\\
+May 15, 2010\\
+Real Analysis II\\
+Beckner
+\end{flushright}
+{\center\section*{{\huge Final Exam}}}
+
+\begin{enumerate}
+ \item Define \[G_f(w)=\int_{-\infty}^{\infty}e^{iwx^2}f(x)dx\] for any $f\in L^1(\mathbb{R})$. Show that $G_f$ is bounded, uniformly continuous, and \[\displaystyle\lim_{|w|\to\infty}G_f(w)=0\] that is, $G_f(w)\in C_0(\mathbb{R})$.
+
+\begin{proof}
+ To see that $G_f(w)$ is bounded, observe that \begin{align*}|G_f(w)|&=\left|\int_{-\infty}^{\infty}e^{iwx^2}f(x)dx\right|\\&\leq\int_{-\infty}^{\infty}\left|e^{iwx^2}f(x)\right|dx\\&=\int_{-\infty}^{\infty}|f(x)|dx\end{align*} which is finite since $f\in L^1(\mathbb{R})$. In order to establish uniform continuity, notice that \begin{align*}\left|G_f(w)-G_f(z)\right|&=\left|\int_{-\infty}^{\infty}\left(e^{i(w)x^2}-e^{izx^2}\right)f(x)dx\right|\\&=\left|\int_{-\infty}^{\infty}e^{iwx^2}\left(e^{i(z-w)x^2}-1\right)f(x)d(x)\right|\\&\leq\int_{-\infty}^{\infty}\left|e^{i(z-w)x^2}-1\right||f(x)|d(x)\\&\leq2\int_{-\infty}^{\infty}|f(x)|dx\end{align*} By \textbf{The Dominated Convergence Theorem}, $G_f(w)$ is uniformly continuous. 
+
+Finally, we show that $G_f$ vanishes at infinity. Write \[G_f(w)=\int_{-\infty}^{\infty}\left[f(x)-f(x-w')\right]e^{iwx^2}dx\] where $w'=\frac{1}{2}\frac{2}{|w|^2}$. Recall that, for any $f\in L^1(\mathbb{R})$, \[|f_n-f|_{L^1}\to0\text{ as }n\to0\] where $f_n(x)=f(x-n)$. Then, as $|w|\to\infty$, $w'\to0$, hence \[G_f(w)\to0\text{ as }|w|\to\infty\qedhere\]
+\end{proof}
+
+\item Explicitly construct a Cantor-like subset of $[0,1]$ with positive measure $\lambda$, where $\lambda$ is a given number between 0 and 1.
+
+\begin{proof}[Solution]
+ In order to construct the Cantor set, we remove the middle interval of $C_0=[0,1]$ of length $\frac{1}{3}$, and so we have $C_1=[0,\frac{1}{3}]\cup[\frac{2}{3},1]$. From what remains, we remove the middle intervals of length $\frac{1}{9}$, and we have $C_2=[0,\frac{1}{9}]\cup[\frac{2}{9},\frac{1}{3}]\cup[\frac{2}{3},\frac{7}{9}]\cup[\frac{8}{9},1]$. Repeating this process, we define \[\mathfrak{C}=\bigcap_{k=0}^{\infty}C_k\] The total length of the intervals \textit{removed} for $C_k$ is given by $\frac{1}{3}\left(\frac{2}{3}\right)^k$, and so \[\mu(\mathfrak{C})=1-\frac{1}{3}\sum_{k=0}^{\infty}\left(\frac{2}{3}\right)^k=0\] We generalize this construction to form a Cantor-like set of measure $\lambda$ for $\lambda\in(0,1)$ as follows:
+
+Let $u=1-\lambda$. Remove the middle interval of $C_0=[0,1]$ of length $\frac{u}{3}$, call the remaining set $C_1$. Remove the middle intervals of $C_1$ of length $\frac{u}{9}$, call the remaining set $C_2$, and so on. Observe that the total length of the intervals removed for $C_k$ is given by $\frac{u}{3}\left(\frac{1}{3}\right)^k$. Letting \[\mathfrak{C}_{\lambda}=\bigcap_{k=0}^{\infty}C_k\] we see that \begin{align*}\mu(\mathfrak{C}_{\lambda})&=1-\frac{u}{3}\sum_{k=0}^{\infty}\left(\frac{2}{3}\right)^k\\&=1-\frac{u}{3}\left(\frac{1}{1-\frac{2}{3}}\right)\\&=1-u\\&=\lambda\qedhere\end{align*}
+\end{proof}
+
+\item Let $\{f_n\}$ be a sequence of functions on $[0,1]$ with \[m\left\{x:|f_n(x)|>\lambda\right\}\leq\frac{b_n}{\lambda}\] for all $\lambda$. Show there exists a sequence $\{c_n\}$ of positive real numbers such that $\frac{f_n(x)}{c_n}\to0$ almost everywhere. (Hint: apply Borel-Cantelli Lemma)
+
+\begin{proof}
+ Let $c_n=2^nnb_n$. Then \[\mu\left\{x:\left|\frac{f_n(x)}{c_n}\right|>\frac{1}{n}\right\}=\mu\left\{x:|f_n(x)|>\frac{c_n}{n}\right\}\leq\frac{b^n}{c_n/n}=\frac{b_n}{2^nb_n}=2^{-n}\] for all $n$. Thus, we have \[\sum_{n=1}^{\infty}m\left\{x:\left|\frac{f_n(x)}{c_n}\right|>\frac{1}{n}\right\}\leq\sum_{n=1}^{\infty}2^{-n}=1\] and so, by \textbf{The Borel-Cantelli Lemma}, \[\mu\left(\limsup_{n\to\infty}\left\{x:\left|\frac{f_n(x)}{c_n}\right|>\frac{1}{n}\right\}\right)=0\] then, for all $x$ (except possibly on a set of measure zero), there is an $m$ so that \[\left|\frac{f_n(x)}{c_n}\right|\leq\frac{1}{n}\] for all $n\geq m$. In other words, \[\frac{f_n(x)}{c_n}\to0\hskip.25in\text{almost everywhere}\qedhere\]
+\end{proof}
+
+\item Let $f$ be a nonnegative integrable function on $[0,\infty)$. Show that \[g(x)=\int_x^{\infty}\frac{1}{t}f(t)dt\] is integrable, but that $f$ can be chosen so that \[\int_1^{\infty}\int_1^{\infty}f(xt)dxdt=\infty\]
+
+\begin{proof}
+ We evaluate the integral \[\int_0^{\infty}g(x)dx=\int_0^{\infty}\int_x^{\infty}\frac{1}{t}f(t)dt\] by use of Fubini's Theorem. In particular, we have \[\int_0^{\infty}\int_x^{\infty}\frac{1}{t}f(t)dtdx=\int_0^{\infty}\int_0^t\frac{1}{t}f(t)dxdt=\int_0^{\infty}f(t)dt\]and so $g$ is integrable. Letting $f(x)=\left(x\ln\left(x+1\right)\right)^{-n}$, for $n>1$, we notice that $f$ is integrable on $[1,\infty)$, but \[\int_1^{\infty}\int_1^{\infty}f(xt)dxdt=\infty\qedhere\]
+\end{proof}
+
+\item Suppose $f$ is integrable on $\mathbb{R}^n$. For each $\alpha>0$, let \[E_{\alpha}=\{\mathbf{x}:\|f(\mathbf{x})\|>\alpha\}\] Prove that \[\int_{\mathbb{R}^n}\|f(\mathbf{x})\|d\mathbf{x}=\int_0^{\infty}m(E_{\alpha})d\alpha\]
+
+\begin{proof}
+ We first show this result for characteristic functions:
+
+Let $E_{\alpha}=\{x:\|\chi_S(x)\|>\alpha\}$. If $\alpha\leq1$, then $E_{\alpha}=S$. Otherwise, $E_{\alpha}=\emptyset$. It follows that \[\int_0^{\infty}\mu(E_{\alpha})d\alpha=\int_0^1\mu(E_{\alpha})d\alpha=\int_0^1\mu(S)d\alpha=\mu(S)=\int_{\mathbb{R}^n}\|\chi_S(\mathbf{x})\|d\mathbf{x}\] By linearity, this result follows for simple functions: Take $f$ to be a simple function, say \[f(\mathbf{x})=\sum_{k=1}^{\infty}a_k\chi_{S_k}(\mathbf{x})\] with $S_1,S_2,\hdots$ subsets of $\mathbb{R}^n$ which are pair-wise disjoint (except possibly on a set of measure zero), and write $E_{\chi,\alpha}=\{\mathbf{x}:\|\chi(\mathbf{x})\|>\alpha\}$. Then \begin{align*}\int_{\mathbb{R}^n}\|f(\mathbf{x})\|&=\int_{\mathbb{R}^n}\left\|\sum_{k=1}^{\infty}\alpha_k\chi_{S_k}(\mathbf{x})\right\|\\&=\int_{\mathbb{R}^n}\sum_{k=1}^{\infty}\alpha_k\|\chi_{S_k}(\mathbf{x})\|\\&=\sum_{k=1}^{\infty}\int_{\mathbb{R}^n}\alpha_k\|\chi(S_k)\|\\&=\sum_{k=1}^{\infty}a_k\int_{\mathbb{R}^n}\|\chi_{S_k}(\mathbf{x})\|\\&=\sum_{k=1}^{\infty}a_k\int_0^{\infty}\mu(E_{\chi_k,\alpha})d\alpha\\&=\int_0^{\infty}\sum_{k=1}^{\infty}a_k\mu(E_{\chi_k,\alpha})d\alpha\\&=\int_0^{\infty}\mu(E_{\alpha})d\alpha\end{align*} Finally, for any $f\in L^1(\mathbb{R})$, take $f_k$ to be a sequence of simple functions with $\|f_k\|\leq\|f\|$. By \textbf{The Dominated Convergence Theorem}, \[\lim_{k\to\infty}\int_0^{\infty}\mu(E_{f_k,\alpha})d\alpha=\int_0^{\infty}\mu(E,\alpha)d\alpha\]and\[\lim_{k\to\infty}\int_{\mathbb{R}^n}\|f_k(\mathbf{x})\|d\mathbf{x}=\int_{\mathbb{R}^n}\|f(\mathbf{x})\|d\mathbf{x}\] Noting that \[\int_0^{\infty}\mu(E_{f_k,\alpha})d\alpha=\int_{\mathbb{R}^n}\|f_k(\mathbf{x})\|d\mathbf{x}\] we have \[\int_{\mathbb{R}^n}\|f(\mathbf{x})\|d\mathbf{x}=\int_0^{\infty}\mu(E_{\alpha})d\alpha\qedhere\]
+\end{proof}
+
+\item Suppose that $E$ is a measurable subset of $[0,2\pi]$. Show that \[\int_E\cos^2(nx+u_n)dx\to\frac{1}{2}m(E)\text{ as }n\to\infty\] where $\{u_n\}$ is any sequence of real numbers. (Hint: apply the Riemann-Lebesgue Lemma)
+
+\begin{proof}
+ Recall that \[\cos^2(\theta)=\frac{1+\cos2\theta}{2}\] and so \begin{align*}\int_E\cos^2(nx+u_n)dx&=\frac{1}{2}\int_E1dx+\frac{1}{2}\int_E\cos2\left(nx+u_n\right)dx\\&=\frac{1}{2}\mu(E)+\frac{1}{2}\cos2u_n\int_E\cos2nxdx-\frac{1}{2}\sin2u_n\int_E\sin2nxdx\end{align*} By the \textbf{Riemann-Lebesgue Lemma}, \begin{align*}\int_E\cos2nxdx&=\int_{-\infty}^{\infty}\chi_E(x)\cos2nxdx\to0\text{ as }n\to\infty\\\int_E\sin2nxdx&=\int_{-\infty}^{\infty}\chi_E(x)\sin2nxdx\to0\text{ as }n\to\infty\end{align*} hence \[\int_E\cos^2(nx+u_n)dx\to\frac{1}{2}m(E)\text{ as }n\to\infty\qedhere\]
+\end{proof}
+
+
+\item Let $f$ be an integrable function on $\mathbb{R}^n$ with $\int_{\mathbb{R}^n}\|f(x)\|dx=1$. Show there exists a positive constant $c$ so that \[(Mf)(x)\geq\frac{c}{\|x\|^n}\text{ for }\|x\|\geq1\] where $Mf$ is the Hardy-Littlewood maximal function.
+
+\begin{proof}
+Let $B_r$ denote the ball of radius $r$ centered at $\mathbf{0}$. Since $\int_{\mathbb{R}^n}\|f(x)\|dx=1$, there is an $r_0$ so that $\int_{B_{r_0}}\|f(x)\|dx>0$. Further, since $Mf(\mathbf{x})$ is a supremum, we have \[Mf(\mathbf{x})\geq\frac{1}{\mu(B_{r_0}(\mathbf{x}))}\int_{B_{r_0}(\mathbf{x})}\|f(\mathbf{t})\|d\mathbf{t}\] and clearly \[\frac{1}{\mu(B_{r_0}(\mathbf{x}))}\int_{B_{r_0}(\mathbf{x})}\|f(\mathbf{t})\|d\mathbf{t}\geq\frac{1}{\mu(B_\mathbf{x})}\int_{B_{r_0}}\|f(\mathbf{t})\|d\mathbf{t}\] Since $\mathbf{x}\in\mathbb{R}^n$, we have $\mu(B_\mathbf{x})=d\|\mathbf{x}\|^n$ for some $d\in\mathbb{R}$. Writing $c=\frac{1}{d}\int_{B_{r_0}}\|f(\mathbf{t})\|d\mathbf{t}$, we have \[Mf(\mathbf{x})\geq\frac{c}{\|\mathbf{x}\|^n}\qedhere\]
+\end{proof}
+
+\item Let $f$ be a square-integrable function on $[0,\infty)$, that is $f\in L^2(0,\infty)$. Define the linear operator $T$ on  $L^2(0,\infty)$ by \[(Tf)(x)=\frac{1}{\pi}\int_0^{\infty}\frac{1}{x+y}f(y)dy\] Show that
+\begin{enumerate}
+ \item For $x>0$, \[|(Tf)(x)|\leq\frac{1}{\pi}\frac{1}{\sqrt{x}}\|f\|_{L^2(0,\infty)}\]
+ \item $T$ is a bounded linear operator on $L^2(0,\infty)$. In particular, $\|T\|\leq1$
+\end{enumerate}
+
+\begin{proof}\indent
+ \begin{enumerate}
+  \item [(a)] Simply apply Holder's Inequality: \begin{align*}|(Tf)(x)|&=\left|\frac{1}{\pi}\int_0^{\infty}\frac{1}{x+y}f(y)dy\right|\\&\leq\frac{1}{\pi}\left(\int_0^{\infty}\left|\frac{1}{x+y}\right|^2dy\right)^{1/2}\cdot\left(\int_0^{\infty}|f(y)|^2dy\right)^{1/2}\\&=\frac{1}{\pi}\frac{1}{\sqrt{x}}\|f\|_{L^2(0,\infty)}\end{align*}
+  \item [(b)] For the remainder of this exercise, let $\|f\|$ denote the $L^2$ norm on $(0,\infty)$, i.e. \[\|f\|=\|f\|_{L^2(0,\infty)}\] To see that $\|T\|\leq1$, we show that $\|Tf\|^2\leq\|f\|^2$: \begin{align*}\|Tf\|^2&=\frac{1}{\pi}\int_0^{\infty}\left(\int_0^{\infty}\frac{1}{x+y}f(y)dy\right)^2dx\qedhere\end{align*}
+ \end{enumerate}
+\end{proof}
+
+\end{enumerate}
+
+
+\end{document}

@@ -1,0 +1,177 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Algebra\\\large Homework 6}
+\date{October 12, 2010}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+\section*{Section 5.4}
+\begin{enumerate}
+ \item [7.] Prove that if $p$ is prime and $P$ is a non-abelian group of order $p^3$ then $P'=Z(P)$. 
+
+\begin{Proof}
+ Since $P$ is a $p$-group, it has a nontrivial center, thus $P/Z(P)$ has order $p$ or $p^2$. If $|P/Z(P)|=p$, then $P$ is abelian, hence $|P/Z(P)|=p^2$. Thus, $P/Z(P)$ is abelian, and $|Z(P)|=p$. However, since $P/Z(P)$ is abelian, $P'\leq Z(P)$. Moreover, since $P$ is non-abelian, $P'$ is nontrivial, hence its order divides $p^3$. This forces $P'=Z(P)$.
+\end{Proof}
+
+ \item [9.] Prove that if $p$ is an odd prime and $P$ is a group of order $p^3$ then the $p^{\text{th}}$ power map $x\mapsto x^p$ is a homomorphism of $P$ into $Z(P)$. If $P$ is not cyclic, show that the kernel of the $p^{\text{th}}$ power map has order $p^2$ or $p^3$. Is the squaring map a homomorphism in non-abelian groups of order 8? Where is the oddness of $p$ needed in the above proof?
+
+\begin{Proof}
+First, note that $|Z(P)|$ is not $p^2$, for otherwise $P/Z(P)$ has order $p$, hence is cyclic. However, this implies that $P$ is abelian, so $Z(P)=P$ which contradicts $|Z(P)|=p^2$. Thus, $|Z(P)|=p$ or $p^3$.
+
+Since $P$ is a $p$-group, it has a nontrivial center, hence $P/Z(P)$ has order $p$ or $p^2$, and so is abelian. However, this forces $P'\leq Z(P)$, and so, for any $x,y\in P$, $x$ and $y$ commute with $[y,x]$. Thus, every element of $P'$ must have order 1 or $p$. By exercise 8 of section 5.4, we have \[(xy)^p=x^py^p[y,x]^{\frac{p(p-1)}{2}}\] However, since $p$ is an odd prime, $\frac{p(p-1)}{2}$ is divisible by $p$, hence $[y,x]^{\frac{p(p-1)}{2}}=1$. Thus, the map $x\mapsto x^p$ describes a homomorphism.
+
+Now, the kernel $K$ of this map is the set of elements of order $p$ in $P$, hence has order at least $p$. In particular, $|P/K|$ is $p$ or $p^2$. However, all groups of order $p$ and $p^2$ are abelian, hence the elements of the form $x^p$ commute. We show in fact that these elements commute with all of $P$:
+
+Take $g,x^p\in P$. Then \begin{align*}[g,x^p]&=g^{-1}x^{-p}gx^p\\&=(g^{-1}x^{-1}g)^px^p\\&=g^{-p}x^{-p}g^px^p\\&=1\end{align*} Thus, the map $x\mapsto x^p$ maps into $Z(P)$. 
+
+Now, since $|K|=\frac{|P|}{|Z(P)|}$, and since $Z(P)$ is not of order $p^2$, we see that $|K|$ is $p^3$, $p^2$ or $\{1\}$. However, if $K=\{1\}$, the map is injective and so $G$ is cyclic. Therefore, if $G$ is not cyclic, $|K|=p^3$ or $p^2$. 
+
+Finally, we see that the squaring map is not a homomorphism for a non-abelian group of order 8: simply take $ij\in Q_8$ and $rs\in D_8$. We see that $(ij)^2=-1$ yet $i^2j^2=1$. Similarly, $(rs)^2=1$ yet $r^2s^2=r^2$. In the argument given above, the fact that $p$ divides $\frac{p(p-1)}{2}$ only holds if $p$ is odd. 
+\end{Proof}
+
+ \item [13.] Prove that $D_{8n}$ is not isomorphic to $D_{4n}\times Z_2$. 
+
+\begin{Proof}
+ We see that a rotation in $D_{8n}$ generates a cyclic group of order $4n$. However, no such element exists in $D_{4n}\times Z_2$, for every element $(a,b)$ in the latter group has order $\lcm(|a|,|b|)$, which is never $4n$.
+\end{Proof}
+
+ \item [19.] A group $H$ is called \textit{perfect} if $H'=H$ (i.e., $H$ equals its own commutator subgroup).
+  \begin{enumerate}
+   \item Prove that every non-abelian simple group is perfect.
+   \item Prove that if $H$ and $K$ are perfect subgroups of $G$ then $\langle H,K\rangle$ is also perfect. Extend this to show that the subgroup of $G$ generated by any collection of perfect subgroups is perfect.
+   \item Prove that any conjugate of a perfect subgroup is perfect.
+   \item Prove that any group $G$ has a unique maximal perfect subgroup and that this subgroup is normal.
+  \end{enumerate}
+
+\begin{Proof}\indent
+ \begin{enumerate}
+  \item The commutator subgroup of $H$ is normal in $H$, hence must be $1$ or $H$ for $H$ a simple group. Then, if $H$ is non-abelian, $H'=H$.
+  \item Clearly, for any subgroups $H$ and $K$ of $G$, \[\langle H',K'\rangle\leq\langle H,K\rangle'\] since $\langle H,K\rangle'$ clearly contains both $H'$ and $K'$. However, if $H$ and $K$ are perfect, then \[\langle H,K\rangle'\leq\langle H,K\rangle=\langle H',K'\rangle\] hence \[\langle H,K\rangle'=\langle H',K'\rangle=\langle H,K\rangle\]
+  \item Suppose $H$ is a perfect subgroup of $G$, i.e., that $H$ is generated by the commutators in $H$. On the one hand, $(gHg^{-1})'\leq gHg^{-1}$ by definition. On the other hand, to show the other inclusion, we need only show that $ghg^{-1}\in(gHg^{-1})'$ for $h$ a generator of $H$, i.e., $h=[x,y]$ with $x,y\in H$. To see this, write \begin{align*}g[x,y]g^{-1}&=gx^{-1}y^{-1}xyg^{-1}\\&=gx^{-1}g^{-1}gy^{-1}g^{-1}gxg^{-1}gyg^{-1}\\&=[gxg^{-1},gyg^{-1}]\in(gHg^{-1})'\end{align*}
+  \item Take $H$ to be the group generated by all perfect subgroups of $G$. This is certainly the (unique) maximal perfect subgroup of $G$. However, its conjugates are also perfect, hence contained in $H$, i.e., $gHg^{-1}\leq H$ for all $g\in G$. This forces $H$ to be normal.
+ \end{enumerate}
+
+\end{Proof}
+
+\end{enumerate}
+
+\section*{Section 5.5}
+\begin{enumerate}
+ \item [10.] This exercise classifies the groups of order 147 (there are six isomorphism types).
+  \begin{enumerate}
+   \item Prove that there are two abelian groups of order 147.
+   \item Prove that every group of order 147 has a normal Sylow 7-subgroup.
+   \item Prove that there is a unique non-abelian group whose Sylow 7-subgroup is cyclic.
+   \item Let $t_1=\begin{pmatrix}2&0\\0&1\end{pmatrix}$ and $t_2=\begin{pmatrix}1&0\\0&2\end{pmatrix}$ be elements of $GL_2(\F_7)$. Prove $P=\langle t_1,t_2\rangle$ is a Sylow 3-subgroup of $GL_2(\F_7)$ and that $P\cong Z_3\times Z_3$. Deduce that every subgroup of $GL_2(\F_7)$ of order 3 is conjugate in $GL_2(\F_7)$ to a subgroup of $P$.
+   \item By Example 3 in Section 1 the group $P$ has four subgroups of order 3 and these are: $P_1=\langle t_1\rangle$, $P_2=\langle t_2\rangle$, $P_3=\langle t_1t_2\rangle$, and $P_4=\langle t_1t_2^2\rangle$. For $i=1,2,3,4$ let $G_i=(Z_7\times Z_7)\rtimes_{\phi_i}Z_3$, where $\phi_i$ is an isomorphism of $Z_3$ with the subgroup $P_i$ of $\text{Aut}(Z_7\times Z_7)$. For each $i$ describe $G_i$ in terms of generators and relations. Deduce that $G_1\cong G_2$.
+   \item Prove that $G_1$ is not isomorphic to either $G_3$ or $G_4$. 
+   \item Prove that $G_3$ is not isomorphic to $G_4$.
+   \item Classify the groups of order 147 by showing that the six nonisomorphic groups described above (two from part (a), one from part (c) and $G_1,G_3$ and $G_4$) are all the groups of order 147. 
+  \end{enumerate}
+
+\begin{Proof}
+ \begin{enumerate}
+  \item Write $147=3\cdot7^2$. By the Structure Theorem for Finite Abelian Groups, there are two abelian groups of order 147: $Z_{147}$ and $Z_3\times Z_7^2$. 
+  \item By Sylow's Theorem, the number of Sylow 7-subgroups of a group of order 147 must divide 3 and be congruent to 1 mod 7. This forces there to be exactly 1 Sylow 7-subgroup of a group of order 147, hence this subgroup is normal.
+  \item Take $G$ to be a group of order 147 with a cyclic Sylow 7-subgroup. Consider $\phi:Z_3\to\text{Aut}(Z_{49})\cong Z_{42}$ a non-trivial homomorphism. Since $Z_3$ is prime cyclic, we see that the kernel of this map must be $\{1\}$, hence there is exactly one non-trivial such $\phi$. Thus, there is only one semidirect product $Z_{49}\rtimes Z_3$. Since $G\cong Z_{49}\rtimes Z_3$, we see that there is a unique non-abelian group of order 147 whose Sylow 7-subgroup is cyclic.
+  \item Observe that $t_1$ and $t_2$ have order 3, and that $t_1t_2=t_2t_1$, hence \[P=\langle t_1,t_2\rangle=\langle t_1\rangle\times\langle t_2\rangle\cong Z_3\times Z_3\] This is a group of order 9, which is the greatest power of 3 dividing the order of $GL_2(\F_7)$, so $P$ is a Sylow 3-subgroup of $GL_2(\F_7)$. Thus, since every subgroup of order 3 is contained in a Sylow 3-subgroup of $GL_2(\F_7)$, we see that every subgroup of order 3 in $GL_2(\F_7)$ is conjugate to a subgroup of $P$.
+ \end{enumerate}
+
+\end{Proof}
+
+ \item [11.] Classify groups of order 28 (there are four isomorphism types).
+
+\begin{Proof}
+ Write $28=2^2\cdot7$. By the Structure Theorem for Finite Abelian groups, there are two abelian groups of order 28: $Z_{28}$ and $Z_2\times Z_2\times Z_7$. Suppose $G$ is a non-abelian group of order 28 and let $n_2$ and $n_7$ denote the number of Sylow 2 and Sylow 7-subgroups of $G$, respectively. By Sylow's Theorem, $n_7|4$ and $n_7\equiv1\bmod{7}$, hence $n_7=1$, i.e., there is a single normal Sylow-7 subgroup in $G$, say $P_7$. Let $P_2$ denote some Sylow 2-subgroup of $G$. We see that $P_2=Z_4$ or $P_2=Z_2\times Z_2$. 
+
+ If $P_2=Z_4$, there is clearly one homomorphism $\phi:Z_4\to\text{Aut}Z_7\cong Z_6$ which is non-trivial, hence we have one non-abelian group $Z_7\rtimes Z_4$. 
+
+ If $P_2=Z_2\times Z_2$, then there are three homomorphisms $\phi:Z_2\times Z_2\to\text{Aut}(Z_7)$ which are non-trivial. However, it is easy to see that, in this case, the corresponding semidirect products, $Z_7\rtimes(Z_2\times Z_2)$, are all isomorphic. Moreover, $Z_7\rtimes(Z_2\times Z_2)$ and $Z_7\rtimes Z_4$ are not isomorphic. 
+
+ Thus, we have found the four isomorphism types of groups of order 28: $Z_{28}$, $Z_2\times Z_2\times Z_7$, $Z_7\rtimes(Z_2\times Z_2)$ and $Z_7\rtimes Z_4$.
+\end{Proof}
+
+\end{enumerate}
+
+\section*{Section 6.1}
+\begin{enumerate}
+ \item [8.] Prove that if $p$ is a prime and $P$ is a non-abelian group of order $p^3$ then $|Z(P)|=p$ and $P/Z(P)\cong Z_p\times Z_p$.
+
+\begin{Proof}
+ Since $P$ is a non-abelian $p$-group, $Z(P)$ is a nontrivial subgroup of $P$. However, if $|Z(P)|=p^2$, then $|P/Z(P)|=p$, hence $P/Z(P)$ is cyclic, which forces $P$ to be abelian. Thus, $|Z(P)|=p$. Moreover, $P/Z(P)$ is a group of order $p^2$. There are two groups of order $p^2$: $Z_{p^2}$ and $Z_p\times Z_p$. However, if $P/Z(P)$ is isomorphic to $Z_{p^2}$, then $P$ must be abelian, hence $P/Z(P)\cong Z_p\times Z_p$
+\end{Proof}
+
+ \item [21.] Prove that $\Phi(G)$ is a characteristic subgroup of $G$.
+
+\begin{Proof}
+ Take $\phi$ an automorphism of $G$. We begin by showing that, if $H$ is maximal in $G$, then $\phi(H)$ is maximal in $G$:
+
+Take $\phi(H)\leq K\leq G$. Clearly, $H\leq\phi^{-1}(K)\leq G$ hence $\phi^{-1}(K)=H$ or $\phi^{-1}(K)=G$ by definition of maximality. In particular, since $\phi$ is a bijection, $K=\phi(H)$ or $K=G$, hence $\phi(H)$ is maximal.
+
+Therefore, any automorphism of $G$ induces a bijection on the set of maximal subgroups of $G$. Then, letting $\mathcal{M}$ denote the set of maximal subgroups of $G$, we see that \[\phi(\Phi(G))=\bigcap_{H\in\mathcal{M}}\phi(H)=\bigcap_{H\in\mathcal{M}}H=\Phi(G)\] hence $\Phi(G)$ is characteristic.
+\end{Proof}
+
+ \item [25.] Let $G$ be a finite group. Prove that $\Phi(G)$ is nilpotent.
+
+\begin{Proof}
+ As shown in exercise 21, $\Phi(G)$ is characteristic, therefore normal. Recall further that $\Phi(G)$ is nilpotent if and only if every Sylow $p$-subgroup of $\Phi(G)$ is normal. Now, take $P\leq\Phi(G)$ a Sylow $p$-subgroup of $\Phi(G)$. By Frattini's Argument, we have $G=\Phi(G)N_G(P)$. Suppose, by way of contradiction, that $P$ is not normal. Then there is a maximal subgroup $H$ such that $N_G(P)\leq H$. However, $\Phi(G)\leq H$ by definition, hence $G=\Phi(G)N_G(P)\leq H$, so $G=H$. This is a contradiction, hence $P$ is normal. In particular, every Sylow $p$-subgroup of $\Phi(G)$ is normal, so $\Phi(G)$ is nilpotent.
+\end{Proof}
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,253 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Algebra\\\large Homework 8}
+\date{October 26, 2010}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+
+\section*{Section 7.1}
+\begin{enumerate}
+ \item [25.] Let $I$ be the ring of integral Hamilton Quaternions and define \[N:I\to\Z\:\:\:\text{ by }\:\:\:N(a+bi+cj+dk)=a^2+b^2+c^2+d^2\] (the map $N$ is called a \textit{norm}).
+  \begin{enumerate}
+   \item Prove that $N(\alpha)=\alpha\overline{\alpha}$ for all $\alpha\in I$, where if $\alpha=a+bi+cj+dk$ then $\overline{\alpha}=a-bi-cj-dk$.
+   \item Prove that $N(\alpha\beta)=N(\alpha)N(\beta)$ for all $\alpha,\beta\in I$.
+   \item Prove that an element of $I$ is a unit if and only if it has norm +1. Show that $I^{\times}$ is isomorphic to the quaternion group of order 8. [The inverse in the ring of rational quaternions of a nonzero element is $\displaystyle\frac{\overline{\alpha}}{N(\alpha)}$.]
+  \end{enumerate}
+
+\begin{Proof}
+\begin{enumerate}
+ \item Simply compute $\alpha\overline{\alpha}$:\begin{align*}\alpha\overline{\alpha}&=(a+bi+cj+dk)(a-bi-cj-dk)\\&=(a+(bi+cj+dk))(a-(bi+cj+dk))\\&=a^2-(bi+cj+dk)^2\\&=a^2-\left(b^2i^2+c^2j^2+d^2k^2+bicj+cjbi+bidk+dkbi+cjdk+dkcj\right)\end{align*} Observe that \[bicj+cjbi=bc(ij+ji)=bc(k-k)=0\] Similarly, $bidk+dkbi=0$ and $cjdk+dkcj=0$, hence \[\alpha\overline{\alpha}=a^2-(-b^2-c^2-d^2)=a^2+b^2+c^2+d^2=N(\alpha)\]
+ \item We shall show that $\overline{\alpha\beta}=\overline{\beta}\overline{\alpha}$ for any $\alpha,\beta$. To see this, we prove this result for the elements $i,j,k$, from which the result follows for all $\alpha,\beta$: \begin{align*}\overline{ij}&=\overline{k}=-k=(-j)(-i)=\overline{j}\:\overline{i}\\\overline{ik}&=\overline{-j}=j=(-k)(-i)=\overline{k}\:\overline{i}\\\overline{jk}&=\overline{i}=-i=(-k)(-j)=\overline{k}\:\overline{j}\end{align*} Thus, for any $\alpha,\beta$, $\overline{\alpha\beta}=\overline{\beta}\overline{\alpha}$. In particular, \begin{align*}N(\alpha\beta)&=\alpha\beta\overline{\alpha\beta}\\&=\alpha\beta\overline{\beta}\overline{\alpha}\\&=\alpha N(\beta)\overline{\alpha}\\&=\alpha\overline{\alpha}N(\beta)\\&=N(\alpha)N(\beta)\end{align*}
+ \item Suppose $\alpha\in I$ is a unit. Then $N(\alpha\alpha^{-1})=N(\alpha)N(\alpha^{-1})=N(1)=1$, so $N(\alpha)$ is a unit in $\Z$. However, $N(\alpha)>0$, so $N(\alpha)=1$. On the other hand, if $N(\alpha)=1$, then $\alpha\overline{\alpha}=1$, so $\alpha$ is a unit.
+
+Thus, the group $I^{\times}$ is the set of all $\alpha$ such that $N(\alpha)=1$. However, writing $\alpha=a+bi+cj+dk$, if more than one of $a,b,c,d$ is nonzero, then $N(\alpha)>1$. This forces $I^{\times}=\{\pm1,\pm i,\pm j,\pm k\}$ which is clearly just the quaternion group of order 8.
+\end{enumerate}
+
+\end{Proof}
+
+ \item [26.] Let $K$ be a field. A \textit{discrete valuation} on $K$ is a function $\nu:K^{\times}\to\Z$ satisfying 
+\begin{description}
+ \item [(i)] $\nu(ab)=\nu(a)+\nu(b)$ (i.e., $\nu$ is a homomorphism from the multiplicative group of nonzero elements of $K$ to $\Z$),
+ \item [(ii)] $\nu$ is surjective, and
+ \item [(iii)] $\nu(x+y)\geq\text{min}\{\nu(x),\nu(y)\}$ for all $x,y\in K^{\times}$ with $x+y\not=0$.
+\end{description}
+The set $R=\{x\in K^{\times}|\nu(x)\geq0\}\cup\{0\}$ is called the \textit{valuation ring} of $\nu$.
+  \begin{enumerate}
+   \item Prove that $R$ is a subring of $K$ which contains the identity. (In general, a ring $R$ is called a \textit{discrete valuation ring} if there is some field $K$ and some discrete valuation $\nu$ on $K$ such that $R$ is the valuation ring of $\nu$).
+   \item Prove that for each nonzero element $x\in K$ either $x$ or $x^{-1}$ is in $R$.
+   \item Prove that an element $x$ is a unit of $R$ if and only if $\nu(x)=0$.
+  \end{enumerate}
+
+\begin{Proof}
+ \begin{enumerate}
+  \item We observe that $\nu(1)=\nu(1\cdot1)=\nu(1)+\nu(1)$, hence $\nu(1)=0$. Thus, $1\in R$. Moreover, if $x,y\in R$, then $\nu(x-y)\geq\text{min}\{\nu(x),\nu(-y)\}$. However, $\nu(-y)=\nu(-1)+\nu(y)$. To see that $\nu(-1)=0$, observe that $\nu(-1\cdot-1)=\nu(1)=0$, and $\nu(-1\cdot-1)=\nu(-1)+\nu(-1)$, so $\nu(-1)$ divides 0. However, there are no zero divisors in $\Z$, so $\nu(-1)=0$. Thus, $\nu(-y)=\nu(y)$. Now, this forces $\nu(x-y)\geq\text{min}\{\nu(x),\nu(y)\}\geq0$. Thus, $x-y\in R$. Further, $\nu(xy)=\nu(x)+\nu(y)\geq0$, so $xy\in R$. Thus, $R$ is a subring of $K$.
+  \item For any $x\in K$, if $\nu(x)\geq0$, then $x\in R$. Suppose then that $x\notin R$, i.e., that $\nu(x)<0$. Then $\nu(xx^{-1})=\nu(1)=0$. However, this is just $\nu(x)+\nu(x^{-1})$, so $\nu(x^{-1})=-\nu(x)$, hence $\nu(x^{-1})>0$, and $x^{-1}\in R$.
+  \item Suppose $x$ is a unit in $R$, i.e., $x$ and $x^{-1}\in R$. Then $\nu(x^{-1})\geq0$. However, this implies $-\nu(x)\geq0$, with $\nu(x)\geq0$. This forces $\nu(x)=0$.
+ \end{enumerate}
+
+\end{Proof}
+
+\end{enumerate}
+
+
+\section*{Section 7.2}
+\begin{enumerate}
+ \item [3.]Define the set $R[[x]]$ of \textit{formal power series} in the indeterminate $x$ with coefficients from $R$ to be all formal infinite sums \[\sum_{n=0}^{\infty}a_nx^n=a_0+a_1x+a_2x^2+a_3x^3+\hdots\] Define addition and multiplication of power series in the same way as for power series with real or complex coefficients, i.e., extend polynomial addition and multiplication to power series as though they were ``polynomials of infinite degree'':\begin{align*}\sum_{n=0}^{\infty}a_nx^n+\sum_{n=0}^{\infty}b_nx^n&=\sum_{n=0}^{\infty}(a_n+b_n)x^n\\\sum_{n=0}^{\infty}a_nx^n\times\sum_{n=0}^{\infty}b_nx^n&=\sum_{n=0}^{\infty}\left(\sum_{k=0}^na_kb_{n-k}\right)x^n\end{align*}
+\begin{description}
+ \item [(a)] Prove that $R[[x]]$ is a commutative ring with 1.
+ \item [(b)] Show that $1-x$ is a unit in $R[[x]]$ with inverse $1+x+x^2+\hdots$.
+ \item [(c)] Prove that $\sum_{n=0}^{\infty}a_nx^n$ is a unit in $R[[x]]$ if and only if $a_0$ is a unit in $R$.
+\end{description}
+
+\begin{Proof}
+ \begin{enumerate}
+  \item The fact that $R[[x]]$ is commutative follows from the commutativity of $R$: \begin{align*}\sum_{n=0}^{\infty}a_nx^n\times\sum_{n=0}^{\infty}b_nx^n&=\sum_{n=0}^{\infty}\left(\sum_{k=0}^na_kb_{n-k}\right)x^n\\&=\sum_{n=0}^{\infty}\left(\sum_{k=0}^nb_{n-k}a_k\right)x^n\\&=\sum_{n=0}^{\infty}\left(\sum_{k=0}^nb_ka_{n-k}\right)x^n\\&=\sum_{n=0}^{\infty}b_nx^n\times\sum_{n=0}^{\infty}a_nx^n\end{align*} The associativity of addition is clearly true, and the associativity of multiplication follows from the associativity of multiplication. Similarly, the distributive law follows from the distributivity of multiplication in $R$. Thus, $R[[x]]$ forms a commutative ring. Moreover, the constant polynomial $1\in R[[x]]$ is the identity in $R[[x]]$.
+  \item Simply compute $(1-x)(1+x+x^2+\hdots)$:\begin{align*}(1-x)\times(1+x+x^2+\hdots)&=\sum_{n=0}^{\infty}\sum_{k=0}^n\left(a_kb_{n-k}\right)x^n\end{align*} where $a_n=(1,-1,0,0,\hdots)$ and $b_n\equiv1$. The sum above is then just \[1+\sum_{n=1}^{\infty}\sum_{k=0}^1a_kx^n=1+\sum_{n=0}^{\infty}0x^n=1\]
+  \item On the one hand, if $\displaystyle\sum_{n=0}^{\infty}a_nx^n$ is a unit with inverse $\displaystyle\sum_{n=0}^{\infty}b_nx^n$ then their product \[\sum_{n=0}^{\infty}a_nx^n\times\sum_{n=0}^{\infty}b_nx^n=\sum_{n=0}^{\infty}\left(\sum_{k=0}^na_kb_{n-k}\right)x^n=1\] hence the coefficients $\displaystyle\sum_{k=0}^na_kb_{n-k}$ are 0 for $n>0$ and $a_0b_0=1$. Thus, $a_0$ is a unit in $R$.
+
+On the other hand, suppose $a_0$ is a unit in $R$, say $a_0b_0=1$. Let $\{b_n\}$ be a sequence recursively defined by \[b_{n+1}=-b_0(a_1b_{n-1}+a_2b_{n-2}+a_3b_{n-3}+\hdots+a_{n-1}b_1+a_nb_0)\] We show that \[\sum_{n=0}^{\infty}a_nx^n\times\sum_{n=0}^{\infty}b_nx^n=\sum_{n=0}^{\infty}\left(\sum_{k=0}^na_kb_{n-k}\right)x^n=1\] by showing that \[\sum_{k=0}^na_kb_{n-k}=0\text{ for }n>0\] 
+ \end{enumerate}
+
+\end{Proof}
+
+\end{enumerate}
+
+\section*{Section 7.3}
+\begin{enumerate}
+ \item [12.] Let $D$ be an integer which is not a perfect square in $\Z$ and let $S=\left\{\begin{bmatrix}a&b\\Db&a\end{bmatrix}|a,b\in\Z\right\}$.
+  \begin{enumerate}
+   \item Prove that $S$ is a subring of $M_2(\Z)$.
+   \item If $D$ is not a perfect square in $\Z$ prove that the map $\phi:\Z[\sqrt{D}]\to S$ defined by $\phi(a+b\sqrt{D})=\begin{bmatrix}a&b\\Db&a\end{bmatrix}$ is a ring isomorphism.
+   \item If $D\equiv1\bmod{4}$ is squarefree prove that the set $\left\{\begin{bmatrix}a&b\\\frac{(D-1)b}{4}&a+b\end{bmatrix}|a,b\in\Z\right\}$ is a subring of $M_2(\Z)$ and is isomorphic to the quadratic integer ring $\mathcal{O}$. 
+  \end{enumerate}
+
+\begin{Proof}
+ \begin{enumerate}
+  \item Take $x,y\in S$, say \begin{align*}x&=\begin{bmatrix}x_1&x_2\\Dx_2&x_1\end{bmatrix}\\y&=\begin{bmatrix}y_1&y_2\\Dy_2&y_1\end{bmatrix}\end{align*} We need merely verify $x-y\in S$ and $xy\in S$: \begin{align*}x-y&=\begin{bmatrix}x_1-y_1&x_2-y_2\\D(x_2-y_2)&x_1-y_1\end{bmatrix}\in S\\xy&=\begin{bmatrix}x_1y_1+Dx_2y_2&x_1y_2+x_2y_1\\D(x_1y_2+x_2y_1)&x_1y_1+Dx_2y_2\end{bmatrix}\in S\end{align*}
+  \item We first verify that it is a ring homomorphism, then prove that it is bijective. Let $x=x_1+x_2\sqrt{D}$ and $y=y_1+y_2\sqrt{D}$, and note \begin{align*}\phi(x)&=\begin{bmatrix}x_1&x_2\\Dx_2&x_1\end{bmatrix}\\\phi(y)&=\begin{bmatrix}y_1&y_2\\Dy_2&y_1\end{bmatrix}\end{align*} We see that \begin{align*}\phi(x+y)=\phi\left((x_1+y_1)+(x_2+y_2)\sqrt{D}\right)&=\begin{bmatrix}x_1+y_1&x_2+y_2\\D(x_2+y_2)&x_1+y_1\end{bmatrix}\\&=\begin{bmatrix}x_1&x_2\\Dx_2&x_1\end{bmatrix}+\begin{bmatrix}y_1&y_2\\Dy_2&y_1\end{bmatrix}\\&=\phi(x)+\phi(y)\end{align*} Similarly \begin{align*}\phi(xy)=\phi\left((x_1y_1+Dx_2y_2)+(x_1y_2+y_1x_2)\sqrt{D}\right)&=\begin{bmatrix}x_1y_1+Dx_2y_2&x_1y_2+y_1x_2\\D(x_1y_2+y_1x_2)&x_1y_1+Dx_2y_2\end{bmatrix}\\&=\begin{bmatrix}x_1&x_2\\Dx_2&x_1\end{bmatrix}\begin{bmatrix}y_1&y_2\\Dy_2&y_1\end{bmatrix}\\&=\phi(x)\phi(y)\end{align*} This map is clearly surjective, and its kernel is certainly trivial, so this map describes an isomorphism.
+  \item The fact that this set is closed under subtraction is clear. Take $x=\begin{bmatrix}x_1&x_2\\\frac{(D-1)x_2}{4}&x_1+x_2\end{bmatrix}$ and $y=\begin{bmatrix}y_1&y_2\\\frac{(D-1)y_2}{4}&y_1+y_2\end{bmatrix}$ and observe that \[xy=\begin{bmatrix}x_1&x_2\\\frac{(D-1)x_2}{4}&x_1+x_2\end{bmatrix}\begin{bmatrix}y_1&y_2\\\frac{(D-1)y_2}{4}&y_1+y_2\end{bmatrix}=\begin{bmatrix}x_1y_1+\frac{D-1}{4}x_2y_2&x_1y_2+x_2y_1+x_2y_2\\\frac{D-1}{4}x_2y_1+\frac{D-1}{4}(x_1+x_2)y_2&\frac{D-1}{4}x_2y_2+(x_1+x_2)(y_1+y_2)\]
+ \end{enumerate}
+
+\end{Proof}
+
+ \item [17.] Let $R$ and $S$ be nonzero rings with identity and denote their respective identities by $1_R$ and $1_S$. Let $\phi:R\to S$ be a nonzero homomorphism of rings.
+  \begin{enumerate}
+   \item Prove that if $\phi(1_R)\not=1_S$ then $\phi(1_R)$ is a zero divisor of $S$. Deduce that if $S$ is an integral domain then every ring homomorphism from $R$ to $S$ sends the identity of $R$ to the identity of $S$.
+   \item Prove that if $\phi(1_R)=\phi(1_S)$ then $\phi(u)$ is a unit in $S$ and $\phi(u^{-1})=\phi(u)^{-1}$ for each unit $u\in R$.
+  \end{enumerate}
+
+\begin{Proof}\indent
+ \begin{enumerate}
+  \item Observe that $\phi(1_R)=\phi(1_R^2)=\phi(1_R)^2$, hence $\phi(1_R)(1_S-\phi(1_R))=0$. If $\phi(1_R)\not=1_S$, then $1_S-\phi(1_R)\not=0$, so $\phi(1_R)$ is a zero divisor of $S$. In particular, if $S$ is an integral domain, then $\phi(1_R)\in S$ is not a zero divisor, hence $\phi(1_R)=1_S$.
+  \item Write $uv=1_R$. Since $\phi(1_R)=1_S$, $\phi(uv)=\phi(u)\phi(v)=1_S$, so $\phi(u)$ is a unit. Moreover, $\phi(u)^{-1}=\phi(v)=\phi(u^{-1})$.
+ \end{enumerate}
+
+\end{Proof}
+
+ \item [22.] Let $a$ be an element of the ring $R$.
+  \begin{enumerate}
+   \item Prove that $\{x\in R|ax=0\}$ is a right ideal and $\{y\in R|ya=0\}$ is a left ideal (called respectively the right and left \textit{annihilators} of $a$ in $R$).
+   \item Prove that if $L$ is a left ideal in $R$ then $\{x\in R|xa=0\text{ for all }a\in L\}$ is a two-sided ideal (called the left \textit{annihilator} of $L$ in $R$).
+  \end{enumerate}
+
+\begin{Proof}\indent
+ \begin{enumerate}
+  \item Take $x,y$ in the right annihilator of $a$. Then $a(x-y)=ax-ay=0-0=0$, so $x-y$ is in the right annihilator of $a$. Similarly, for any $r\in R$, $a(xr)=(ax)r=0r=0$, so $xr$ is in the right annihilator of $a$. Thus, $\{x\in R|ax=0\}$ forms a right ideal in $R$. By the same argument, $\{y\in R|ya=0\}$ forms a left ideal in $R$.
+  \item Take $x,y$ in the left annihilator of $L$ in $R$. Then, for any $a\in L$, $(x-y)a=xa-ya=0-0=0$, so $x-y$ is in the left annihilator of $L$ in $R$. Moreover, for any $r\in R$, $ra\in L$, hence $(xr)a=x(ra)=0$. Further, $(rx)a=r(xa)=r(0)=0$, so the left annihilator of $L$ forms a two-sided ideal.
+ \end{enumerate}
+
+\end{Proof}
+
+\end{enumerate}
+
+\section*{Section 7.4}
+\begin{enumerate}
+ \item [2.] Assume $R$ is commutative. Prove that the augmentation ideal in the group ring $RG$ is generated by $\{g-1|g\in G\}$. Prove that if $G=\langle\sigma\rangle$ is cyclic then the augmentation ideal is generated by $\sigma-1$.
+
+\begin{Proof}
+ On the one hande, the ideal generated by $\{g-1|g\in G\}$ is clearly contained in the augmentation ideal. Now, take $x=\sum_{i=1}^nr_ig_i$ in the augmentation ideal, i.e., $\sum_{i=1}^nr_i=0$. Observe that \begin{align*}\sum_{i=1}^nr_ig_i&=\sum_{i=1}^nr_ig_i-\sum_{i=1}^nr_i\\&=\sum_{i=1}^nr_ig_i-r_i\\&=\sum_{i=1}^nr_i(g_i-1)\end{align*} so $x$ is in the ideal genereted by $\{g-1|g\in G\}$. Thus, the augmentation ideal is the ideal generated by $\{g-1|g\in G\}$.
+
+In particular, if $G=\langle\sigma\rangle$, then the augmentation ideal is just the ideal generated by $\{\sigma^n-1|n\in\Z\}$. However, writing \[(\sigma^n-1)=(\sigma-1)(1+\sigma+\sigma^2+\hdots+\sigma^{n-1})\] we see that this ideal is simply $(\sigma-1)$.
+\end{Proof}
+
+ \item [13.] Let $\phi:R\to S$ be a homomorphism of commutative rings.
+\begin{enumerate}
+ \item Prove that if $P$ is a prime ideal of $S$ then either $\phi^{-1}(P)=R$ or $\phi^{-1}(P)$ is a prime ideal of $R$. Apply this to the special case when $R$ is a subring of $S$ and $\phi$ is the inclusion homomorphism to deduce that if $P$ is a prime ideal of $S$ then $P\cap R$ is either $R$ or a prime ideal of $R$.
+ \item Prove that if $M$ is a maximal ideal of $S$ and $\phi$ is surjective then $\phi^{-1}(M)$ is a maximal ideal of $R$. Give an example to show that this need not be the case if $\phi$ is not surjective.
+\end{enumerate}
+
+\begin{Proof}We first show that $\phi^{-1}(J)$ is an ideal in $R$ for any ideal $J$ in $S$. Take $x,y\in\phi^{-1}(J)$. By definition, $\phi(x),\phi(y)\in J$, hence $\phi(x)-\phi(y)=\phi(x-y)\in J$. This forces $x-y\in\phi^{-1}(J)$. Moreover, for any $r\in R$, $\phi(r)\phi(x)=\phi(rx)\in J$, hence $rx\in\phi^{-1}(J)$. 
+
+We will now show that, if $I$ is an ideal in $R$ and $\phi$ is surjective, then $\phi(I)$ is an ideal in $S$. Take $x,y\in\phi(I)$, say $\phi(i)=x$ and $\phi(j)=y$. Then $i-j\in I$, hence $\phi(i-j)=\phi(i)-\phi(j)=x-y\in\phi(I)$. Now, for any $s\in S$, take $r\in R$ such that $\phi(r)=s$ (note here the importance of $\phi$'s surjectivity), and notice that $ri\in I$, hence $\phi(ri)=\phi(r)\phi(i)=sx\in\phi(I)$. 
+ \begin{enumerate}
+  \item Suppose $P$ is a prime ideal in $S$ and $\phi^{-1}(P)\not=R$. As shown above, $\phi^{-1}(P)$ is an ideal. Take $xy\in\phi^{-1}(P)$. By definition, this forces $\phi(xy)=\phi(x)\phi(y)\in P$. By the primality of $P$, this forces $\phi(x)\in P$ or $\phi(y)\in P$, hence $x\in\phi^{-1}(P)$ or $y\in\phi^{-1}(P)$. Thus, $\phi^{-1}(P)$ is a prime ideal.
+
+In the case where $R$ is a subring of $S$ and $\phi$ is the inclusion homomorphism, this implies that, if $P$ is a prime ideal in $S$, then $\phi^{-1}(P)=P\cap R$ is either $R$ or a prime ideal in $R$.
+  \item Since $M$ is maximal, $S/M$ is a field. Take $\overline{r}=r+\phi^{-1}(M)\in R/\phi^{-1}(M)$. Since $S/M$ is a field, there is a $s\in S$ such that $\phi(r)s+M=1+M$. Since $\phi$ is surjective, there is a $k\in R$ such that $\phi(k)=s$, hence $\phi(r)\phi(k)+M=1+M$. Thus, $\phi(rk-1)\in M$. In particular, this implies $rk-1\in\phi^{-1}(M)$, hence $rk+\phi^{-1}(M)=1+\phi^{-1}(M)$, so $\overline{r}$ is invertible. Thus, $R/\phi^{-1}(M)$ is a field, so $\phi^{-1}(M)$ is maximal.
+
+To see that this is not the case when $\phi$ is not surjective, take $\phi:\Z\to\Q$ with $\phi(x)=x$. Observe that $(0)$ is maximal in $\Q$, yet $\phi^{-1}(0)=(0)$ is not maximal in $\Z$.
+ \end{enumerate}
+\end{Proof}
+
+\item [18.] Prove that if $R$ is an integral domain and $R[[x]]$ is the ring of formal power series in the indeterminate $x$ then the principal ideal generated by $x$ is a prime ideal (cf. Exercise 3, Section 2). Prove that the principal ideal generated by $x$ is a maximal ideal if and only if $R$ is a field.
+
+\begin{Proof}
+ To see that $(x)$ is prime, we show that, if $x,y\notin(x)$, then $xy\notin(x)$. The ideal $(x)$ is just the set of all power series whose leading term is not constant. If $x,y\notin(x)$, then their leading terms are constant. However, their product will clearly have a constant leading term, and will therefore not be in $(x)$.
+
+Observe that $R[[x]]/(x)\cong R$, for the map $\phi:R[[x]]\to R$ given by \[\phi\left(\sum_{n=0}^{\infty}a_nx^n\right)=a_0\] describes a ring homomorphism with kernel $(x)$. However, the ideal $(x)$ is maximal if and only if $R[[x]]/(x)\cong R$ is a field.
+\end{Proof}
+
+\item [37.] A commutative ring is called a \textit{local ring} if it has a unique maximal ideal. Prove that if $R$ is a local ring with maximal ideal $M$ then every element of $R-M$ is a unit. Prove conversely that if $R$ is a commutative ring with 1 in which the set of nonunits forms an ideal $M$, then $R$ is a local ring with unique maximal ideal $M$.
+
+\begin{Proof}
+ Suppose $R$ is a local ring with unique maximal ideal $M$, and take $x\in R-M$. If $(x)$ is not $R$, then $(x)$ is contained in a maximal ideal of $R$. However, this implies $(x)\unlhd M$, which is a contradiction. Thus, $(x)=R$, so $x$ is a unit.
+
+Conversely, if $R$ is commutative ring with 1 in which the set of nonunits forms an ideal, $M$, in $R$. Take $I$ a maximal ideal in $R$. Observe that $I$ contains no units, hence is contained in $M$. However, $M$ is an ideal, so $M\unlhd I$ by maximality of $I$. Thus, $I=M$, hence the ideal $M$ is a unique maximal ideal.
+\end{Proof}
+
+\item [38.] Prove that the ring of all rational numbers whose denominators are odd is a local ring whose unique maximal ideal is the principal ideal generated by 2.
+
+\begin{Proof}
+ We show that the set of all nonunits in this ring forms an ideal. If $r=\frac{a}{b}$ with $b$ odd and $(a,b)=1$ is a nonunit, then $a$ must be even, for otherwise $\frac{b}{a}$ is the inverse of $r$. Thus, the set of nonunits is just the set of all rational numbers whose numerators are even and whose denominators are odd. To see that this an ideal, take $x=\frac{2a}{b}$, $y=\frac{2c}{d}$ with $b,c$ odd, and observe that, for any $r=\frac{u}{v}$ with $v$ odd, that \begin{align*}x-y&=\frac{2(ad-bc)}{bd}\\xr&=\frac{2au}{bv}\end{align*} are both in this set. 
+
+ Thus, the set of all nonunits in this ring is an ideal, so this ring is local. However, the set of nonunits is just the set of all rational numbers whose numerators are even and whose denominators are odd, which is just the principal ideal $(2)$.
+\end{Proof}
+
+\end{enumerate}
+
+\section*{Section 8.2}
+\begin{enumerate}
+ \item [3.] Prove that any quotient of a P.I.D. by a prime ideal is again a P.I.D.
+
+\begin{Proof}
+ Since every prime ideal in a P.I.D. is maximal, the quotient of a P.I.D. by a prime ideal is a field, which is a P.I.D.
+\end{Proof}
+
+ \item [4.] Let $R$ be an integral domain. Prove that if the following two conditions hold then $R$ is a Principal Ideal Domain:
+  \begin{description}
+   \item [(i)] any two nonzero elements $a$ and $b$ have a greatest common divisor which can be written in the form $ra+sb$ for some $r,s\in R$ and
+   \item [(ii)] if $a_1,a_2,a_3,\hdots$ are nonzero elements of $R$ such that $a_{i+1}|a_i$ for all $i$, then there is a positive integer $N$ such that $a_n$ is a unit times $a_N$ for all $n\geq N$.
+  \end{description}
+
+\begin{Proof}
+ By the second condition, we see that any ascending chain of principal ideals becomes constant, for if \[(a_1)\unlhd(a_2)\unlhd\hdots\] we have $a_{i+1}|a_i$ for all $i$. Thus, there is an $N$ such that $a_n=A_nu$ for all $n\geq N$. Specifically, this forces \[(a_N)=(a_{N+1})=\hdots\] Now, take $I$ an ideal in $R$. Define recursively a sequence $a_n$: \begin{align*}a_0&\in I\\a_{n+1}&\in I-(a_n,a_{n-1},\hdots,a_1)\end{align*} and consider the chain of ideals \[(a_1)\unlhd(a_1,a_2)\unlhd\hdots\] By the first condition, any finitely generated ideal is principal (merely induct on the number of generators). Thus, the ideals above are all principal, say $(a_1)=(d_1)$, $(a_1,a_2)=(d_2)$ and so on. Then \[(d_1)\unlhd(d_2)\unlhd\hdots\unlhd(d_N)=(d_{N+1})=\hdots\] We shall show $(d_N)=I$: supose $I\not=(d_N)$ and take $x\in I-(d_N)$. 
+\end{Proof}
+\end{enumerate}
+
+\end{document}

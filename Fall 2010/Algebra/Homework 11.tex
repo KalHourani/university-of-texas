@@ -1,0 +1,113 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Algebra\\\large Homework 11}
+\date{November 16, 2010}
+\author{Khalid Hourani}
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{fancy}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Tor}{\operatorname{Tor}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{(\arabic{enumi})}}
+\renewcommand{\labelenumii}{\textbf{\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+\begin{titlepage}
+ \maketitle\thispagestyle{empty}
+\end{titlepage}
+\thispagestyle{empty}
+\clearpage\mbox{}\clearpage
+
+\setcounter{page}{1}
+\section*{Section 18.1}
+\begin{enumerate}
+ \item [3.] Prove that the degree 1 representations of $G$ are in bijective correspondence with the degree 1 representations of the abelian group $G/G'$.
+
+\begin{Proof}
+ Let $\Sigma$ and $\Omega$ denote the set of degree 1 representations of $G$ into $F$ and the set of degree 1 representations of $G/G'$ into $F$, respectively. In particular, these are maps from $G$ to $F^{\times}$, since $GL_1(F)=F^{\times}$. Thus, for any $\sigma\in\Sigma$, we have $G'\leq\ker(\sigma)$, for the generators $xyx^{-1}y^{-1}$ of $G'$ are clearly mapped to 1. Now, let $\omega_{\sigma}$ be given by \[\omega_{\sigma}(gG')=\sigma(g)\] We note that this is well defined, for any other representative $gh$ of the coset $gG'$ with $h\in G'$, we have \[\omega_{\sigma}(ghG')=\sigma(gh)=\sigma(g)\sigma(h)=\sigma(g)\] 
+
+Now, we shall show that the map \[\sigma\mapsto\omega_{\sigma}\] describes an isomorphism: suppose $\omega_{\sigma_1}=\omega_{\sigma_2}$. Then, for all $gG'$, $\omega_{\sigma_1}(gG')=\omega_{\sigma_2}(gG')$, hence $\sigma_1(g)=\sigma_2(g)$ for all $g\in G$. Thus, $\sigma_1=\sigma_2$, and so this map is injective. Now, for any $\omega\in\Omega$, take $\sigma\in\Sigma$ given by \[\sigma(g)=\omega(gG')\] We see similarly that this is well defined and that $\sigma\mapsto\omega$, so the map described above is also surjective. In particular, the map is a bijection from $\Sigma$ to $\Omega$.
+\end{Proof}
+
+ \item [8.] Let $V$ be the $FS_n$ module described in Examples 3 and 10 in the second set of examples.
+  \begin{enumerate}
+   \item Prove that if $\nu$ is any element of $V$ such that $\sigma\cdot\nu=\nu$ for all $\sigma\in S_n$ then $\nu$ is an $F$-multiple of $e_1+e_2+\hdots+e_n$.
+   \item Prove that if $n\geq3$ then $V$ has a unique 1-dimensional submodule, namely the submodule $N$ consisting of all $F$ multiples of $e_1+e_2+\hdots+e_n$.
+  \end{enumerate}
+
+\end{enumerate}
+
+\section*{Section 10.5}
+\begin{enumerate}
+ \item [3.] Let $P_1$ and $P_2$ be $R$-modules. Prove that $P_1\oplus P_2$ is a projective $R$-module if and only if $P_1$ and $P_2$ are projective.
+ \item [4.] Let $Q_1$ and $Q_2$ be $R$-modules. Prove that $Q_1\oplus Q_2$ is an injective $R$-module if and only if $Q_1$ and $Q_2$ are injective.
+ \item [14.] Let $0\longrightarrow L\overset{\psi}{\longrightarrow}M\overset{\phi}{\longrightarrow}N\longrightarrow0$ be a sequence of $R$-modules.
+  \begin{enumerate}
+   \item Prove that the associated sequence \[0\longrightarrow \Hom_R(D,L)\overset{\psi'}{\longrightarrow}\Hom_R(D,M)\overset{\phi'}{\longrightarrow}\Hom_R(D,N)\longrightarrow0\] is a short exact sequence of abelian groups for all $R$-modules $D$ if and only if the original sequence is a split short exact sequence.
+  \item Prove that the associated sequence \[0\longrightarrow \Hom_R(N,D)\overset{\phi'}{\longrightarrow}\Hom_R(M,D)\overset{\psi'}{\longrightarrow}\Hom_R(L,D)\longrightarrow0\] is a short exact sequence of abelian groups for all $R$-modules $D$ if and only if the original sequence is a split short exact sequence.
+  \end{enumerate}
+
+ \item [16.]\indent
+  \begin{enumerate}
+   \item Show that $M$ is contained in an injective $\Z$-module. [$M$ is a $\Z$-module.]
+   \item Show that $\Hom_R(R,M)\subseteq\Hom_{\Z}(R,M)\subseteq\Hom_{\Z}(R,Q)$.
+   \item Use the $R$-module isomorphism $M\cong\Hom_R(R,M)$ and the previous exercise to conclude that $M$ is contained in an injective module.
+  \end{enumerate}
+
+\end{enumerate}
+
+\section*{Additional Problems}
+\begin{enumerate}
+ \item Show that $\Q$ is an injective $\Z$-module, but not a projective $\Z$-module. 
+ \item Suppose $R$ is an integral domain. Say an $R$-module is divisible if for each $d$ in $M$ and nonzero $r$ in $R$, you can divide $d$ by $r$ (i.e. there's a d' in M such $d=rd'$). Show that any injective R-module is divisible.
+ \item Let $R$ be a PID, $F$ its field of fractions, and $D$ a finitely generated $R$-submodule of $F$. Show that $D$ is cyclic. 
+\end{enumerate}
+
+\end{document}

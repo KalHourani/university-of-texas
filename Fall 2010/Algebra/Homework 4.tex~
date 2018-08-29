@@ -1,0 +1,133 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Algebra\\\large Homework 3}
+\date{September 21, 2010}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+\section*{Section 4.5}
+\begin{enumerate}
+ \item [3.] Use Sylow's Theorem to prove Cauchy's Theorem.
+\begin{Proof}
+ Suppose $G$ is a finite group and that $p$ divides $|G|$. In particular, write $|G|=p^{\alpha}m$ with $(p,m)=1$. Then there is a Sylow $p$-subgroup of $G$, say $P$, of order $p^{\alpha}$. Let $Z=C_P(P)$. Since $P$ is of order $p^{\alpha}$, $Z$ is non-trivial. Further, note that $Z$ is an abelian group, hence there is a subgroup, $H\leq Z$ of order $p$ by Cauchy's Theorem for abelian groups. However, $H\leq G$, which completes the proof.
+\end{Proof}
+
+ \item [4.] Exhibit all Sylow 2-subgroups and Sylow 3-subgroups of $D_{12}$ and $S_3\times S_3$. 
+\begin{Solution}\indent
+\begin{description}
+ \item [$D_{12}$:]  Write $|D_12|=12=2^2\cdot3$ and let $n_2$ and $n_3$ denote the number of of Sylow 2-subgroups and Sylow 3-subgroups, respectively. By Sylow's Theorem, $n_2\equiv1\bmod{2}$ and $n_2|3$, thus $n_2=1$ or $n_2=3$. In particular, there are at most 3 Sylow 2-subgroups of $D_{12}$. These 3 subgroups are: 
+\begin{align*}P_1&=\{1,x^3,y,x^3y\}\\P_2&=\{1,x^3,x^2y,x^5y\}\\P_3&=\{1,x^3,xy,x^4y\}\end{align*}
+
+Similarly, the group $Q=\{1,x^2,x^4\}$ is a Sylow 3-subgroup. However, $Q$ is normal for the only elements of order 3 are $x^2$ and $x^4$, so $Q$ is the only Sylow 3-subgroup. 
+ \item [$S_3\times S_3$:] Write $|S_3\times S_3|=36=2^2\cdot3^2$ and let $n_2$ and $n_3$ denote the number of of Sylow 2-subgroups and Sylow 3-subgroups, respectively. By Sylow's Theorem, $n_2\equiv1\bmod{2}$ and $n_2|9$, thus there are at most 9 Sylow 2-subgroups of $S_3\times S_3$. These 9 subgroups are: \[\{P_{\alpha,\beta}|\alpha,\beta\text{ are transpositions}\}\] where \[P_{\alpha,\beta}=\{(1,1),(\alpha,\beta),(\alpha,1),(1,\beta)\}\] Finally, if $\sigma$ is a 3-cycle in $S_3$, the group $<\sigma>$ is normal in $S_3$, hence the group $<(\sigma,\sigma)>$ is normal in $S_3\times S_3$ and has order 9, so it is the only Sylow 3-subgroup.
+\end{description}
+\end{Solution}
+
+ \item [13.] Prove that a group of order 56 has a normal Sylow $p$-subgroup for some prime $p$ dividing its order.
+\begin{Proof}
+ Let $G$ be a group of order 56. Write $56=2^3\cdot7$. By Sylow's Theorem, $n_7$, the number of Sylow 7-subgroups, must divide $8$ and be congruent to $1\mod7$. Thus, $n_7=1$ or $n_7=8$. If $n_7=1$, there is 1 Sylow 7-subgroup, which is normal. If $n_7=8$, then there are 8 Sylow 7-subgroups of order 7. These groups must be cylic, and therefore only intersect at 1. Thus, these 8 Sylow 7-subgroups yield a total of $8\times7-7=49$ elements of $G$. The remaining 7 elements must therefore be in the Sylow 2-subgroup, which has order 8. Thus, there can only be one Sylow 2-subgroup, which must therefore be normal.
+\end{Proof}
+
+ \item [16.] Let $|G|=pqr$, where $p,q$ and $r$ are primes with $p<q<r$. Prove that $G$ has a normal Sylow subgroup for either $p,q$ or $r$.
+\begin{Proof}
+ Let $n_p$, $n_q$ and $n_r$ denote the number of Sylow $p,q$ and $r$ subgroups of $G$, respectively. By Sylow's Theorem, $n_r|pq$ and $n_r\equiv1\bmod{r}$. Thus, $n_r$ is either $1,p,q$ or $pq$. If $n_r=1$, we are finished. Moreover, $n_r$ cannot be $p$, for otherwise we would have $r|p-1$ which contradicts $p<r$. We similarly cannot have $n_r=q$, so $n_r=pq$. Thus, we have $rpq-pq=pq(r-1)$ elements of order $r$ in $G$. 
+
+Now, $n_q|pr$ and $n_q\equiv1\bmod{q}$. If $n_q=1$, we are finished. If $n_q=p$ then $p\equiv1\bmod{q}$, which contradicts $p<q$. Thus, $n_q=r$ or $n_q=pr$. In either case, $n_q\geq r$.
+
+Notice now that $n_p|qr$. If $n_p=1$, we are finished. If $n_p=q$, $n_p=r$ or $n_p=qr$, then $n_p\geq q$. Thus, there are at least \[1+pq(r-1)+r(q-1)+q(p-1)=1+pqr+rq-r-q>pqr\] elements of $G$. This is of course impossible. Thus, at least one of $n_r,n_q$ and $n_p$ must be 1, so $G$ has a normal Sylow subgroup.
+\end{Proof}
+ \item [17.] Prove that if $|G|=105$ then $G$ has a normal Sylow 5-subgroup and a normal Sylow 7-subgroup.
+\begin{Proof}
+ Observe that $|G|=105=3\cdot5\cdot7$. Let $n_3$, $n_5$ and $n_7$ denote the number of Sylow 3, 5 and 7 subgroups of $G$, respectively. By Sylow's Theorem, we have \begin{align*}n_3|35&\text{ and }n_3\equiv1\bmod{3}\\n_5|21&\text{  and  }n_5\equiv1\bmod{5}\\n_7|15&\text{  and  }n_7\equiv1\bmod{7}\end{align*}
+
+This forces \begin{align*}n_3=1&\text{ or }n_3=7\\n_5=1&\text{ or }n_5=21\\n_7=1&\text{ or }n_7=15\end{align*} However, we must also have \[2n_3+4n_5+6n_7+1\leq105\] Thus at least one of $n_5$ and $n_7$ to be 1. Let $P$ and $Q$ be some Sylow 5-subgroup and some Sylow 7-subgroup, respectively. Since one of $n_5$ and $n_7$ is 1, one of $P$ and $Q$ is normal, hence $PQ$ is a subgroup of $G$. Moreover, $[G:PQ]=3$, which is the smallest prime dividing $|G|$, thus $PQ$ is normal. Since $PQ$ is normal, it must contain all conjugates of $P$ and $Q$, hence it must contain all Sylow 5 and Sylow 7-subgroups. Thus, $n_5$ and $n_7$ must satisfy $n_5\equiv1\bmod{7}$ and $n_7\equiv1\bmod{5}$, which forces $n_5=n_7=1$. 
+\end{Proof}
+
+ \item [19.] Prove that if $|G|=6545$ then $G$ is not simple.
+\begin{Proof}
+ Write $|G|=5\cdot7\cdot11\cdot17$ and let $n_5$, $n_7$, $n_{11}$ and $n_{17}$ denote the number of Sylow 5, Sylow 7, Sylow 11 and Sylow 17-subgroups of $G$, respectively. By Sylow's Theorem \begin{align*}n_5|1309&\text{ and }n_5\equiv1\bmod{5}\\n_7|935&\text{  and  }n_7\equiv1\bmod{7}\\n_{11}|595&\text{  and  }n_{11}\equiv1\bmod{11}\\n_{17}|385&\text{  and  }n_{17}\equiv1\bmod{17}\end{align*} This forces \begin{align*}n_5=1&\text{ or }n_5=11\\n_7=1&\text{ or }n_7=85\\n_{11}=1&\text{ or }n_{11}=595\\n_{17}=1&\text{ or }n_{17}=35\end{align*} However, we must also have \[4n_5+6n_7+10n_{11}+16n_{17}+1\leq6545\] which clearly forces at least one of $n_5,n_7,n_{11},n_{17}$ to be 1. Thus, $G$ is not simple.
+\end{Proof}
+
+ \item [21.] Prove that if $|G|=2907$ then $G$ is not simple.
+\begin{Proof}
+ Write $|G|=3^2\cdot17\cdot19$ and let $n_3$, $n_{17}$ and $n_{19}$ denote the number of Sylow 3, Sylow 17 and Sylow 19-subgroups of $G$, respectively. By Sylow's Theorem \begin{align*}n_3|323&\text{ and }n_3\equiv1\bmod{3}\\n_{17}|171&\text{  and  }n_{17}\equiv1\bmod{17}\\n_{19}|153&\text{  and  }n_{19}\equiv1\bmod{19}\end{align*} This forces \begin{align*}n_3=1&\text{ or }n_3=19\\n_{17}=1&\text{ or }n_{17}=171\\n_{19}=1&\text{ or }n_{19}=153\end{align*} However, we must also have \[2n_3+16n_{17}+18n_{19}+1\leq2907\] which clearly forces one of $n_3,n_{17},n_{19}$ to be 1. Thus, $G$ is not simple.
+\end{Proof}
+
+ \item [23.] Prove that if $|G|=462$ then $G$ is not simple.
+\begin{Proof}
+ Write $|G|=11\cdot42$. By Sylow's Theorem, \[n_{11}|42\text{ and }n_{11}\equiv1\bmod{11}\] Therefore $n_{11}=1$, so the Sylow 11-subgroup of $G$ must be normal. Thus, $G$ is not simple.
+\end{Proof}
+
+ \item [30.] How many elements of order 7 must there be in a simple group of order 168?
+\begin{Solution}
+ Since the group is simple, $n_7$, the number of Sylow 7-subgroups, cannot be 1. However, it must divide $2^3\times3=24$, which forces $n_7=8$. Thus, there are $8\cdot7-8=48$ elements of order 7.
+\end{Solution}
+
+\end{enumerate}
+
+
+\section*{Additional Problems}
+\begin{enumerate}
+ \item [1.] Suppose $G$ is a group containing normal subgroups $H,K$ such that $HK=G$ and the intersection of $H$ and $K$ is $\{1\}$. Prove that $G$ is isomorphic to $H\times K$. 
+  \begin{Proof}
+   For any $h\in H$, $k\in K$, $hkh^{-1}k^{-1}=h(\underset{\in h}{kh^{-1}k^{-1}})\in H$. Similarly, $hkh^{-1}k^{-1}\in K$, hence $hkh^{-1}k^{-1}\in H\cap K=\{1\}$, so $h$ commutes with $k$. Let $\phi:H\times K\to G$ be given by $\phi(h,k)=hk$. This map is certainly surjective, and it describes a homomorphism, for \[(h_1h_2,k_1k_2)\mapsto h_1h_2k_1k_2=(h_1k_1)(h_2k_2)\] Moreover, the kernel is the set of $(h,k)\in H\times K$ such that $hk=1$. However, this implies $h\in K$ and $k\in H$, hence $h,k\in H\cap K$, so $h=k=1$. Therefore $\ker\phi=\{(1,1)\}$, so $\phi$ describes an isomorphism.
+  \end{Proof}
+
+\end{enumerate}
+
+\end{document}

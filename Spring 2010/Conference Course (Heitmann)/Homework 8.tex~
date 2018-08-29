@@ -1,0 +1,108 @@
+
+\documentclass[12pt,leqno]{article}
+
+\usepackage{graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\numberwithin{equation}{section}
+\pagestyle{headings}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in} \noindent\fbox{#1} #2 \vspace{.10in}}
+
+\swapnumbers
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+
+
+\makeindex
+
+\begin{document}
+
+
+\thispagestyle{plain}
+\begin{flushright}
+\large{\textbf{Khalid Hourani\\
+Heitmann\\
+Homework 7\\
+}}
+\end{flushright}
+
+\section*{6.6 Decomposition of V: Jordan Form}
+
+\question{1}{If $S$ and $T$ are nilpotent linear transformations which commute, prove that $ST$ and $S+T$ are nilpotent linear transformations.}
+
+\begin{proof}
+ Suppose $S^n=T^m=0$. Then $(ST)^n=S^nT^n=0$, so $ST$ is nilpotent. By the binomial theorem, \[(S+T)^{mn}=\sum_{k=1}^{mn}{mn\choose k}S^{mn-k}T^k\] If $S^{mn-k}\not=0$, then $mn-k<n$, hence $k>mn-n=n(m-1)>m$, so $T^k=0$. Thus, the expression above yields $(S+T)^{mn}=0$.
+\end{proof}
+
+\question{2}{By a direct matrix computation, show that}\[\begin{pmatrix}0&1&0&0\\0&0&1&0\\0&0&0&0\\0&0&0&0\end{pmatrix}\text{ and }\begin{pmatrix}0&1&0&0\\0&0&1&0\\0&0&0&1\\0&0&0&0\end{pmatrix}\] are not similar.
+
+\begin{proof}
+ Suppose $M$ is a matrix so that \[M\begin{bmatrix}0&1&0&0\\0&0&1&0\\0&0&0&0\\0&0&0&0\end{bmatrix}=\begin{bmatrix}0&1&0&0\\0&0&1&0\\0&0&0&1\\0&0&0&0\end{bmatrix}M\]and write \[M=\begin{bmatrix}m_{11}&m_{12}&m_{13}&m_{14}\\m_{21}&m_{22}&m_{23}&m_{24}\\m_{31}&m_{32}&m_{33}&m_{34}\\m_{41}&m_{42}&m_{43}&m_{44}\end{bmatrix}\] Then \begin{align*}\begin{bmatrix}m_{11}&m_{12}&m_{13}&m_{14}\\m_{21}&m_{22}&m_{23}&m_{24}\\m_{31}&m_{32}&m_{33}&m_{34}\\m_{41}&m_{42}&m_{43}&m_{44}\end{bmatrix}\begin{bmatrix}0&1&0&0\\0&0&1&0\\0&0&0&0\\0&0&0&0\end{bmatrix}&=\begin{bmatrix}0&1&0&0\\0&0&1&0\\0&0&0&1\\0&0&0&0\end{bmatrix}\begin{bmatrix}m_{11}&m_{12}&m_{13}&m_{14}\\m_{21}&m_{22}&m_{23}&m_{24}\\m_{31}&m_{32}&m_{33}&m_{34}\\m_{41}&m_{42}&m_{43}&m_{44}\end{bmatrix}\\\begin{bmatrix}0&m_{11}&m_{12}&0\\0&m_{21}&m_{22}&0\\0&m_{31}&m_{32}&0\\0&m_{41}&m_{42}&0\end{bmatrix}&=\begin{bmatrix}m_{21}&m_{22}&m_{23}&m_{24}\\m_{31}&m_{32}&m_{33}&m_{34}\\m_{41}&m_{42}&m_{43}&m_{44}\\0&0&0&0\end{bmatrix}\end{align*}which implies \[M=\begin{bmatrix}m_{11}&m_{12}&m_{13}&m_{14}\\0&m_{11}&m_{12}&0\\0&0&m_{11}&0\\0&0&0&0\end{bmatrix}\] which is certainly not invertible. 
+\end{proof}
+
+\question{5}{}
+\begin{description}
+ \item [(a)] Prove that the matrix \[\begin{pmatrix}1&1&1\\-1&-1&-1\\1&1&0\end{pmatrix}\] is nilpotent, and find its invariants and Jordan form.
+ \item [(b)] Prove that the matrix in part \textbf{(a)} is not similar to \[\begin{pmatrix}1&1&1\\-1&-1&-1\\1&0&0\end{pmatrix}\]
+\end{description}
+
+\begin{proof}
+ \begin{description}
+  \item [(a)]  Notice that \[\begin{bmatrix}1&1&1\\-1&-1&-1\\1&1&0\end{bmatrix}^3=0\] Thus, by theorem 6.5.1, its only invariant is 3, and its Jordan form is \[\begin{bmatrix}0&1&0\\0&0&1\\0&0&0\end{bmatrix}\]
+  \item [(b)] Notice that this matrix is not nilpotent, so it is not similar to $\begin{bmatrix}1&1&1\\-1&-1&-1\\1&1&0\end{bmatrix}$
+ \end{description}
+\end{proof}
+
+\question{12}{Find all possible Jordan forms for}
+\begin{description}
+ \item [(a)] all $8\times8$ matrices having $x^2(x-1)^3$ as minimal polynomial;
+ \item [(b)] all $10\times10$ matrices, over a field of characteristic different from 2, having $x^2(x-1)^2(x+1)^3$ as minimal polynomial
+\end{description}
+
+\begin{proof}[Solution]\indent
+ \begin{description}
+  \item [(a)] The matrix's largest 0-block is $2\times2$ and the matrix's largest 1-block is $3\times3$. Thus, the remaining possible block combinations are $1\times1,1\times1,1\times2$; $1\times1,2\times2$; $3\times3$, with every block being either a 0-block or a 1-block, except for the $3\times3$ block, which can only be a 1-block.
+ \end{description}
+  \item [(b)] The matrix's largest 0-block is $2\times2$, the matrix's largest 1-block is $2\times2$, and the matrix's largest -1-block is $3\times3$. Thus, the remaining possible block combinations are: so there are 3 possible Jordan forms, corresponding to each $1\times1$ block.
+\end{proof}
+
+
+\question{14}{If $T$ is in $A(V)$ then $T$ is diagonalizable (if all its characteristic roots are in $F$) if and only if whenever $v(T-\lambda)^m=0$, for $v\in V$ and $\lambda\in F$, then $v(T-\lambda)=0$.}
+
+\question{15}{Using the result of Problem 14, prove that if $E^2=E$ then $E$ is diagonalizable.}
+
+\question{19}{If $A,B\in F$ are diagonalizable and if they commute, prove that there is an element $C\in F_n$ such that both $CAC^{-1}$ and $CBC^{-1}$ are diagonal.}
+
+\begin{proof}
+ Suppose $PAP^{-1}=D_1$ and $QBQ^{-1}=D_2$, with $D_1,D_2$ diagonal. Since $A$ and $B$ commute, 
+\end{proof}
+
+\end{document}

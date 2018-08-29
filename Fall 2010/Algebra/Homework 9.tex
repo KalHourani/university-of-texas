@@ -1,0 +1,195 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Algebra\\\large Homework 9}
+\date{November 4, 2010}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+
+\section*{Section 9.2}
+Let $F$ be a field and let $x$ be an indeterminate over $F$.
+\begin{enumerate}
+ \item [1.] Let $f(x)\in F[x]$ be a polynomial of degree $n\geq1$ and let bars denote passage to the quotient $F[x]/(f(x))$. Prove that for each $\overline{g(x)}$ there is a unique polynomial $g_0(x)$ of degree $\leq n-1$ such that $\overline{g(x)}=\overline{g_0(x)}$ (equivalently, the elements $\overline{1},\overline{x},\hdots,\overline{x^{n-1}}$, are a basis of the vector space $F[x]/(f(x))$ over $F$ -- in particular, the dimension of this space is $n$). [Use the Division Algorithm.]
+
+\begin{Proof}
+ By the division algorithm, there exists a polynomial $g_0(x)$ of degree $\leq n-1$ such that $g(x)=f(x)q_0(x)+g_0(x)$. In particular, \[\overline{g(x)}=\overline{f(x)}\overline{q_0(x)}+\overline{g_0(x)}=\overline{g_0(x)}\] Suppose another such polynomial, $g_1(x)$, exists, i.e., that $g_1(x)$ is a polynomialo of degree $\leq n-1$ with $\overline{g_0(x)}=\overline{g_1(x)}$. Then \[f(x)q_0(x)+g_0(x)=f(x)q_1(x)+g_1(x)\] This forces \[g_1(x)-g_0(x)=f(x)(q_0(x)-q_1(x))\] Since $f$ is of degree $n$ and $g_1(x)-g_0(x)$ is of degree less than $n$, it must be that $q_0(x)-q_1(x)=0$, which forces uniqueness, i.e., $g_1(x)=g_0(x)$.
+\end{Proof}
+
+ \item [2.] Let $F$ be a finite field of order $q$ and let $f(x)$ be a polynomial in $F[x]$ of degree $n\geq1$. Prove that $F[x]/(f(x))$ has $q^n$ elements. [Use the preceding exercise.]
+
+\begin{Proof} 
+ By the preceding exercise, the set $\{1,x,\hdots,x^{n-1}\}$ forms a basis of $F[x]/(f(x))$. Observe that the set $\{k+(f(x))|k\in F\}$ forms a field in $F[x]/(f(x))$ which is isomorphic to $F$, so $F[x]/(f(x))$ can be viewed as a degree $n$ vector space over $F$. Thus, it is isomorphic (as a vector space) to $F^n$, hence has $|F|^n=q^n$ elements.
+\end{Proof}
+
+ \item [3.] Let $f(x)$ be a polynomial in $F[x]$. Prove that $F[x]/(f(x))$ is a field if and only if $f(x)$ is irreducible. [Use proposition 7, Section 8.2.]
+
+\begin{Proof}
+ Since $F[x]$ is a P.I.D., every irreducible element is prime and an element is prime if and only if its ideal is maximal. However, $F[x]/(f(x))$ is a field if and only if $((f(x))$ is maximal, which is if and only if $f(x)$ is irreducible.
+\end{Proof}
+
+ \item [4.] Let $F$ be a finite field. Prove that $F[x]$ contains infinitely many primes. (Note that over an infinite field the polynomials of degree 1 are an infinite set of primes in the ring of polynomials).
+
+\begin{Proof}
+ We suppose, by way of contradiction, that there are only finitely many primes, $p_1(x),p_2(x),\hdots,p_n(x)$, in $F[x]$. Consider the polynomial \[p(x)=p_1(x)p_2(x)\hdots p_n(x)+1\] The polynomial $p(x)$ is clearly not divisible by any $p_i(x)$, hence is not divisible by any primes. This is a contradiction, and so there must be infinitely many primes.
+\end{Proof}
+
+\end{enumerate}
+
+\section*{Section 9.4}
+\begin{enumerate}
+ \item [2.] Prove that the following polynomials are irreducible in $\Z[x]$:
+  \begin{enumerate}
+   \item $x^4-4x^3+6$
+   \item $x^6+30x^5-15x^3+6x-120$
+   \item $x^4+4x^3+6x^2+2x+1$ [Substitute $x-1$ for $x$.]
+   \item $\frac{(x+2)^p-2^p}{x}$, where $p$ is an odd prime.
+  \end{enumerate}
+
+\begin{Proof}\indent
+ \begin{enumerate}
+  \item Since $2\mid-4$ and $2^2=4\nmid6$, $x^4-4x^3+6$ is irreducible by the Eisenstein criterion.
+  \item Since $3\mid30$, $3\mid-15$, $3\mid6$, and $3^2=9\nmid120$, $x^6+30x^5-15x^3+6x-120$ is irreducible by the Eisenstein criterion.
+  \item 
+  \item 
+ \end{enumerate}
+
+\end{Proof}
+
+ \item [10.] Prove that the polynomial $p(x)=x^4-4x^2+8x+2$ is irreducible over the quadratic field $F=\Q(\sqrt{-2})=\{a+b\sqrt{-2}|a,b\in\Q\}$. 
+ \item [12.] Prove that $x^{n-1}+x^{n-2}+\hdots+x+1$ is irreducible over $\Z$ if and only if $n$ is a prime.
+  
+\begin{Proof}
+\[x^{n-1}+x^{n-2}+\hdots+x+1=\left(x^{p-1}+x^{p-2}+\hdots+x+1\right)\left(x^{n-p}+x^{n-2p}+\hdots+x^{n-(k-1)p}+1\right)\]
+
+Write $p(x)=x^{n-1}+x^{n-2}+\hdots+x+1=\frac{x^n-1}{x-1}$. We consider the polynomial $p(x+1)$: \[p(x+1)=\frac{(x+1)^n-1}{x}=nx^{n-1}+\frac{n(n-1)}{2}x^{n-2}+\hdots+\frac{n(n-1)}{2}x+n\]
+\end{Proof}
+
+\end{enumerate}
+
+\section*{Section 15.1}
+\begin{enumerate}
+ \item [12.] Suppose $R$ is a Noetherian ring and $S$ is a finitely generated $R$-algebra. If $T\subseteq S$ is an $R$-algebra such that $S$ is a finitely generated $T$-\textit{module}, prove that $T$ is a finitely generated $R$-algebra.  
+ \item [13.] Verify properties (1) to (10) of the maps $\mathcal{Z}$ and $\mathcal{I}$.
+\end{enumerate}
+
+\section*{Section 10.1}
+\begin{enumerate}
+ \item [1.] Prove that $0m=0$ and $(-1)m=-m$ for all $m\in M$.
+
+\begin{Proof}
+ Observe that \[0m=(0+0)m=0m+0m\] so $0m=0$. Similarly, \[(-1)m+1m=(-1+1)m=0m=0\] so $-1m=-m$.
+\end{Proof}
+
+ \item [2.] Prove that $R^{\times}$ and $M$ satsify the two axioms in Section 1.7 for a \textit{group action} of the multiplicative group $R^{\times}$ on the set $M$.
+
+\begin{Proof}
+ For any $r\in R^{\times}$, $m\in M$, the mapping $(r,m)\mapsto rm$ describes a group action:\indent
+\begin{description}
+ \item [(i)] For any $r\in R^{\times}$, $r_1\cdot(r_2\cdot m)=r_1(r_2m)=(r_1r_2m)=(r_1r_2)\cdot m$ by definition
+ \item [(ii)] Again by definition, $1_R\cdot m=m$
+\end{description}
+
+\end{Proof}
+
+ \item [4.] Let $M$ be the module $R^n$ described in Example 3 and let $I_1,I_2,\hdots,I_n$ be the left ideals of $R$. Prove that the following are submodules of $M$:
+  \begin{enumerate}
+   \item $\{(x_1,x_2,\hdots,x_n)|x_i\in I_i\}$
+   \item $\{(x_1,x_2,\hdots,x_n)|x_i\in R\text{ and }x_1+x_2\hdots+x_n=0\}$
+  \end{enumerate}
+
+\begin{Proof}
+ \begin{enumerate}
+  \item Take $m_1,m_2$ elements of $\{(x_1,x_2,\hdots,x_n)|x_i\in I_i\}$, say $m_1=(x_1,x_2,\hdots,x_n)$, $m_2=(y_1,y_2,\hdots,y_n)$, and take $r\in R$. Since $I_i$ is an ideal, $x_i+y_i$ and $rx_i$ are elements of $I_i$, hence \[m_1+m_2=(x_1+y_1,x_2+y_2,\hdots,x_n+y_n)\in M\] and  \[rm_1=(rx_1,rx_2,\hdots,rx_n)\in M\] Thus $\{(x_1,x_2,\hdots,x_n)|x_i\in I_i\}$  is a submodule of $M$.
+  \item Take $m_1=(x_1,x_2,\hdots,x_n)$ and $m_2=(y_1,y_2,\hdots,y_n)$ elements of this set, then $x_1+x_2+\hdots+x_n=0$ and $y_1+y_2+\hdots+y_n=0$, hence \[(x_1+y_1)+(x_2+y_2)+\hdots+(x_n+y_n)=(x_1+x_2+\hdots+x_n)+(y_1+y_2+\hdots+y_n)=0\] so $m_1+m_2$ is in this set. Similarly, \[rx_1+rx_2+\hdots+rx_n=r(x_1+x_2+\hdots+x_n)=r\cdot0=0\] so $rm_1$ is in this set. Thus, $\{(x_1,x_2,\hdots,x_n)|x_i\in R\text{ and }x_1+x_2\hdots+x_n=0\}$ forms a submodule of $M$.
+ \end{enumerate}
+
+\end{Proof}
+
+ \item [7.] Let $N_1\leq N_2\leq\hdots$ be an ascending chain of submodules of $M$. Prove that $\cup_{i=1}^{\infty}N_i$ is a submodule of $M$.
+
+\begin{Proof}
+ Let $N=\cup_{i=1}^{\infty}N_i$ and take $x_1,x_2\in N$, $r\in R$. By definition, $x_1,x_2$ are in some $N_i$, say $N_i$ and $N_j$, respectively. Without loss of generality, say $j>i$, i.e., $N_i\leq N_j$. In particular, this means $x_1+x_2\in N_j\leq N$. Similarly, $rx_1\in N_i\leq N$, so $N$ is a submodule.
+\end{Proof}
+
+ \item [8.] An element $m$ of the $R$-module $M$ is called a \textit{torsion element} if $rm=0$ for some nonzero element $r\in R$. The set of torsion elements is denoted \[\text{Tor}(M)=\{m\in M|rm=0\text{ for some nonzero }r\in R\}\]
+  \begin{enumerate}
+   \item Prove that if $R$ is an integral domain then $\text{Tor}(M)$ is a submodule of $M$ (called the \textit{torsion} submodule of $M$).
+   \item Give an example of a ring $R$ and an $R$-module $M$ such that $\text{Tor}(M)$ is not a submodule.
+   \item If $R$ has a zero divisor show that every nonzero $R$-module has nonzero torsion elements.
+  \end{enumerate}
+
+\begin{Proof}\indent
+ \begin{enumerate}
+  \item Take $m_1,m_2\in\text{Tor}(M)$, say $r_1m_1=0$ and $r_2m_2=0$, and take $r\in R$. Since $R$ is an integral domain, $r_1r_2\not=0$, hence \[r_1r_2(m_1-m_2)=r_1r_2m_1-r_1r_2m_2=r_2r_1m_1-r_1r_2m_2=0\] Thus $m_1-m_2\in\text{Tor}(M)$. Similarly, $r_1(rm_1)=r(r_1m_1)=0$, so $rm\in\text{Tor}(M)$.
+  \item A trivial example is to take $M=R$ with $R$ not an integral domain, e.g. $R=\Z/6\Z$. Then $\text{Tor}(M)=\{0,2,3,4\}$, however $2+3=5\notin M$.
+  \item Suppose $r_1r_2=0$ with neither $r_1$ nor $r_2$ equal to 0. For any $x$ such that $r_2x\not=0$, then $r_1(r_2x)=0$, hence $r_2x$ is a nonzero torsion element.
+ \end{enumerate}
+
+\end{Proof}
+
+ \item [13.] Let $I$ be an ideal of $R$. Let $M'$ be the subset of elements $a$ of $M$ that are annihilated by some power, $I^k$ of the ideal $I$, where the power may depend on $a$. Prove that $M'$ is a submodule of $M$.
+
+\begin{Proof}
+ 
+\end{Proof}
+
+ \item [16.] Prove that the submodules $U_k$ described in the example of $F[x]$-modules are all of the $F[x]$-submodules for the shift operator.
+\end{enumerate}
+
+
+\end{document}

@@ -1,0 +1,110 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Real Analysis\\\large Homework 6}
+\date{October 21, 2010}
+\author{Khalid Hourani}
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{fancy}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{(\arabic{enumi})}}
+\renewcommand{\labelenumii}{\textbf{\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+\begin{titlepage}
+ \maketitle 
+\end{titlepage}
+
+\begin{enumerate}
+ \item \begin{enumerate}
+        \item Let $h(x)=e^{-\frac{1}{x^2}}$ for $x>0$ and $h(x)=0$ for $x\leq0$. Prove that $h$ is $C^{\infty}$. Explain why $h$ is not analytic.
+	\item Using $h$ build a function in $C^{\infty}(\R^1)$ whose support equals the interval $[a,b](a<b)$, one in $C^{\infty}(\R^2)$ whose support equals a disc of radius $r>0$ and another in $C^{\infty}(\R^2)$ whose support equals the ``parallelogram'' $[a_1,b_1]\times[a_2,b_2](a_i<b_i)$.
+       \end{enumerate}
+
+\begin{Proof}\indent
+ \begin{enumerate}
+  \item We shall prove that the $n^{\text{th}}$ derivative of $h$ is of the form $h(x)k(x)$ with $k(x)$ a rational function: proceed by induction on $n$. The base case $n=0$ is trivially true. Suppose that the $k^{\text{th}}$ derivative of $h$ is of the form $h(x)k(x)$. Then \[h^{(k+1)}(x)=h'(x)k(x)+h(x)k'(x)=\left(\frac{3}{x^3}k(x)+k'(x)\right)h(x)\] However, rational functions are closed under addition and multiplication, as well as differentiation (save for at points of discontinuity - of which $k$ will have only at 0), so this function is of the form $h(x)k(x)$ with $k(x)$ a rational function.
+
+In particular, this shows that $h$ is in $C^{\infty}$, and moreover that all of its derivatives at 0 are 0. However, this forces the MacLaurin series of $h$ to be identically 0, which the function $h$ is certainly not, so $h$ cannot be analytic. 
+  \item Take \[f(x)=h\left(a-x)(b-x)\right)\] and note that this function is 0 whenever $(a-x)(b-x)\leq0$. This is whenever $x\in\R-[a,b]$, hence $f$ has support $[a,b]$. 
+
+Similarly, if we take \[f(x,y)=h\left(\sqrt{r^2-(x^2+y^2)}\right)\] we see that $f$ has support in the disc of radius $r$.
+
+Finally, we take \[f(x,y)=h\left((x-a_1)(x-b_1)(y-a_2)(y-b_2)\right)\] and observe that $f$ has support in $[a_1,b_1]\times[a_2,b_2]$.
+ \end{enumerate}
+
+\end{Proof}
+
+ \item Establish the following relations between $L^2(\R^n)$ and $L^1(\R^n)$ (Notice there are analogous relations for general paris $(p,q)$, $1<p<q<\infty$)
+      \begin{enumerate}
+       \item Prove that $L^2(\R^n)\not\subseteq L^1(\R^n)$ and $L^1(\R^n)\not\subseteq L^2(\R^n)$.
+       \item However, if $f\in L^2(\R^n)$ and $f$ is zero a.e. outside a set $|E|<\infty$ then \[\|f\|_{L^1(\R^n)}\leq|E|^{1/2}\|f\|_{L^2(\R^n)}\] 
+       \item If $f\in L^1(\R^n)$ is bounded with $|f|\leq M$ a.e. and $f\in L^1(\R^n)$ then \[\|f\|_{L^2(\R^n)}\leq\sqrt{M\|f\|_{L^1(\R^n)}}\]
+      \end{enumerate}
+
+\begin{Proof}\indent
+ \begin{enumerate}
+  \item Let $f(\mathbf{x})=\frac{1}{\|\mathbf{x}\|^{3/4}}$. Observe that $f$ is not integrable, hence not in $L^1(\R^n)$, however the $L^2$ norm of $f$ is given by \[\left(\int_{\R^n}\frac{1}{\|\mathbf{x}\|^{3/2}}d\mathbf{x}\right)^{1/2}<\infty\] hence $f$ is in $L^2(\R^n)$. This establishes the first exclusion, i.e., $L^2(\R^n)\not\subseteq L^1(\R^n)$. To see the other exclusion, take $f(\mathbf{x})=\frac{1}{\sqrt{\|\mathbf{x}\|}}$ for $\|\mathbf{x}\|\leq1$ and 0 elsewhere. We see that $f$ is integrable, hence is in $L^1(\R^n)$, however its $L^2$ norm is given by \[\left(\int_{\R^n}\frac{1}{\|\mathbf{x}\|}d\mathbf{x}\right)^{1/2}=\infty\] so $f\notin L^2(\R^n)$, i.e., $L^1(\R^n)\not\subseteq L^2(\R^n)$.
+  \item Since $f$ is zero almost everywhere outside a set $|E|$, its $L^1$ norm is given by \[\int_{\R^n}|f(\mathbf{x})|d\mathbf{x}=\int_{E}|f(\mathbf{x})|d\mathbf{x}\] By H\"{o}lder's Theorem \[\|f\|_{L^1(\R^n)}\leq\|f\|_{L^2(\R^n)}\|1\|_{L^2(\R^n)}=|E|^{1/2}\|f\|_{L^2(\R^n)}\]
+  \item Since $|f|\leq M$, we have \begin{align*}|f|^2&\leq M|f|\\\int_{\R^n}|f|^2&\leq M\int_{\R^n}|f|\\\|f\|_{L^2(\R^n)}^2&\leq\sqrt{M\|f\|_{L^1(\R^n)}}\qedhere\end{align*}
+ \end{enumerate}
+\end{Proof}
+
+ \item Let $E\subseteq\R^n$ be a measurable set such that $|E|>0$ and $|E^c|>0$ (any of them could be infinite). Let $H\subseteq L^2(\R^n)$ be the subspace of all functions $h\in L^2(\R^n)$ such that $h=0$ a.e. in $E$. Obtain a formula for the orthogonal project $f\to Pf\in H$ of a general function $f\in L^2(\R^n)$ and characterize the orthogonal complement of $H$ in $L^2(\R^n)$. 
+
+\begin{Proof}
+ 
+\end{Proof}
+
+ \item The \textit{Poisson kernel} $P(x,y)$ is the function given by \[P(x,y):=\frac{1}{\pi}\frac{y}{x^2+y^2},\:x,y\in\R,\:y>0\] Given $f_0\in L^p(\R)(1<p<\infty)$, its \textit{Poisson integral} is a function in one more dimension given by the following convolution: \[f(x,y):=\int_{\R}f_0(t)P(x-t,y)dt=(f_0*P(.,y))(x)\] Prove that in a neighborhood of every point $(x,y)$ with $y>0$ the function $f(x,y)$ is twice-differentiable (in both variables). Then, prove that it is \textit{harmonic}, i.e., it solves the partial differential equation \[\frac{\partial^2}{\partial x^2}f+\frac{\partial^2}{\partial y^2}f=0\] Discuss what happens as $y\to0$. If $f$ is continuous, can we claim that $f(x,y)\to f_0(x)$ pointwise as $y\to0^+$? What if $f$ is just in $L^p$?
+
+\begin{Proof}
+ We observe that \[\frac{\partial^2}{\partial x^2}f=\int_{\R}f_0(t)\frac{\partial^2}{\partial x^2}P(x-t,y)dt\] and \[\frac{\partial^2}{\partial y^2}f=\int_{\R}f_0(t)\frac{\partial^2}{\partial y^2}P(x-t,y)dt\] by Young's Convolution Theorem. Thus, the fact that $f$ is twice-differentiable follows from the differentiability of $P(x,y)$. This function is twice-differentiable since it is rational. In particular \begin{align*}\frac{\partial^2}{\partial x^2}P&=-\frac{1}{\pi}\frac{8x^2y}{(x^2+y^2)^3}-\frac{1}{\pi}\frac{2y}{(x^2+y^2)^2}\\\frac{\partial^2}{\partial y^2}P&=-\frac{1}{\pi}\frac{8xy^2}{(x^2+y^2)^3}-\frac{1}{\pi}\frac{2x}{(x^2+y^2)^2}\end{align*} Then the function $f$ is harmonic since $P$ is harmonic.
+\end{Proof}
+
+\end{enumerate}
+\end{document}

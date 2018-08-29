@@ -1,0 +1,188 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Algebra\\\large Homework 3}
+\date{September 21, 2010}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+\section*{Section 4.1}
+Let $G$ be a group and let $A$ be a nonempty.
+\begin{enumerate}
+ \item [1.] Let $G$ act on the set $A$. Prove that if $a,b\in A$ and $b=g\cdot a$ for some $g\in G$, then $G_b=gG_ag^{-1}$ ($G_a$ is the stabilizer of $a$). Deduce that if $G$ acts transitively on $A$ then the kernel of the action is $\cap_{g\in G}gG_ag^{-1}$.
+\begin{Proof}
+ Take $x\in G_b$. Setting $h=g^{-1}xg$, we see that \[h\cdot a=g^{-1}x\cdot b=g^{-1}\cdot b=a\] hence $h\in G_a$. However, $gxg^{-1}=h$, so $h\in gG_ag^{-1}$. This shows $G_b\subseteq gG_ag^{-1}$.
+
+On the other hand, if $x\in gG_ag^{-1}$, then $x=ghg^{-1}$ for some $h\in G_a$. Then \[x\cdot b=ghg^{-1}\cdot b=gh\cdot a=g\cdot a=b\] so $x\in G_b$. Hence $gG_ag^{-1}\subseteq G_b$. This proves the equality.
+
+Now, if $G$ acts transitively on $A$, then \[\bigcap_{g\in G}gG_ag^{-1}=\bigcap_{g\in G}G_{g\cdot b}\] Since $G$ acts transitively, this is just \[\bigcap_{a\in A}G_a\] which is simply the kernel of this action. 
+\end{Proof}
+
+ \item [2.] Let $G$ be a \textit{permutation group} on the set $A$ (i.e., $G\leq S_A$), let $\sigma\in G$ and let $a\in A$. Prove that $\sigma G_a\sigma^{-1}=G_{\sigma(a)}$. Deduce that if $G$ acts transitively on $A$ then \[\bigcap_{\sigma\in G}\sigma G_a\sigma^{-1}=1\]
+
+\begin{Proof}
+ Since $G\leq S_A$, the group action of $G$ on $A$ is merely $\sigma\cdot a=\sigma(a)$. Then, by the previous exercise \[G_{\sigma(a)}=G_{\sigma\cdot a}=\sigma G_a\sigma^{-1}\] We remark that this action is obviously faithful, since the induced homomorphism into $S_A$ is simply $\phi(g)=g$. It follows that the kernel of this map is trivial.
+
+If $G$ acts transitively on $A$, then \[\bigcap_{\sigma\in G}\sigma G_a\sigma^{-1}=\bigcap_{\sigma\in G}G_{\sigma(a)}=\bigcap_{a\in A}G_a=\ker\phi=1\qedhere\]
+\end{Proof}
+
+ \item [7.] Let $G$ be a transitive permutation group on the finite set $A$. A \textit{block} is a nonempty subset $B$ of $A$ such that for all $\sigma\in G$ either $\sigma(B)=B$ or $\sigma(B)\cap B=\emptyset$ (here $\sigma(B)$ is the set $\{\sigma(b)|b\in B\}$).
+  \begin{enumerate}
+   \item Prove that if $B$ is a block containing the element $a$ of $A$, then the set $G_B$ defined by $G_B=\{\sigma\in G|\sigma(B)=B\}$ is a subgroup of $G$ containing $G_a$.
+   \item Show that if $B$ is a block and $\sigma_1(B),\sigma_2(B),\hdots,\sigma_n(B)$ are all the distinct images of $B$ under the elements of $G$, then these form a partition of $A$.
+   \item A (transitive) group $G$ on a set $A$ is said to be primitive if the only blocks in $A$ are the trivial ones: the sets of size 1 and $A$ itself. Show that $S_4$ is primitive on $A=\{1,2,3,4\}$. Show that $D_8$ is not primitive as a permutation group on the four vertices of the square.
+   \item Prove that the transitive group $G$ is primitive on $A$ if and only if for each $a\in A$, the only subgroups of $G$ containing $G_a$ are $G_a$ and $G$ (i.e., $G_a$ is a \textit{maximal} subgroup of $G$).
+  \end{enumerate}
+\begin{Proof}\indent
+ \begin{enumerate}
+  \item Take $\sigma_1,\sigma_2\in G_B$. By definition, $\sigma_1\sigma_2^{-1}(B)=\sigma_1(B)=B$, hence $\sigma_1\sigma_2^{-1}\in G_B$, so $G_B$ forms a group. Further, if $\sigma\in G_a$, then $\sigma(a)=a$, hence $\sigma(B)=B$ since $B$ is a block. Then $\sigma\in G_B$, so $G_a\leq G_B$.
+  \item The union of $\sigma_i(B)$ is clearly $A$ since the $\sigma_i$ are bijections. To see that these $\sigma_i(B)$ form a partition, suppose $\sigma_i(B)\cap\sigma_j(B)\not=\emptyset$. Then there are elements $b_1,b_2\in B$ so that $\sigma_i(b_1)=\sigma_j(b_2)$. This forces $\sigma_i\sigma_j^{-1}(b_1)=b_2\in B$. However, $B$ is a block, hence $\sigma_i\sigma_j^{-1}(B)=B$, so $\sigma_i(B)=\sigma_j(B)$, i.e., $\sigma_i=\sigma_j$. Thus, the $\sigma_i(B)$ are pairwise disjoint and cover $A$, so they form a partition.
+  \item Suppose $B$ is a subset of $\{1,2,3,4\}$ which is not a singleton nor the entire set. Take $b_1,b_2\in B$ and $a\notin B$, and let $\sigma$ be a partition which fixes $b_1$ and sends $b_2$ to $a$. Then $b_1,a\in\sigma(B)$ hence $\sigma(B)\not=B$ and $\sigma(B)\cap B\not=\emptyset$. Thus, $B$ is not a block, so $S_4$ acts primitively on $A=\{1,2,3,4\}$. 
+
+However, $D_8$ does not act primitively on the four vertices of the square: take $B$ to be a set of two opposite vertices. The elements of $D_8$ send opposite vertices to opposite vertices, hence elements of $D_8$ either fix $B$ or send it to a set disjoint from $B$.
+  \item \begin{description}
+         \item [$\Leftarrow$] Suppose the only subgroups of $G$ containing $G_a$ are $G_a$ and $G$. If $B$ is a block, then for any $b\in B$, $G_b\leq G_B$ so $G_B=G$ or $G_B=G_b$. If $G_B=G$ then $\sigma(B)=B$ for all $\sigma\in G$. Since $G$ is transitive, this forces $B=A$. If $G_B=G_b$ for all $b\in B$, suppose, in order to reach a contradiction, that $B$ is not a singleton, i.e., that $B$ contains at least two elements, say $b_1$ and $b_2$. Then there is a $g\in G$ such that $g\cdot b_1=b_2$. However, by definition, $gB=B$, so $g\in G_B$, but $g\notin G_b$. This contradicts the fact that $G_B=G_b$, so $B$ must be singleton.  
+         \item [$\Rightarrow$] Suppose that $G$ acts primitively on $A$ and take $H$ such that $G_a\leq H\leq G$. By Lagrange's Theorem and the Orbit-Stabilizer Theorem, we have \begin{align*}|G:G_a|=|G\cdot a|&=|G:H|\cdot|H:G_a|\\|G\cdot a|&=|G:H|\cdot|H:H_a|\\|A|&=|G:H|\cdot|H\cdot a|\end{align*} We now show that $H\cdot a$ is a block:
+
+Suppose $g\cdot(H\cdot a)$ and $H\cdot a$ are not disjoint. Then there are elements $h_1,h_2$ so that \begin{align*}gh_1\cdot a&=h_2\cdot a\\h_2^{-1}gh_1\cdot a&=a\end{align*} therefore \[h_2^{-1}gh_1\in G_a\leq H\] Thus, $g\in H$, so $g\cdot(H\cdot a)=H\cdot a$, hence either $gH\cdot a$ is disjoint from $H\cdot a$ or is equal to $gH\cdot a$. Therefore, $H\cdot a$ is a block, so $|H\cdot a|$ is either 1 or $|A|$. If $|H\cdot a|=1$, then $|G:H|=|G:G_a|$ hence $H=G_a$. On the other hand, if $|H\cdot a|=|A|$, then $|G:H|=1$ so $G=H$. 
+        \end{description}
+ \end{enumerate}
+\end{Proof}
+
+\end{enumerate}
+
+\section*{Section 4.3}
+\begin{enumerate}
+ \item [19.] Assume $H$ is a normal subgroup of $G$, $\mathcal{K}$ is a conjugacy class of $G$ contained in $H$ and $x\in\mathcal{K}$. Prove that $\mathcal{K}$ is a union of $k$ conjugacy classes of equal size in $H$, where $k=|G:HC_g(x)|$. Deduce that a conjugacy class in $S_n$ which consists of even permutations is either a single conjugacy class under the action of $A_n$ or is a union of two classes of the same size in $A_n$.
+
+ \item [20.] Let $\sigma\in A_n$. Show that all elements in the conjugacy class of $\sigma$ in $S_n$ (i.e., all elements of the same cycle type as $\sigma$) are conjugage in $A_n$ if and only if $\sigma$ commutes with an odd permutation.
+
+\begin{Proof}
+By the preceding exercise, the conjugacy class $[\sigma]$ in $S_n$ is a single conjugacy class or is the union of two classes of the same size in $A_n$. The first case occurs whenever $\sigma$ commutes with an odd permutation. The latter case occurs whenever $\sigma$ does not commute with an odd permutation.
+ \end{Proof}
+
+ \item [27.] Let $g_1,g_2,\hdots, g_r$ be representatives of the conjugacy classes of the finite group $G$ and assume these elements pairwise commute. Prove that $G$ is abelian.
+
+\begin{Proof}
+ Let $H=<g_1,g_2,\hdots,g_r>$. Notice that \[\bigcup_{g\in G}gHg^{-1}=G\] so $H$ is not a proper subgroup of $G$, i.e., $H=G$. Then, since the generators $g_i$ of $G$ commute, $G$ is abelian.
+\end{Proof}
+
+ \item [29.] Let $p$ be a prime and let $G$ be a group of order $p^{\alpha}$. Prove that $G$ has a subgroup of order $p^{\beta}$, for every $\beta$ with $0\leq\beta\leq\alpha$. 
+\begin{Proof}
+ We induct on $\alpha$: the case $\alpha=1$ is trivial. Suppose the statement holds for some $|G|=p^{\alpha}$. We proceed to show the statement for $|G|=p^{\alpha+1}$:
+
+Notice that $C(G)$ must have prime power order, hence there is a subgroup of order $p$ in $C(G)$ by Cauchy's Theorem, say $H$. Then $H\unlhd G$ and $|G/H|=p^{\alpha}$ hence, for $\beta\leq\alpha+1$, by the inductive hypothesis, there is a group $W$ of order $p^{\beta-1}$ of $G/H$. Let $\phi:G\to G/H$ be given by \[\phi(g)=gH\] be the canonical quotient map. Then $\phi^{-1}(W)$ is a subgroup of $G$, and since $\phi$ is surjective, its order is $p^{\beta-1}|\ker\phi|=p^{\beta}$, which completes the proof.  
+\end{Proof}
+
+ \item [30.] If $G$ is a group of odd order, prove for any nonidentity element $x\in G$ that $x$ and $x^{-1}$ are not conjugate in $G$.
+
+\begin{Proof}
+ Let $[x]$ denote the conjugacy class of $x$ and say $k$ is the number of elements in $[x]$. If $x$ and $x^{-1}\in[x]$, then, for any $g\in[x]$, $g=hxh^{-1}$, for some $h$. Thus, $g^{-1}=hx^{-1}h^{-1}$, so $g^{-1}\in[x]$. Then $k$ must be even. However, $k=[G:C_g(x)]$ must be odd, so $[x]$ cannot contain $x^{-1}$.
+\end{Proof}
+
+\end{enumerate}
+
+\section*{Section 4.4}
+\begin{enumerate}
+ \item [1.] If $\sigma\in\text{Aut}(G)$ and $\phi_g$ is conjugation by $g$ prove $\sigma\phi_g\sigma^{-1}=\phi_{\sigma(g)}$. Deduce that $\text{Inn}(G)\unlhd\text{Aut}(G)$. (The group $\text{Aut}(G)/\text{Inn}(G)$ is called the \textit{outer automorphisms of }$G$).
+
+\begin{Proof}
+  Observe that for any $x\in G$, \begin{align*}\sigma\phi_g\sigma^{-1}(x)&=\sigma(g\sigma^{-1}(x)g^{-1})\\&=\sigma(g)x\sigma(g^{-1})\\&=\sigma(g)x\sigma^{-1}(g)\\&=\phi_{\sigma(g)}(x)\end{align*} hence $\sigma\phi_g\sigma^{-1}=\phi_{\sigma(g)}$. In particular, this shows that $\text{Inn}(G)\unlhd\text{Aut}(G)$.
+\end{Proof}
+
+ \item [2.] Prove that if $G$ is an abelian group of order $pq$, where $p$ and $q$ are distinct primes, then $G$ is cyclic.
+
+\begin{Proof}
+Since $G$ has order $pq$, there are subgroups $H$ and $K$ of $G$ of orders $p$ and $q$, respectively. These groups are cyclic, for their orders are prime, hence there are generators $h,k$ so that $H=<h>$ and $K=<k>$. Take $x=hk$. Clearly, $x^{pq}=1$. By Lagrange's Theorem, $x^n=1$ only if $n|pq$, hence the only possible orders of $x$ are $p,q$ and $pq$. However, since $G$ is abelian, $x^p=h^pk^p=k^p\not=1$. Similarly, $x^q\not=1$, so $\ord(x)=pq$. Therefore $G=<x>$. 
+\end{Proof}
+
+ \item [3.] Prove that under any automorphism of $D_8$, $r$ has at most 2 possible images and $s$ has at most 4 possible images. Deduce that $|\text{Aut}(D_8)|\leq8$. 
+
+\begin{Proof}
+ We write $D_8=\{1,r,r^2,r^3,s,rs,r^2s,r^3s\}$ with the relations $x^4=y^2=1$ and $yx=x^3y$. Clearly, $r$ has order 4, so it must be sent to an element of order 4. Similarly, $s$ has order 2, and therefore must be sent to an element of order 2. There are 5 elements of order 2, but the maps \begin{align*}\phi(s)&=r^2 & \phi(s)&=r^2\\\phi(r)&=r & \phi(r)&=r^3\end{align*} do not describe homomorphisms. Thus, there are at most 2 possible images for $r$ and 4 possible images for $s$, yielding \[\left|\text{Aut}D_8\right|\leq8\qedhere\]
+
+\end{Proof}
+
+ \item [18.] This exercise shows that for $n]\not=6$ every automorphism of $S_n$ is inner. Fix an integer $n\geq2$ with $n\not=6$.
+\begin{enumerate}
+ \item Prove that the automorphism group of a group $G$ permutes the conjugacy classes of $G$, i.e., for each $\sigma\in\text{Aut}(G)$ and each conjugacy class $\mathcal{K}$ of $G$ the set $\sigma(\mathcal{K})$ is also a conjugacy class of $G$.
+\item Let $\mathcal{K}$ be the conjugacy class of transpositions in $S_n$ and let $\mathcal{K}'$ be the conjugacy class of any element of order 2 in $S_n$ that is not a transposition. Prove that $|\mathcal{K}|\not=|\mathcal{K}'|$. Deduce that any automorphism of $S_n$ sends transpositions to transpositions.
+\item Prove that for each $\sigma\in\text{Aut}(S_n)$ \[\sigma:(1\hskip.05in 2)\mapsto(a\hskip.05in b_2),\hskip.5in\sigma:(1\hskip.05in 3)\mapsto(a\hskip.05in b_3)\hskip.5in\hdots\hskip.5in\sigma:(1\hskip.05in n)\mapsto(1\hskip.1in b_n)\] for some distinct integers $a,b_2,b_3,\hdots,b_n\in\{1,2,\hdots,n\}$.
+\item Show that $(1\hskip.05in 2),(1\hskip.05in 3),\hdots,(1\hskip.05in n)$ generate $S_n$ and deduce that any automorphism of $S_n$ is uniquely determined by its action on these elements. Use (c) to show that $S_n$ has at most $n!$ automorphism and conclude that $\text{Aut}(S_n)=\text{Inn}(S_n)$ for $n\not=6$.
+\end{enumerate}
+
+\begin{Proof}
+ \begin{enumerate}
+  \item Letting $[g]$ denote the conjugacy class of $g$, we see that \begin{align*}\sigma([g])&=\sigma\left(\{xgx^{-1}|x\in G\}\right)\\&=\{\sigma(x)\sigma(g)\sigma(x^{-1})|x\in G\}\\&=\{x\sigma(g)x^{-1}|x\in G\\&=[\sigma(g)]\end{align*} so automorphisms send conjugacy classes to conjugacy classes.
+  \item The conjugacy class of transpositions $\mathcal{K}$ is just the set of transpositions, and so $|\mathcal{K}|=\frac{n\cdot(n-1)}{2}$. However, an element of order 2 which is not a transposition is the product of disjoint transpositions, of which there are clearly more than $|\mathcal{K}|$. In particular, if $U$ is any conjugacy class of $G$, then $|\sigma(U)|=|U|$, so any automorphism of $S_n$ must send transpositions to transpositions.
+  \item Notice first that $(1\hskip.05in 2\hdots\hskip.05in n)=(1\hskip.05in 2)(1\hskip.05in 3)\hdots(1\hskip.05in n)$. Since $\sigma$ must send transpositions to transpositions, we see that $\sigma(1,k)$ must be of the form $(a,b_k)$ for all $k$. 
+  \item 
+ \end{enumerate}
+\end{Proof}
+
+\end{enumerate}
+
+\section*{Additional Problems}
+\begin{enumerate}
+ \item [1.] Show that a solvable group is simple if and only if it is cylic of prime order.
+  \begin{Proof}
+   Clearly, if $G$ is cyclic of prime order, then it is simple and solvable. On the other hand, suppose $G$ is solvable and simple. Since $G$ is solvable, there is a chain \[1=N_1\unlhd N_2\unlhd\hdots\unlhd N_k=G\] with $N_i/N_{i-1}$ abelian for all $i$. However, since $G$ is simple, $k=2$, hence $1\unlhd G$ with $G/1\cong G$ abelian. Since $G$ is abelian, every subgroup of $G$ is normal. However, since $G$ is simple, there is no nontrivial normal subgroup of $G$. This forces $|G|$ to be prime.
+  \end{Proof}
+
+\end{enumerate}
+
+\end{document}

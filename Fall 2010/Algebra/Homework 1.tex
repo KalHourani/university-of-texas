@@ -1,0 +1,186 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{fancyhdr,graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Algebra\\\large Homework 1}
+\date{September 7, 2010}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\lhead[ ]{ }\lfoot[\large\textbf{\thepage}]{\footnotesize\rightmark}
+\chead[ ]{ }\cfoot[ ]{ }
+\rhead[ ]{ }\rfoot[\footnotesize\leftmark]{\large\textbf{\thepage}}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in}\noindent\fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.04pt}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+
+\section*{Section 1.3}
+  \begin{description}
+   \item [15.] Prove that the order of an element in $S_n$ equals the least common multiple of the lengths of the cycles in its cycle decomposition.
+   \begin{Proof}
+    Notice that a cycle of length $m$ has order $m$. If $\sigma=\sigma_1\sigma_2\hdots\sigma_k$ for disjoint cycles $\sigma_i$, then \[\sigma^m=\sigma_1^m\sigma_2^m\hdots\sigma_k^m\tag{1}\] since the $\sigma_i$ commute. Now, the order of $\sigma$ must be divisible by the orders of all $\sigma_i$, for $\sigma_i^n=1$ if and only if $n$ is a multiple of $|\sigma_i|$. Let $M$ be the least common multiple of the order of each $\sigma_i$ (equivalently, the least common multiple of the lengths of the cycles $\sigma_i$). By (1), $\sigma^M=1$, hence $|\sigma|=M$.
+   \end{Proof}
+   \item [16.] Show that if $n\geq m$ then the number of $m-$cycles in $S_n$ is given by \[\frac{n(n-1)(n-2)\hdots(n-m+1)}{m}\]
+    \begin{Proof}
+     Observe first that cycles are fixed under cyclic permutation, i.e., \[(\alpha_1,\alpha_2,\hdots,\alpha_n)=(\alpha_n,\alpha_1,\alpha_2,\hdots,\alpha_{n-1})\] hence given an $m-$cycle $\sigma$, there are $m$ equal $m-$cycles whose entries are a permutation of the entries occuring in $\sigma$. Thus, the number of $m$-cycles is simply the number of permutations of $m$ elements from $n$ elements divided by m, i.e., \[\frac{n(n-1)(n-2)\hdots(n-m+1)}{m}\qedhere\] 
+    \end{Proof}
+  \end{description}
+\section*{Section 1.4}
+  \begin{description}
+   \item [7.] Let $p$ be a prime. Prove that the order of $GL_2(\F)$ is $p^4-p^3-p^2+p$.
+    \begin{Proof}
+     Notice that a $2\times2$ matrix in $\F$ is invertible if and only if its columns are linearly independent. In particular, the first column can be any non-zero vector in $\F\times\F$ and the second column can be any vector which is not a multiple of the first. Hence, there are $(p^2-1)(p^2-p)=p^4-p^3-p^2+p$ elements of $GL_2(\F)$.
+    \end{Proof}
+   \item [11.] Let $H(F)=\{\begin{pmatrix}1&a&b\\0&1&c\\0&0&1\end{pmatrix}|a,b,c\in F$ called the \textit{Heisenberg Group} over $F$. Let $X=\begin{pmatrix}1&a&b\\0&1&c\\0&0&1\end{pmatrix}$ and $Y=\begin{pmatrix}1&d&e\\0&1&f\\0&0&1\end{pmatrix}$ be elements of $H(F)$. 
+  \begin{description}
+   \item [(a)] Compute the matrix product $XY$ and deduce that $H(F)$ is closed under matrix multiplication. Exhibit explicit matrices such that $XY\not=YX$ (so that $H(F)$ is always non-abelian).
+   \item [(b)] Find an explicit formula for the matrix inverse $X^{-1}$ and deduce that $H(F)$ is closed under inverses. 
+   \item [(c)] Prove the associative law for $H(F)$ and deduce that $H(F)$ is a group of order $|F|^3$.
+   \item [(d)] Find the order of each element of the finite group $H(\Z/2\Z)$. 
+   \item [(e)] Prove that every nonidentity element of the group $H(\R)$ has infinite order.
+  \end{description}
+  \begin{Solution}
+   \begin{description}
+    \item [(a)] Observe that \[XY=\begin{bmatrix}1&a+d&b+e+af\\0&1&c+f\\0&0&1\end{bmatrix}\] which is an element of $H(F)$. Take $X=\begin{bmatrix}1&1&0\\0&1&0\\0&0&1\end{bmatrix}$ and $Y=\begin{bmatrix}1&0&0\\0&1&1\\0&0&1\end{bmatrix}$, then \begin{align*}XY&=\begin{bmatrix}1&1&1\\0&1&1\\0&0&1\end{bmatrix}\\YX&=\begin{bmatrix}1&1&0\\0&1&1\\0&0&1\end{bmatrix}\end{align*}
+    \item [(b)] Notice that $X^{-1}=\begin{bmatrix}1&-a&-b+ac\\0&1&-c\\0&0&1\end{bmatrix}\in H(F)$.
+    \item [(c)] The associative law is easy to see, for \begin{align*}(XY)Z&=\left(\begin{bmatrix}1&x_1&x_2\\0&1&x_3\\0&0&1\end{bmatrix}\begin{bmatrix}1&y_1&y_2\\0&1&y_3\\0&0&1\end{bmatrix}\right)\begin{bmatrix}1&z_1&z_2\\0&1&z_3\\0&0&1\end{bmatrix}\\&=\begin{bmatrix}0&x_1+y_1&x_2+y_2+x_1y_3\\0&1&x_3+y_3\\0&0&1\end{bmatrix}\begin{bmatrix}1&z_1&z_2\\0&1&z_3\\0&0&1\end{bmatrix}\\&=\begin{bmatrix}1&x_1+y_1+z_1&x_2+y_2+z_2+x_1y_3+x_1z_3+y_1z_3\\0&1&x_3+y_3+z_3\\0&0&1\end{bmatrix}\end{align*} A similar calculation shows that \begin{align*}X(YZ)&=\begin{bmatrix}1&x_1+y_1+z_1&x_2+y_2+z_2+x_1y_3+x_1z_3+y_1z_3\\0&1&x_3+y_3+z_3\\0&0&1\end{bmatrix}\\&=(XY)Z\end{align*}
+    \item [(d)] A quick proof by induction proves the following identity:\[X^n=\begin{bmatrix}1&na&\frac{1}{2}n(2b-ac+nac)\\0 & 1 & n c\\0&0&1\end{bmatrix}\] Hence $\ord(X)$ is the smallest value $n$ such that $na=nb=nc=0$. In $\Z/2\Z$, this value is always 2, save for the case of the identity, which has order 1. In other words, every nonidentity element of $H(\Z/2\Z)$ has order 2.
+    \item [(e)] Since \[X^n=\begin{bmatrix}1&na&\frac{1}{2}n(2b-ac+nac)\\0 & 1 & n c\\0&0&1\end{bmatrix}\] we see that $X^n=I_3$ if and only if $na=nb=nc=0$. However, this is true in $\R$ if and only if $a=b=c=0$, i.e., $X=I_3$.\qedhere
+   \end{description}
+  \end{Solution}
+\section*{Section 1.6}
+  \begin{description}
+   \item [10.] Fill in the details of the proof that the symmetric groups $S_{\Delta}$ and $S_{\Omega}$ are isomorphic if $|\Delta|=|\Omega|$ as follows: let $\theta:\Delta\to\Omega$ be a bijection. Define\[\phi:S_{\Delta}\to S_{\Omega}\text{ by }\phi(\sigma)=\theta\circ\sigma\circ\theta^{-1}\text{ for all }\sigma\in S_{\Delta}\]and prove the following:
+  \begin{description}
+   \item [(a)] $\phi$ is well defined, that is, if $\sigma$ is a permutation of $\Delta$ then $\theta\circ\sigma\circ\theta^{-1}$ is a permutation of $\Omega$.
+   \item [(b)] $\phi$ is a bijection from $S_{\Delta}$ onto $S_{\Omega}$. 
+   \item [(c)] $\phi$ is a homomorphism, that is, $\phi(\sigma\circ\tau)=\phi(\sigma)\circ\phi(\tau)$.
+  \end{description}
+  \begin{Proof}
+   \begin{description}
+    \item [(a)] Notice that \begin{align*}\theta^{-1}&:\Omega\to\Delta\\\sigma&:\Delta\to\Delta\\\theta&:\Delta\to\Omega\end{align*} hence the composition $\phi(\sigma)=\theta\circ\sigma\circ\theta^{-1}$ is well defined and is a bijection on $\Omega$.
+    \item [(b)] Take $\psi(\sigma)=\theta\circ\sigma^{-1}\circ\theta^{-1}$. To see that $\psi$ is the inverse of $\phi$, simply evaluate $\phi\circ\psi$ and $\psi\circ\phi$. Since $\phi$ is invertible, it is a bijection.
+    \item [(c)] Simply observe that \begin{align*}\phi(\sigma\circ\tau)&=\theta\circ\sigma\circ\tau\circ\theta^{-1}\\&=\theta\circ\sigma\circ\theta^{-1}\circ\theta\circ\tau\circ\theta^{-1}\\&=\phi(\sigma)\circ\phi(\tau)\qedhere\end{align*}
+   \end{description}
+  \end{Proof}
+
+  \item [13.] Let $G$ and $H$ be groups and let $\phi:G\to H$ be a homomorphism. Prove that the image of $\phi$, $\phi(G)$, is a subgroup of $H$. Prove that if $\phi$ is injective then $\phi(G)\cong\phi(G)$.
+  \begin{Proof}
+   Take $x,y\in\phi(G)$. By definition, there exist $a,b\in G$ so that $\phi(a)=x$ and $\phi(b)=y$. Since $G$ is a group $b^{-1}\in G$, hence \[\phi(ab^{-1})=\phi(a)\phi(b)^{-1}=xy^{-1}\in\phi(G)\] Further, $\phi$ is clearly \textit{surjective} when restricted to its image, i.e., the function $\psi:G\to\phi(G)$ given by $\psi(g)=\phi(g)$ is surjective. Hence, if $\phi$ is injective, $\psi$ is injective and is therefore an isomorphism.
+  \end{Proof}
+
+  \item [17.] Let $G$ be any group. Prove that the map from $G$ to itself defined by $g\to g^{-1}$ is homomorphism if and only if $G$ is abelian.
+  \begin{Proof}
+   Observe that $(xy)^{-1}=y^{-1}x^{-1}$. If the map $g\to g^{-1}$ is a homomorphism, then this is simply $x^{-1}y^{-1}=(yx)^{-1}$ hence $xy=yx$. On the other hand, if the group is abelian, then $(xy)^{-1}=y^{-1}x^{-1}=x^{-1}y^{-1}$, so the map $g\to g^{-1}$ is a homomorphism.
+  \end{Proof}
+  \item [20.] Let $G$ be a group and let $\text{Aut}(G)$ be the set of all isomorphisms from $G$ onto $G$. Prove that $\text{Aut}(G)$ is a group under function composition (called the \textit{automorphism group} of $G$ and the elements of $\text{Aut}(G)$ are called \textit{automorphisms} of $G$).
+  \begin{Proof}
+   Notice first that the identity is $Id_G(x)$, i.e., the identity function on $G$. We must show that the composition of automorphisms is an automorphism. Let $\phi_1$, $\phi_2$ be automorphisms of $G$. Notice that their composition is a bijection, and so we must merely show that $\phi_1\circ\phi_2$ is a homomorphism:\begin{align*}(\phi_1\circ\phi_2)(gh)&=\phi_1(\phi_2(gh))\\&=\phi_1(\phi_2(g)\phi_2(h))\\&=\phi_1(\phi_2(g))\phi_1(\phi_2(h))\\&=(\phi_1\circ\phi_2)(g)(\phi_1\circ\phi_2)(h)\end{align*} Thus $\text{Aut}(G)$ is closed under function composition. Similarly, the inverse function $\phi^{-1}$ is a bijection, and must be verified a homomorphism:
+
+For any $a,b\in G$, let $\phi(x)=a$ and $\phi(y)=b$, then $\phi(xy)=ab$ and $\phi^{-1}(ab)=xy=\phi^{-1}(a)\phi^{-1}(b)$. Therefore $\text{Aut}(G)$ is closed under inverses, and is a group.
+  \end{Proof}
+
+  \end{description}
+\section*{Section 1.7}
+\begin{description}
+ \item [15.] Let $G$ be any group and let $A=G$. Show that the maps defined by $g\cdot a=ag^{-1}$ for all $g,a\in G$ \textit{do} satisfy the axioms of a (left) group action.
+  \begin{Proof}
+   Clearly, $1\cdot a=a1^{-1}=a$, so the second axiom is satisfied. Further, \begin{align*}g\cdot(h\cdot a)&=g\cdot ah^{-1}\\&=ah^{-1}g^{-1}\\&=a(gh)^{-1}\\&=gh\cdot a\qedhere\end{align*}
+  \end{Proof}
+
+ \item [16.] Let $G$ be any group and let $A=G$. Show that the maps defined by $g\cdot a=gag^{-1}$ for all $g,a\in G$ \textit{do} satisfy the axioms of a (left) group action (this action of $G$ on itself is called \textit{conjugation}).
+ \begin{Proof}
+   Clearly, $1\cdot a=1a1^{-1}=a$, so the second axiom is satisfied. Further, \begin{align*}g\cdot(h\cdot a)&=g\cdot hah^{-1}\\&=ghah^{-1}g^{-1}\\&=(gh)a(gh)^{-1}\\&=gh\cdot a\qedhere\end{align*}
+  \end{Proof}
+ \item [21.] Show that the group of rigid motions of a cube is isomorphic to $S_4$. 
+  \begin{Proof}
+Let $G$ denote the group of rigid motions of a cube. To see that $|G|=24$, notice that there are 3 rotations which fix each of the 8 vertices. Consider the set of four long diagonals of the cube, i.e., the set of opposite vertices. Let $G$ act on this set by rotating ther vertices. Then there is an induced homomorphism $\phi:G\to S_4$. We will show that this is infact an isomorphism by showing that $\phi$ is injective.
+
+Take $g\in\ker(\phi)$. If $g\not=1$, then $g$ does not fix every vertex, but does fix the long diagonals. Then at least one vertex is sent to the opposite vertex. However, this implies that $g$ sends \textit{every} vertex to the opposite vertex, for adjacent vertices are mapped to adjacent vertices by $G$. However, such a map is orientation \textit{reversing}, which is not a rigid motion. In particular, this shows $g=1$. Thus, $\ker(\phi)=\{1\}$, and $\phi$ is injective.
+\end{Proof}
+
+\end{description}
+\end{description}
+\section*{Additional Problems}
+ \begin{description}
+  \item [1.] Prove that disjoint cycles give commuting elements in the symmetric group $S_n$.
+  \begin{Proof}
+   Take $\sigma$ and $\tau$ to be disjoint cycles in $S_n$. By definition, $\sigma(i)=i$ or $\tau(i)=i$ for all $i\in\{1,2,\hdots,n\}$. This yields a canonical partition of $\{1,2,\hdots,n\}$: $\{X_{\sigma},X_{\tau},X\}$ where $X_{\sigma}$ denotes the set of elements fixed by only $\sigma$, $X_{\tau}$ the set of elements fixed by only $\tau$, and $X$ the set of elements fixed by both. Clearly, $\sigma$ and $\tau$ commute on $X$. We need only show that they commute on $X_{\sigma}$ and $X_{\tau}$.
+
+  Take $i\in X_{\sigma}$. By definition, $\tau(\sigma(i))=\tau(i)\not=i$. This forces $\tau(i)$ to be in $X_{\sigma}$, hence $\sigma(\tau(i))=\tau(i)=\tau(\sigma(i))$. 
+
+The same argument shows that $\tau(\sigma(i))=\sigma(\tau(i))$ for $i\in X_{\tau}$.
+  \end{Proof}
+\item [2.] Show that the decomposition of a permutation as a product of disjoint cycles is unique up to rearrangement. 
+\begin{Proof} 
+ Suppose $\phi\in S_X$ and  \begin{align*}\tag{1}\phi&=\tau_1\circ\tau_2\circ\hdots\circ\tau_k\\\phi&=\sigma_1\circ\sigma_2\circ\hdots\circ\sigma_n\end{align*} are two decompositions of $\phi$ into a product of disjoint cycles. For any $x\in X$, if $\phi(x)=x$ then $x$ occurs in no $\sigma_i$ or $\tau_i$. Otherwise, there exist cycles $\sigma_i$ and $\tau_j$ which contain $x$. Then, for all $r\in\Z$, $\phi^r(x)$ must occur in both $\sigma_i$ and $\tau_j$, hence $\sigma_i=\tau_j$. Thus, the decomposition in (1) is unique up to rearrangement. \end{Proof}
+\item [3.] Show that actions of a group G on a set X are in bijection with homomorphisms from G to $S_X$.
+\begin{Proof}
+ For any group action $G$ on a set $X$, we have an associated binary relation:\[(g,x)\mapsto g\cdot x\] which satisfies the following axioms: \begin{align*}(gh)\cdot x&=g\cdot(h\cdot x)\\1\cdot x&=x\text{ for all x}\end{align*} In particular, these axioms imply the following:\begin{align*}&gx=gy\text{ if and only if }x=y\\&\text{for any }x\in X\text{ there is a }y\in X\text{ such that }gy=x\end{align*} for, if $gx=gy$, then $(gg^{-1})x=(gg^{-1})y$ which yields $x=y$. Similarly, for any $x$ in $X$, let $y=g^{-1}x$. Then $gy=(gg^{-1})x=x$. 
+
+Thus, there is a canonical bijection $\sigma_g$ on $X$ associated with the element $g$, given by\[\sigma_g(x)=gx\] Clearly, this group action $(g,x)\mapsto gx$ is equivalent to the map $\phi:G\to S_x$ given by $\phi(g)=\sigma_g$. To see that this map is a homomorphism, notice that $\phi(gh)=\sigma_{gh}$ is the function which maps $x$ to $(gh)x$. However, $(gh)x=g(hx)=\sigma_g(\sigma_h(x))$, hence $\phi(gh)=\sigma_g\sigma_h=\phi(g)\circ\phi(h)$. Thus, every group action of $G$ on $X$ corresponds to a homomorphism from $G$ to $S_X$.
+
+On the other hand, if $\phi:G\to S_X$ is a homomorphism given by $\phi(g)=\sigma_g$, there is a canonical group action: \[(g,x)\mapsto\sigma_g(x)\] To see that this is in fact a group action, simply notice that $(gh)x=\sigma_{gh}(x)=\sigma_g(\sigma_h(x))=g(hx)$ by construction. Similarly, $1x=\sigma_1(x)=x$. Thus, every homomorphism from $G\to S_X$ corresponds to a group action. Therefore the actions of a group G on a set X are in bijection with homomorphisms from G to $S_X$.
+\end{Proof}
+
+
+\item [4.] Check that conjugation defines a group homomorphism from G to Aut G.
+\begin{Solution}
+ Let $\psi_g:G\to G$ be given by $\psi_g(x)=gxg^{-1}$. Then the function $\Psi:G\to\text{Aut}(g)$ given by $\Psi(g)=\psi_g$ describes a homomorphism: for any $x\in G$, \[\psi_{gh}(x)=(gh)x(gh)^{-1}=g(hxh^{-1})g^{-1}=\psi_g(\psi_h(x))\] Thus, \[\Psi(gh)=\psi_{gh}=\psi_g\circ\psi_h=\Psi(g)\circ\Psi(h)\qedhere\]
+\end{Solution}
+
+\item [(bonus)] Show that the automorphism group of $\mathbb{Z}\times\mathbb{Z}$ is isomorphic to $SL_2(\mathbb{Z})$, the group of two by two integer matrices with determinant 1.
+\begin{Proof}
+Suppose $\phi:\Z\times\Z\to\Z\times\Z$ is an automorphism. We see that $\phi$ is uniquely determined by its image on $(1,0)$ and $(0,1)$, for \begin{align*}\phi(a,b)&=\phi\left(\underbrace{1+1+\hdots+1}_{a-\text{times}},\underbrace{1+1+\hdots+1}_{b-\text{times}}\right)\\&=a\phi(1,0)+b\phi(0,1)\end{align*} However, $\phi$ has a more elegant representation as a matrix:\[\phi(a,b)=\begin{bmatrix}x_1&x_2\\y_1&y_2\end{bmatrix}\begin{bmatrix}a\\b\end{bmatrix}\] where $\phi(1,0)=(x_1,y_1)$ and $\phi(0,1)=(x_2,y_2)$.
+
+Notice that $\phi$ is an automorphism if and only if it is invertible. However, $\phi$ is invertible (as a matrix with entries in $\Q$) if and only if its determinant is not 0. The inverse in this case is given by \[\frac{1}{x_1y_2-x_2y_1}\begin{bmatrix}y_2&-x_2\\-y_1&x_1\end{bmatrix}\] which has entries in $\Z$ if and only if $x_1y_2-x_2y_1$ is $\pm1$. In particular, this shows that $\text{Aut}(\Z\times\Z)$ is the set of invertible $2\times2$ matrices in $\Z$, which is merely $GL_2(\Z)$.
+\end{Proof}
+\end{description}
+\end{document}

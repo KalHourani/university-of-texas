@@ -1,0 +1,72 @@
+\documentclass[12pt,leqno]{article}
+
+\usepackage{graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+\title{Complex Analysis\\\large Homework 7}
+\date{March 23, 2011}
+\author{Khalid Hourani}
+
+\headheight=14.5pt
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\pagestyle{plain}
+\footskip=36pt
+
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\re}{\operatorname{Re}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\w}{\omega}
+\newcommand{\Part}{\center\textbf}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{(\alph{enumii})}}
+\newenvironment{Proof}{\begin{proof}[\textnormal{\textbf{Proof}}]}{\end{proof}}
+\newenvironment{Solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+\begin{document}
+ \begin{titlepage}
+  \maketitle
+ \end{titlepage}
+\clearpage\mbox{}\clearpage
+
+\setcounter{page}{1}
+\begin{enumerate}
+ \item Let $f$ be analytic on $\C\setminus\{0\}$ and satisfy $f(z)=f(1/z)$ for all nonzero $z\in\C$. Show that there exists an entire function $g$ such that $f(z)=g(z+1/z)$ for all nonzero $z\in\C$. 
+  \begin{Proof}
+   Let $g(z)=f\left(\frac{z+\sqrt{z^2-4}}{2}\right)$. Clearly, $g$ is entire. Set $\w=z+1/z$. We see that \[z^2-\w z+1=0\] hence \[z=\frac{\w\pm\sqrt{\w^2-4}}{2}.\] Further, \begin{align*}\left(\frac{\w+\sqrt{\w^2-4}}{2}\right)\left(\frac{\w-\sqrt{\w^2-4}}{2}\right)&=\frac{\w^2-\w^2+4}{4}\\&=1\end{align*} Thus, if $z+1/z=\w$, $\frac{\w+\sqrt{\w^2-4}}{2}=z$ or $\frac{\w+\sqrt{\w^2-4}}{2}=\frac{1}{z}$. Since $f(z)=f(1/z)$, we have \begin{align*}g\left(z+1/z\right)=g(\w)&=f\left(\frac{\w+\sqrt{\w^2-4}}{2}\right)\\&=f(z)\text{ or }f(1/z)\\&=f(z)\qedhere\end{align*}
+  \end{Proof}
+ \item Show that $f:\C_{\infty}\to\C_{\infty}$ is analytic if and only if $f$ is a rational function.
+\end{enumerate}
+
+
+\end{document}

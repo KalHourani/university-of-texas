@@ -1,0 +1,68 @@
+
+\documentclass[12pt,leqno]{article}
+
+\usepackage{graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\numberwithin{equation}{section}
+\pagestyle{headings}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in} \noindent\fbox{#1} #2 \vspace{.10in}}
+
+\swapnumbers
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\theoremstyle{definition}
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+
+
+\makeindex
+
+\begin{document}
+
+
+\thispagestyle{plain}
+\begin{flushright}
+
+\end{flushright}
+{\center\section*{{\huge Mid-Term Review}}}
+
+\begin{Thm}
+ Let $Q$ be a closed cube in $\mathbb{R}^n$, and let $C(Q)$ denote the set of continuous real-valued functions on $Q$. Then $C(Q)$ is a vector space under point-wise and scalar multiplication. Further, let \[||f||_{\infty}=\text{sup}_{x\in Q}|f(x)|\] Then $C(Q)$ is a normed vector space under norm $f\cdot g=||f-g||_{\infty}$, and $C(Q)$ is a complete metric space under this norm.
+\end{Thm}
+
+\begin{proof}
+ 
+\end{proof}
+
+\begin{Lem}[Cauchy Schwarz]
+ \[\left|\int_{\mathbb{R}^n}f(x)f(x)dx\right|\leq\left(\int_{\mathbb{R}^n}|f|^2dx\right)^{1/2}\left(\int_{\mathbb{R}^n}|g|^2dx\right)^{1/2}\]
+\end{Lem}
+
+
+\end{document}

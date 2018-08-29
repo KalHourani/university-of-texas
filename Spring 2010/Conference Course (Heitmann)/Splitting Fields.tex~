@@ -1,0 +1,72 @@
+\documentclass[12pt,leqno]{article}
+
+\usepackage{graphicx,color,amsmath,amsfonts,amssymb,amscd,amsthm,amsbsy,upref}
+
+
+\textheight=8.5truein
+\textwidth=6.0truein
+\hoffset=-.5truein
+\voffset=-.5truein
+\numberwithin{equation}{section}
+\pagestyle{headings}
+\footskip=36pt
+
+\newcommand{\question}[2] {\vspace{.25in} \noindent\fbox{#1} #2 \vspace{.10in}}
+
+\swapnumbers
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{bpe}[thm]{Blank Paper Exercise}
+\newtheorem{apex}[thm]{Applications Exercise}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Exthm}{Example Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\theoremstyle{definition}
+\newtheorem*{Ex}{Example}
+\newtheorem*{Def}{Definition}
+\newtheorem*{Lem}{Lemma}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ord}{\operatorname{ord}}
+\def\pfrac#1#2{{\left(\frac{#1}{#2}\right)}}
+
+
+\makeindex
+
+\begin{document}
+
+
+\thispagestyle{plain}
+\begin{flushright}
+\large{\textbf{Khalid Hourani\\
+}}
+\end{flushright}
+
+\question{6}{Let $\mathbb{Q}$ be the field of rational numbers. Determine the degrees of the splitting fields of the following polynomials over $\mathbb{Q}$.}
+\begin{description}
+ \item [(a)] $x^4+1$
+ \item [(b)] $x^6+1$
+ \item [(c)] $x^4-2$
+ \item [(d)] $x^5-1$
+ \item [(e)] $x^9+x^3+1$
+\end{description}
+
+\begin{proof}[Solution]
+ \begin{description}
+  \item [(a)] Observe that $x^4+1$ has roots {\Large\begin{align*}e^{\frac{\pi}{4}i}&\hskip.5in e^{\frac{-\pi}{4}i}\\e^{\frac{3\pi}{4}i}&\hskip.5in e^{\frac{-3\pi}{4}i}\end{align*}} Letting $w=e^{\frac{\pi}{4}i}$, we see that the remaining roots are $w^3,w^{-1}$ and $w^{-3}$. It follows that $\mathbb{Q}(w)$ is the splitting field of $x^4+1$. It is clear that $\mathbb{Q}(w)$ is a subfield of $\mathbb{Q}(\sqrt{2},i)$, for $w=\frac{\sqrt{2}}{2}+\frac{\sqrt{2}}{2}i$. To see that $\mathbb{Q}(w)$ contains (and is therefore equal to) $\mathbb{Q}(\sqrt{2},i)$, notice that $w^2=i$ and that $w+w^{-1}=\sqrt{2}$. Thus, our splitting field is $\mathbb{Q}(\sqrt{2},i)$. Finally, to see that $[\mathbb{Q}(\sqrt{2},i):\mathbb{Q}]=4$, notice that \[\left[\mathbb{Q}(\sqrt{2},i):\mathbb{Q}\right]=\left[\mathbb{Q}(\sqrt{2},i):\mathbb{Q}(i)\right]\Big[\mathbb{Q}(i):\mathbb{Q}\Big]=2\cdot2=4\]
+  \item [(b)] Observe that $x^6+1$ has roots {\Large\begin{align*}e^{\frac{\pi}{6}i}&\hskip.5in e^{\frac{-\pi}{6}i}\\e^{\frac{3\pi}{6}i}&\hskip.5in e^{\frac{-3\pi}{6}i}\\e^{\frac{5\pi}{6}i}&\hskip.5in e^{\frac{-5\pi}{6}i}\end{align*}} Letting $w=e^{\frac{\pi}{6}i}$, we see that the remaining roots are $w^3,w^5,w^{-1},w^{-3}$ and $w^{-5}$. It follows that $\mathbb{Q}(w)$ is the splitting field of $x^6+1$. It is clear that $\mathbb{Q}(w)$ is a subfield of $\mathbb{Q}(\sqrt{3},i)$, for $w=\frac{\sqrt{3}}{2}+\frac{i}{2}$. To see that $\mathbb{Q}(w)$ contains (and is therefore equal to) $\mathbb{Q}(\sqrt{3},i)$, notice that $w^3=i$ and that $2w-w^3=\sqrt{3}$. Finally, to see that $[\mathbb{Q}(\sqrt{3},i):\mathbb{Q}]=4$, notice that \[\left[\mathbb{Q}(\sqrt{3},i):\mathbb{Q}\right]=\left[\mathbb{Q}(\sqrt{3},i):\mathbb{Q}(i)\right]\Big[\mathbb{Q}(i):\mathbb{Q}\Big]=2\cdot2=4\]
+  \item [(c)] Observe that $x^4-2$ has roots {\Large\begin{align*}\sqrt[4]{2}&\hskip.5in -\sqrt[4]{2}\\ i\sqrt[4]{2}&\hskip.5in -i\sqrt[4]{2}\end{align*}} and so the splitting field is clearly $\mathbb{Q}(\sqrt[4]{2},i)$. Further, \[\left[\mathbb{Q}(\sqrt[4]{2},i):\mathbb{Q}\right]=\left[\mathbb{Q}(\sqrt[4]{2},i):\mathbb{Q}(i)\right]\Big[\mathbb{Q}(i):\mathbb{Q}\Big]=4\cdot2=8\]
+  \item [(d)] Observe that $x^5-1$ has roots {\Large\begin{align*}1&\hskip.5in\\e^{\frac{2\pi}{5}i}&\hskip.5in e^{\frac{4\pi}{5}i}\\e^{\frac{6\pi}{5}i}&\hskip.5in e^{\frac{8\pi}{5}i}\end{align*}} Letting $w=e^{\frac{2\pi}{5}i}$, we see that the remaining roots are $w^0,w^2,w^3$ and $w^4$. It follows that $\mathbb{Q}(w)$ is the splitting field of $x^5-1$. Noting that \[w=\cos\frac{2\pi}{5}+i\sin\frac{2\pi}{5}=\frac{-1}{4}+\frac{\sqrt{5}}{4}+i\sqrt{\frac{5}{8}+\frac{\sqrt{5}}{8}}\] it is clear that $\mathbb{Q}(w)$ is a subfield of $\mathbb{Q}\left(i\sqrt{\frac{5}{8}+\frac{\sqrt{5}}{8}}\right)$, for, letting $z=i\sqrt{\frac{5}{8}+\frac{\sqrt{5}}{8}}$, \[w=-2z^2-\frac{6}{4}+iz\] To see that $\mathbb{Q}(w)$ contains (and is therefore equal to) $\mathbb{Q}\left(i\sqrt{\frac{5}{8}+\frac{\sqrt{5}}{8}}\right)$, notice that $i\sqrt{\frac{5}{8}+\frac{\sqrt{5}}{8}}=\frac{1}{2}\left(w-w^4\right)$. Finally, note that \[\left[\mathbb{Q}(i,\sqrt{\frac{5}{8}+\frac{\sqrt{5}}{8}}:\mathbb{Q}\right]=\left[\mathbb{Q}(i,\sqrt{\frac{5}{8}+\frac{\sqrt{5}}{8}}:\mathbb{Q}(i)\right]\Bigg[\mathbb{Q}(i):\mathbb{Q}\Bigg]=4\cdot2=8\] and thus $\left[\mathbb{Q}\left(i\sqrt{\frac{5}{8}+\frac{\sqrt{5}}{8}}\right):\mathbb{Q}\right]$ divides $8$. Since $i\sqrt{\frac{5}{8}+\frac{\sqrt{5}}{8}}$ solves $16x^4+20x^2+5$, $\left[\mathbb{Q}\left(i\sqrt{\frac{5}{8}+\frac{\sqrt{5}}{8}}\right):\mathbb{Q}\right]$ is at most $4$. It cannot be $1$, for $i\sqrt{\frac{5}{8}+\frac{\sqrt{5}}{8}}$ is clearly not in $\mathbb{Q}$. Nor can it be $2$, for this would imply that $(x-i\sqrt{\frac{5}{8}+\frac{\sqrt{5}}{8}})(x+i\sqrt{\frac{5}{8}+\frac{\sqrt{5}}{8}})$ has coefficients in $\mathbb{Q}$. Thus, \[\left[\mathbb{Q}\left(i\sqrt{\frac{5}{8}+\frac{\sqrt{5}}{8}}\right):\mathbb{Q}\right]=4\]
+  \item [(e)]
+ \end{description}
+\end{proof}
+\end{document}
